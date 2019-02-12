@@ -1,0 +1,2 @@
+# SimpleCooking
+Tarkvaratehnika projekt
