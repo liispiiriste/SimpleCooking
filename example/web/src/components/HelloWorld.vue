@@ -1,10 +1,10 @@
 <template>
   <div class="hello">
     <h1>Simple Cooking</h1>
-        <table style="width:100%; text-align:center">
-            <th style="border:1px solid"><tr><a>retseptid</a></tr></th>
-            <th style="border:1px solid"><tr><a>uus retsept</a></tr></th>
-            <a href="url">Lisa retsept</a>
+        <table style="width:100%; text-align:center; background-color: #e6ffff">
+            <th style="border:1px solid"><tr><a>Retseptid</a></tr></th>
+           <th style="border:1px solid"><tr> <a href="retseptid">Lisa retsept</a></tr></th>
+            <th style="border:1px solid"><tr><a>Minu konto</a></tr></th>
         </table>
 <h2>{{ msg }}</h2>
 
