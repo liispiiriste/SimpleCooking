@@ -4,6 +4,7 @@
         <table style="width:100%; text-align:center">
             <th style="border:1px solid"><tr><a>retseptid</a></tr></th>
             <th style="border:1px solid"><tr><a>uus retsept</a></tr></th>
+            <a href="url">Lisa retsept</a>
         </table>
 <h2>{{ msg }}</h2>
 
