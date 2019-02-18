@@ -3,7 +3,7 @@
     <h1>Simple Cooking</h1>
         <table style="width:100%; text-align:center; background-color: #e6ffff">
             <th style="border:1px solid"><tr><a>Retseptid</a></tr></th>
-           <th style="border:1px solid"><tr> <a href="retseptid">Lisa retsept</a></tr></th>
+           <th style="border:1px solid"><tr><router-link to="/LisaRetsept">Lisa retsept</router-link></tr></th>
             <th style="border:1px solid"><tr><a>Minu konto</a></tr></th>
         </table>
 <h2>{{ msg }}</h2>
@@ -39,7 +39,7 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'Home',
   props: {
     msg: String
   }
