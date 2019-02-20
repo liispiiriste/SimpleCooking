@@ -1,12 +1,10 @@
 <template>
-    <div id="app">
+    <div id="app" style="width:80%; margin:auto">
         <!-- navbar -->
         <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
             <div class="container">
-                <router-link to="/" class="navbar-brand">Kodu</router-link>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                <router-link to="/" class="navbar-brand" style="float:left">Kodu</router-link>
+
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav">
 
@@ -22,14 +20,13 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav><br>
         <div class="container">
             <transition name="moveInUp">
                 <router-view/>
             </transition>
 
         </div>
-
     </div>
 </template>
 
@@ -58,5 +55,12 @@ export default {
     text-align: center;
     color: #2c3e50;
     margin-top: 60px;
+}
+ul {
+    list-style-type: none;
+}
+li{
+    width:100px;
+    float:left;
 }
 </style>
