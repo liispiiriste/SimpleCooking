@@ -1,5 +1,5 @@
 <template>
-    <h2 style="float:left">Minu info:</h2>
+    <h2 style="float:left">Minu Lisatud retseptid:</h2>
 </template>
 
 <script>
