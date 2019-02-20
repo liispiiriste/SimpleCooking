@@ -10,7 +10,7 @@ export default {
   name: 'Home',
     data () {
         return {
-            msg: 'Teretulemast SimpleCooking Appi'
+            msg: 'Tere tulemast SimpleCooking Appi'
         }
     }
 }
