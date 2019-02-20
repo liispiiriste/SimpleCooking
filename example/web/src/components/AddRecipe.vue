@@ -1,80 +1,86 @@
 <template>
-    <div class="AddRecipe">
-        <h2 style="float:left">Lisa uus retsept</h2>
-        <form action="http://localhost:9000/#/Recipes" method="get">
-            Nimi: <input  type="text" name="Name"><br>
-            Kirjeldus: <input type="text" name="Description"><br>
-            Materjalid: <input type="text" name="Materials"><br>
-            Portsjon: <input type="number" name="Portion" min="1"><br>
-            Hind: <input type="number" name="Price" min="1"><br>
-            <button @click="persist">Salvesta</button>
-        </form>
+    <div id="recipeapp">
+        <div class="AddRecipe">
+            <h2 style="float:left">Lisa uus retsept</h2>
+            <form action="http://localhost:9000/#/Recipes" method="get">
+                Nimi: <input v-model="name" type="text" name="Name" id="user_input"><br>
+                Kirjeldus: <input v-model="description" type="text" name="Description"><br>
+                Materjalid: <input v-model="materials" type="text" name="Materials"><br>
+                Portsjon: <input v-model="portion" type="number" name="Portion" min="1"><br>
+                Hind: <input v-model="price" type="number" name="Price" min="1"><br>
+                <button @click="addRecipe">Salvesta</button>
+            </form>
+        </div>
     </div>
 </template>
-<!--
-<div id="app">
-    <h2>Retseptidd</h2>
-    <div v-for="(recipe, n) in recipes">
-        <p>
-            <span class="recipe">{{ recipe }}</span>
-            <button @click="removeRecipe(n)">Kustuta retsept</button>
-        </p>
-    </div>
 
-    <p>
-        <input v-model="newRecipe">
-        <button @click="addRecipe">Lisa retsept</button>
-    </p>
-</div> -->
 <script>
-    export default{
-        name:'AddRecipe',
-        data (){
-            return{
-                title:'AddRecipe'
+    import Vue from "vue";
+
+    export default {
+        name: 'AddRecipe',
+        data() {
+            return {
+                title: 'AddRecipe'
             }
         }
     }
-  /*  const app = new Vue({
-        el: '#app',
-        data: {
-            recipes: [],
-            newRecipe: null
-        },
-        mounted() {
-            if (localStorage.getItem('recipes')) {
-                try {
-                    this.recipes = JSON.parse(localStorage.getItem('recipes'));
-                } catch(e) {
-                    localStorage.removeItem('recipes');
+    window.onload = function () {
+        const app = new Vue({
+            el: '#recipeapp',
+            data: {
+                recipes: [],
+                name: null,
+                description: null,
+                materials: null,
+                portion: null,
+                price: null
+            },
+            mounted() {
+                if (localStorage.getItem('recipes')) {
+                    try {
+                        this.recipes = JSON.parse(localStorage.getItem('recipes'));
+                    } catch (e) {
+                        localStorage.removeItem('recipes');
+                    }
                 }
-            }
-        },
-        methods: {
-            addRecipe() {
-                // ensure they actually typed something
-                if (!this.newRecipe) {
-                    return;
-                }
+            },
+            methods: {
+                addRecipe() {
+                    // ensure they actually typed something
+                    if (!this.name
+                        || !this.description
+                        || !this.materials
+                        || !this.portion
+                        || !this.price) {
+                        return;
+                    }
 
-                this.recipes.push(this.newRecipe);
-                this.newRecipe = '';
-                this.saveRecipe();
-            },
-            removeRecipe(x) {
-                this.recipes.splice(x, 1);
-                this.saveRecipe();
-            },
-            saveRecipe() {
-                const parsed = JSON.stringify(this.recipes);
-                localStorage.setItem('recipes', parsed);
+                    this.recipes.push(this.name);
+                    this.recipes.push(this.description);
+                    this.recipes.push(this.materials);
+                    this.recipes.push(this.portion);
+                    this.recipes.push(this.price);
+                    this.name = '';
+                    this.description = '';
+                    this.materials = '';
+                    this.portion = '';
+                    this.price = '';
+                    this.saveRecipe();
+                },
+                /*removeRecipe(x) {
+                    this.recipes.splice(x, 1);
+                    this.saveRecipe();
+                },*/
+                saveRecipe() {
+                    const parsed = JSON.stringify(this.recipes);
+                    localStorage.setItem('recipes', parsed);
+                }
             }
-        }
-    })*/
+        })
+    }
 
 </script>
-
-
 
 
 <style scoped>
@@ -82,6 +88,7 @@
         width: 50%;
         margin: 20px 0 0;
     }
+
     form {
         float: left;
     }
