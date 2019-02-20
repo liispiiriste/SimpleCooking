@@ -1,5 +1,6 @@
 <template>
     <h2 style="float:left">Retseptid:</h2>
+
 </template>
 
 <script>
