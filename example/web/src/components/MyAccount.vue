@@ -1,12 +1,10 @@
 <template>
-    <div>
-        <h1>Retseptide lisamine</h1>
-    </div>
+    <h2 style="float:left">Minu info:</h2>
 </template>
 
 <script>
     export default {
-        name: "LisaRetsept"
+        name: "MyAccount"
     }
 </script>
 
