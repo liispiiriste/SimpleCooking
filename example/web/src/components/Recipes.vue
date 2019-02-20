@@ -1,13 +1,13 @@
 <template>
-    <h1>recipes</h1>
+    <h2 style="float:left">Retseptid:</h2>
 </template>
 
 <script>
     export default {
         name: "Recipes",
-        data (){
-            return{
-                title:'Recipes'
+        data() {
+            return {
+                title: 'Recipes'
             }
         }
     }

@@ -1,6 +1,6 @@
 <template>
     <div class="AddRecipe">
-        <h1>{{AddRecipe}}</h1>
+        <h2 style="float:left">Uus retsept:</h2>
     </div>
 </template>
 <script>

@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <h1>Simple Cooking</h1>
 
 <h2>{{ msg }}</h2>
   </div>
@@ -11,7 +10,7 @@ export default {
   name: 'Home',
     data () {
         return {
-            msg: 'Welcome to SimpleCooking App'
+            msg: 'Teretulemast SimpleCooking Appi'
         }
     }
 }

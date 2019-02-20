@@ -1,5 +1,6 @@
 <template>
-    <div id="app" style="width:80%; margin:auto">
+    <div id="app" style="width:80%; margin:auto; margin-top:50px">
+        <h1>SimpleCooking</h1>
         <!-- navbar -->
         <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
             <div class="container">

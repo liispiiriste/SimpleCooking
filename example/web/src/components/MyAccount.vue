@@ -1,5 +1,5 @@
 <template>
-    <h1>account</h1>
+    <h2 style="float:left">Minu info:</h2>
 </template>
 
 <script>
