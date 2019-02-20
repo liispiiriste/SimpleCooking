@@ -13,7 +13,7 @@
 </template>
 <!--
 <div id="app">
-    <h2>Retseptid</h2>
+    <h2>Retseptidd</h2>
     <div v-for="(recipe, n) in recipes">
         <p>
             <span class="recipe">{{ recipe }}</span>
