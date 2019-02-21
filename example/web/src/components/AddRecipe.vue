@@ -2,13 +2,14 @@
     <div id="recipeapp">
         <div class="AddRecipe">
             <h2 style="float:left">Lisa uus retsept</h2>
-            <form action="http://localhost:9000/#/Recipes" method="get">
+            <form action="http://localhost:9000/#/Recipes" method="post">
                 Nimi: <input v-model="name" type="text" name="Name" id="user_input"><br>
                 Kirjeldus: <input v-model="description" type="text" name="Description"><br>
                 Materjalid: <input v-model="materials" type="text" name="Materials"><br>
                 Portsjon: <input v-model="portion" type="number" name="Portion" min="1"><br>
                 Hind: <input v-model="price" type="number" name="Price" min="1"><br>
                 <button @click="addRecipe">Salvesta</button>
+
             </form>
         </div>
     </div>
@@ -26,7 +27,7 @@
         }
     }
     window.onload = function () {
-        const app = new Vue({
+        new Vue({
             el: '#recipeapp',
             data: {
                 recipes: [],
