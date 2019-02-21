@@ -28,6 +28,7 @@ public class Recipe {
         this.portion = portion;
     }
 
+    //region getters and setters
     public Long getId() {
         return id;
     }
@@ -75,6 +76,7 @@ public class Recipe {
     public void setPortion(int portion) {
         this.portion = portion;
     }
+    //endregion
 
     @Override
     public String toString() {
