@@ -15,7 +15,7 @@
                     <ul class="navbar-nav">
 
                         <li class="nav-item">
-                            <router-link class="nav-link" to="/Recipes">Retseptid</router-link>
+                            <router-link class="nav-link" to="/recipes">Retseptid</router-link>
                         </li>
                         <li class="nav-item">
                             <router-link class="nav-link" to="/AddRecipe">Lisa retsept</router-link>
@@ -38,17 +38,10 @@
 
 
 <script>
-import axios from "axios";
-import Home from "./components/Home.vue"
-export default {
-  name: 'App',
-    component: {
-      Home
-    },
 
-  mounted () {
-    axios.get('http://localhost:8080/hello-world').then(response => (this.home = response.data));
-  }
+export default {
+  name: 'app',
+
 }
 
 </script>

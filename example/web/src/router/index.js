@@ -5,7 +5,7 @@ import Recipes from '@/components/Recipes'
 import AddRecipe from '@/components/AddRecipe'
 import MyAccount from '@/components/MyAccount'
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
     routes: [
@@ -15,8 +15,8 @@ export default new Router({
             component: Home
         },
         {
-            path: '/Recipes',
-            name: 'Recipes',
+            path: '/recipes',
+            name: 'recipes',
             component: Recipes
         },
         {
