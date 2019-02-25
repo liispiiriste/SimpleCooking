@@ -1,11 +1,11 @@
 <template>
     <div id="app" style="width:80%; margin:auto; margin-top:50px">
         <h1>SimpleCooking</h1>
-        <form action="http://localhost:9000/#/MyAccount">
+        <!-- <form action="http://localhost:9000/#/MyAccount">
             <input type="text" placeholder="Sisesta e-mail" name="email" required>
             <input type="password" placeholder="Sisesta parool" name="password" required>
             <button type="submit" class="logInBtn">Logi sisse</button>
-        </form>
+        </form>-->
         <!-- navbar -->
         <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
             <div class="container">
@@ -37,13 +37,12 @@
 </template>
 
 
-<script>
 
+
+<script>
 export default {
   name: 'app',
-
 }
-
 </script>
 
 <style>
