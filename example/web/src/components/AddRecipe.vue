@@ -1,5 +1,6 @@
 <template>
     <div class="submitform">
+           <h1>Lisa uus retsept</h1>
         <div v-if="!submitted">
             <div class="form-group">
                 <label for="name">Nimi</label>
@@ -82,7 +83,8 @@
 
 <style scoped>
     .submitform {
-        max-width: 300px;
-        margin: auto;
+        margin: 30px;
+        float: left;
+        width: 80%
     }
 </style>

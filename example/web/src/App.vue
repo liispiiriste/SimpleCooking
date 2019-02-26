@@ -1,6 +1,5 @@
 <template>
     <div id="app" style="width:80%; margin:auto; margin-top:50px">
-        <h1>SimpleCooking</h1>
         <!-- <form action="http://localhost:9000/#/MyAccount">
             <input type="text" placeholder="Sisesta e-mail" name="email" required>
             <input type="password" placeholder="Sisesta parool" name="password" required>
