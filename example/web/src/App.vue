@@ -1,5 +1,5 @@
 <template>
-    <div id="app" style="width:80%; margin:auto; margin-top:50px">
+    <div id="app" style="width:80%; margin:auto;">
         <!-- navbar -->
         <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
             <div class="container">
@@ -46,7 +46,7 @@ export default {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    color: #2c3e50;
+    color: #333;
     margin-top: 60px;
 }
 .moveInUp-enter-active{

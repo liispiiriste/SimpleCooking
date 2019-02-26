@@ -1,14 +1,14 @@
 <template>
     <div class="list row">
         <div class="col-md-6">
-            <h4>Retseptid</h4>
-            <ul>
+            <h1>Retseptid</h1>
+            <ul style="font-size:20px">
                 <li v-for="(recipe, index) in recipes" :key="index">
 
                     <router-link :to="{
                             name: 'recipe',
                             params: { recipe: recipe, id: recipe.id }
-                        }">
+                        }" style="color:#333">
                         {{recipe.name}}
                     </router-link>
                 </li>

@@ -1,7 +1,7 @@
-<template>
-    <div class="submitform">
+<template >
+    <div class="submitform" style="color: #333;">
            <h1>Lisa uus retsept</h1>
-        <div v-if="!submitted">
+        <div v-if="!submitted" style="font-size:20px">
             <div class="form-group">
                 <label for="name">Nimi</label>
                 <input type="text" class="form-control" id="name" required v-model="recipe.name" name="name">
@@ -9,19 +9,17 @@
 
             <div class="form-group">
                 <label for="description">Kirjeldus</label>
-                <input type="text" class="form-control" id="description" required v-model="recipe.description" name="description">
+                <textarea type="text" rows=4 style="overflow-y: scroll;" class="form-control" id="description" required v-model="recipe.description" name="description"></textarea>
             </div>
             <div class="form-group">
                 <label for="materials">Materjalid</label>
-                <input type="text" class="form-control" id="materials" required v-model="recipe.materials" name="materials">
+                <textarea type="text" rows=3 style="overflow-y: scroll;" class="form-control" id="materials" required v-model="recipe.materials" name="materials"></textarea>
             </div>
             <div class="form-group">
                 <label for="portion">Portsjon</label>
-                <input type="number" class="form-control" id="portion" required v-model="recipe.portion" name="portion">
-            </div>
-            <div class="form-group">
+                <input class="small-input" type="number" id="portion" required v-model="recipe.portion" name="portion">
                 <label for="price">Hind</label>
-                <input type="number" class="form-control" id="price" required v-model="recipe.price" name="price">
+                <input class="small-input" type="number" id="price" required v-model="recipe.price" name="price">
             </div>
 
             <button v-on:click="saveRecipe" class="btn btn-success">Salvesta retsept</button>
@@ -86,5 +84,13 @@
         margin: 30px;
         float: left;
         width: 80%
+    }
+    input, textarea{
+        max-width:500px;
+        margin:auto;
+    }
+    .small-input{
+        width:75px;
+        margin:10px;
     }
 </style>
