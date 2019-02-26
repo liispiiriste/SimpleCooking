@@ -54,4 +54,6 @@
         max-width: 450px;
         margin: auto;
     }
+
+    ul {list-style-type: square;}
 </style>
