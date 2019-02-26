@@ -4,7 +4,7 @@
             <h4>Retsept</h4>
             <div v-for="(recipe,index) in recipes" :key="index">
                 <div v-if="Rid == recipe.id">
-                    <h1>{{recipe.name}} sth</h1>
+                    <h1>{{recipe.name}}</h1>
                 </div>
             </div>
            <!-- <h1 class="text-primary text-center">{{recipe.name}}</h1>-->
