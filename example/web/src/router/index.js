@@ -4,7 +4,7 @@ import Home from '@/components/Home'
 import Recipes from '@/components/Recipes'
 import AddRecipe from '@/components/AddRecipe'
 import MyAccount from '@/components/MyAccount'
-import Recipe from "../components/Recipe";
+import Recipe from '@/components/Recipe';
 
 Vue.use(Router);
 
@@ -18,9 +18,8 @@ export default new Router({
         {
             path: '/recipes',
             name: 'recipes',
-            alias: '/recipe',
-            component: Recipes,
-            children: [
+            component: Recipes
+            /*children: [
                 {
                     path: "/recipe/:id",
                     name: "recipe-details",
@@ -28,7 +27,12 @@ export default new Router({
                     props: true
                 },
 
-            ]
+            ]*/
+        },
+        {
+            path: '/recipe/:Rid',
+            name: 'recipe',
+            component: Recipe
         },
         {
             path: '/add',

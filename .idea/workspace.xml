@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="54000ce3-88d8-4717-8984-84e5f5831a85" name="Default Changelist" comment="disaini minor changes">
+    <list default="true" id="54000ce3-88d8-4717-8984-84e5f5831a85" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/web/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/example/web/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/web/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/example/web/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/web/src/components/Recipe.vue" beforeDir="false" afterPath="$PROJECT_DIR$/example/web/src/components/Recipe.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/web/src/components/Recipes.vue" beforeDir="false" afterPath="$PROJECT_DIR$/example/web/src/components/Recipes.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/web/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/example/web/src/router/index.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -108,47 +108,33 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/example/web/src/components/AddRecipe.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1513">
-              <caret line="89" column="7" selection-start-line="89" selection-start-column="7" selection-end-line="89" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/example/web/src/components/MyAccount.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="36" selection-start-line="1" selection-start-column="36" selection-end-line="1" selection-end-column="36" />
-              <folding>
-                <element signature="n#style#0;n#h2#0;n#template#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/example/web/src/components/Recipes.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
-              <caret line="57" column="6" selection-start-line="57" selection-start-column="6" selection-end-line="57" selection-end-column="6" />
+            <state relative-caret-position="221">
+              <caret line="48" column="9" lean-forward="true" selection-start-line="45" selection-start-column="9" selection-end-line="48" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/example/web/src/App.vue">
+        <entry file="file://$PROJECT_DIR$/example/web/src/components/Recipe.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="29" column="18" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
+            <state relative-caret-position="255">
+              <caret line="40" column="32" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/example/web/src/components/Recipe.vue">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/example/web/src/router/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="32" column="31" selection-start-line="32" selection-start-column="27" selection-end-line="32" selection-end-column="31" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -166,6 +152,7 @@
     <findStrings>
       <find>add</find>
       <find>ad</find>
+      <find>container</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -190,15 +177,16 @@
         <option value="$PROJECT_DIR$/example/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/RecipeRepository.java" />
         <option value="$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/ExampleController.java" />
-        <option value="$PROJECT_DIR$/example/web/src/router/index.js" />
         <option value="$PROJECT_DIR$/example/web/vue.config.js" />
         <option value="$PROJECT_DIR$/example/web/src/http-common.js" />
-        <option value="$PROJECT_DIR$/example/web/src/components/Recipe.vue" />
         <option value="$PROJECT_DIR$/example/web/src/components/RecipeDetails.vue" />
         <option value="$PROJECT_DIR$/example/web/src/components/Home.vue" />
         <option value="$PROJECT_DIR$/example/web/src/components/AddRecipe.vue" />
-        <option value="$PROJECT_DIR$/example/web/src/components/Recipes.vue" />
         <option value="$PROJECT_DIR$/example/web/src/App.vue" />
+        <option value="$PROJECT_DIR$/example/web/src/components/Details.vue" />
+        <option value="$PROJECT_DIR$/example/web/src/router/index.js" />
+        <option value="$PROJECT_DIR$/example/web/src/components/Recipes.vue" />
+        <option value="$PROJECT_DIR$/example/web/src/components/Recipe.vue" />
       </list>
     </option>
   </component>
@@ -259,6 +247,14 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="SimpleCooking1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SimpleCooking1" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="example" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="router" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -278,7 +274,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551192127653" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551200720915" />
     <property name="last_opened_file_path" value="$USER_HOME$/Downloads/Vue-router-master" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -366,7 +362,7 @@
       <workItem from="1551012131950" duration="7209000" />
       <workItem from="1551120873909" duration="6546000" />
       <workItem from="1551188032744" duration="4002000" />
-      <workItem from="1551195604877" duration="1918000" />
+      <workItem from="1551195604877" duration="4962000" />
     </task>
     <task id="LOCAL-00001" summary="Added db">
       <created>1550575293484</created>
@@ -403,11 +399,18 @@
       <option name="project" value="LOCAL" />
       <updated>1550693434124</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="animated navigation">
+      <created>1551197758583</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1551197758583</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54337000" />
+    <option name="totallyTimeSpent" value="57381000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -419,10 +422,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="634" y="0" width="651" height="695" extended-state="0" />
+    <frame x="-6" y="-6" width="1293" height="702" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49910554" visible="true" weight="0.311973" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49910554" visible="true" weight="0.14979757" />
       <window_info id="Structure" order="1" sideWeight="0.5008944" side_tool="true" weight="0.31736526" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -439,7 +442,7 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32733223" />
       <window_info anchor="bottom" id="Build" order="7" sideWeight="0.4985015" weight="0.32569557" />
       <window_info anchor="bottom" id="Spring" order="8" sideWeight="0.4985015" weight="0.3255814" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.58712715" visible="true" weight="0.2141593" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.58712715" visible="true" weight="0.21153846" />
       <window_info anchor="bottom" id="CheckStyle" order="10" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.41287285" side_tool="true" weight="0.37209302" />
       <window_info anchor="bottom" id="Java Enterprise" order="12" />
@@ -549,7 +552,8 @@
     <MESSAGE value="adding recipe form" />
     <MESSAGE value="branch test" />
     <MESSAGE value="disaini minor changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="disaini minor changes" />
+    <MESSAGE value="animated navigation" />
+    <option name="LAST_COMMIT_MESSAGE" value="animated navigation" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand>
@@ -643,16 +647,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/web/src/router/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="32" column="3" selection-start-line="32" selection-start-column="3" selection-end-line="32" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/example/web/vue.config.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -713,10 +707,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/web/src/components/AddRecipe.vue">
+    <entry file="file://$PROJECT_DIR$/example/web/src/App.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1513">
-          <caret line="89" column="7" selection-start-line="89" selection-start-column="7" selection-end-line="89" selection-end-column="7" />
+        <state relative-caret-position="17">
+          <caret line="6" column="18" lean-forward="true" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -730,20 +724,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/web/src/components/Recipe.vue">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example/web/src/components/Recipes.vue">
+    <entry file="file://$PROJECT_DIR$/example/web/src/components/AddRecipe.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="57" column="6" selection-start-line="57" selection-start-column="6" selection-end-line="57" selection-end-column="6" />
+        <state relative-caret-position="1513">
+          <caret line="89" column="7" selection-start-line="89" selection-start-column="7" selection-end-line="89" selection-end-column="7" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/web/src/App.vue">
+    <entry file="file://$PROJECT_DIR$/example/web/src/components/Recipes.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="29" column="18" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
+        <state relative-caret-position="221">
+          <caret line="48" column="9" lean-forward="true" selection-start-line="45" selection-start-column="9" selection-end-line="48" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/web/src/router/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="32" column="31" selection-start-line="32" selection-start-column="27" selection-end-line="32" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/web/src/components/Recipe.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="40" column="32" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
         </state>
       </provider>
     </entry>
