@@ -4,9 +4,13 @@
             <h4>Retseptid</h4>
             <ul>
                 <li v-for="(recipe, index) in recipes" :key="index">
-                    <h4 @click="goToRecipe(recipe.id)">
+
+                    <router-link :to="{
+                            name: 'recipe',
+                            params: { recipe: recipe, id: recipe.id }
+                        }">
                         {{recipe.name}}
-                    </h4>
+                    </router-link>
                 </li>
             </ul>
         </div>
@@ -38,10 +42,6 @@
             },
             refreshList() {
                 this.retrieveRecipes();
-            },
-            goToRecipe(recipId) {
-                let recId=recipId
-                this.$router.push({name:'recipe',params:{Rid:recId}})
             }
         },
         mounted() {

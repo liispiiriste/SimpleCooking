@@ -32,7 +32,8 @@ export default new Router({
         {
             path: '/recipe/:Rid',
             name: 'recipe',
-            component: Recipe
+            component: Recipe,
+            props:true
         },
         {
             path: '/add',

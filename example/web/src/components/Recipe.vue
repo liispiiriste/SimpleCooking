@@ -1,48 +1,34 @@
 <template>
     <div class="recipe">
         <div class="container">
-            <h4>Retsept</h4>
-            <div v-for="(recipe,index) in recipes" :key="index">
-                <div v-if="Rid == recipe.id">
-                    <h1>{{recipe.name}}</h1>
+            <h4>{{this.recipe.name}}</h4>
+
+            <div v-if="this.recipe" style="text-align:left">
+                <div>
+                    <label>Kirjeldus: </label> {{this.recipe.description}}
                 </div>
+                <div>
+                <label>Materialid: </label> {{this.recipe.materials}}
             </div>
-           <!-- <h1 class="text-primary text-center">{{recipe.name}}</h1>-->
+                <div>
+                    <label>Portsion: </label> {{this.recipe.portion}}
+                </div>
+                <div>
+                    <label>Hind: </label> {{this.recipe.price}}
+                </div>
         </div>
         <div class="col-md-6">
             <router-view @refreshData="refreshDetails"></router-view>
         </div>
-    </div>
+        </div></div>
 </template>
 
 <script>
-    import http from "../http-common";
     export default {
         name: "Recipe",
-        data(){
-            return{
-                recipes: []
 
-            }
-        },
-        methods:{
-            retrieveDetails() {
-            http.
-            get("/recipe/"+ this.recipes.id).
-            then(response=> {
-                this.recipes = response.data;
-
-            })
-
-        },
-            refreshDetails() {
-                this.retrieveDetails();
-            }},
-        mounted() {
-            this.retrieveDetails();
+        props: ["recipe"],
         }
-
-    }
 </script>
 
 <style scoped>
