@@ -18,6 +18,7 @@ export default new Router({
         {
             path: '/recipes',
             name: 'recipes',
+            alias: '/recipe',
             component: Recipes,
             children: [
                 {

@@ -18,7 +18,7 @@
                             <router-link class="nav-link" to="/recipes">Retseptid</router-link>
                         </li>
                         <li class="nav-item">
-                            <router-link class="nav-link" to="/AddRecipe">Lisa retsept</router-link>
+                            <router-link class="nav-link" to="/add">Lisa retsept</router-link>
                         </li>
                         <li class="nav-item">
                             <router-link class="nav-link" to="/MyAccount">Minu konto</router-link>

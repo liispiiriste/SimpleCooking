@@ -2,10 +2,8 @@ package ee.rakendus.example;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class Application {
@@ -15,7 +13,7 @@ public class Application {
 		SpringApplication.run(Application.class, args);
 	}
 
-	@Bean
+	/*@Bean
 	public CommandLineRunner demo(RecipeRepository repository) {
         return (args) -> {
             // save a couple of recipes
@@ -49,7 +47,7 @@ public class Application {
             // }
             log.info("");
         };
-	/*	UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+	*//*	UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 		CorsConfiguration config = new CorsConfiguration();
 		config.setAllowCredentials(true);
 		// *** URL below needs to match the Vue client URL and port ***
@@ -59,8 +57,8 @@ public class Application {
 		source.registerCorsConfiguration("/**", config);
 		FilterRegistrationBean bean = new FilterRegistrationBean<>(new CorsFilter(source));
 		bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
-		return bean;*/
+		return bean;*//*
+*/
 
-	}
 }
 
