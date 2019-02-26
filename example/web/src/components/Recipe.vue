@@ -2,7 +2,7 @@
     <div class="recipe">
         <div class="container">
             <h4>Retsept</h4>
-            <div v-for="(recipe,index) in details" :key="index">
+            <div v-for="(recipe,index) in recipes" :key="index">
                 <div v-if="Rid == recipe.id">
                     <h1>{{recipe.name}} sth</h1>
                 </div>
@@ -21,13 +21,14 @@
         name: "Recipe",
         data(){
             return{
-                details: []
+                recipes: []
+
             }
         },
         methods:{
             retrieveDetails() {
             http.
-            get("/recipe").
+            get("/recipe/"+ this.recipes.id).
             then(response=> {
                 this.recipes = response.data;
 
