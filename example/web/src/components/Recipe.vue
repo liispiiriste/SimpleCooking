@@ -18,7 +18,7 @@
                         <label style="min-width: 75px">Hind: </label> {{this.recipe.price}}
                     </div>
                     <button class="btn btn-danger btn-xs" style="float:left" >
-                        <a><router-link :to="{name: 'editRecipe', params: {id: recipe.id}}">Muuda</router-link></a></button>
+                        <router-link :to="{name: 'editRecipe', params: {recipe:recipe, id: recipe.id}}">Muuda</router-link></button>
                 </div>
 
                 <button class="btn btn-danger btn-xs" style="float:left; margin-left:5px" v-on:click="deleteRecipe()">Kustuta</button>
@@ -51,7 +51,7 @@
                     .delete("/recipe/" + this.recipe.id)
                     .then(response => {
                         this.$emit("refreshData");
-                        this.$router.push('/');
+                        this.$router.push('/recipe');
                     });
                 this.submitted = true;
             }
@@ -60,12 +60,12 @@
 </script>
 
 <style scoped>
-#a:hover, :link, :visited, :active{
+a:hover, :link, :visited, :active{
     color: white;
     text-decoration: none;
 
 }
-    #label{
+    label{
         min-width: 300px;
     }
 
