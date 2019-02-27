@@ -5,6 +5,7 @@ import Recipes from '@/components/Recipes'
 import AddRecipe from '@/components/AddRecipe'
 import MyAccount from '@/components/MyAccount'
 import Recipe from '@/components/Recipe';
+import EditRecipe from "../components/EditRecipe";
 
 Vue.use(Router);
 
@@ -34,6 +35,11 @@ export default new Router({
             name: 'recipe',
             component: Recipe,
             props:true
+        },
+        {
+            path: '/recipe/:id/edit',
+            component: EditRecipe,
+            name: 'editRecipe'
         },
         {
             path: '/add',
