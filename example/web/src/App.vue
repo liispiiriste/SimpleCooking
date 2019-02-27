@@ -1,5 +1,5 @@
 <template>
-    <div id="app" style="width:80%; margin:auto;">
+    <div id="app" style="width:80%; margin:auto; margin-top:50px">
         <!-- navbar -->
         <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
             <div class="container">
