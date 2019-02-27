@@ -20,15 +20,7 @@ export default new Router({
             path: '/recipes',
             name: 'recipes',
             component: Recipes
-            /*children: [
-                {
-                    path: "/recipe/:id",
-                    name: "recipe-details",
-                    component: Recipe,
-                    props: true
-                },
 
-            ]*/
         },
         {
             path: '/recipe/:Rid',
@@ -39,7 +31,7 @@ export default new Router({
         {
             path: '/recipe/:id/edit',
             component: EditRecipe,
-            name: 'editRecipe'
+            name: 'editRecipe',
         },
         {
             path: '/add',
