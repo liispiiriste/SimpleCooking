@@ -17,9 +17,9 @@
             </div>
             <div class="form-group">
                 <label for="portion">Portsjon</label>
-                <input class="small-input" type="number" id="portion" required v-model="recipe.portion" name="portion">
+                <input class="small-input" type="number" id="portion" min="1" required v-model="recipe.portion" name="portion">
                 <label for="price">Hind</label>
-                <input class="small-input" type="number" id="price" required v-model="recipe.price" name="price">
+                <input class="small-input" type="number" id="price"  min="1" v-model="recipe.price" name="price">
             </div>
 
             <button v-on:click="saveRecipe" class="btn btn-success">Salvesta retsept</button>
