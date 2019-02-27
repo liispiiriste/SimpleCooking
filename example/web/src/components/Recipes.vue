@@ -1,6 +1,6 @@
 <template>
     <div class="list row">
-        <div class="col-md-6">
+        <div class="col-md-6" style="margin:auto">
             <h1>Retseptid</h1>
             <ul style="font-size:20px">
                 <li v-for="(recipe, index) in recipes" :key="index">

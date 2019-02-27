@@ -2,7 +2,7 @@
     <div>
         <h2>Muuda retsepti</h2>
         <form v-on:submit="updateRecipe">
-            <div class="form-group">
+            <div class="form-group" style="margin:auto">
                 <label for="edit-name">Nimi</label>
                 <input class="form-control" id="edit-name" v-model="recipe.name" required/>
             </div>

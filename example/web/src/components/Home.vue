@@ -1,8 +1,8 @@
 <template>
   <div class="home">
-    <h1>SimpleCooking</h1>
 
 <h2>{{ msg }}</h2>
+    <img src="@/assets/logo.png" alt="">
   </div>
 </template>
 

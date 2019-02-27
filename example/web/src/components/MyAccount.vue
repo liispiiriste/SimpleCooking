@@ -1,5 +1,5 @@
 <template>
-    <h2 style="float:left">Minu info</h2>
+    <h2 style="float:left;margin:auto">Minu info</h2>
 </template>
 
 <script>

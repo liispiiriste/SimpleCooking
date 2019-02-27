@@ -17,13 +17,18 @@ export default new Router({
             component: Home
         },
         {
+            path: '/home',
+            name: 'Home',
+            component: Home
+        },
+        {
             path: '/recipes',
             name: 'recipes',
             component: Recipes
 
         },
         {
-            path: '/recipe/:Rid',
+            path: '/recipe',
             name: 'recipe',
             component: Recipe,
             props:true
