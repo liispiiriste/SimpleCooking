@@ -20,11 +20,10 @@
 
                 <div class="form-group">
                     <label for="edit-portion">Kogus<span class="glyphicon glyphicon-euro"></span></label>
-                    <input type="number" class="form-control" id="edit-portion" v-model="recipe.portion"/>
-                </div>
-                <div class="form-group">
+                    <input class="small-input" type="number" id="edit-portion" v-model="recipe.portion"/>
+
                     <label for="edit-price">Hind<span class="glyphicon glyphicon-euro"></span></label>
-                    <input type="number" class="form-control" id="edit-price" v-model="recipe.price"/>
+                    <input class="small-input" type="number" id="edit-price" v-model="recipe.price"/>
                 </div>
 
                 <button v-on:click="updateRecipe" class="btn btn-primary">Salvesta muudatused</button>
@@ -42,18 +41,9 @@
 </template>
 
 <script>
-    /*function findRecipe(id) {
-        return recipes[findRecipeKey(id)];
-    }
 
-    function findRecipeKey(id) {
-        for (let key = 0; key < recipes.length; key++) {
-            if (recipes[key].id === id) {
-                return key;
-            }
-        }
-    }*/
-import http from "../http-common"
+    import http from "../http-common"
+
     export default ({
         name: "editRecipe",
         props: ["recipe"],
@@ -72,7 +62,7 @@ import http from "../http-common"
                 submitted: false
             };
         },
-        updateRecipe: function() {
+        updateRecipe: function () {
 
             let data = {
                 id: this.recipe.id,
@@ -90,26 +80,10 @@ import http from "../http-common"
                     this.$emit("refreshData");
                     this.$router.push('/edit');
 
-
                 });
             this.submitted = true;
         },
-        /*   methods: {
-               updateRecipe() {
-                   let recipe = this.recipe;
-                   recipes[findRecipeKey(recipe.id)] = {
-                       id: recipe.id,
-                       name: recipe.name,
-                       description: recipe.description,
-                       materials: recipe.materials,
-                       portion: recipe.portion,
-                       price: recipe.price
-                   };
-                   this.$router.push('/');
-               }
 
-           }
-   */
     })
 
 </script>
@@ -120,5 +94,15 @@ import http from "../http-common"
         margin: 30px;
         float: left;
         width: 80%
+    }
+
+    input, textarea {
+        max-width: 500px;
+        margin: auto;
+    }
+
+    .small-input {
+        width: 75px;
+        margin: 10px;
     }
 </style>
