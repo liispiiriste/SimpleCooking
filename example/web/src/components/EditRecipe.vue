@@ -5,7 +5,7 @@
             <div>
                 <div class="form-group">
                     <label for="edit-name">Nimi</label>
-                    <input type="text" id="edit-name" required v-model="recipe.name"/>
+                    <input class="form-control" type="text" id="edit-name" required v-model="recipe.name"/>
                 </div>
                 <div class="form-group">
                     <label for="edit-description">Kirjeldus</label>
