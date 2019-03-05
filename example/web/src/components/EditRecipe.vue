@@ -26,7 +26,7 @@
                     <input class="small-input" type="number" id="edit-price" v-model="recipe.price"/>
                 </div>
 
-                <button v-on:click="updateRecipe" class="btn btn-primary">Salvesta muudatused</button>
+                <button @click="updateRecipe" class="btn btn-primary">Salvesta muudatused</button>
 
                 <a class="btn btn-default">
                     <router-link to="/">Loobu</router-link>
@@ -44,14 +44,13 @@
 
     import http from "../http-common"
 
-    export default ({
+    export default {
         name: "editRecipe",
         props: ["recipe"],
-
-
         data() {
             return {
                 recipe: {
+
                     id: this.recipe.id,
                     name: this.recipe.name,
                     description: this.recipe.description,
@@ -62,29 +61,24 @@
                 submitted: false
             };
         },
-        updateRecipe: function () {
-
-            let data = {
-                id: this.recipe.id,
-                name: this.recipe.name,
-                description: document.getElementById("edit-description"),
-                materials: this.recipe.materials,
-                portion: this.recipe.portion,
-                price: this.recipe.price
-            };
-
-            http
-                .post("/recipe", data)
-                .then(response => {
-                    this.recipe.id = response.data.id;
-                    this.$emit("refreshData");
-                    this.$router.push('/edit');
-
-                });
-            this.submitted = true;
-        },
-
-    })
+        methods: {
+            updateRecipe() {
+                let data = {
+                    name: this.recipe.name,
+                    description: this.recipe.description,
+                    materials: this.recipe.materials,
+                    portion: this.recipe.portion,
+                    price: this.recipe.price
+                };
+                http
+                    .put("/recipe/" + this.recipe.id, data)
+                    .then(response => {
+                        this.recipe.id = response.data.id;
+                    });
+                this.submitted = true;
+            }
+        }
+    }
 
 </script>
 

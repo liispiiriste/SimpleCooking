@@ -73,10 +73,9 @@
                 this.submitted = false;
                 this.recipe = {};
             }
-            /* eslint-enable no-console */
+
         }
     };
-
 </script>
 
 
