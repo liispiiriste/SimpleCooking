@@ -81,16 +81,18 @@
 
 <style scoped>
     .submitform {
-        margin: 30px;
-        float: left;
-        width: 80%
+        margin: auto;
+        width: 80%;
+        align: center;
     }
     input, textarea{
         max-width:500px;
         margin:auto;
+        align: center;
     }
     .small-input{
         width:75px;
-        margin:10px;
+        margin:auto;
+        align: center;
     }
 </style>
