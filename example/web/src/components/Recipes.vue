@@ -1,8 +1,8 @@
 <template>
     <div class="list row">
-        <div class="col-md-6" style="margin:auto">
-            <h1>Retseptid</h1>
-            <ul style="font-size:20px">
+        <div class="col-md-6" >
+            <h1 style="margin-left:60px; font-size:200%">Retseptid</h1>
+            <ul>
                 <li v-for="(recipe, index) in recipes" :key="index">
 
                     <router-link :to="{
@@ -55,7 +55,13 @@
         text-align: left;
         max-width: 450px;
         margin: auto;
+        align: center
+
+    }
+    ul {
+        text-align: center;
+        list-style: inside;
+        font-size:20px;
     }
 
-    ul {list-style-type: square;}
 </style>
