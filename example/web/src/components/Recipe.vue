@@ -1,5 +1,5 @@
 <template>
-    <div class="recipe" style="width:60%;margin:auto">
+    <div class="recipe">
         <div class="container">
             <div v-if="!submitted">
                 <h4>{{this.recipe.name}}</h4>
@@ -17,7 +17,7 @@
                     <div>
                         <label style="min-width: 75px">Hind: </label> {{this.recipe.price}}
                     </div>
-                    <button class="btn btn-danger btn-xs" style="float:left" >
+                    <button class="btn btn-danger btn-xs" style="float:left; background-color: darksalmon" >
                         <router-link :to="{name: 'editRecipe', params: {recipe:recipe, id: recipe.id}}">Muuda</router-link></button>
                 </div>
 
@@ -67,6 +67,11 @@ a:hover, :link, :visited, :active{
 }
     label{
         min-width: 300px;
+        margin:auto
+    }
+    .container{
+        width:70%;
+        margin:auto;
     }
 
 </style>

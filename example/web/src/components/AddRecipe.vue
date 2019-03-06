@@ -1,8 +1,8 @@
 <template >
-    <div class="submitform" style="color: #333;margin:auto;">
+    <div class="submitform">
 
         <div v-if="!submitted" style="font-size:20px">
-            <h1>Lisa uus retsept</h1>
+            <h1 style="font-size:170%">Lisa uus retsept</h1>
             <div class="form-group">
                 <label for="name">Nimi</label>
                 <input type="text" class="form-control" id="name" required v-model="recipe.name" name="name">
@@ -84,6 +84,7 @@
         margin: auto;
         width: 80%;
         align: center;
+        color: #333
     }
     input, textarea{
         max-width:500px;

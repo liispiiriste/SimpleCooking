@@ -1,5 +1,5 @@
 <template>
-    <h2 style="float:left;margin:auto">Minu info</h2>
+    <h2>Minu info</h2>
 </template>
 
 <script>
@@ -9,5 +9,7 @@
 </script>
 
 <style scoped>
-
+    h2 {
+        margin-right:200px;
+    }
 </style>
