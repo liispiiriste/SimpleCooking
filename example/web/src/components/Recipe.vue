@@ -25,9 +25,6 @@
             </div>
             <div v-else>
                 <h4>Retsept on edukalt kustutatud!</h4>
-                <!--<div class="col-md-6">
-                    <router-view @refreshData="refreshDetails"></router-view>
-                </div> -->
             </div>
         </div>
     </div>
