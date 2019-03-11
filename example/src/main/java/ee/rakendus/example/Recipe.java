@@ -14,6 +14,8 @@ public class Recipe {
     private String description;
     @Column(name = "materials")
     private String materials;
+   // @Column(name = "categories")
+  //  private String categories;
     @Column(name = "price")
     private int price;
     @Column(name = "portion")
@@ -27,6 +29,7 @@ public class Recipe {
         this.name = name;
         this.description = description;
         this.materials = materials;
+       // this.categories = categories;
         this.price = price;
         this.portion = portion;
     }
@@ -63,6 +66,11 @@ public class Recipe {
     public void setMaterials(String materials) {
         this.materials = materials;
     }
+
+   // public String getCategories() { return categories; }
+
+    //public void setCategories(String categories) { this.categories = categories;  }
+
 
     public int getPrice() {
         return price;

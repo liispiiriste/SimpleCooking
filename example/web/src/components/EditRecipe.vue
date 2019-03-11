@@ -19,6 +19,17 @@
                 </div>
 
                 <div class="form-group">
+                    <input type="checkbox"  value="magustoit" v-model="recipe.categories">
+                    <label>Magustoit</label>
+
+                    <input type="checkbox" value="supp" v-model="recipe.categories">
+                    <label>Supp</label>
+
+                    <input type="checkbox" value="eelroog" v-model="recipe.categories">
+                    <label>Eelroog</label>
+                </div>
+
+                <div class="form-group">
                     <label for="edit-portion">Kogus<span class="glyphicon glyphicon-euro"></span></label>
                     <input class="small-input" type="number" id="edit-portion" v-model="recipe.portion"/>
 
@@ -55,6 +66,7 @@
                     name: this.recipe.name,
                     description: this.recipe.description,
                     materials: this.recipe.materials,
+                    categories:this.recipe.categories,
                     portion: this.recipe.portion,
                     price: this.recipe.price
                 },
@@ -67,6 +79,7 @@
                     name: this.recipe.name,
                     description: this.recipe.description,
                     materials: this.recipe.materials,
+                    categories:this.recipe.categories,
                     portion: this.recipe.portion,
                     price: this.recipe.price
                 };

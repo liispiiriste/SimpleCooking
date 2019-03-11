@@ -46,6 +46,7 @@ public class ExampleController {
             _recipe.setName(recipe.getName());
             _recipe.setDescription(recipe.getDescription());
             _recipe.setMaterials(recipe.getMaterials());
+            //_recipe.setCategories(recipe.getCategories());
             _recipe.setPrice(recipe.getPrice());
             _recipe.setPortion(recipe.getPortion());
             return new ResponseEntity<>(repository.save(_recipe), HttpStatus.OK);
