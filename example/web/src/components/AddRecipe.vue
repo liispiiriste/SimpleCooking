@@ -17,16 +17,16 @@
                 <textarea type="text" rows=3 style="overflow-y: scroll;" class="form-control" id="materials" required v-model="recipe.materials" name="materials"></textarea>
             </div>
 
-            <div id="checkboxes">
-                <input type="checkbox"  value="magustoit" v-model="recipe.categories">
+            <div id="radiobuttons">
+                <input type="radio"  value="magustoit" v-model="recipe.category">
                 <label>Magustoit</label>
 
-                <input type="checkbox" value="supp" v-model="recipe.categories">
+                <input type="radio" value="supp" v-model="recipe.category">
                 <label>Supp</label>
 
-                <input type="checkbox" value="eelroog" v-model="recipe.categories">
+                <input type="radio" value="eelroog" v-model="recipe.category">
                 <label>Eelroog</label>
-                <li v-for="category in recipe.categories">{{category}}</li>
+
             </div>
 
             <div class="form-group">
@@ -58,7 +58,7 @@
                     name: "",
                     description: "",
                     materials: "",
-                    categories: [],
+                    category: "",
                     portion: 0,
                     price: 0
                  },
@@ -71,7 +71,7 @@
                     name: this.recipe.name,
                     description: this.recipe.description,
                     materials: this.recipe.materials,
-                    categories: this.recipe.categories,
+                    category: this.recipe.category,
                     portion: this.recipe.portion,
                     price: this.recipe.price
                 };

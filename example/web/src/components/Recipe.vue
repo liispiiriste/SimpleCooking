@@ -19,9 +19,7 @@
                     </div>
                     <div>
                         <label style="min-width: 75px">Kategooria: </label>
-                        <ul>
-                            <li v-for="category in recipe.categories">{{category}}</li>
-                        </ul>
+                       {{this.recipe.category}}
                     </div>
                     <button class="btn btn-danger btn-xs" style="float:left; background-color: darksalmon" >
                         <router-link :to="{name: 'editRecipe', params: {recipe:recipe, id: recipe.id}}">Muuda</router-link></button>

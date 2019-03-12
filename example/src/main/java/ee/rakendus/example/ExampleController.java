@@ -27,7 +27,8 @@ public class ExampleController {
 
     @PostMapping("/recipe")
     public Recipe postRecipe(@RequestBody Recipe recipe) {
-        Recipe _recipe = repository.save(new Recipe(recipe.getName(), recipe.getDescription(), recipe.getMaterials(), recipe.getPortion(), recipe.getPrice()));
+        Recipe _recipe = repository.save(new Recipe(recipe.getName(), recipe.getDescription(), recipe.getMaterials(),
+                recipe.getCategory(), recipe.getPortion(), recipe.getPrice()));
         return _recipe;
     }
 
@@ -46,7 +47,7 @@ public class ExampleController {
             _recipe.setName(recipe.getName());
             _recipe.setDescription(recipe.getDescription());
             _recipe.setMaterials(recipe.getMaterials());
-            //_recipe.setCategories(recipe.getCategories());
+            _recipe.setCategory(recipe.getCategory());
             _recipe.setPrice(recipe.getPrice());
             _recipe.setPortion(recipe.getPortion());
             return new ResponseEntity<>(repository.save(_recipe), HttpStatus.OK);

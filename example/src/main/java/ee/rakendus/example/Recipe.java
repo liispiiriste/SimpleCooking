@@ -14,8 +14,8 @@ public class Recipe {
     private String description;
     @Column(name = "materials")
     private String materials;
-   // @Column(name = "categories")
-  //  private String categories;
+    @Column(name = "category")
+    private String category;
     @Column(name = "price")
     private int price;
     @Column(name = "portion")
@@ -25,11 +25,11 @@ public class Recipe {
     protected Recipe() {
     }
 
-    public Recipe(String name, String description, String materials, int price, int portion) {
+    public Recipe(String name, String description, String materials, String category, int price, int portion) {
         this.name = name;
         this.description = description;
         this.materials = materials;
-       // this.categories = categories;
+        this.category = category;
         this.price = price;
         this.portion = portion;
     }
@@ -67,10 +67,13 @@ public class Recipe {
         this.materials = materials;
     }
 
-   // public String getCategories() { return categories; }
+    public String getCategory() {
+        return category;
+    }
 
-    //public void setCategories(String categories) { this.categories = categories;  }
-
+    public void setCategory(String category) {
+        this.category = category;
+    }
 
     public int getPrice() {
         return price;
@@ -92,7 +95,7 @@ public class Recipe {
     @Override
     public String toString() {
         return String.format(
-                "Recipe[id=%d, name='%s', description='%s', materials='%s', price='%d', portion='%d']",
-                id, name, description, materials, price, portion);
+                "Recipe[id=%d, name='%s', description='%s', materials='%s', category='%s',price='%d', portion='%d']",
+                id, name, description, materials, category,price, portion);
     }
 }
