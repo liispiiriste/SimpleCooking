@@ -19,13 +19,13 @@
                 </div>
 
                 <div class="form-group">
-                    <input type="checkbox"  value="magustoit" v-model="recipe.categories">
+                    <input type="radio"  value="magustoit" v-model="recipe.category">
                     <label>Magustoit</label>
 
-                    <input type="checkbox" value="supp" v-model="recipe.categories">
+                    <input type="radio" value="supp" v-model="recipe.category">
                     <label>Supp</label>
 
-                    <input type="checkbox" value="eelroog" v-model="recipe.categories">
+                    <input type="radio" value="eelroog" v-model="recipe.category">
                     <label>Eelroog</label>
                 </div>
 
@@ -66,7 +66,7 @@
                     name: this.recipe.name,
                     description: this.recipe.description,
                     materials: this.recipe.materials,
-                    categories:this.recipe.categories,
+                    category:this.recipe.category,
                     portion: this.recipe.portion,
                     price: this.recipe.price
                 },
@@ -79,7 +79,7 @@
                     name: this.recipe.name,
                     description: this.recipe.description,
                     materials: this.recipe.materials,
-                    categories:this.recipe.categories,
+                    category:this.recipe.category,
                     portion: this.recipe.portion,
                     price: this.recipe.price
                 };
