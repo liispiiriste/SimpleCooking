@@ -6,6 +6,7 @@ import AddRecipe from '@/components/AddRecipe'
 import MyAccount from '@/components/MyAccount'
 import Recipe from '@/components/Recipe';
 import EditRecipe from "@/components/EditRecipe";
+import Register from "@/components/Register";
 
 Vue.use(Router);
 
@@ -48,6 +49,11 @@ export default new Router({
             path: '/MyAccount',
             name: 'MyAccount',
             component: MyAccount
+        },
+        {
+            path: '/Register',
+            name: 'Register',
+            component: Register
         }
     ]
 });
