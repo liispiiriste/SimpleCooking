@@ -9,7 +9,7 @@
             </div>
 
             <div class="form-group">
-                <label for="description">Kirjeldus</label>
+                <label for="description">Juhend</label>
                 <textarea type="text" rows=4 style="overflow-y: scroll;" class="form-control" id="description" required v-model="recipe.description" name="description"></textarea>
             </div>
             <div class="form-group">

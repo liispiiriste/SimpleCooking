@@ -6,7 +6,7 @@
 
                 <div v-if="this.recipe" style="text-align:left">
                     <div>
-                        <label style="min-width: 75px">Kirjeldus: </label> {{this.recipe.description}}
+                        <label style="min-width: 75px">Juhend: </label> {{this.recipe.description}}
                     </div>
                     <div>
                         <label style="min-width: 75px">Materjalid: </label> {{this.recipe.materials}}
