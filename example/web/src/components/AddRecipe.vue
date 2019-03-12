@@ -9,13 +9,26 @@
             </div>
 
             <div class="form-group">
-                <label for="description">Kirjeldus</label>
+                <label for="description">Juhend</label>
                 <textarea type="text" rows=4 style="overflow-y: scroll;" class="form-control" id="description" required v-model="recipe.description" name="description"></textarea>
             </div>
             <div class="form-group">
                 <label for="materials">Materjalid</label>
                 <textarea type="text" rows=3 style="overflow-y: scroll;" class="form-control" id="materials" required v-model="recipe.materials" name="materials"></textarea>
             </div>
+
+            <div id="radiobuttons">
+                <input type="radio"  value="magustoit" v-model="recipe.category">
+                <label>Magustoit</label>
+
+                <input type="radio" value="supp" v-model="recipe.category">
+                <label>Supp</label>
+
+                <input type="radio" value="eelroog" v-model="recipe.category">
+                <label>Eelroog</label>
+
+            </div>
+
             <div class="form-group">
                 <label for="portion">Portsjon</label>
                 <input class="small-input" type="number" id="portion" min="1" required v-model="recipe.portion" name="portion">
@@ -45,6 +58,7 @@
                     name: "",
                     description: "",
                     materials: "",
+                    category: "",
                     portion: 0,
                     price: 0
                  },
@@ -57,6 +71,7 @@
                     name: this.recipe.name,
                     description: this.recipe.description,
                     materials: this.recipe.materials,
+                    category: this.recipe.category,
                     portion: this.recipe.portion,
                     price: this.recipe.price
                 };

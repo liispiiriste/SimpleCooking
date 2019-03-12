@@ -59,9 +59,10 @@
 
     }
     ul {
-        text-align: center;
+        text-align: left;
         list-style: inside;
         font-size:20px;
+        width: 300%;
     }
 
 </style>

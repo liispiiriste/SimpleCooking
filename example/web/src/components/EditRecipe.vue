@@ -8,7 +8,7 @@
                     <input class="form-control" type="text" id="edit-name" required v-model="recipe.name"/>
                 </div>
                 <div class="form-group">
-                    <label for="edit-description">Kirjeldus</label>
+                    <label for="edit-description">Juhend</label>
                     <textarea class="form-control" id="edit-description" rows="3"
                               v-model="recipe.description"></textarea>
                 </div>
@@ -16,6 +16,17 @@
                 <div class="form-group">
                     <label for="edit-materials">Materjalid</label>
                     <textarea class="form-control" id="edit-materials" rows="3" v-model="recipe.materials"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <input type="radio"  value="magustoit" v-model="recipe.category">
+                    <label>Magustoit</label>
+
+                    <input type="radio" value="supp" v-model="recipe.category">
+                    <label>Supp</label>
+
+                    <input type="radio" value="eelroog" v-model="recipe.category">
+                    <label>Eelroog</label>
                 </div>
 
                 <div class="form-group">
@@ -55,6 +66,7 @@
                     name: this.recipe.name,
                     description: this.recipe.description,
                     materials: this.recipe.materials,
+                    category:this.recipe.category,
                     portion: this.recipe.portion,
                     price: this.recipe.price
                 },
@@ -67,6 +79,7 @@
                     name: this.recipe.name,
                     description: this.recipe.description,
                     materials: this.recipe.materials,
+                    category:this.recipe.category,
                     portion: this.recipe.portion,
                     price: this.recipe.price
                 };

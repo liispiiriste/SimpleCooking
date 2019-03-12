@@ -6,7 +6,7 @@
 
                 <div v-if="this.recipe" style="text-align:left">
                     <div>
-                        <label style="min-width: 75px">Kirjeldus: </label> {{this.recipe.description}}
+                        <label style="min-width: 75px">Juhend: </label> {{this.recipe.description}}
                     </div>
                     <div>
                         <label style="min-width: 75px">Materjalid: </label> {{this.recipe.materials}}
@@ -17,6 +17,10 @@
                     <div>
                         <label style="min-width: 75px">Hind: </label> {{this.recipe.price}}
                     </div>
+                    <div>
+                        <label style="min-width: 75px">Kategooria: </label>
+                       {{this.recipe.category}}
+                    </div>
                     <button class="btn btn-danger btn-xs" style="float:left; background-color: darksalmon" >
                         <router-link :to="{name: 'editRecipe', params: {recipe:recipe, id: recipe.id}}">Muuda</router-link></button>
                 </div>
@@ -25,9 +29,6 @@
             </div>
             <div v-else>
                 <h4>Retsept on edukalt kustutatud!</h4>
-                <!--<div class="col-md-6">
-                    <router-view @refreshData="refreshDetails"></router-view>
-                </div> -->
             </div>
         </div>
     </div>
