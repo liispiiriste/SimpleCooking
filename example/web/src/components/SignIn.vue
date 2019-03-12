@@ -1,36 +1,55 @@
 <template>
-    <div class="submitform">
+    <div >
 
-        <div v-if="!submitted" style="font-size:20px">
-            <h1 style="font-size:170%">Logi sisse</h1>
-            <div class="form-group">
-                <label for="username">Kasutajanimi</label>
-                <input type="text" class="form-control" id="username" required v-model="user.username" name="username">
-            </div>
 
-            <div class="form-group">
-                <label for="password">Parool</label>
-                <input type="text" class="form-control" id="password" required v-model="user.password" name="password"></input>
-            </div>
-
-            <button v-on:click="signIn" class="btn btn-success">Logi sisse</button>
+        <div v-if="!submitted">
+            <h2>Logi sisse</h2>
+        <div class="form-group">
+            <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Kasutajanimi"
+                    v-model="user.username"
+            >
         </div>
-
-        <div v-else>
-            <h4>Sees!</h4>
+        <div class="form-group">
+            <input
+                    type="password"
+                    class="form-control"
+                    placeholder="Parool"
+                    v-model="user.password"
+            >
         </div>
-    </div>
+        <button class="btn btn-primary" v-on:click="submit">Logi sisse</button>
+        </div>
+    <div v-else>
+        Tere, {{this.user.username}}!
+    </div></div>
 </template>
 
 <script>
+    import auth from "../auth"
     export default {
         name: "SignIn",
         data(){
             return{
                 user:{
-                    id:0,
-                    username:""
-                }
+                    username:"",
+                    password:""
+
+                },
+                submitted:false
+            }
+        },
+        methods:{
+            submit(){
+                var user={
+                    username:this.user.username,
+                    password:this.user.password
+                };
+                    this.submitted=true,
+                        auth.login(this,user,"home");
+
             }
         }
     }

@@ -14,7 +14,7 @@
 
             <div class="form-group">
                 <label for="password">Parool</label>
-                <input type="text" class="form-control" id="password" required v-model="user.password" name="password"></input>
+                <input type="password" class="form-control" id="password" required v-model="user.password" name="password"></input>
             </div>
 
             <button v-on:click="signUp" class="btn btn-success">Registreeri</button>
