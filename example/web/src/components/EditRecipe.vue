@@ -8,7 +8,7 @@
                     <input class="form-control" type="text" id="edit-name" required v-model="recipe.name"/>
                 </div>
                 <div class="form-group">
-                    <label for="edit-description">Kirjeldus</label>
+                    <label for="edit-description">Juhend</label>
                     <textarea class="form-control" id="edit-description" rows="3"
                               v-model="recipe.description"></textarea>
                 </div>
