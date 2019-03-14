@@ -1,5 +1,6 @@
 package ee.rakendus.example;
 
+
 import javax.persistence.*;
 
 @Entity

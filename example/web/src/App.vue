@@ -24,6 +24,7 @@
                         <input class="form-control mr-sm-2" type="text" placeholder="Otsing">
                         <button class="btn btn-secondary my-2 my-sm-0" type="submit">Otsi</button>
                     </form>
+                    <div><router-link to="/login">Login</router-link></div>
                 </div>
             </div>
         </div>
