@@ -3,9 +3,11 @@
 
         <div v-if="!submitted" style="font-size:20px">
             <h1 style="font-size:170%">Lisa uus retsept</h1>
+
             <div class="form-group">
                 <label for="name">Nimi</label>
-                <input type="text" class="form-control" id="name" required v-model="recipe.name" name="name">
+                <input type="text" class="form-control" id="name" v-model="recipe.name" name="name" v-validate="'required'">
+                <span style="color:red;">{{errors.first('name')}}</span>
             </div>
 
             <div class="form-group">
@@ -37,6 +39,7 @@
             </div>
 
             <button v-on:click="saveRecipe" class="btn btn-success">Salvesta retsept</button>
+
         </div>
 
         <div v-else>
@@ -48,7 +51,9 @@
 
 <script>
     import http from "../http-common";
-
+    import Vue from 'vue';
+    import VeeValidate from 'vee-validate';
+    Vue.use(VeeValidate);
     export default {
         name: 'add-recipe',
         data() {

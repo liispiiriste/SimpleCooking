@@ -55,4 +55,5 @@ public class ExampleController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
 }
