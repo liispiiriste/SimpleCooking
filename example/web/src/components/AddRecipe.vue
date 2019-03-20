@@ -87,6 +87,7 @@
                          this.recipe.id = response.data.id;
 
                      });
+
                      this.submitted = true;}
 
             },
