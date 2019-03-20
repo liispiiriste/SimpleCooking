@@ -1,6 +1,8 @@
 package ee.rakendus.example;
 
 
+import ee.rakendus.example.user.User;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -35,7 +37,8 @@ public class Recipe {
     @NotNull
     @Column(name = "portion")
     private int portion;
-
+    @ManyToOne
+    private User user;
 
     protected Recipe() {
     }

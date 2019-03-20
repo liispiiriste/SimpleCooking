@@ -9,9 +9,8 @@ import Recipe from '@/components/Recipe';
 import EditRecipe from "@/components/EditRecipe";
 import login from "@/components/Login";
 import store from "@/store";
+
 import Register from "@/Register";
-
-
 
 Vue.use(VueRouter);
 
@@ -61,7 +60,9 @@ const router = new VueRouter({
             component: MyAccount
         },
         {
-            path: '/Register',
+
+            path: '/register',
+
             name: 'Register',
             component: Register
         }
@@ -70,7 +71,7 @@ const router = new VueRouter({
     ]
 });
 
-router.beforeEach((to, from, next) => {
+/*router.beforeEach((to, from, next) => {
     const publicPages = ['/login'];
     const authRequired = !publicPages.includes(to.path);
     const loggedIn = store.getters.isAuthenticated;
@@ -79,5 +80,5 @@ router.beforeEach((to, from, next) => {
         return next('/login');
     }
     next();
-});
+});*/
 export default router;
