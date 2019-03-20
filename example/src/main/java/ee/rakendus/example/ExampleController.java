@@ -27,9 +27,24 @@ public class ExampleController {
 
     @PostMapping("/recipe")
     public Recipe postRecipe(@RequestBody Recipe recipe) {
+        boolean error=false;
+        if(recipe.getName().isEmpty()){
+            error=true;
+        }
+        if(recipe.getDescription().isEmpty()){
+            error=true;
+        }
+        if(recipe.getCategory().isEmpty()){
+            error=true;
+        }
+        if(recipe.getMaterials().isEmpty()){
+            error=true;
+        }
+       if(error==false) {
         Recipe _recipe = repository.save(new Recipe(recipe.getName(), recipe.getDescription(), recipe.getMaterials(),
                 recipe.getCategory(), recipe.getPortion(), recipe.getPrice()));
-        return _recipe;
+        return _recipe;}
+       return null;
     }
 
     @DeleteMapping("/recipe/{id}")
