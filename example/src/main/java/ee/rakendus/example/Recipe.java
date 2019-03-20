@@ -1,6 +1,8 @@
 package ee.rakendus.example;
 
 
+import ee.rakendus.example.user.User;
+
 import javax.persistence.*;
 
 @Entity
@@ -21,7 +23,8 @@ public class Recipe {
     private int price;
     @Column(name = "portion")
     private int portion;
-
+    @ManyToOne
+    private User user;
 
     protected Recipe() {
     }
