@@ -6,7 +6,7 @@
 
             <div class="form-group">
                 <label for="name">Nimi</label>
-                <input type="text" class="form-control" id="name" v-model="recipe.name" name="name" v-validate="'required'">
+                <input type="text" class="form-control" id="name" v-model="recipe.name" name="name" required>
                 <span style="color:red;">{{errors.first('name')}}</span>
             </div>
 
@@ -72,6 +72,7 @@
         },
         methods: {
              saveRecipe() {
+                 if(this.recipe.name){
                 let data = {
                     name: this.recipe.name,
                     description: this.recipe.description,
@@ -80,14 +81,14 @@
                     portion: this.recipe.portion,
                     price: this.recipe.price
                 };
+                  http
+                     .post("/recipe", data)
+                     .then(response => {
+                         this.recipe.id = response.data.id;
 
-                http
-                    .post("/recipe", data)
-                    .then(response => {
-                        this.recipe.id = response.data.id;
+                     });
+                     this.submitted = true;}
 
-                    });
-                this.submitted = true;
             },
             newRecipe() {
                 this.submitted = false;

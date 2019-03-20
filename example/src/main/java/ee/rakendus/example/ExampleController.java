@@ -3,6 +3,7 @@ package ee.rakendus.example;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ public class ExampleController {
     }
 
     @PostMapping("/recipe")
-    public Recipe postRecipe(@RequestBody Recipe recipe) {
+    public Recipe postRecipe(@RequestBody Recipe recipe, BindingResult result) {
         boolean error=false;
         if(recipe.getName().isEmpty()){
             error=true;
