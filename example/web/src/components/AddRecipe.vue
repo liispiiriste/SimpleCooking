@@ -6,17 +6,20 @@
 
             <div class="form-group">
                 <label for="name">Nimi</label>
-                <input type="text" class="form-control" id="name" v-model="recipe.name" name="name" v-validate="'required'">
-                <span style="color:red;">{{errors.first('name')}}</span>
+                <input type="text" class="form-control" id="name" v-model="recipe.name" name="name">
+                <div  style="color:red;"> {{nameError}}</div>
             </div>
+
 
             <div class="form-group">
                 <label for="description">Juhend</label>
                 <textarea type="text" rows=4 style="overflow-y: scroll;" class="form-control" id="description" required v-model="recipe.description" name="description"></textarea>
+                <div  style="color:red;"> {{desError}}</div>
             </div>
             <div class="form-group">
                 <label for="materials">Materjalid</label>
                 <textarea type="text" rows=3 style="overflow-y: scroll;" class="form-control" id="materials" required v-model="recipe.materials" name="materials"></textarea>
+                <div  style="color:red;"> {{matError}}</div>
             </div>
 
             <div id="radiobuttons">
@@ -54,9 +57,11 @@
     import Vue from 'vue';
     import VeeValidate from 'vee-validate';
     Vue.use(VeeValidate);
+
     export default {
         name: 'add-recipe',
         data() {
+            errorMessage:null
             return {
                 recipe:{
                     id:0,
@@ -67,11 +72,16 @@
                     portion: 0,
                     price: 0
                  },
-                submitted: false
+                submitted: false,
+                nameError:"",
+                desError:"",
+                matError:""
             };
         },
         methods: {
+
              saveRecipe() {
+
                 let data = {
                     name: this.recipe.name,
                     description: this.recipe.description,
@@ -80,14 +90,22 @@
                     portion: this.recipe.portion,
                     price: this.recipe.price
                 };
+                if(!this.recipe.name){this.nameError="Lisa nimi" }
+                if(this.recipe.name){this.nameError=""}
+                 if(!this.recipe.description){this.desError="Lisa juhised" }
+                 if(this.recipe.description){this.desError=""}
+                 if(!this.recipe.materials){this.matError="Lisa materjalid" }
+                 if(this.recipe.materials){this.matError=""}
+                 if(this.recipe.name && this.recipe.description && this.recipe.materials){
+                  http
+                     .post("/recipe", data)
+                     .then(response => {
+                         this.recipe.id = response.data.id;
 
-                http
-                    .post("/recipe", data)
-                    .then(response => {
-                        this.recipe.id = response.data.id;
+                     });
 
-                    });
-                this.submitted = true;
+                     this.submitted = true;}
+
             },
             newRecipe() {
                 this.submitted = false;
