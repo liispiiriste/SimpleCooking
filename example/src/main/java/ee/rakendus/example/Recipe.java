@@ -2,6 +2,8 @@ package ee.rakendus.example;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "recipe")
@@ -9,16 +11,28 @@ public class Recipe {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @NotBlank
     @Column(name = "name")
     private String name;
+
+    @NotBlank
     @Column(name = "description")
     private String description;
+
+    @NotBlank
     @Column(name = "materials")
     private String materials;
+
+    @NotBlank
     @Column(name = "category")
     private String category;
+
+    @NotNull
     @Column(name = "price")
     private int price;
+
+    @NotNull
     @Column(name = "portion")
     private int portion;
 
