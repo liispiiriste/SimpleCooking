@@ -1,4 +1,4 @@
-<template>
+<template xmlns:th="http://www.w3.org/1999/xhtml">
     <div id="app" style="width:80%; margin:auto; margin-top:50px;">
         <!-- navbar -->
         <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
@@ -19,6 +19,9 @@
                         <li class="nav-item">
                             <router-link class="nav-link" to="/MyAccount">Minu konto</router-link>
                         </li>
+                        <form th:action="@{/logout}" method="post">
+                            <input type="submit" value="Sign Out"/>
+                        </form>
                     </ul>
                     <form class="form-inline my-2 my-lg-0">
                         <input class="form-control mr-sm-2" type="text" placeholder="Otsing">
