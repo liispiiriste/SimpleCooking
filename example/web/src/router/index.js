@@ -5,9 +5,12 @@ import Recipes from '@/components/Recipes'
 import AddRecipe from '@/components/AddRecipe'
 import MyAccount from '@/components/MyAccount'
 import Recipe from '@/components/Recipe';
-import EditRecipe from '@/components/EditRecipe';
-import login from '@/components/Login';
-import store from '@/store';
+
+import EditRecipe from "@/components/EditRecipe";
+import login from "@/components/Login";
+import store from "@/store";
+import Register from "@/Register";
+
 
 
 Vue.use(VueRouter);
@@ -57,6 +60,11 @@ const router = new VueRouter({
             name: 'MyAccount',
             component: MyAccount
         },
+        {
+            path: '/Register',
+            name: 'Register',
+            component: Register
+        }
 
 
     ]
