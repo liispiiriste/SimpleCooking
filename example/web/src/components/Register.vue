@@ -16,8 +16,14 @@
 
             <div class="form-group">
                 <label for="password">Parool</label>
-                <input type="text" class="form-control" id="password" required v-model="user.password" name="password">
+                <input type="password" class="form-control" id="password" required v-model="user.password" name="password">
                 <div  style="color:red;"> {{passwordError}}</div>
+            </div>
+            <div class="form-group">
+                <label for="password2">Parooli kordus</label>
+                <input type="password" class="form-control" id="password2" required v-model="password2" name="password2">
+                <div  style="color:red;"> {{password2Error}}</div>
+                <div  style="color:red;"> {{passwordMError}}</div>
             </div>
 
             <button v-on:click="signUp" class="btn btn-success">Registreeri</button>
@@ -45,7 +51,10 @@
                 submitted:false,
                 emailError:"",
                 usernameError:"",
-                passwordError:""
+                passwordError:"",
+                password2:"",
+                password2Error:"",
+                passwordMError:""
             };
         },
         methods:{
@@ -60,9 +69,13 @@
                 if(this.user.email){this.emailError=""}
                 if(!this.user.username){this.usernameError="Lisa kasutajanimi" }
                 if(this.user.username){this.usernameError=""}
-                if(!this.user.password){this.passwordError="Lisa parool" }
-                if(this.user.password){this.passwordError=""}
-                if(this.user.email && this.user.username && this.user.password){
+                if(this.user.password.length<5){this.passwordError="Parool peab sisaldama vähemalt 5 sümbolit" }
+                if(this.user.password.length>=5){this.passwordError=""}
+                if(!this.password2){this.password2Error="Korda parooli"}
+                if(this.password2){this.password2Error=""}
+                if(this.password2!=this.user.password && this.password2 && this.user.password ){this.passwordMError="Paroolid ei ole samad"}
+                if(this.password2==this.user.password){this.passwordMError=""}
+                if(this.user.email && this.user.username && this.user.password && !this.password2Error && !this.passwordMError){
                 http
                     .post("/register", data)
                     .then(response =>{
