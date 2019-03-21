@@ -10,7 +10,7 @@ import EditRecipe from "@/components/EditRecipe";
 import login from "@/components/Login";
 import store from "@/store";
 
-import Register from "@/Register";
+import Register from "@/components/Register";
 
 Vue.use(VueRouter);
 
