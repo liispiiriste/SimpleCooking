@@ -6,6 +6,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.Collection;
 import java.util.List;
 
@@ -16,10 +17,14 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @Column(unique = true)
+    @NotBlank
+    @Column(name="username", unique = true)
     private String username;
-    private String password;
-    @Column(unique = true)
+    @NotBlank
+    @Column(name="password")
+            private String password;
+    @NotBlank
+    @Column(name="email", unique = true)
     private String email;
     @OneToMany
     private List<Recipe> recipes;
@@ -28,9 +33,10 @@ public class User implements UserDetails {
 
     public User(){}
 
-    User(String username, String password, List<Object> objects) {
+    User(String username, String password, String email, List<Object> objects) {
         this.username = username;
         this.password  = password;
+        this.email = email;
     }
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
