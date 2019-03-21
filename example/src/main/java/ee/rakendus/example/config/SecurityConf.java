@@ -36,6 +36,7 @@ public class SecurityConf extends WebSecurityConfigurerAdapter {
         http.cors().and().csrf().disable().authorizeRequests()
                 .antMatchers(HttpMethod.POST, SIGN_UP_URL).permitAll()
                 .antMatchers(HttpMethod.POST, "/login").permitAll()
+                .antMatchers("/**").permitAll().anyRequest().authenticated()//ilma sisselogimiseta ligipääs
 
                 .antMatchers(HttpMethod.POST, GET_TOKEN_URL).permitAll()
                 .antMatchers().permitAll()

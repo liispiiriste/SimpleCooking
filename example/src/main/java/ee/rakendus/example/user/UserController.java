@@ -3,6 +3,7 @@ package ee.rakendus.example.user;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -24,11 +25,19 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<User> signUp(@RequestBody User user) {
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        user.setUsername(user.getEmail());
+    public ResponseEntity<User> signUp(@RequestBody User user, BindingResult result) {
+        boolean error=false;
+        if(user.getPassword().isEmpty()){error=true;}
+        if(user.getUsername().isEmpty()){error=true;}
+        if(user.getEmail().isEmpty()){error=true;}
+        if(error==false) {
+            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+            user.setUsername(user.getUsername());
+            user.setEmail(user.getEmail());
 
-        return new ResponseEntity<>(userService.saveUser(user), HttpStatus.OK);
+            return new ResponseEntity<>(userService.saveUser(user), HttpStatus.OK);
+        }
+        return null;
     }
 
     @GetMapping(value = "")

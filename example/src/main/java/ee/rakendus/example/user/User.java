@@ -33,9 +33,10 @@ public class User implements UserDetails {
 
     public User(){}
 
-    User(String username, String password, List<Object> objects) {
+    User(String username, String password, String email, List<Object> objects) {
         this.username = username;
         this.password  = password;
+        this.email = email;
     }
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
