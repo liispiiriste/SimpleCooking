@@ -47,7 +47,7 @@
 
         <div v-else>
             <h4>Lisatud!</h4>
-            <button class="btn btn-success" v-on:click="newRecipe">Tagasi</button>
+            <button class="btn btn-success" v-on:click="newRecipe">Uus retsept</button>
         </div>
     </div>
 </template>

@@ -19,15 +19,17 @@
                         <li class="nav-item">
                             <router-link class="nav-link" to="/MyAccount">Minu konto</router-link>
                         </li>
-                        <form th:action="@{/logout}" method="post">
-                            <input type="submit" value="Sign Out"/>
-                        </form>
+                        <li class="nav-item">
+                            <router-link class="nav-link" to="/login">Login</router-link>
+                        </li>
                     </ul>
                     <form class="form-inline my-2 my-lg-0">
                         <input class="form-control mr-sm-2" type="text" placeholder="Otsing">
                         <button class="btn btn-secondary my-2 my-sm-0" type="submit">Otsi</button>
                     </form>
-                    <div><router-link to="/login">Login</router-link></div>
+                    <form class="form-inline my-2 my-lg-0" th:action="@{/logout}" method="post" style="margin-left:10px;">
+                        <input class="form-control mr-sm-2" type="submit" value="Sign Out"/>
+                    </form>
                 </div>
             </div>
         </div>
@@ -36,8 +38,8 @@
             <transition name="moveInUp">
                 <router-view/>
             </transition>
-
         </div>
+        <div class="footer" style="margin-bottom:20px;"></div>
     </div>
 </template>
 <script>

@@ -21,7 +21,7 @@
                         <label style="min-width: 75px">Kategooria: </label>
                        {{this.recipe.category}}
                     </div>
-                    <button class="btn btn-danger btn-xs" style="float:left; background-color: darksalmon" >
+                    <button class="btn btn-warning btn-xs" style="float:left;" >
                         <router-link :to="{name: 'editRecipe', params: {recipe:recipe, id: recipe.id}}">Muuda</router-link></button>
                 </div>
 

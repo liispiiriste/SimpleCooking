@@ -37,10 +37,16 @@
                     <input class="small-input" type="number" id="edit-price" v-model="recipe.price"/>
                 </div>
 
-                <button @click="updateRecipe" class="btn btn-primary">Salvesta muudatused</button>
+                <button @click="updateRecipe" class="btn btn-primary"><router-link :to="{
+                            name: 'recipe',
+                            params: { recipe: recipe, id: recipe.id }
+                        }" style="color:whitesmoke">Salvesta muudatused</router-link></button>
 
                 <a class="btn btn-default">
-                    <router-link to="/">Loobu</router-link>
+                        <router-link :to="{
+                            name: 'recipe',
+                            params: { recipe: recipe, id: recipe.id }
+                        }">Loobu</router-link>
                 </a>
             </div>
         </div>
