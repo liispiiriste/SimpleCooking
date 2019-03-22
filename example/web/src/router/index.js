@@ -65,9 +65,12 @@ const router = new VueRouter({
 
             name: 'Register',
             component: Register
+        },
+        // otherwise redirect to home
+        {
+            path: '*',
+            redirect: '/'
         }
-
-
     ]
 });
 
