@@ -3,9 +3,19 @@
         <p style="font-size:20px; margin-top:50px;">Kategooriad:</p>
         <div class="btn-group-vertical" data-toggle="buttons" style="float:right;">
             <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('all')">Kõik</button>
-            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('magustoit')">Magustoit</button>
-            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('supp')">Supp</button>
-            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('eelroog')">Eelroog</button>
+            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('hommikusöök')">Hommikusöögid</button>
+            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('jook')">Joogid</button>
+            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('kook')">Koogid</button>
+            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('magustoit')">Magustoidud</button>
+            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('pastatoit')">Pastatoidud</button>
+            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('pirukad')">Pirukad</button>
+            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('praad')">Praed</button>
+            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('salat')">Salatid</button>
+            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('supp')">Supid</button>
+            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('suupisted')">Suupisted</button>
+            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('tort')">Tordid</button>
+            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('võileivatort')">Võileivatordid</button>
+            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('vormiroog')">Vormiroad</button>
         </div>
 
     </div>
