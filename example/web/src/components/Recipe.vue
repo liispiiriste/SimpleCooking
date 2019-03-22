@@ -6,19 +6,19 @@
 
                 <div v-if="this.recipe" style="text-align:left">
                     <div>
-                        <label style="min-width: 75px">Juhend: </label> {{this.recipe.description}}
+                        <label >Juhend: </label> {{this.recipe.description}}
                     </div>
                     <div>
-                        <label style="min-width: 75px">Materjalid: </label> {{this.recipe.materials}}
+                        <label >Materjalid: </label> {{this.recipe.materials}}
                     </div>
                     <div>
-                        <label style="min-width: 75px">Portsjon: </label> {{this.recipe.portion}}
+                        <label >Portsjon: </label> {{this.recipe.portion}}
                     </div>
                     <div>
-                        <label style="min-width: 75px">Hind: </label> {{this.recipe.price}}
+                        <label >Hind: </label> {{this.recipe.price}}
                     </div>
                     <div>
-                        <label style="min-width: 75px">Kategooria: </label>
+                        <label >Kategooria: </label>
                        {{this.recipe.category}}
                     </div>
                     <button class="btn btn-warning btn-xs" style="float:left;" >
@@ -67,8 +67,10 @@ a:hover, :link, :visited, :active{
 
 }
     label{
-        min-width: 300px;
-        margin:auto
+        min-width: 90px;
+        margin:auto;
+        font-weight:bold;
+        margin-top:5px;
     }
     .container{
         width:70%;
