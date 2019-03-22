@@ -25,6 +25,13 @@ public class ExampleController {
 
         return recipes;
     }
+    @GetMapping("/recipes/{c}")
+    public List<Recipe> getRecipesByCategory(@PathVariable("c") String category) {
+        List<Recipe> recipes = new ArrayList<>();
+        repository.findByCategory(category).forEach(recipes::add);
+
+        return recipes;
+    }
 
     @PostMapping("/recipe")
     public Recipe postRecipe(@RequestBody Recipe recipe, BindingResult result) {

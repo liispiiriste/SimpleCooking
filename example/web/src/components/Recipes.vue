@@ -1,5 +1,16 @@
 <template>
-    <div class="list row">
+    <div><div class="sidemenu" style=" float:left; display:inline; width: 25%;">
+        <p style="font-size:20px; margin-top:50px;">Kategooriad:</p>
+        <div class="btn-group-vertical" data-toggle="buttons" style="float:right;">
+            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('all')">Kõik</button>
+            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('magustoit')">Magustoit</button>
+            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('supp')">Supp</button>
+            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('eelroog')">Eelroog</button>
+        </div>
+
+    </div>
+
+    <div class="list row" style="float:left; display:inline; width:60%;">
         <div class="col-md-6" >
             <h1 style="margin-left:60px; font-size:200%">Retseptid</h1>
             <ul>
@@ -18,7 +29,7 @@
             <router-view @refreshData="refreshList"></router-view>
         </div>
     </div>
-
+    </div>
 </template>
 
 <script>
@@ -39,9 +50,24 @@
 
                 })
 
+
             },
             refreshList() {
                 this.retrieveRecipes();
+            },
+            chosenCategory(c){
+                if(c!="all"){http.get("/recipes/"+c).then(response=> {
+                    this.recipes = response.data;
+
+                })}
+                else {
+                    http.
+                    get("/recipes").
+                    then(response=> {
+                        this.recipes = response.data;
+
+                    })
+                }
             }
         },
         mounted() {
