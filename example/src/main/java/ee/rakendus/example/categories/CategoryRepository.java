@@ -6,5 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface CategoryRepository extends CrudRepository<Categories, Long> {
-    List<Recipe> findByCategory(String category);
+    List<Recipe> findByCategory(String name);
 }

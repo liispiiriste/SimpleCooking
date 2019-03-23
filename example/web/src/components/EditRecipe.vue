@@ -18,15 +18,47 @@
                     <textarea class="form-control" id="edit-materials" rows="3" v-model="recipe.materials"></textarea>
                 </div>
 
-                <div class="form-group">
-                    <input type="radio"  value="magustoit" v-model="recipe.category">
+                <div id="radiobuttons">
+
+                    <input type="radio" value="hommikusöök" v-model="recipe.category">
+                    <label>Hommikusöök</label>
+
+                    <input type="radio"  value="jook" v-model="recipe.category">
+                    <label>Jook</label>
+
+                    <input type="radio" value="kook" v-model="recipe.category">
+                    <label>Kook</label>
+
+                    <input type="radio" value="magustoit" v-model="recipe.category">
                     <label>Magustoit</label>
+
+                    <input type="radio" value="pastatoit" v-model="recipe.category">
+                    <label>Pastatoit</label>
+
+                    <input type="radio" value="pirukad" v-model="recipe.category">
+                    <label>Pirukad</label>
+
+                    <input type="radio" value="praad" v-model="recipe.category">
+                    <label>Praad</label>
+
+                    <input type="radio" value="salat" v-model="recipe.category">
+                    <label>Salat</label>
 
                     <input type="radio" value="supp" v-model="recipe.category">
                     <label>Supp</label>
 
-                    <input type="radio" value="eelroog" v-model="recipe.category">
-                    <label>Eelroog</label>
+                    <input type="radio" value="suupisted" v-model="recipe.category">
+                    <label>Suupisted</label>
+
+                    <input type="radio" value="tort" v-model="recipe.category">
+                    <label>Tort</label>
+
+                    <input type="radio" value="võileivatort" v-model="recipe.category">
+                    <label>Võileivatort</label>
+
+                    <input type="radio" value="vormiroog" v-model="recipe.category">
+                    <label>Vormiroog</label>
+
                 </div>
 
                 <div class="form-group">
