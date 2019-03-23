@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = "category")
-public class Category {
+public class Categories {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
@@ -14,9 +14,9 @@ public class Category {
     @Column(name="category")
     private String category;
 
-    protected Category(){}
+    protected Categories(){}
 
-    public Category(String category){
+    public Categories(String category){
         this.category = category;
     }
 

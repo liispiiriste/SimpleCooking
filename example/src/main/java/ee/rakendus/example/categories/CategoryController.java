@@ -14,7 +14,7 @@ import java.util.List;
 @RequestMapping("/api")
 public class CategoryController {
     @Autowired
-    RecipeRepository repository;
+    CategoryRepository repository;
 
     @GetMapping("/recipes/{c}")
     public List<Recipe> getRecipesByCategory(@PathVariable("c") String category) {
