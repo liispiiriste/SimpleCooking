@@ -62,14 +62,16 @@
 
                 <input type="radio" value="vormiroog" v-model="recipe.category">
                 <label>Vormiroog</label>
-
+                <div  style="color:red;"> {{catError}}</div>
             </div>
 
             <div class="form-group">
                 <label for="portion">Portsjon</label>
                 <input class="small-input" type="number" id="portion" min="1" required v-model="recipe.portion" name="portion">
+                <div  style="color:red;"> {{portionError}}</div>
                 <label for="price">Hind</label>
                 <input class="small-input" type="number" id="price"  min="1" v-model="recipe.price" name="price">
+                <div  style="color:red;"> {{priceError}}</div>
             </div>
 
             <button v-on:click="saveRecipe" class="btn btn-success">Salvesta retsept</button>
@@ -106,7 +108,10 @@
                 submitted: false,
                 nameError:"",
                 desError:"",
-                matError:""
+                matError:"",
+                catError:"",
+                portionError:"",
+                priceError:""
             };
         },
         methods: {
@@ -127,7 +132,14 @@
                  if(this.recipe.description){this.desError=""}
                  if(!this.recipe.materials){this.matError="Lisa materjalid" }
                  if(this.recipe.materials){this.matError=""}
-                 if(this.recipe.name && this.recipe.description && this.recipe.materials){
+                 if(!this.recipe.category){this.catError="Vali kategooria" }
+                 if(this.recipe.category){this.catError=""}
+                 if(!this.recipe.portion){this.portionError="Lisa portsjon"}
+                 if(this.recipe.portion) {this.portionError=""}
+                 if(!this.recipe.price){this.priceError="Lisa hind"}
+                 if(this.recipe.price) {this.priceError=""}
+                 if(this.recipe.name && this.recipe.description && this.recipe.materials && this.recipe.category && this.recipe.portion
+                 && this.recipe.price){
                   http
                      .post("/recipe", data)
                      .then(response => {
