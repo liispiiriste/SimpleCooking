@@ -1,4 +1,4 @@
-package ee.rakendus.example.categories;
+/*package ee.rakendus.example.categories;
 
 
 import ee.rakendus.example.Recipe;
@@ -24,3 +24,4 @@ public class CategoryController {
         return recipes;
     }
 }
+*/
