@@ -75,7 +75,7 @@
                 if(this.password2){this.password2Error=""}
                 if(this.password2!=this.user.password && this.password2 && this.user.password ){this.passwordMError="Paroolid ei ole samad"}
                 if(this.password2==this.user.password){this.passwordMError=""}
-                if(this.user.email && this.user.username && this.user.password && !this.password2Error && !this.passwordMError){
+                if(!this.user.emailError && !this.user.usernameError && !this.user.passwordError && !this.password2Error && !this.passwordMError){
                 http
                     .post("/register", data)
                     .then(response =>{
