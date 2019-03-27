@@ -23,8 +23,8 @@
                 <div  style="color:red;"> {{matError}}</div>
             </div>
             <div class="form-group">
+                <label>Kategooria</label>
                 <select class="custom-select" v-model="recipe.category">
-                    <option selected="">Vali kategooria</option>
                     <option value="hommikusöök">Hommikusöök</option>
                     <option value="jook">Jook</option>
                     <option value="kook">Kook</option>
@@ -37,7 +37,7 @@
                     <option value="tort">Tort</option>
                     <option value="võileicatort">Võileivatort</option>
                     <option value="vormiroog">Vormiroog</option>
-                    <option value="muu">muu</option>
+                    <option value="muu">Muu</option>
                 </select>
                 <div  style="color:red;"> {{catError}}</div>
             </div>
@@ -154,7 +154,9 @@
         margin:auto;
         align: center;
     }
-    radiobuttons{
-        vertical-align: middle
+    .form-group{
+        width: 500px;
+        align: center;
+        margin: auto;
     }
 </style>
