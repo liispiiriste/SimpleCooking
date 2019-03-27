@@ -18,7 +18,8 @@
             </div>
             <div class="form-group">
                 <label for="materials">Materjalid</label>
-                <textarea type="text" rows=3 style="overflow-y: scroll;" class="form-control" id="materials" required v-model="recipe.materials" name="materials"></textarea>
+                <input type="text" class="form-control" id="materials" v-model="recipe.materials" name="materials">
+
                 <div  style="color:red;"> {{matError}}</div>
             </div>
 
@@ -94,6 +95,7 @@
     export default {
         name: 'add-recipe',
         data() {
+
             errorMessage:null
             return {
                 recipe:{
@@ -176,5 +178,8 @@
         width:75px;
         margin:auto;
         align: center;
+    }
+    radiobuttons{
+        vertical-align: middle
     }
 </style>
