@@ -19,7 +19,7 @@
                 <div  style="color:red;"> {{matError}}</div>
             </div>
             <div class="form-group">
-                <select v-model="cat" class="custom-select" multiple="multiple">
+                <select v-model="cat" class="custom-select">
                     <option selected="">Vali kategooria</option>
                     <option value="hommikusöök">Hommikusöök</option>
                     <option value="jook">Jook</option>
@@ -31,7 +31,7 @@
                     <option value="salat">Salat</option>
                     <option value="supp">Suupisted</option>
                     <option value="tort">Tort</option>
-                    <option value="võileicatort">Võileivatort</option>
+                    <option value="võileivatort">Võileivatort</option>
                     <option value="vormiroog">Vormiroog</option>
                     <option value="muu">muu</option>
                 </select>
@@ -99,7 +99,7 @@
                     name: this.recipe.name,
                     description: this.recipe.description,
                     materials: this.recipe.materials,
-                    category: this.recipe.category,
+                    category: this.recipe.category.toString(),
                     portion: this.recipe.portion,
                     price: this.recipe.price
                 };
@@ -109,8 +109,8 @@
                  if(this.recipe.description){this.desError=""}
                  if(!this.recipe.materials){this.matError="Lisa materjalid" }
                  if(this.recipe.materials){this.matError=""}
-                 if(!this.recipe.category){this.catError="Vali kategooria" }
-                 if(this.recipe.category){this.catError=""}
+                 if(!data.category){this.catError="Vali kategooria" }
+                 if(data.category){this.catError=""}
                  if(!this.recipe.portion){this.portionError="Lisa portsjon"}
                  if(this.recipe.portion) {this.portionError=""}
                  if(!this.recipe.price){this.priceError="Lisa hind"}
@@ -133,7 +133,7 @@
             },
             addCategory(){
                  var newCategory = this.cat;
-                 //if(!newCategory) {return};
+                 if(!newCategory) {return};
 
                  this.recipe.category.push(newCategory);
                  this.cat='';
@@ -167,8 +167,5 @@
         width:75px;
         margin:auto;
         align: center;
-    }
-    .multiselect-container>li>a>label {
-        padding: 4px 20px 3px 20px;
     }
 </style>
