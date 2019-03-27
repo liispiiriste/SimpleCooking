@@ -1,21 +1,21 @@
 <template>
-    <div><div class="sidemenu" style=" float:left; display:inline; width: 25%;">
+    <div><div class="sidemenu" style=" float:left; display:inline; "><!--width: 25%;-->
         <p style="font-size:20px; margin-top:50px;">Kategooriad:</p>
         <div class="btn-group-vertical" data-toggle="buttons" style="float:right;">
-            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('all')">Kõik</button>
-            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('hommikusöök')">Hommikusöögid</button>
-            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('jook')">Joogid</button>
-            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('kook')">Koogid</button>
-            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('magustoit')">Magustoidud</button>
-            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('pastatoit')">Pastatoidud</button>
-            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('pirukad')">Pirukad</button>
-            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('praad')">Praed</button>
-            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('salat')">Salatid</button>
-            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('supp')">Supid</button>
-            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('suupisted')">Suupisted</button>
-            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('tort')">Tordid</button>
-            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('võileivatort')">Võileivatordid</button>
-            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('vormiroog')">Vormiroad</button>
+            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('all')" active>Kõik<input type="radio" name="options" id="all" autocomplete="off" checked></button>
+            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('hommikusöök')">Hommikusöögid<input type="radio" name="options" id="breakfast" autocomplete="off"></button>
+            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('jook')">Joogid<input type="radio" name="options" id="drinks" autocomplete="off"></button>
+            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('kook')">Koogid<input type="radio" name="options" id="cakes" autocomplete="off"></button>
+            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('magustoit')">Magustoidud<input type="radio" name="options" id="dessert" autocomplete="off"></button>
+            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('pastatoit')">Pastatoidud<input type="radio" name="options" id="pasta" autocomplete="off"></button>
+            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('pirukad')">Pirukad<input type="radio" name="options" id="pies" autocomplete="off"></button>
+            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('praad')">Praed<input type="radio" name="options" id="meal" autocomplete="off"></button>
+            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('salat')">Salatid<input type="radio" name="options" id="salad" autocomplete="off"></button>
+            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('supp')">Supid<input type="radio" name="options" id="soup" autocomplete="off"></button>
+            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('suupisted')">Suupisted<input type="radio" name="options" id="snaks" autocomplete="off"></button>
+            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('tort')">Tordid<input type="radio" name="options" id="pie" autocomplete="off"></button>
+            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('võileivatort')">Võileivatordid<input type="radio" name="options" id="sandwich-cake" autocomplete="off"></button>
+            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('vormiroog')">Vormiroad<input type="radio" name="options" id="formdish" autocomplete="off"></button>
         </div>
 
     </div>
@@ -99,6 +99,9 @@
         list-style: inside;
         font-size:20px;
         width: 300%;
+    }
+    input{
+        visibility:hidden;
     }
 
 </style>
