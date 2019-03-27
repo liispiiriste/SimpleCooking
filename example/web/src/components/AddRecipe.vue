@@ -130,6 +130,7 @@
             newRecipe() {
                 this.submitted = false;
                 this.recipe = {};
+                window.location.reload();
             },
             addCategory(){
                  var newCategory = this.cat;
@@ -137,6 +138,7 @@
 
                  this.recipe.category.push(newCategory);
                  this.cat='';
+                 newCategory='';
             },
             removeCategory(x){
                  this.category.splice(x,1);
