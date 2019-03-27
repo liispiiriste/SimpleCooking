@@ -42,7 +42,7 @@ public class Recipe {
     private int portion;
     @ManyToOne
     private User user;
-    private List<Categories> categories;
+
 
     protected Recipe() {
     }
