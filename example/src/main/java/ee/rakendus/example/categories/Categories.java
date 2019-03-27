@@ -3,6 +3,7 @@ package ee.rakendus.example.categories;
 import lombok.Data;
 
 import javax.persistence.*;
+
 @Data
 @Entity
 @Table(name = "category")

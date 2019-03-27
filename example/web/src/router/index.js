@@ -74,8 +74,8 @@ const router = new VueRouter({
     ]
 });
 
-/*router.beforeEach((to, from, next) => {
-    const publicPages = ['/login'];
+router.beforeEach((to, from, next) => {
+    const publicPages = ['/login', '/register'];
     const authRequired = !publicPages.includes(to.path);
     const loggedIn = store.getters.isAuthenticated;
 
@@ -83,5 +83,5 @@ const router = new VueRouter({
         return next('/login');
     }
     next();
-});*/
+});
 export default router;

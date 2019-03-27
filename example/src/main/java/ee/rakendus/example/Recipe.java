@@ -1,11 +1,13 @@
 package ee.rakendus.example;
 
 
+import ee.rakendus.example.categories.Categories;
 import ee.rakendus.example.user.User;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 @Table(name = "recipe")
@@ -15,7 +17,7 @@ public class Recipe {
     private Long id;
 
     @NotBlank
-    @Column(name = "name")
+    @Column(name = "name", unique=true)
     private String name;
 
     @NotBlank
@@ -30,6 +32,7 @@ public class Recipe {
     @Column(name = "category")
     private String category;
 
+
     @NotNull
     @Column(name = "price")
     private int price;
@@ -39,6 +42,7 @@ public class Recipe {
     private int portion;
     @ManyToOne
     private User user;
+
 
     protected Recipe() {
     }

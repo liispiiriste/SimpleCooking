@@ -15,12 +15,15 @@
             </div>
             <div class="form-group">
                 <label for="materials">Materjalid</label>
-                <textarea type="text" rows=3 style="overflow-y: scroll;" class="form-control" id="materials" required v-model="recipe.materials" name="materials"></textarea>
+                <input type="text" class="form-control" id="materials" v-model="recipe.materials" name="materials">
+
                 <div  style="color:red;"> {{matError}}</div>
             </div>
             <div class="form-group">
-                <select v-model="cat" class="custom-select">
-                    <option selected="">Vali kategooria</option>
+
+                <label>Kategooria</label>
+                <select class="custom-select" v-model="cat">
+
                     <option value="hommikusöök">Hommikusöök</option>
                     <option value="jook">Jook</option>
                     <option value="kook">Kook</option>
@@ -33,7 +36,7 @@
                     <option value="tort">Tort</option>
                     <option value="võileivatort">Võileivatort</option>
                     <option value="vormiroog">Vormiroog</option>
-                    <option value="muu">muu</option>
+                    <option value="muu">Muu</option>
                 </select>
                 <button v-on:click="addCategory()">Lisa</button>
                 <div v-for="(cat,n) in recipe.category">
@@ -70,6 +73,7 @@
     export default {
         name: 'add-recipe',
         data() {
+
             errorMessage:null
             return {
                 recipe:{
@@ -169,5 +173,10 @@
         width:75px;
         margin:auto;
         align: center;
+    }
+    .form-group{
+        width: 500px;
+        align: center;
+        margin: auto;
     }
 </style>
