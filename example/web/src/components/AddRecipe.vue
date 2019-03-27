@@ -3,14 +3,11 @@
 
         <div v-if="!submitted" style="font-size:20px">
             <h1 style="font-size:170%">Lisa uus retsept</h1>
-
             <div class="form-group">
                 <label for="name">Nimi</label>
                 <input type="text" class="form-control" id="name" v-model="recipe.name" name="name">
                 <div  style="color:red;"> {{nameError}}</div>
             </div>
-
-
             <div class="form-group">
                 <label for="description">Juhend</label>
                 <textarea type="text" rows=4 style="overflow-y: scroll;" class="form-control" id="description" required v-model="recipe.description" name="description"></textarea>
@@ -22,7 +19,7 @@
                 <div  style="color:red;"> {{matError}}</div>
             </div>
             <div class="form-group">
-                <select class="custom-select" v-model="recipe.category">
+                <select v-model="cat" class="custom-select" multiple="multiple">
                     <option selected="">Vali kategooria</option>
                     <option value="hommikusöök">Hommikusöök</option>
                     <option value="jook">Jook</option>
@@ -38,6 +35,10 @@
                     <option value="vormiroog">Vormiroog</option>
                     <option value="muu">muu</option>
                 </select>
+                <button v-on:click="addCategory()">Lisa</button>
+                <div v-for="(cat,n) in recipe.category">
+                    <span class="cat"> {{cat}}</span>
+                </div>
                 <div  style="color:red;"> {{catError}}</div>
             </div>
                         <div class="form-group">
@@ -76,7 +77,7 @@
                     name: "",
                     description: "",
                     materials: "",
-                    category: "",
+                    category: [],
                     portion: 0,
                     price: 0
                  },
@@ -86,7 +87,8 @@
                 matError:"",
                 catError:"",
                 portionError:"",
-                priceError:""
+                priceError:"",
+                cat:''
             };
         },
         methods: {
@@ -128,6 +130,20 @@
             newRecipe() {
                 this.submitted = false;
                 this.recipe = {};
+            },
+            addCategory(){
+                 var newCategory = this.cat;
+                 //if(!newCategory) {return};
+
+                 this.recipe.category.push(newCategory);
+                 this.cat='';
+            },
+            removeCategory(x){
+                 this.category.splice(x,1);
+                 this.saveCategory();
+            },
+            saveCategory(){
+
             }
 
         }
@@ -151,5 +167,8 @@
         width:75px;
         margin:auto;
         align: center;
+    }
+    .multiselect-container>li>a>label {
+        padding: 4px 20px 3px 20px;
     }
 </style>
