@@ -7,10 +7,10 @@ import MyAccount from '@/components/MyAccount'
 import Recipe from '@/components/Recipe';
 
 import EditRecipe from "@/components/EditRecipe";
-import login from "@/components/Login";
 import store from "@/store";
 
 import Register from "@/components/Register";
+import Login from "../components/Login";
 
 Vue.use(VueRouter);
 
@@ -24,7 +24,7 @@ const router = new VueRouter({
         {
             path: '/login',
             name: 'login',
-            component: login
+            component: Login
         },
         {
             path: '/home',
@@ -52,7 +52,8 @@ const router = new VueRouter({
         {
             path: '/add',
             name: 'AddRecipe',
-            component: AddRecipe
+            component: AddRecipe,
+
         },
         {
             path: '/MyAccount',
@@ -67,10 +68,10 @@ const router = new VueRouter({
             component: Register
         },
         // otherwise redirect to home
-        {
+        /*{
             path: '*',
             redirect: '/'
-        }
+        }*/
     ]
 });
 
