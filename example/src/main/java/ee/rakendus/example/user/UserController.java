@@ -55,8 +55,10 @@ public class UserController {
     public ResponseEntity<User> getUserByEmail(@PathVariable("email") String email) {
         return new ResponseEntity<>(userService.findByEmail(email), HttpStatus.OK);
     }
-    @GetMapping(value= "/me")
-    public Principal getMe(Principal principal) {
-        return principal;
+    @GetMapping(value= "/loggedIn")
+    public User getLoggedInUser(Principal principal) {
+        String username = principal.getName();
+        if(!userService.usernameExists(username)) return null;
+        return userService.findByUsername(username);
     }
 }
