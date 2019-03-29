@@ -6,59 +6,42 @@
             <!--labelid tglt v-if useri kohta-->
             <div class="labelid">
                 <div>
-                    <label>Kasutajanimi: </label>
+                    <label>Kasutajanimi: </label> {{this.user.username}}
                 </div>
 
                 <div>
-                    <label>Email: </label>
+                    <label>Email: </label> {{this.user.email}}
                 </div>
 
                 <div>
                     <!--TODO: listi kujundust muuta.-->
-                    <label>Minu retseptid: </label>
-                    <li v-for="(recipe, index) in recipes" :key="index">
-                        <router-link :to="{
-                            name: 'recipe',
-                            params: { recipe: recipe, id: recipe.id }
-                        }" style="color:#333">
-                            {{recipe.name}}
-                        </router-link>
-                    </li>
+                    <label>Minu retseptid: </label> {{this.user.recipes}}
+
                 </div>
 
             </div>
         </div>
-        <div class="col-md-6">
-            <router-view @refreshData="refreshList"></router-view>
-        </div>
+
     </div>
 </template>
 
 <script>
-    import http from "../http-common";
+    import axios from "axios";
 
     export default {
         name: "MyAccount",
         data() {
             return {
-                recipes: []
-            }
-        },
-        methods: {
-             // TODO: Siduda useri id-ga.
-            retrieveRecipes() {
-                http.
-                    get("/recipes").
-                    then(response => {
-                        this.recipes = response.data;
-                })
-            },
-            refreshList() {
-                this.retrieveRecipes();
+                user: {
+                    id: this.user.id,
+                    email: '',
+                    username: '',
+                    recipes: []
+                }
             }
         },
         mounted() {
-            this.retrieveRecipes();
+            axios.get('http://localhost:8080/api/getById/'+this.user.id).then(response => (this.user = response.data));
         }
     }
 </script>

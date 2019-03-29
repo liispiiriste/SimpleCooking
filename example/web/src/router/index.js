@@ -58,7 +58,8 @@ const router = new VueRouter({
         {
             path: '/MyAccount',
             name: 'MyAccount',
-            component: MyAccount
+            component: MyAccount,
+            props: true
         },
         {
 

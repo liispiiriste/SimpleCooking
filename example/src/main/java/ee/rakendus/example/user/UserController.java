@@ -7,6 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.security.Principal;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:9000")
@@ -27,9 +28,9 @@ public class UserController {
     @PostMapping("/register")
     public ResponseEntity<User> signUp(@RequestBody User user, BindingResult result) {
         boolean error=false;
-        if(user.getPassword().isEmpty()){error=true;}
-        if(user.getUsername().isEmpty()){error=true;}
-        if(user.getEmail().isEmpty()){error=true;}
+        if(user.getPassword().isEmpty()) error=true;
+        if(user.getUsername().isEmpty()) error=true;
+        if(user.getEmail().isEmpty()) error=true;
         if(error==false) {
             user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
             user.setUsername(user.getUsername());
@@ -40,7 +41,7 @@ public class UserController {
         return null;
     }
 
-    @GetMapping(value = "")
+    @GetMapping(value = "/allUsers")
     public ResponseEntity<List<User>> getAllUsers() {
         return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
     }
@@ -53,5 +54,9 @@ public class UserController {
     @GetMapping(value = "/getByEmail/{email}")
     public ResponseEntity<User> getUserByEmail(@PathVariable("email") String email) {
         return new ResponseEntity<>(userService.findByEmail(email), HttpStatus.OK);
+    }
+    @GetMapping(value= "/me")
+    public Principal getMe(Principal principal) {
+        return principal;
     }
 }
