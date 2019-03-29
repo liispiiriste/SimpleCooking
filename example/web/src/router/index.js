@@ -64,7 +64,6 @@ const router = new VueRouter({
         {
 
             path: '/register',
-
             name: 'Register',
             component: Register
         },

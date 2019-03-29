@@ -6,16 +6,16 @@
             <!--labelid tglt v-if useri kohta-->
             <div class="labelid">
                 <div>
-                    <label>Kasutajanimi: </label> {{this.user.username}}
+                    <label>Kasutajanimi: </label> {{user.username}}
                 </div>
 
                 <div>
-                    <label>Email: </label> {{this.user.email}}
+                    <label>Email: </label> {{user.email}}
                 </div>
 
                 <div>
                     <!--TODO: listi kujundust muuta.-->
-                    <label>Minu retseptid: </label> {{this.user.recipes}}
+                    <label>Minu retseptid: </label> {{user.recipes}}
 
                 </div>
 
@@ -30,10 +30,10 @@
 
     export default {
         name: "MyAccount",
+
         data() {
             return {
                 user: {
-                    id: this.user.id,
                     email: '',
                     username: '',
                     recipes: []
@@ -41,7 +41,7 @@
             }
         },
         mounted() {
-            axios.get('http://localhost:8080/api/getById/'+this.user.id).then(response => (this.user = response.data));
+            axios.get('http://localhost:8080/api/loggedIn').then(response => (this.user = response.data));
         }
     }
 </script>

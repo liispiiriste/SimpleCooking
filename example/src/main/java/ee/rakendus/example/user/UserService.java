@@ -34,6 +34,14 @@ public class UserService implements UserDetailsService {
         return userRepository.findById(id);
     }
 
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username);
+    }
+
+    public boolean usernameExists(String username) {
+        return userRepository.findByUsername(username) != null;
+    }
+
     public List<User> getAllUsers() {
         return (List<User>) userRepository.findAll();
     }
