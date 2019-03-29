@@ -1,11 +1,19 @@
 <template>
-    <form id="login" v-on:submit.prevent="login">
-        <input type='text' placeholder='username' v-model='username'>
-        <input type='password' placeholder='password' v-model='password'>
-        <button class="ui primary button">
-            Submit
-        </button>
-    </form>
+    <div>
+        <form id="login" v-on:submit.prevent="login">
+            <input type='text' placeholder='username' v-model='username'>
+            <input type='password' placeholder='password' v-model='password'>
+            <button class="ui primary button">
+                Submit
+            </button>
+        </form>
+
+        <router-link to="/register">
+            <button type="reset">Mul ei ole kasutajat</button>
+        </router-link>
+
+    </div>
+
 </template>
 
 <script>
