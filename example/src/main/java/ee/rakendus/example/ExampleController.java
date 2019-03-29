@@ -42,9 +42,9 @@ public class ExampleController {
         if(recipe.getDescription().isEmpty()){
             error=true;
         }
-        if(recipe.getCategory().isEmpty()){
+ /*       if(recipe.getCategory().isEmpty){
             error=true;
-        }
+        }*/
         if(recipe.getMaterials().isEmpty()){
             error=true;
         }
