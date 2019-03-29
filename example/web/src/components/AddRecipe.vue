@@ -168,15 +168,18 @@
         max-width:500px;
         margin:auto;
         align: center;
+        color: #333
     }
     .small-input{
         width:75px;
         margin:auto;
         align: center;
+        color: #333
     }
     .form-group{
         width: 500px;
         align: center;
         margin: auto;
+        color: #333
     }
 </style>
