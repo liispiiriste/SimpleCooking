@@ -18,26 +18,28 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @NotBlank
-    @Column(name="username", unique = true)
+    @Column(name = "username", unique = true)
     private String username;
     @NotBlank
-    @Column(name="password")
-            private String password;
+    @Column(name = "password")
+    private String password;
     @NotBlank
-    @Column(name="email", unique = true)
+    @Column(name = "email", unique = true)
     private String email;
     @OneToMany
     private List<Recipe> recipes;
     private UserRoles role;
 
 
-    public User(){}
+    public User() {
+    }
 
     User(String username, String password, String email, List<Object> objects) {
         this.username = username;
-        this.password  = password;
+        this.password = password;
         this.email = email;
     }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
@@ -56,6 +58,10 @@ public class User implements UserDetails {
 
     public String getEmail() {
         return email;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public long getId() {
@@ -97,4 +103,6 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+
 }

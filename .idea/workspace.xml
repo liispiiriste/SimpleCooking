@@ -3,7 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="54000ce3-88d8-4717-8984-84e5f5831a85" name="Default Changelist" comment="branch test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/example/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/config/SecurityConf.java" beforeDir="false" afterPath="$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/config/SecurityConf.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/user/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/user/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/user/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/user/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/web/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/example/web/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/web/src/components/MyAccount.vue" beforeDir="false" afterPath="$PROJECT_DIR$/example/web/src/components/MyAccount.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/web/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/example/web/src/router/index.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -79,10 +85,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/config/JwtAuthenticationFilter.java">
+        <entry file="file://$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/user/UserRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-167">
-              <caret line="30" column="67" selection-start-line="30" selection-start-column="67" selection-end-line="30" selection-end-column="67" />
+            <state relative-caret-position="153">
+              <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -91,28 +97,85 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/config/SecurityConf.java">
+        <entry file="file://$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/user/UserRoles.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="411">
-              <caret line="84" selection-start-line="84" selection-end-line="84" />
+            <state relative-caret-position="68">
+              <caret line="4" column="9" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/example/web/src/components/Login.vue">
+        <entry file="file://$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/user/UserService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-136" />
+            <state relative-caret-position="204">
+              <caret line="44" column="81" selection-start-line="44" selection-start-column="81" selection-end-line="44" selection-end-column="81" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/example/web/src/router/index.js">
+        <entry file="file://$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/user/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="77" column="45" selection-start-line="77" selection-start-column="45" selection-end-line="77" selection-end-column="45" />
+            <state relative-caret-position="221">
+              <caret line="43" column="34" selection-start-line="43" selection-start-column="34" selection-end-line="43" selection-end-column="34" />
               <folding>
-                <element signature="e#0#21#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#2177#2178#0" expanded="true" />
+                <element signature="e#2214#2215#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/config/SecurityConf.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="65" column="42" selection-start-line="65" selection-start-column="42" selection-end-line="65" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/config/SecurityConstants.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="50" selection-start-line="8" selection-start-column="50" selection-end-line="8" selection-end-column="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/example/web/public/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="18" column="6" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/example/web/src/components/Register.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1411">
+              <caret line="83" column="37" selection-start-line="83" selection-start-column="37" selection-end-line="83" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/user/User.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="362">
+              <caret line="39" column="27" selection-start-line="39" selection-start-column="27" selection-end-line="39" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1362#1363#0" expanded="true" />
+                <element signature="e#1390#1391#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -125,6 +188,7 @@
       <list>
         <option value="Vue Single File Component" />
         <option value="JavaScript File" />
+        <option value="Arquillian JUnit Test Class" />
         <option value="Class" />
       </list>
     </option>
@@ -134,7 +198,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="loginWithTestUsers" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
   </component>
@@ -142,31 +206,34 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/example/web/src/components/LisaRetsept.vue" />
-        <option value="$PROJECT_DIR$/example/web/public/index.html" />
         <option value="$PROJECT_DIR$/example/web/src/main.js" />
         <option value="$PROJECT_DIR$/example/web/src/components/Home.vue" />
         <option value="$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/Application.java" />
         <option value="$PROJECT_DIR$/example/web/src/components/AddRecipe.vue" />
-        <option value="$PROJECT_DIR$/example/web/src/components/MyAccount.vue" />
         <option value="$PROJECT_DIR$/example/web/src/http-common.js" />
         <option value="$PROJECT_DIR$/example/web/src/App.vue" />
         <option value="$PROJECT_DIR$/example/web/src/components/Recipes.vue" />
         <option value="$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/user/UserRoles.java" />
         <option value="$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/RecipeRepository.java" />
         <option value="$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/RecipeService.java" />
-        <option value="$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/user/User.java" />
         <option value="$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/ExampleController.java" />
         <option value="$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/user/UserRepository.java" />
-        <option value="$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/user/UserService.java" />
-        <option value="$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/user/UserController.java" />
         <option value="$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/Recipe.java" />
         <option value="$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/config/SecurityConstants.java" />
         <option value="$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/config/JwtAuthorizationFilter.java" />
         <option value="$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/config/JwtAuthenticationFilter.java" />
-        <option value="$PROJECT_DIR$/example/build.gradle" />
         <option value="$PROJECT_DIR$/example/src/main/resources/application.properties" />
-        <option value="$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/config/SecurityConf.java" />
         <option value="$PROJECT_DIR$/example/web/src/router/index.js" />
+        <option value="$PROJECT_DIR$/example/web/src/components/MyAccount.vue" />
+        <option value="$PROJECT_DIR$/example/src/main/java/ee/rakendus/tests/ExampleControllerTest.java" />
+        <option value="$PROJECT_DIR$/example/src/main/java/ee/rakendus/tests/RecipeRepositoryTest.java" />
+        <option value="$PROJECT_DIR$/example/build.gradle" />
+        <option value="$PROJECT_DIR$/example/src/main/java/ee/rakendus/tests/UserRepositoryTest.java" />
+        <option value="$PROJECT_DIR$/example/web/public/index.html" />
+        <option value="$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/user/User.java" />
+        <option value="$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/user/UserService.java" />
+        <option value="$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/config/SecurityConf.java" />
+        <option value="$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/user/UserController.java" />
       </list>
     </option>
   </component>
@@ -182,10 +249,10 @@
     <auto-save>true</auto-save>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1111" />
-    <option name="y" value="50" />
-    <option name="width" value="689" />
-    <option name="height" value="1029" />
+    <option name="x" value="608" />
+    <option name="y" value="57" />
+    <option name="width" value="783" />
+    <option name="height" value="840" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -194,7 +261,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -281,18 +347,6 @@
               <item name="ee" type="462c0819:PsiDirectoryNode" />
               <item name="rakendus" type="462c0819:PsiDirectoryNode" />
               <item name="example" type="462c0819:PsiDirectoryNode" />
-              <item name="loginController" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SimpleCooking" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SimpleCooking" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="example" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ee" type="462c0819:PsiDirectoryNode" />
-              <item name="rakendus" type="462c0819:PsiDirectoryNode" />
-              <item name="example" type="462c0819:PsiDirectoryNode" />
               <item name="user" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -308,6 +362,13 @@
               <item name="SimpleCooking" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="example" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SimpleCooking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SimpleCooking" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="example" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SimpleCooking" type="b2602c69:ProjectViewProjectNode" />
@@ -353,6 +414,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -367,7 +429,10 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552891498604" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553765438772" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="Arquillian JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.Arquillian JUnit4" value="" />
+    <property name="create.test.in.the.same.root" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -378,6 +443,12 @@
     <property name="settings.editor.selected.configurable" value="Settings.JavaScript.Bower" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="ee.rakendus.tests" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="ee.rakendus.example.config" />
     </key>
@@ -394,7 +465,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Spring Boot.ExampleApplication">
     <configuration default="true" type="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -403,6 +474,57 @@
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserRepositoryTest.testAddUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ee.rakendus.example.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ee.rakendus.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ee.rakendus.tests" />
+      <option name="MAIN_CLASS_NAME" value="ee.rakendus.tests.UserRepositoryTest" />
+      <option name="METHOD_NAME" value="testAddUser" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserRepositoryTest.testFetchData" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ee.rakendus.example.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ee.rakendus.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ee.rakendus.tests" />
+      <option name="MAIN_CLASS_NAME" value="ee.rakendus.tests.UserRepositoryTest" />
+      <option name="METHOD_NAME" value="testFetchData" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserRepositoryTest.testGetAllUsers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ee.rakendus.example.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ee.rakendus.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ee.rakendus.tests" />
+      <option name="MAIN_CLASS_NAME" value="ee.rakendus.tests.UserRepositoryTest" />
+      <option name="METHOD_NAME" value="testGetAllUsers" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -438,6 +560,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.UserRepositoryTest.testAddUser" />
+        <item itemvalue="JUnit.UserRepositoryTest.testGetAllUsers" />
+        <item itemvalue="JUnit.UserRepositoryTest.testFetchData" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -459,7 +588,9 @@
       <workItem from="1550696517101" duration="199000" />
       <workItem from="1551012131950" duration="7209000" />
       <workItem from="1553067894088" duration="239000" />
-      <workItem from="1553694304531" duration="368000" />
+      <workItem from="1553694304531" duration="6140000" />
+      <workItem from="1553756450172" duration="7281000" />
+      <workItem from="1553856481640" duration="3093000" />
     </task>
     <task id="LOCAL-00001" summary="Added db">
       <created>1550575293484</created>
@@ -499,14 +630,54 @@
     <option name="localTasksCounter" value="6" />
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="UserRepositoryTest_testGetAllUsers - 2019.03.28 at 10h 54m 55s.xml">
+      <configuration name="UserRepositoryTest.testGetAllUsers" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserRepositoryTest_testAddUser - 2019.03.28 at 10h 59m 49s.xml">
+      <configuration name="UserRepositoryTest.testAddUser" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserRepositoryTest_testAddUser - 2019.03.28 at 11h 03m 21s.xml">
+      <configuration name="UserRepositoryTest.testAddUser" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserRepositoryTest_testAddUser - 2019.03.28 at 11h 04m 15s.xml">
+      <configuration name="UserRepositoryTest.testAddUser" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserRepositoryTest_testAddUser - 2019.03.28 at 11h 05m 21s.xml">
+      <configuration name="UserRepositoryTest.testAddUser" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserRepositoryTest_testAddUser - 2019.03.28 at 11h 07m 51s.xml">
+      <configuration name="UserRepositoryTest.testAddUser" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserRepositoryTest_testAddUser - 2019.03.28 at 11h 11m 26s.xml">
+      <configuration name="UserRepositoryTest.testAddUser" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserRepositoryTest_testAddUser - 2019.03.28 at 11h 12m 39s.xml">
+      <configuration name="UserRepositoryTest.testAddUser" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserRepositoryTest_testAddUser - 2019.03.28 at 11h 15m 11s.xml">
+      <configuration name="UserRepositoryTest.testAddUser" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserRepositoryTest_testAddUser - 2019.03.28 at 11h 15m 45s.xml">
+      <configuration name="UserRepositoryTest.testAddUser" configurationId="JUnit" />
+    </history-entry>
+  </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54115000" />
+    <option name="totallyTimeSpent" value="70261000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="23" width="1550" height="848" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49910554" visible="true" weight="0.26778522" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49910554" weight="0.68654644" />
       <window_info id="Structure" order="1" sideWeight="0.5008944" side_tool="true" weight="0.31736526" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -516,21 +687,21 @@
       <window_info id="Image Layers" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.78821176" weight="0.33519554" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.78821176" visible="true" weight="0.32122904" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3986014" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32960895" />
       <window_info anchor="bottom" id="Build" order="7" sideWeight="0.4985015" weight="0.32868525" />
-      <window_info anchor="bottom" id="Spring" order="8" sideWeight="0.4985015" weight="0.32669324" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.491009" visible="true" weight="0.3114525" />
-      <window_info anchor="bottom" id="CheckStyle" order="10" />
+      <window_info anchor="bottom" id="Spring" order="8" sideWeight="0.4985015" weight="0.325419" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.491009" weight="0.32062146" />
+      <window_info anchor="bottom" id="CheckStyle" order="10" weight="0.32960895" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.508991" side_tool="true" weight="0.30976096" />
-      <window_info anchor="bottom" id="Java Enterprise" order="12" />
+      <window_info anchor="bottom" id="Java Enterprise" order="12" weight="0.32960895" />
       <window_info anchor="bottom" id="Database Changes" order="13" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="14" weight="0.16608392" />
+      <window_info anchor="bottom" id="Version Control" order="14" weight="0.38128492" />
       <window_info anchor="bottom" id="Docker" order="15" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Messages" order="16" weight="0.34322035" />
+      <window_info anchor="bottom" id="Messages" order="16" weight="0.34078214" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -699,23 +870,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/web/src/components/MyAccount.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="36" selection-start-line="1" selection-start-column="36" selection-end-line="1" selection-end-column="36" />
-          <folding>
-            <element signature="n#style#0;n#h2#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example/web/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="99" selection-start-line="7" selection-start-column="99" selection-end-line="7" selection-end-column="99" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-autoconfigure/2.1.2.RELEASE/9f311b1b0f10b22c1699933f48ecc2e6cce18800/spring-boot-autoconfigure-2.1.2.RELEASE-sources.jar!/org/springframework/boot/autoconfigure/orm/jpa/JpaBaseConfiguration.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
@@ -753,13 +907,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/web/src/components/Recipes.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="37" column="18" selection-start-line="32" selection-start-column="15" selection-end-line="37" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/example/web/src/http-common.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -788,16 +935,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/RecipeService.java" />
-    <entry file="file://$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/ExampleController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="42" column="38" lean-forward="true" selection-start-line="42" selection-start-column="38" selection-end-line="42" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/Recipe.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
@@ -808,53 +945,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/user/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="54" column="25" selection-start-line="54" selection-start-column="25" selection-end-line="54" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#383#384#0" expanded="true" />
-            <element signature="e#410#411#0" expanded="true" />
-            <element signature="e#973#974#0" expanded="true" />
-            <element signature="e#1000#1001#0" expanded="true" />
-            <element signature="e#1049#1050#0" expanded="true" />
-            <element signature="e#1076#1077#0" expanded="true" />
-            <element signature="e#1127#1128#0" expanded="true" />
-            <element signature="e#1154#1155#0" expanded="true" />
-            <element signature="e#1197#1198#0" expanded="true" />
-            <element signature="e#1201#1202#0" expanded="true" />
-            <element signature="e#1241#1242#0" expanded="true" />
-            <element signature="e#1289#1290#0" expanded="true" />
-            <element signature="e#1329#1330#0" expanded="true" />
-            <element signature="e#1371#1372#0" expanded="true" />
-            <element signature="e#1405#1406#0" expanded="true" />
-            <element signature="e#620#621#0" expanded="true" />
-            <element signature="e#648#649#0" expanded="true" />
-            <element signature="e#705#706#0" expanded="true" />
-            <element signature="e#733#734#0" expanded="true" />
-            <element signature="e#795#796#0" expanded="true" />
-            <element signature="e#823#824#0" expanded="true" />
-            <element signature="e#871#872#0" expanded="true" />
-            <element signature="e#899#900#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/example/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/user/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -868,80 +962,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/config/SecurityConstants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="50" selection-start-line="8" selection-start-column="50" selection-end-line="8" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="39" column="77" selection-start-line="39" selection-start-column="77" selection-end-line="39" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="36" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/user/UserRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/user/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="24" column="24" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/user/UserRoles.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="9" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example/web/src/store/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example/web/src/store/constants.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5474">
           <caret line="322" column="12" selection-start-line="322" selection-start-column="12" selection-end-line="322" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example/web/src/store/modules/auth.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="20" column="72" selection-start-line="20" selection-start-column="72" selection-end-line="20" selection-end-column="72" />
-          <folding>
-            <element signature="e#0#42#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -955,24 +979,172 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/config/SecurityConf.java">
+    <entry file="file://$PROJECT_DIR$/example/web/src/store/constants.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/web/src/store/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="84" selection-start-line="84" selection-end-line="84" />
+        <state>
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/web/src/components/Login.vue">
+    <entry file="file://$PROJECT_DIR$/example/web/src/components/EditRecipe.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-136" />
+        <state relative-caret-position="1734">
+          <caret line="102" column="39" selection-start-line="102" selection-start-column="20" selection-end-line="102" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/src/main/java/ee/rakendus/tests/ExampleControllerTest.java" />
+    <entry file="file://$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/ExampleController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="15" column="15" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="36" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="76" selection-start-line="28" selection-start-column="76" selection-end-line="28" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/src/main/java/ee/rakendus/tests/UserRepositoryTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="37" column="2" selection-start-line="37" selection-start-column="2" selection-end-line="37" selection-end-column="2" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/web/src/components/Recipes.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" column="44" selection-start-line="31" selection-start-column="44" selection-end-line="31" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/web/src/store/modules/auth.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="20" column="72" selection-start-line="20" selection-start-column="72" selection-end-line="20" selection-end-column="72" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/web/src/components/MyAccount.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="25" lean-forward="true" selection-start-line="1" selection-start-column="25" selection-end-line="1" selection-end-column="25" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/example/web/src/router/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="77" column="45" selection-start-line="77" selection-start-column="45" selection-end-line="77" selection-end-column="45" />
+        <state relative-caret-position="153">
+          <caret line="9" column="23" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/web/src/components/Login.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/web/src/components/Recipe.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/user/UserRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
           <folding>
-            <element signature="e#0#21#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/user/UserRoles.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="9" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/web/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="6" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/user/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="39" column="27" selection-start-line="39" selection-start-column="27" selection-end-line="39" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1362#1363#0" expanded="true" />
+            <element signature="e#1390#1391#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/user/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="44" column="81" selection-start-line="44" selection-start-column="81" selection-end-line="44" selection-end-column="81" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/web/src/components/Register.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1411">
+          <caret line="83" column="37" selection-start-line="83" selection-start-column="37" selection-end-line="83" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/config/SecurityConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="50" selection-start-line="8" selection-start-column="50" selection-end-line="8" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/config/SecurityConf.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="65" column="42" selection-start-line="65" selection-start-column="42" selection-end-line="65" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/src/main/java/ee/rakendus/example/user/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="43" column="34" selection-start-line="43" selection-start-column="34" selection-end-line="43" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2177#2178#0" expanded="true" />
+            <element signature="e#2214#2215#0" expanded="true" />
           </folding>
         </state>
       </provider>
