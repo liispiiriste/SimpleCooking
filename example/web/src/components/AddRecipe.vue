@@ -16,6 +16,11 @@
             <div class="form-group">
                 <label for="materials">Materjalid</label>
                 <input type="text" class="form-control" id="materials" v-model="mat" name="materials">
+                <input type="number" class="small-input" id="quantity" v-model="mat" name="quantity">
+                <select class="small-input" v-model="mat">
+                    <option value="g">g</option>
+                    <option value="kg">kg</option>
+                </select>
                 <button v-on:click="addMaterial()">Lisa</button>
                 <div v-for="(mat,m) in recipe.materials">
                     <span class="mat"> {{mat}}</span>
@@ -35,7 +40,8 @@
                     <option value="pirukad">Pirukad</option>
                     <option value="praad">Praad</option>
                     <option value="salat">Salat</option>
-                    <option value="supp">Suupisted</option>
+                    <option value="suupisted">Suupisted</option>
+                    <option value="supp">Supp</option>
                     <option value="tort">Tort</option>
                     <option value="võileivatort">Võileivatort</option>
                     <option value="vormiroog">Vormiroog</option>
@@ -47,7 +53,7 @@
                 </div>
                 <div  style="color:red;"> {{catError}}</div>
             </div>
-                        <div class="form-group">
+            <div class="form-group">
                 <label for="portion">Portsjon</label>
                 <input class="small-input" type="number" id="portion" min="1" required v-model="recipe.portion" name="portion">
                 <div  style="color:red;"> {{portionError}}</div>
@@ -142,7 +148,7 @@
             },
             addCategory(){
                  var newCategory = this.cat;
-                 if(!newCategory) {return};
+                 if(!newCategory) {return}
 
                  this.recipe.category.push(newCategory);
                  this.cat='';
@@ -157,7 +163,7 @@
             },
             addMaterial(){
                 var newMaterial = this.mat;
-                if(!newMaterial) {return};
+                if(!newMaterial) {return}
 
                 this.recipe.materials.push(newMaterial);
                 this.mat='';
