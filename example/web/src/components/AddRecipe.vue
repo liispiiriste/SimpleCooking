@@ -15,8 +15,11 @@
             </div>
             <div class="form-group">
                 <label for="materials">Materjalid</label>
-                <input type="text" class="form-control" id="materials" v-model="recipe.materials" name="materials">
-
+                <input type="text" class="form-control" id="materials" v-model="mat" name="materials">
+                <button v-on:click="addMaterial()">Lisa</button>
+                <div v-for="(mat,m) in recipe.materials">
+                    <span class="mat"> {{mat}}</span>
+                </div>
                 <div  style="color:red;"> {{matError}}</div>
             </div>
             <div class="form-group">
@@ -80,7 +83,7 @@
                     id:0,
                     name: "",
                     description: "",
-                    materials: "",
+                    materials: [],
                     category: [],
                     portion: 0,
                     price: 0
@@ -92,6 +95,7 @@
                 catError:"",
                 portionError:"",
                 priceError:"",
+                mat:'',
                 cat:''
             };
         },
@@ -102,7 +106,7 @@
                 let data = {
                     name: this.recipe.name,
                     description: this.recipe.description,
-                    materials: this.recipe.materials,
+                    materials: this.recipe.materials.toString(),
                     category: this.recipe.category.toString(),
                     portion: this.recipe.portion,
                     price: this.recipe.price
@@ -149,6 +153,21 @@
                  this.saveCategory();
             },
             saveCategory(){
+
+            },
+            addMaterial(){
+                var newMaterial = this.mat;
+                if(!newMaterial) {return};
+
+                this.recipe.materials.push(newMaterial);
+                this.mat='';
+                newMaterial='';
+            },
+            removeMaterial(x){
+                this.materials.splice(x,1);
+                this.saveMaterial();
+            },
+            saveMaterial(){
 
             }
 
