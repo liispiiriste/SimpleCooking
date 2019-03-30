@@ -142,7 +142,7 @@
             },
             addCategory(){
                  var newCategory = this.cat;
-                 if(!newCategory) {return};
+                 if(!newCategory) {return}
 
                  this.recipe.category.push(newCategory);
                  this.cat='';
@@ -157,7 +157,7 @@
             },
             addMaterial(){
                 var newMaterial = this.mat;
-                if(!newMaterial) {return};
+                if(!newMaterial) {return}
 
                 this.recipe.materials.push(newMaterial);
                 this.mat='';
