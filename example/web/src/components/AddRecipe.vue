@@ -16,8 +16,8 @@
             <div class="form-group">
                 <label for="materials">Materjalid</label>
                 <input type="text" class="form-control" id="materials" v-model="mat" name="materials">
-                <input type="number" class="small-input" id="quantity" v-model="mat" name="quantity">
-                <select class="small-input" v-model="mat">
+                <input type="number" class="small-input" id="quantity" v-model="mat2" name="quantity">
+                <select class="small-input" v-model="mat3">
                     <option value="g">g</option>
                     <option value="kg">kg</option>
                 </select>
@@ -102,6 +102,8 @@
                 portionError:"",
                 priceError:"",
                 mat:'',
+                mat2:0,
+                mat3:'',
                 cat:''
             };
         },
@@ -162,7 +164,7 @@
 
             },
             addMaterial(){
-                var newMaterial = this.mat;
+                var newMaterial = " " + this.mat + " - " + this.mat2 +  " " + this.mat3;
                 if(!newMaterial) {return}
 
                 this.recipe.materials.push(newMaterial);
