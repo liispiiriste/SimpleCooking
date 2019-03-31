@@ -16,10 +16,16 @@
             <div class="form-group">
                 <label for="materials">Materjalid</label>
                 <input type="text" class="form-control" id="materials" v-model="mat" name="materials">
-                <input type="number" class="small-input" id="quantity" v-model="mat2" name="quantity">
+                <input type="number" min="0" class="small-input" id="quantity" v-model="mat2" name="quantity">
                 <select class="small-input" v-model="mat3">
                     <option value="g">g</option>
                     <option value="kg">kg</option>
+                    <option value="sl">sl</option>
+                    <option value="tl">tl</option>
+                    <option value="l">l</option>
+                    <option value="dl">dl</option>
+                    <option value="ml">ml</option>
+                    <option value="tk">tk</option>
                 </select>
                 <button v-on:click="addMaterial()">Lisa</button>
                 <div v-for="(mat,m) in recipe.materials">
