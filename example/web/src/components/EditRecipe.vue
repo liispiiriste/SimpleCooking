@@ -17,7 +17,7 @@
                     <label for="edit-materials">Materjalid</label>
                     <textarea class="form-control" id="edit-materials" rows="3" v-model="recipe.materials"></textarea>
                 </div>
-
+<!---
                 <div class="form-group">
                     <label>Kategooria</label>
                     <select class="custom-select" v-model="recipe.category">
@@ -36,7 +36,7 @@
                         <option value="muu">Muu</option>
                     </select>
 
-                </div>
+                </div>--->
 
                 <div class="form-group">
                     <label for="edit-portion">Kogus<span class="glyphicon glyphicon-euro"></span></label>
