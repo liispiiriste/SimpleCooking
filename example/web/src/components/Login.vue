@@ -1,15 +1,15 @@
 <template>
-    <div>
+    <div class="login">
         <form id="login" v-on:submit.prevent="login">
-            <input type='text' placeholder='username' v-model='username'>
-            <input type='password' placeholder='password' v-model='password'>
-            <button class="ui primary button">
-                Submit
+            <input class="form-control" type='text' placeholder='kasutajanimi' v-model='username'>
+            <input class="form-control" type='password' placeholder='parool' v-model='password'>
+            <button >
+                Logi sisse
             </button>
         </form>
-
+<br>
         <router-link to="/register">
-            <button type="reset">Mul ei ole kasutajat</button>
+            <button type="reset" >Mul ei ole kasutajat</button>
         </router-link>
 
     </div>
@@ -52,5 +52,20 @@
     }
     a {
         color: #42b983;
+    }
+    button{
+        width:200px;
+        margin:auto;
+        align: center;
+        color: #333;
+        margin-left: 10px;
+        border-radius: 4px;
+    }
+    .login {
+        margin: auto;
+        width: 80%;
+        max-width:400px;
+        align: center;
+        color: #333
     }
 </style>

@@ -14,8 +14,8 @@
                 <div  style="color:red;"> {{desError}}</div>
             </div>
             <div class="form-group">
-                <label for="materials">Materjalid</label>
-                <input type="text" class="form-control" id="materials" v-model="mat" name="materials">
+                <label for="materials">Materjalid</label><br>
+                <input type="text" class="small-input" id="materials" v-model="mat" name="materials" style="width:200px">
                 <input type="number" min="0" class="small-input" id="quantity" v-model="mat2" name="quantity">
                 <select class="small-input" v-model="mat3">
                     <option value="g">g</option>
@@ -27,7 +27,7 @@
                     <option value="ml">ml</option>
                     <option value="tk">tk</option>
                 </select>
-                <button v-on:click="addMaterial()">Lisa</button>
+                <button class="small-input" v-on:click="addMaterial()">Lisa</button>
                 <div v-for="(mat,m) in recipe.materials">
                     <span class="mat"> {{mat}}</span>
                 </div>
@@ -35,8 +35,8 @@
             </div>
             <div class="form-group">
 
-                <label>Kategooria</label>
-                <select class="custom-select" v-model="cat">
+                <label>Kategooria</label><br>
+                <select class="custom-select" v-model="cat" style="width:300px">
 
                     <option value="hommikusöök">Hommikusöök</option>
                     <option value="jook">Jook</option>
@@ -53,19 +53,19 @@
                     <option value="vormiroog">Vormiroog</option>
                     <option value="muu">Muu</option>
                 </select>
-                <button v-on:click="addCategory()">Lisa</button>
+                <button v-on:click="addCategory()" class="small-input">Lisa</button>
                 <div v-for="(cat,n) in recipe.category">
                     <span class="cat"> {{cat}}</span>
                 </div>
                 <div  style="color:red;"> {{catError}}</div>
-            </div>
+            </div><br>
             <div class="form-group">
                 <label for="portion">Portsjon</label>
                 <input class="small-input" type="number" id="portion" min="1" required v-model="recipe.portion" name="portion">
-                <div  style="color:red;"> {{portionError}}</div>
+                <div  style="color:red;"> {{portionError}}</div><br>
                 <label for="price">Hind</label>
                 <input class="small-input" type="number" id="price"  min="1" v-model="recipe.price" name="price">
-                <div  style="color:red;"> {{priceError}}</div>
+                <div  style="color:red;"> {{priceError}}</div><br>
             </div>
 
             <button v-on:click="saveRecipe" class="btn btn-success">Salvesta retsept</button>
@@ -207,7 +207,9 @@
         width:75px;
         margin:auto;
         align: center;
-        color: #333
+        color: #333;
+        margin-left: 10px;
+        border-radius: 4px;
     }
     .form-group{
         width: 500px;
