@@ -46,7 +46,7 @@
                     email:"",
                     username:"",
                     password:"",
-                    role:"1"
+                    role:"0"
                 },
                 submitted:false,
                 emailError:"",

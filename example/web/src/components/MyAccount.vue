@@ -27,6 +27,7 @@
 
 <script>
     import axios from "axios";
+    import $store from "../store/modules/auth";
 
     export default {
         name: "MyAccount",
@@ -42,6 +43,7 @@
         },
         mounted() {
             axios.get('http://localhost:8080/api/loggedIn').then(response => (this.user = response.data));
+            console.log(this.user)
         }
     }
 </script>

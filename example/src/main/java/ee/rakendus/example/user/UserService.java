@@ -55,7 +55,7 @@ public class UserService implements UserDetailsService {
 
     public User findCurrentUserId() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String username = authentication.getPrincipal().toString();
+        String username = authentication.getName();
         User user = userRepository.findByUsername(username);
         if (user == null) throw new UsernameNotFoundException(username);
         return user;

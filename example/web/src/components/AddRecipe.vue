@@ -83,6 +83,8 @@
     import http from "../http-common";
     import Vue from 'vue';
     import VeeValidate from 'vee-validate';
+    import $store from "../store/modules/auth";
+    import axios from "axios";
     Vue.use(VeeValidate);
 
     export default {
@@ -98,8 +100,12 @@
                     materials: [],
                     category: [],
                     portion: 0,
-                    price: 0
+                    price: 0,
+
                  },
+                user: {
+                    id: ''
+                },
                 submitted: false,
                 nameError:"",
                 desError:"",
@@ -123,7 +129,9 @@
                     materials: this.recipe.materials.toString(),
                     category: this.recipe.category.toString(),
                     portion: this.recipe.portion,
-                    price: this.recipe.price
+                    price: this.recipe.price,
+                    id: this.user.id
+
                 };
                 if(!this.recipe.name){this.nameError="Lisa nimi" }
                 if(this.recipe.name){this.nameError=""}
@@ -143,6 +151,8 @@
                      .post("/recipe", data)
                      .then(response => {
                          this.recipe.id = response.data.id;
+                         console.log(data)
+                         console.log("lisatud", response)
 
                      });
 
@@ -183,8 +193,12 @@
             },
             saveMaterial(){
 
-            }
+            },
 
+
+        },
+        mounted() {
+            axios.get('http://localhost:8080/api/loggedIn').then(response => (this.user = response.data));
         }
     };
 </script>

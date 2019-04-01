@@ -1,12 +1,14 @@
 package ee.rakendus.example;
 
+import ee.rakendus.example.user.User;
+import ee.rakendus.example.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,14 +19,28 @@ public class ExampleController {
 
     @Autowired
     RecipeRepository repository;
+    @Autowired
+    UserService userService;
 
-    @GetMapping("/recipes")
-   public List<Recipe> getAllRecipes() {
+    /*@GetMapping("/recipes")
+    public List<Recipe> getAllRecipes() {
         List<Recipe> recipes = new ArrayList<>();
         repository.findAll().forEach(recipes::add);
 
         return recipes;
+    }*/
+    private List<Recipe> getAllRecipesList() {
+        long userId = userService.findCurrentUserId().getId();
+        List<Recipe> recipes = getRecipesByUserList(userId);
+        Collections.reverse(recipes);
+        return recipes;
     }
+    @GetMapping("/recipes")
+    public ResponseEntity<List<Recipe>> getAllRecipes() {
+        return new ResponseEntity<>(getAllRecipesList(), HttpStatus.OK);
+    }
+
+
     @GetMapping("/recipes/{c}")
     public List<Recipe> getRecipesByCategory(@PathVariable("c") String category) {
         List<Recipe> recipes = new ArrayList<>();
@@ -32,27 +48,24 @@ public class ExampleController {
 
         return recipes;
     }
-
+    private void saveRecipe(Recipe recipe) {
+        User user = userService.findCurrentUserId();
+        recipe.setUser(user);
+        repository.save(recipe);
+    }
     @PostMapping("/recipe")
-    public Recipe postRecipe(@RequestBody Recipe recipe, BindingResult result) {
-        boolean error=false;
-        if(recipe.getName().isEmpty()){
-            error=true;
-        }
-        if(recipe.getDescription().isEmpty()){
-            error=true;
-        }
- /*       if(recipe.getCategory().isEmpty){
+    public ResponseEntity postRecipe(@RequestBody Recipe recipe) {
+        boolean error = false;
+        if (recipe.getName().isEmpty()) error = true;
+        if (recipe.getDescription().isEmpty()) error = true;
+        /*if(recipe.getCategory().isEmpty){
             error=true;
         }*/
-        if(recipe.getMaterials().isEmpty()){
-            error=true;
+        if (recipe.getMaterials().isEmpty()) error = true;
+        if (error == false) {
+            saveRecipe(recipe);
         }
-       if(error==false) {
-        Recipe _recipe = repository.save(new Recipe(recipe.getName(), recipe.getDescription(), recipe.getMaterials(),
-                recipe.getCategory(), recipe.getPortion(), recipe.getPrice()));
-        return _recipe;}
-       return null;
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @DeleteMapping("/recipe/{id}")
@@ -62,10 +75,10 @@ public class ExampleController {
     }
 
     @PutMapping("/recipe/{id}")
-    public ResponseEntity<Recipe> updateRecipe(@PathVariable("id") long id, @RequestBody Recipe recipe){
+    public ResponseEntity<Recipe> updateRecipe(@PathVariable("id") long id, @RequestBody Recipe recipe) {
         Optional<Recipe> recipeData = repository.findById(id);
 
-        if(recipeData.isPresent()) {
+        if (recipeData.isPresent()) {
             Recipe _recipe = recipeData.get();
             _recipe.setName(recipe.getName());
             _recipe.setDescription(recipe.getDescription());
@@ -77,6 +90,14 @@ public class ExampleController {
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
+
+    private List<Recipe> getRecipesByUserList(Long userId) {
+        return repository.findAllByUserId(userId);
+    }
+    @GetMapping("/user/{user}")
+    public ResponseEntity<List<Recipe>> getRecipesByUser(@PathVariable("user") long userId) {
+        return new ResponseEntity<>(getRecipesByUserList(userId), HttpStatus.OK);
     }
 
 }
