@@ -27,6 +27,7 @@
 
 <script>
     import axios from "axios";
+    import $store from "../store/modules/auth";
 
     export default {
         name: "MyAccount",
@@ -34,9 +35,9 @@
         data() {
             return {
                 user: {
-                    email: '',
-                    username: '',
-                    recipes: []
+                    email: $store.state.user.email,
+                    username: $store.state.user.username,
+                    recipes: $store.state.user.recipes
                 }
             }
         },
