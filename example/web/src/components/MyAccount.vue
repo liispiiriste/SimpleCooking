@@ -35,14 +35,15 @@
         data() {
             return {
                 user: {
-                    email: $store.state.user.email,
-                    username: $store.state.user.username,
-                    recipes: $store.state.user.recipes
+                    email: '',
+                    username: '',
+                    recipes: []
                 }
             }
         },
         mounted() {
             axios.get('http://localhost:8080/api/loggedIn').then(response => (this.user = response.data));
+            console.log(this.user)
         }
     }
 </script>

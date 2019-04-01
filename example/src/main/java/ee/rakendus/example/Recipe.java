@@ -1,13 +1,11 @@
 package ee.rakendus.example;
 
 
-import ee.rakendus.example.categories.Categories;
 import ee.rakendus.example.user.User;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 
 @Entity
 @Table(name = "recipe")
@@ -47,14 +45,14 @@ public class Recipe {
     protected Recipe() {
     }
 
-    public Recipe(String name, String description, String materials, String category, int price, int portion) {
+    /*public Recipe(String name, String description, String materials, String category, int price, int portion) {
         this.name = name;
         this.description = description;
         this.materials = materials;
         this.category = category;
         this.price = price;
         this.portion = portion;
-    }
+    }*/
 
     //region getters and setters
     public Long getId() {
@@ -112,6 +110,15 @@ public class Recipe {
     public void setPortion(int portion) {
         this.portion = portion;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     //endregion
 
     @Override
