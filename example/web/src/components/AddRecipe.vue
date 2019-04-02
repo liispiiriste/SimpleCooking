@@ -15,9 +15,9 @@
             </div>
             <div class="form-group">
                 <label for="materials">Materjalid</label><br>
-                <input type="text" class="small-input" id="materials" v-model="mat" name="materials" style="width:200px">
+                <input type="text" class="small-input" id="materials" v-model="mat" name="materials" style="width:235px">
                 <input type="number" min="0" class="small-input" id="quantity" v-model="mat2" name="quantity">
-                <select class="small-input" v-model="mat3">
+                <select class="custom-select" v-model="mat3" style="width:75px; margin-left:10px; height: 37px">
                     <option value="g">g</option>
                     <option value="kg">kg</option>
                     <option value="sl">sl</option>
@@ -36,7 +36,7 @@
             <div class="form-group">
 
                 <label>Kategooria</label><br>
-                <select class="custom-select" v-model="cat" style="width:300px">
+                <select class="custom-select" v-model="cat" style="width:415px">
 
                     <option value="hommikusöök">Hommikusöök</option>
                     <option value="jook">Jook</option>
