@@ -33,7 +33,7 @@
                    <!--- <form class="form-inline my-2 my-lg-0" th:action="@{/logout}" method="post" style="margin-left:10px;">
                         <input class="form-control mr-sm-2" type="submit" value="Sign Out"/>
                     </form>-->
-                    <router-link class="nav-link" v-if="authenticated" to="/login" v-on:click.native="logout()" replace>Logout</router-link>
+                    <router-link v-if="authenticated" to="/login" v-on:click.native="logout()" replace>Logout</router-link>
                 </div>
 
             </div>
