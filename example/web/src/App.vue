@@ -19,27 +19,29 @@
                         <li class="nav-item">
                             <router-link class="nav-link" to="/MyAccount">Minu konto</router-link>
                         </li>
-                        <li class="nav-item">
+                       <!--- <li class="nav-item">
                             <router-link class="nav-link" to="/login">Logi sisse</router-link>
                         </li>
                         <li class="nav-item">
                             <router-link class="nav-link" to="/register">Registreeri</router-link>
-                        </li>
+                        </li>-->
                     </ul>
                     <form class="form-inline my-2 my-lg-0">
                         <input class="form-control mr-sm-2" type="text" placeholder="Otsing">
                         <button class="btn btn-secondary my-2 my-sm-0" type="submit">Otsi</button>
                     </form>
-                    <form class="form-inline my-2 my-lg-0" th:action="@{/logout}" method="post" style="margin-left:10px;">
+                   <!--- <form class="form-inline my-2 my-lg-0" th:action="@{/logout}" method="post" style="margin-left:10px;">
                         <input class="form-control mr-sm-2" type="submit" value="Sign Out"/>
-                    </form>
+                    </form>-->
+                    <router-link v-if="authenticated" to="/login" v-on:click.native="logout()" replace>Logout</router-link>
                 </div>
+
             </div>
         </div>
         <br>
         <div class="container">
             <transition name="moveInUp">
-                <router-view/>
+                <router-view @authenticated="setAuthenticated" />
             </transition>
         </div>
         <div class="footer" style="margin-bottom:20px;"></div>
@@ -48,6 +50,24 @@
 <script>
 export default {
   name: 'app',
+    data() {
+        return {
+            authenticated: false,
+
+        }
+    },mounted() {
+        if(!this.authenticated) {
+            this.$router.replace({ name: "login" });
+        }
+    },
+    methods: {
+        setAuthenticated(status) {
+            this.authenticated = status;
+        },
+        logout() {
+            this.authenticated = false;
+        }
+    }
 }
 </script>
 <style>

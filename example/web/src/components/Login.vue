@@ -3,6 +3,7 @@
         <form id="login" v-on:submit.prevent="login">
             <input class="form-control" type='text' placeholder='kasutajanimi' v-model='username'>
             <input class="form-control" type='password' placeholder='parool' v-model='password'>
+            <span style="color:red">{{loginError}}</span>
             <button >
                 Logi sisse
             </button>
@@ -22,19 +23,27 @@
     export default {
         name: 'login',
         data() {
+
             return {
                 username: '',
-                password: ''
+                password: '',
+                loginError:''
             }
         },
         methods: {
             login () {
+                if(this.username != "" && this.password != "") {
                 const { username, password } = this;
                 this.$store.dispatch(AUTH_REQUEST, {username, password}).then(() => {
                     this.$router.push('/home');
+                    this.$emit("authenticated", true);
                 });
+                } else {
+                    this.loginError="Lisa kasutajanimi ja/või parool";
+                }
             }
         }
+
     }
 </script>
 
