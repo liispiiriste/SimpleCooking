@@ -5,7 +5,7 @@
             <h1 style="font-size:170%">Registreeri</h1>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="text" class="form-control" id="email" required v-model="user.email" name="email">
+                <input type="email" class="form-control" id="email" required v-model="user.email" name="email">
                 <div  style="color:red;"> {{emailError}}</div>
             </div>
             <div class="form-group">
@@ -65,8 +65,9 @@
                     password: this.user.password,
                     role: this.user.role
                 };
+                if(!this.validEmail(this.user.email)){this.emailError="Lisa päris emaili aadress"}
                 if(!this.user.email){this.emailError="Lisa email" }
-                if(this.user.email){this.emailError=""}
+                if(this.user.email&&this.validEmail(this.user.email)){this.emailError=""}
                 if(!this.user.username){this.usernameError="Lisa kasutajanimi" }
                 if(this.user.username){this.usernameError=""}
                 if(this.user.password.length<5){this.passwordError="Parool peab sisaldama vähemalt 5 sümbolit" }
@@ -82,6 +83,10 @@
                         this.user.id = response.data.id;
                     });
                 this.submitted=true;}
+            },
+            validEmail: function (email) {
+                var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(email);
             }
         }
     };
@@ -92,12 +97,15 @@
         margin: auto;
         width: 80%;
         align: center;
-        color: #333
+        color: #333;
+
+
     }
     .register-form{
         margin:auto;
-        width: 40%;
+        width: 50%;
         align:center;
         color:#333;
+        min-width:300px
     }
 </style>
