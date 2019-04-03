@@ -19,7 +19,7 @@ public class Recipe {
     private String name;
 
     @NotBlank
-    @Column(name = "description")
+    @Column(name = "description", unique=true)
     private String description;
 
     @NotBlank

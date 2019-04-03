@@ -29,7 +29,7 @@
                         <input class="form-control mr-sm-2" type="text" placeholder="Otsing">
                         <button class="btn btn-secondary my-2 my-sm-0" type="submit">Otsi</button>
                     </form>-->
-                    <router-link v-if="authenticated" to="/login" v-on:click.native="logout()" replace>Logout</router-link>
+                    <router-link class="nav-link" v-if="authenticated" to="/login" v-on:click.native="logout()" replace>Logout</router-link>
                 </div>
 
             </div>

@@ -22,21 +22,21 @@ public class ExampleController {
     @Autowired
     UserService userService;
 
-    /*@GetMapping("/recipes")
+    @GetMapping("/recipes")
     public List<Recipe> getAllRecipes() {
         List<Recipe> recipes = new ArrayList<>();
         repository.findAll().forEach(recipes::add);
 
         return recipes;
-    }*/
+    }
     private List<Recipe> getAllRecipesList() {
         long userId = userService.findCurrentUserId().getId();
         List<Recipe> recipes = getRecipesByUserList(userId);
         Collections.reverse(recipes);
         return recipes;
     }
-    @GetMapping("/recipes")
-    public ResponseEntity<List<Recipe>> getAllRecipes() {
+    @GetMapping("/userRecipes")
+    public ResponseEntity<List<Recipe>> getAllUserRecipes() {
         return new ResponseEntity<>(getAllRecipesList(), HttpStatus.OK);
     }
 

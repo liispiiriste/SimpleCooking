@@ -12,14 +12,49 @@ public class Categories {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
-    @Column(name="category")
-    private String category;
+    @Column(name="breakfast")
+    private String breakfast;
+
+    @Column(name="drink")
+    private String drink;
+
+    @Column(name="cake")
+    private String cake;
+
+    @Column(name="dessert")
+    private String dessert;
+
+    @Column(name="pasta")
+    private String pasta;
+
+    @Column(name="pie")
+    private String pie;
+
+    @Column(name="mainCourse")
+    private String mainCourse;
+
+    @Column(name="salad")
+    private String salad;
+
+    @Column(name="snacks")
+    private String snacks;
+
+    @Column(name="soup")
+    private String soup;
+
+    @Column(name="bCake")
+    private String bCake;
+
+    @Column(name="sCake")
+    private String sCake;
+
+    @Column(name="casserole")
+    private String casserole;
+
+    @Column(name="other")
+    private String other;
 
     protected Categories(){}
-
-    public Categories(String category){
-        this.category = category;
-    }
 
     public Long getId() {
         return id;
@@ -29,12 +64,5 @@ public class Categories {
         this.id = id;
     }
 
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
 }
 

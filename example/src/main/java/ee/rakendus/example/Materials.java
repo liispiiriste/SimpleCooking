@@ -16,7 +16,7 @@ public class Materials {
     private String materials;
 
     @Column(name="quantity")
-    private String quantity;
+    private int quantity;
 
     @Column(name="measurement")
     private String measurement;
@@ -45,12 +45,12 @@ public class Materials {
         this.materials = materials;
     }
 
-    public String getQuantity()
+    public int getQuantity()
     {
         return quantity;
     }
 
-    public void setQuantity(String quantity)
+    public void setQuantity(int quantity)
     {
         this.quantity = quantity;
     }

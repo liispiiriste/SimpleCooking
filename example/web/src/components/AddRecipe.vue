@@ -6,12 +6,15 @@
             <div class="form-group">
                 <label for="name">Nimi</label>
                 <input type="text" class="form-control" id="name" v-model="recipe.name" name="name">
+
                 <div  class="err"> {{nameError}}</div>
+
             </div>
             <div class="form-group">
                 <label for="description">Juhend</label>
                 <textarea type="text" rows=4 style="overflow-y: scroll;" class="form-control" id="description" required v-model="recipe.description" name="description"></textarea>
                 <div class="err"> {{desError}}</div>
+
             </div>
             <div class="form-group">
                 <label for="materials">Materjalid</label><br>
@@ -27,12 +30,14 @@
                     <option value="ml">ml</option>
                     <option value="tk">tk</option>
                 </select>
+
                 <button style="margin-bottom:5px" class="small-input" v-on:click="addMaterial()">Lisa</button>
                 <div class="arraylist" v-for="(mat,m) in recipe.materials">
                     <div class="arraytext"><span style="text-align:left" class="mat"> {{mat}}</span></div>
                     <div class="arraybutton"><button style="float:right; background-color:#fff87c; border-color:#f4f09c; color:#666" class="btn btn-warning btn-sm" @click="removeMaterial(n)">Eemalda</button></div><br>
                 </div>
                 <div class="err"> {{matError}}</div>
+
             </div>
             <div class="form-group">
 
@@ -59,7 +64,9 @@
                     <div class="arraytext"><span style="text-align:left" class="cat"> {{cat}}</span></div>
                     <div class="arraybutton"><button style="float:right; background-color:#fff87c; border-color:#f4f09c; color:#666" class="btn btn-warning btn-sm" @click="removeCategory(n)">Eemalda</button></div><br>
                 </div>
+
                 <div class="err"> {{catError}}</div>
+
             </div><br>
             <div class="form-group">
                 <label for="portion">Portsjon</label>
@@ -67,7 +74,9 @@
                 <div class="err"> {{portionError}}</div><br>
                 <label for="price">Hind</label>
                 <input class="small-input" type="number" id="price"  min="1" v-model="recipe.price" name="price">
+
                 <div class="err"> {{priceError}}</div><br>
+
             </div>
 
             <button v-on:click="saveRecipe" class="btn btn-success">Salvesta retsept</button>
@@ -77,6 +86,9 @@
         <div v-else>
             <h4>Lisatud!</h4>
             <button class="btn btn-success" v-on:click="newRecipe">Uus retsept</button>
+            <router-link to="/recipes">
+                <button type="reset" >Kõik retseptid</button>
+            </router-link>
         </div>
     </div>
 </template>
@@ -139,8 +151,8 @@
                 if(this.recipe.name){this.nameError=""}
                  if(!this.recipe.description){this.desError="Lisa juhised" }
                  if(this.recipe.description){this.desError=""}
-                 if(!this.recipe.materials){this.matError="Lisa materjalid" }
-                 if(this.recipe.materials){this.matError=""}
+                 if(!data.materials){this.matError="Lisa materjalid" }
+                 if(data.materials){this.matError=""}
                  if(!data.category){this.catError="Vali kategooria" }
                  if(data.category){this.catError=""}
                  if(!this.recipe.portion){this.portionError="Lisa portsjon"}
@@ -196,9 +208,7 @@
             },
             saveMaterial(){
 
-            },
-
-
+            }
         },
         mounted() {
             axios.get('http://localhost:8080/api/loggedIn').then(response => (this.user = response.data));
