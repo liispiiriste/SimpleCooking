@@ -56,7 +56,7 @@
         },
         mounted() {
             axios.get('http://localhost:8080/api/loggedIn').then(response => (this.user = response.data));
-            http.get("/recipes").then(response=> {this.recipes = response.data; })
+            http.get("/userRecipes").then(response=> {this.recipes = response.data; })
         }
     }
 </script>
