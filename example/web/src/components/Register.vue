@@ -31,6 +31,9 @@
 
         <div v-else>
             <h4>Registreeritud!</h4>
+            <router-link to="/login">
+                <button type="reset" >Logi sisse</button>
+            </router-link>
         </div>
     </div>
 </template>

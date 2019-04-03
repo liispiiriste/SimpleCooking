@@ -29,6 +29,9 @@
             </div>
             <div v-else>
                 <h4>Retsept on edukalt kustutatud!</h4>
+                <router-link to="/recipes">
+                    <button type="reset" >Kõik retseptid</button>
+                </router-link>
             </div>
         </div>
     </div>

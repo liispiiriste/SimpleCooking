@@ -75,6 +75,9 @@
         <div v-else>
             <h4>Lisatud!</h4>
             <button class="btn btn-success" v-on:click="newRecipe">Uus retsept</button>
+            <router-link to="/recipes">
+                <button type="reset" >Kõik retseptid</button>
+            </router-link>
         </div>
     </div>
 </template>
