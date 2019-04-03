@@ -9,7 +9,6 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarColor02">
                     <ul v-if="authenticated" class="navbar-nav mr-auto">
-
                         <li  class="nav-item">
                             <router-link  class="nav-link" to="/recipes">Retseptid</router-link>
                         </li>
@@ -26,12 +25,9 @@
                             <router-link class="nav-link" to="/register">Registreeri</router-link>
                         </li>-->
                     </ul>
-                    <form class="form-inline my-2 my-lg-0">
+                   <!--- <form class="form-inline my-2 my-lg-0">
                         <input class="form-control mr-sm-2" type="text" placeholder="Otsing">
                         <button class="btn btn-secondary my-2 my-sm-0" type="submit">Otsi</button>
-                    </form>
-                   <!--- <form class="form-inline my-2 my-lg-0" th:action="@{/logout}" method="post" style="margin-left:10px;">
-                        <input class="form-control mr-sm-2" type="submit" value="Sign Out"/>
                     </form>-->
                     <router-link class="nav-link" v-if="authenticated" to="/login" v-on:click.native="logout()" replace>Logout</router-link>
                 </div>

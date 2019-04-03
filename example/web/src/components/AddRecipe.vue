@@ -6,18 +6,21 @@
             <div class="form-group">
                 <label for="name">Nimi</label>
                 <input type="text" class="form-control" id="name" v-model="recipe.name" name="name">
-                <div  style="color:red;padding:10px"> {{nameError}}</div>
+
+                <div  class="err"> {{nameError}}</div>
+
             </div>
             <div class="form-group">
                 <label for="description">Juhend</label>
                 <textarea type="text" rows=4 style="overflow-y: scroll;" class="form-control" id="description" required v-model="recipe.description" name="description"></textarea>
-                <div  style="color:red; padding:10px"> {{desError}}</div>
+                <div class="err"> {{desError}}</div>
+
             </div>
             <div class="form-group">
                 <label for="materials">Materjalid</label><br>
-                <input type="text" class="small-input" id="materials" v-model="mat" name="materials" style="width:235px">
-                <input type="number" min="0" class="small-input" id="quantity" v-model="mat2" name="quantity">
-                <select class="custom-select" v-model="mat3" style="width:75px; margin-left:10px; height: 37px">
+                <input type="text" class="small-input" id="materials" v-model="mat" name="materials" style="padding-left:10px;height:40px;width:235px;font-size:15px">
+                <input type="number" min="0" class="small-input" style="padding-left:10px;height:40px" id="quantity" v-model="mat2" name="quantity">
+                <select class="custom-select" v-model="mat3" style="width:75px; font-size:15px; max-height:40px; margin-left:10px; height: 37px">
                     <option value="g">g</option>
                     <option value="kg">kg</option>
                     <option value="sl">sl</option>
@@ -27,11 +30,14 @@
                     <option value="ml">ml</option>
                     <option value="tk">tk</option>
                 </select>
-                <button class="small-input" v-on:click="addMaterial()">Lisa</button>
-                <div v-for="(mat,n) in recipe.materials">
-                    <span class="mat"> {{mat}}</span>
+
+                <button style="margin-bottom:5px" class="small-input" v-on:click="addMaterial()">Lisa</button>
+                <div class="arraylist" v-for="(mat,m) in recipe.materials">
+                    <div class="arraytext"><span style="text-align:left" class="mat"> {{mat}}</span></div>
+                    <div class="arraybutton"><button style="float:right; background-color:#fff87c; border-color:#f4f09c; color:#666" class="btn btn-warning btn-sm" @click="removeMaterial(n)">Eemalda</button></div><br>
                 </div>
-                <div  style="color:red; padding:10px"> {{matError}}</div>
+                <div class="err"> {{matError}}</div>
+
             </div>
             <div class="form-group">
 
@@ -53,19 +59,24 @@
                     <option value="vormiroog">Vormiroog</option>
                     <option value="muu">Muu</option>
                 </select>
-                <button v-on:click="addCategory()" class="small-input">Lisa</button>
-                <div v-for="(cat,n) in recipe.category">
-                    <span class="cat"> {{cat}}</span>
+                <button style="margin-bottom:5px" v-on:click="addCategory()" class="small-input">Lisa</button>
+                <div class="arraylist" v-for="(cat,n) in recipe.category">
+                    <div class="arraytext"><span style="text-align:left" class="cat"> {{cat}}</span></div>
+                    <div class="arraybutton"><button style="float:right; background-color:#fff87c; border-color:#f4f09c; color:#666" class="btn btn-warning btn-sm" @click="removeCategory(n)">Eemalda</button></div><br>
                 </div>
-                <div  style="color:red; padding:10px"> {{catError}}</div>
+
+                <div class="err"> {{catError}}</div>
+
             </div><br>
             <div class="form-group">
                 <label for="portion">Portsjon</label>
                 <input class="small-input" type="number" id="portion" min="1" required v-model="recipe.portion" name="portion">
-                <div  style="color:red;"> {{portionError}}</div><br>
+                <div class="err"> {{portionError}}</div><br>
                 <label for="price">Hind</label>
                 <input class="small-input" type="number" id="price"  min="1" v-model="recipe.price" name="price">
-                <div  style="color:red; padding:10px"> {{priceError}}</div><br>
+
+                <div class="err"> {{priceError}}</div><br>
+
             </div>
 
             <button v-on:click="saveRecipe" class="btn btn-success">Salvesta retsept</button>
@@ -169,14 +180,14 @@
             },
             addCategory(){
                  var newCategory = this.cat;
-                 if(!newCategory) {return}
-
+                 if(!newCategory) {return};
+                 if(this.recipe.category.includes(newCategory)){return}
                  this.recipe.category.push(newCategory);
                  this.cat='';
                  newCategory='';
             },
             removeCategory(x){
-                 this.category.splice(x,1);
+                 this.recipe.category.splice(x,1);
                  this.saveCategory();
             },
             saveCategory(){
@@ -185,13 +196,14 @@
             addMaterial(){
                 var newMaterial = " " + this.mat + " - " + this.mat2 +  " " + this.mat3;
                 if(!newMaterial) {return}
+                if(this.recipe.materials.includes(newMaterial)){return}
 
                 this.recipe.materials.push(newMaterial);
                 this.mat='';
                 newMaterial='';
             },
             removeMaterial(x){
-                this.materials.splice(x,1);
+                this.recipe.materials.splice(x,1);
                 this.saveMaterial();
             },
             saveMaterial(){
@@ -225,11 +237,35 @@
         color: #333;
         margin-left: 10px;
         border-radius: 4px;
+        border-style: solid;
+        border-color: lightgrey;
+        border-width: 1px;
+        font-size:15px;
+        padding-left:10px;
+        height:40px
+
+
     }
     .form-group{
         width: 500px;
         align: center;
         margin: auto;
         color: #333
+    }
+    .arraylist{
+        margin-bottom:5px
+    }
+    .arraytext{
+        width:75%;
+        float:left;
+        font-size:16px
+    }
+    .arraybutton{
+        width:20%;
+        float:right;
+    }
+    .err{
+        color:red;
+        font-size:16px
     }
 </style>
