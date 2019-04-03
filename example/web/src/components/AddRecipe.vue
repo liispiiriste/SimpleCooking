@@ -28,7 +28,7 @@
                     <option value="tk">tk</option>
                 </select>
                 <button class="small-input" v-on:click="addMaterial()">Lisa</button>
-                <div v-for="(mat,m) in recipe.materials">
+                <div v-for="(mat,n) in recipe.materials">
                     <span class="mat"> {{mat}}</span>
                 </div>
                 <div  style="color:red; padding:10px"> {{matError}}</div>
@@ -137,8 +137,8 @@
                 if(this.recipe.name){this.nameError=""}
                  if(!this.recipe.description){this.desError="Lisa juhised" }
                  if(this.recipe.description){this.desError=""}
-                 if(!this.recipe.materials){this.matError="Lisa materjalid" }
-                 if(this.recipe.materials){this.matError=""}
+                 if(!data.materials){this.matError="Lisa materjalid" }
+                 if(data.materials){this.matError=""}
                  if(!data.category){this.catError="Vali kategooria" }
                  if(data.category){this.catError=""}
                  if(!this.recipe.portion){this.portionError="Lisa portsjon"}
@@ -193,9 +193,7 @@
             },
             saveMaterial(){
 
-            },
-
-
+            }
         },
         mounted() {
             axios.get('http://localhost:8080/api/loggedIn').then(response => (this.user = response.data));
