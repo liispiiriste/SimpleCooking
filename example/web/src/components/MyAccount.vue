@@ -15,7 +15,17 @@
 
                 <div>
                     <!--TODO: listi kujundust muuta.-->
-                    <label>Minu retseptid: </label> {{user.recipes}}
+                    <label>Minu retseptid: </label> <ul>
+                    <li v-for="(recipe, index) in recipes" :key="index">
+
+                        <router-link :to="{
+                            name: 'recipe',
+                            params: { recipe: recipe, id: recipe.id }
+                        }" style="color:#333">
+                            {{recipe.name}}
+                        </router-link>
+                    </li>
+                </ul>
 
                 </div>
 
@@ -28,6 +38,7 @@
 <script>
     import axios from "axios";
     import $store from "../store/modules/auth";
+    import http from "../http-common";
 
     export default {
         name: "MyAccount",
@@ -36,14 +47,16 @@
             return {
                 user: {
                     email: '',
-                    username: '',
+                    username: ''
+                },
+                recipes: {
                     recipes: []
                 }
             }
         },
         mounted() {
             axios.get('http://localhost:8080/api/loggedIn').then(response => (this.user = response.data));
-            console.log(this.user)
+            http.get("/recipes").then(response=> {this.recipes = response.data; })
         }
     }
 </script>
