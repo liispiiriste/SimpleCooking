@@ -1,6 +1,6 @@
 <template>
     <div><div class="sidemenu" style=" float:left; display:inline; "><!--width: 25%;-->
-        <p style="font-size:20px; margin-top:50px;">Kategooriad:</p>
+       
         <div class="btn-group-vertical" data-toggle="buttons" style="float:right;">
             <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('all')" active>Kõik<input type="radio" name="options" id="all" autocomplete="off" checked></button>
             <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('hommikusöök')">Hommikusöögid<input type="radio" name="options" id="breakfast" autocomplete="off"></button>
