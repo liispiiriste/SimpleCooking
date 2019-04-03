@@ -6,12 +6,12 @@
             <div class="form-group">
                 <label for="name">Nimi</label>
                 <input type="text" class="form-control" id="name" v-model="recipe.name" name="name">
-                <div  style="color:red;"> {{nameError}}</div>
+                <div  style="color:red;padding:10px"> {{nameError}}</div>
             </div>
             <div class="form-group">
                 <label for="description">Juhend</label>
                 <textarea type="text" rows=4 style="overflow-y: scroll;" class="form-control" id="description" required v-model="recipe.description" name="description"></textarea>
-                <div  style="color:red;"> {{desError}}</div>
+                <div  style="color:red; padding:10px"> {{desError}}</div>
             </div>
             <div class="form-group">
                 <label for="materials">Materjalid</label><br>
@@ -31,7 +31,7 @@
                 <div v-for="(mat,m) in recipe.materials">
                     <span class="mat"> {{mat}}</span>
                 </div>
-                <div  style="color:red;"> {{matError}}</div>
+                <div  style="color:red; padding:10px"> {{matError}}</div>
             </div>
             <div class="form-group">
 
@@ -57,7 +57,7 @@
                 <div v-for="(cat,n) in recipe.category">
                     <span class="cat"> {{cat}}</span>
                 </div>
-                <div  style="color:red;"> {{catError}}</div>
+                <div  style="color:red; padding:10px"> {{catError}}</div>
             </div><br>
             <div class="form-group">
                 <label for="portion">Portsjon</label>
@@ -65,7 +65,7 @@
                 <div  style="color:red;"> {{portionError}}</div><br>
                 <label for="price">Hind</label>
                 <input class="small-input" type="number" id="price"  min="1" v-model="recipe.price" name="price">
-                <div  style="color:red;"> {{priceError}}</div><br>
+                <div  style="color:red; padding:10px"> {{priceError}}</div><br>
             </div>
 
             <button v-on:click="saveRecipe" class="btn btn-success">Salvesta retsept</button>
