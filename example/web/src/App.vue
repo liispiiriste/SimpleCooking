@@ -48,7 +48,6 @@
     </div>
 </template>
 <script>
-    import axios from "axios";
 export default {
   name: 'app',
     data() {
@@ -56,8 +55,7 @@ export default {
             authenticated: false,
 
         }
-    },
-    mounted() {
+    },mounted() {
         if(!this.authenticated) {
             this.$router.replace({ name: "login" });
         }
@@ -68,8 +66,6 @@ export default {
         },
         logout() {
             this.authenticated = false;
-            axios.post('/logout')
-
         }
     }
 }
