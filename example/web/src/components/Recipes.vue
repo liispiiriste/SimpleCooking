@@ -12,7 +12,7 @@
             <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('praad')">Praed<input type="radio" name="options" id="meal" autocomplete="off"></button>
             <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('salat')">Salatid<input type="radio" name="options" id="salad" autocomplete="off"></button>
             <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('supp')">Supid<input type="radio" name="options" id="soup" autocomplete="off"></button>
-            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('suupisted')">Suupisted<input type="radio" name="options" id="snaks" autocomplete="off"></button>
+            <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('suupisted')">Suupisted<input type="radio" name="options" id="snacks" autocomplete="off"></button>
             <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('tort')">Tordid<input type="radio" name="options" id="pie" autocomplete="off"></button>
             <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('võileivatort')">Võileivatordid<input type="radio" name="options" id="sandwich-cake" autocomplete="off"></button>
             <button type="button" class="btn btn-secondary btn-sm" v-on:click="chosenCategory('vormiroog')">Vormiroad<input type="radio" name="options" id="formdish" autocomplete="off"></button>
