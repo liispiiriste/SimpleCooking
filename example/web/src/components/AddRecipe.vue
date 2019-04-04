@@ -159,7 +159,7 @@
                  if(this.recipe.portion) {this.portionError=""}
                  if(!this.recipe.price){this.priceError="Lisa hind"}
                  if(this.recipe.price) {this.priceError=""}
-                 if(this.recipe.name && this.recipe.description && this.recipe.materials && this.recipe.category && this.recipe.portion
+                 if(this.recipe.name && this.recipe.description && data.materials && data.category && this.recipe.portion
                  && this.recipe.price){
                   http
                      .post("/recipe", data)
