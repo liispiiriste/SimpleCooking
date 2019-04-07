@@ -30,7 +30,7 @@
             <div v-else>
                 <h4>Retsept on edukalt kustutatud!</h4>
                 <router-link to="/recipes">
-                    <button type="reset" >Kõik retseptid</button>
+                    <button type="reset" class="btn btn-success">Kõik retseptid</button>
                 </router-link>
             </div>
         </div>
