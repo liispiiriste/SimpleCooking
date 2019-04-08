@@ -1,8 +1,10 @@
 package ee.rakendus.example;
 
+import ee.rakendus.example.image.ImageService;
 import ee.rakendus.example.user.User;
 import ee.rakendus.example.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +23,8 @@ public class ExampleController {
     RecipeRepository repository;
     @Autowired
     UserService userService;
+    @Autowired
+    ImageService imageService;
 
     @GetMapping("/recipes")
     public List<Recipe> getAllRecipes() {
@@ -98,6 +102,11 @@ public class ExampleController {
     @GetMapping("/user/{user}")
     public ResponseEntity<List<Recipe>> getRecipesByUser(@PathVariable("user") long userId) {
         return new ResponseEntity<>(getRecipesByUserList(userId), HttpStatus.OK);
+    }
+
+    @GetMapping("/images")
+    public Resource createImage() {
+        return imageService.findOneImage("test");
     }
 
 }

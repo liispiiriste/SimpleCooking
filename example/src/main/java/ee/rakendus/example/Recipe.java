@@ -31,7 +31,6 @@ public class Recipe {
     @Column(name = "category")
     private String category;
 
-
     @NotNull
     @Column(name = "price")
     private int price;
@@ -44,9 +43,6 @@ public class Recipe {
 
     @ManyToOne
     private Categories categories;
-
-
-
 
     protected Recipe() {
     }
