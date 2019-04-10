@@ -120,6 +120,9 @@
                 user: {
                     id: ''
                 },
+                categories:{
+                  id: ''
+                },
                 submitted: false,
                 nameError:"",
                 desError:"",
@@ -144,7 +147,8 @@
                     category: this.recipe.category.toString(),
                     portion: this.recipe.portion,
                     price: this.recipe.price,
-                    id: this.user.id
+                    id: this.user.id,
+                    id:this.categories.id
 
                 };
                 if(!this.recipe.name){this.nameError="Lisa nimi" }

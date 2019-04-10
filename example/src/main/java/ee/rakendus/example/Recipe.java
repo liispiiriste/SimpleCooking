@@ -1,7 +1,6 @@
 package ee.rakendus.example;
 
 
-import ee.rakendus.example.categories.Categories;
 import ee.rakendus.example.user.User;
 
 import javax.persistence.*;
@@ -41,12 +40,6 @@ public class Recipe {
     private int portion;
     @ManyToOne
     private User user;
-
-    @ManyToOne
-    private Categories categories;
-
-
-
 
     protected Recipe() {
     }
@@ -125,16 +118,12 @@ public class Recipe {
         this.user = user;
     }
 
-    public Categories getCategories() {return categories;}
-
-    public void setCategories(Categories categories) {this.categories = categories;}
-
     //endregion
 
     @Override
     public String toString() {
         return String.format(
-                "Recipe[id=%d, name='%s', description='%s', materials='%s', categories='%s',price='%d', portion='%d']",
-                id, name, description, categories,materials, price, portion);
+                "Recipe[id=%d, name='%s', description='%s', category='%s' materials='%s',price='%d', portion='%d']",
+                id, name, description ,materials,category, price, portion);
     }
 }

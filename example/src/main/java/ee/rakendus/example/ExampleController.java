@@ -48,11 +48,17 @@ public class ExampleController {
 
         return recipes;
     }
+
     private void saveRecipe(Recipe recipe) {
         User user = userService.findCurrentUserId();
         recipe.setUser(user);
         repository.save(recipe);
+
     }
+   /* private void saveCategory(Categories categories)
+    {
+
+    }*/
     @PostMapping("/recipe")
     public ResponseEntity postRecipe(@RequestBody Recipe recipe) {
         boolean error = false;
