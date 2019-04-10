@@ -1,5 +1,6 @@
 <template xmlns:th="http://www.w3.org/1999/xhtml">
-    <div id="app" style="width:80%; margin:auto; margin-top:50px;">
+    <div id="app" style="margin:auto;">
+        <div class="wrapper">
         <!-- navbar -->
         <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
             <div class="container">
@@ -35,15 +36,16 @@
             </div>
         </div>
         <br>
-        <div class="container">
+        <div class="container" style="margin-top:45px;">
             <transition name="moveInUp">
                 <router-view @authenticated="setAuthenticated" />
             </transition>
         </div>
         <div class="footer" style="margin-bottom:20px;"></div>
-    </div>
+    </div></div>
 </template>
 <script>
+    import './stylesheets/main.css';
 export default {
   name: 'app',
     data() {
@@ -67,40 +69,12 @@ export default {
 }
 </script>
 <style>
-#app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #333;
-    margin-top: 60px;
-}
+
+
 .moveInUp-enter-active{
     animation: fadeIn 2s ease-in;
-}
-@keyframes fadeIn{
-    0%{
-        opacity: 0;
-    }
-    50%{
-        opacity: 0.5;
-    }
-    100%{
-        opacity: 1;
-    }
 }
 .moveInUp-leave-active{
     animation: moveInUp .3s ease-in;
 }
-@keyframes moveInUp{
-    0%{
-        transform: translateY(0);
-    }
-    100%{
-        transform: translateY(-400px);
-    }
-}
-    .nav-item{
-        text-align:left;
-    }
 </style>
