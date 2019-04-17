@@ -62,14 +62,6 @@
     a {
         color: #42b983;
     }
-    button{
-        width:200px;
-        margin:auto;
-        align: center;
-        color: #333;
-        margin-left: 10px;
-        border-radius: 4px;
-    }
     .login {
         margin: auto;
         width: 80%;

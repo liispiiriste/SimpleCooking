@@ -2,30 +2,37 @@
     <div class="recipe">
         <div class="container">
             <div v-if="!submitted">
-                <h4>{{this.recipe.name}}</h4>
+                <b-card style="background:rgba(255, 255, 255, 0.2); border:none; border-radius:25px;">
+                    <h4>{{this.recipe.name}}</h4>
 
-                <div v-if="this.recipe" style="text-align:left">
-                    <div>
-                        <label >Juhend: </label> {{this.recipe.description}}
-                    </div>
-                    <div>
-                        <label >Materjalid: </label> {{this.recipe.materials}}
-                    </div>
-                    <div>
-                        <label >Portsjon: </label> {{this.recipe.portion}}
-                    </div>
-                    <div>
-                        <label >Hind: </label> {{this.recipe.price}}
-                    </div>
-                    <div>
-                        <label >Kategooria: </label>
-                       {{this.recipe.category}}
-                    </div>
-                    <button class="btn btn-warning btn-xs" style="float:left;" >
-                        <router-link :to="{name: 'editRecipe', params: {recipe:recipe, id: recipe.id}}">Muuda</router-link></button>
-                </div>
+                    <div v-if="this.recipe" style="text-align:left">
+                        <div>
+                            <label>Juhend: </label> {{this.recipe.description}}
+                        </div>
+                        <div>
+                            <label>Materjalid: </label> {{this.recipe.materials}}
+                        </div>
+                        <div>
+                            <label>Portsjon: </label> {{this.recipe.portion}}
+                        </div>
+                        <div>
+                            <label>Hind: </label> {{this.recipe.price}}
+                        </div>
+                        <div>
+                            <label>Kategooria: </label>
+                            {{this.recipe.category}}
+                        </div>
 
-                <button class="btn btn-danger btn-xs" style="float:left; margin-left:5px" v-on:click="deleteRecipe()">Kustuta</button>
+
+                    </div>
+                    <router-link :to="{name: 'editRecipe', params: {recipe:recipe, id: recipe.id}}">
+                    <b-button variant="outline-success" style="float:left;">
+                        Muuda
+                    </b-button></router-link>
+                    <b-button variant="outline-warning" style="float:left; margin-left:5px" v-on:click="deleteRecipe()">
+                        Kustuta
+                    </b-button>
+                </b-card>
             </div>
             <div v-else>
                 <h4>Retsept on edukalt kustutatud!</h4>
@@ -64,20 +71,22 @@
 </script>
 
 <style scoped>
-a:hover, :link, :visited, :active{
-    color: white;
-    text-decoration: none;
+    a:hover, :link, :visited, :active {
+        color: white;
+        text-decoration: none;
 
-}
-    label{
-        min-width: 90px;
-        margin:auto;
-        font-weight:bold;
-        margin-top:5px;
     }
-    .container{
-        width:70%;
-        margin:auto;
+
+    label {
+        min-width: 90px;
+        margin: auto;
+        font-weight: bold;
+        margin-top: 5px;
+    }
+
+    .container {
+        width: 70%;
+        margin: auto;
     }
 
 </style>
