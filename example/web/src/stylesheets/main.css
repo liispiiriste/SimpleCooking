@@ -28,7 +28,7 @@
 .nav-item{
     text-align:left;
 }
-button{
+.button{
     width:200px;
     margin:auto;
     align: center;
@@ -37,17 +37,42 @@ button{
     border-radius: 4px;
 }
 
-.wrapper{
-    height: 100vh;
-    width:100%;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+/*.wrapper{
+    min-height:100vh;
+    min-width:100vw;
+
     background-repeat:no-repeat;
-    background: -webkit-linear-gradient( to left top, #c0c0c0, #fdfd96);
-    background: -moz-linear-gradient( to left top, #c0c0c0, #fdfd96);
-    background: -ms-linear-gradient( to left top,#c0c0c0, #fdfd96);
-    background: -o-linear-gradient( to left top, #c0c0c0, #fdfd96);
-    background: linear-gradient( to left top, #c0c0c0, #fdfd96);
+    background: -webkit-linear-gradient( to left top, #faffd1, #a1ffce) no-repeat center center fixed;
+    background: -moz-linear-gradient( to left top, #faffd1, #a1ffce) no-repeat center center fixed;
+    background: -ms-linear-gradient( to left top,#faffd1, #a1ffce) no-repeat center center fixed;
+    background: -o-linear-gradient( to left top, #faffd1, #a1ffce) no-repeat center center fixed;
+    background: linear-gradient( to left top, #faffd1, #a1ffce) no-repeat center center fixed;
+    background-attachment: fixed !important;
+
+}*/
+b-navbar{
+    position: sticky
+}
+img{
+    max-width:80vw;
+}
+.sidemenu{
+    margin-top:50px;
+    float:left;
+    display:inline;
+    max-width:25vw;
+}
+.col-md-6{
+    float:left;
+    display:inline;
+    max-width:50vw;
+    margin:0;
+}
+.recipes{
+    max-width:70vw;
+
+}
+.list row{
+    max-width:50vw;
+    margin:0;
 }
