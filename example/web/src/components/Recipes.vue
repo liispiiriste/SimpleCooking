@@ -44,24 +44,24 @@
 
 <script>
     import http from "../http-common";
+    import axios from "axios";
     export default {
         name: "Recipes",
         data() {
             return {
-                recipes: []
+                recipes: [],
+                searchStr:''
             }
         },
         methods: {
             retrieveRecipes() {
-                http.
-                get("/recipes").
-                then(response=> {
+                http.get("/recipes").then(response => {
                     this.recipes = response.data;
 
-                })
-
+                });
 
             },
+
             refreshList() {
                 this.retrieveRecipes();
             },
@@ -80,9 +80,11 @@
                 }
             }
         },
+
         mounted() {
             this.retrieveRecipes();
-        }
+        },
+
     };
 </script>
 

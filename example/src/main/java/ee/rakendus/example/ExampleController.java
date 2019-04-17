@@ -22,6 +22,9 @@ public class ExampleController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    RecipeService recipeService;
+
     @GetMapping("/recipes")
     public List<Recipe> getAllRecipes() {
         List<Recipe> recipes = new ArrayList<>();
@@ -55,10 +58,7 @@ public class ExampleController {
         repository.save(recipe);
 
     }
-   /* private void saveCategory(Categories categories)
-    {
 
-    }*/
     @PostMapping("/recipe")
     public ResponseEntity postRecipe(@RequestBody Recipe recipe) {
         boolean error = false;
@@ -106,4 +106,8 @@ public class ExampleController {
         return new ResponseEntity<>(getRecipesByUserList(userId), HttpStatus.OK);
     }
 
+    @RequestMapping(value="/recipes/search/{searchStr}", method = RequestMethod.GET)
+    public List<Recipe> searchRecipes(@PathVariable("searchStr") String searchStr) {
+        return recipeService.searchRecipesByName(searchStr);
+    }
 }

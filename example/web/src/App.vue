@@ -25,9 +25,10 @@
                             <router-link class="nav-link" to="/register">Registreeri</router-link>
                         </li>-->
                     </ul>
-                    <form v-if="authenticated" class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="text" placeholder="Otsing">
-                        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Otsi</button>
+                    <form id="searchForm" v-if="authenticated" class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="text" name="recipesFilter" id="recipesFilter" placeholder="Otsing" value.bind="searchStr"/>
+                        <input class="btn btn-secondary my-2 my-sm-0"  type="submit" name="search" id="search" value="Otsi"/>
+
                     </form>
                     <router-link class="nav-link" v-if="authenticated" to="/login" v-on:click.native="logout()" replace>Logout</router-link>
                 </div>
@@ -55,6 +56,7 @@ export default {
         if(!this.authenticated) {
             this.$router.replace({ name: "login" });
         }
+
     },
     methods: {
         setAuthenticated(status) {
@@ -63,7 +65,8 @@ export default {
         logout() {
             this.authenticated = false;
         }
-    }
+    },
+
 }
 </script>
 <style>
