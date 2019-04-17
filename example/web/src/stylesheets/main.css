@@ -4,7 +4,6 @@
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #333;
-    margin-top: 60px;
 }
 @keyframes fadeIn{
     0%{
@@ -57,10 +56,10 @@ img{
     max-width:80vw;
 }
 .sidemenu{
-    margin-top:50px;
     float:left;
     display:inline;
-    max-width:25vw;
+    max-width:30vw;
+    padding:10px
 }
 .col-md-6{
     float:left;
@@ -68,11 +67,13 @@ img{
     max-width:50vw;
     margin:0;
 }
+li{
+    list-style:none;
+}
 .recipes{
     max-width:70vw;
 
 }
 .list row{
-    max-width:50vw;
-    margin:0;
+    margin: auto;
 }

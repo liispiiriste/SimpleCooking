@@ -1,9 +1,8 @@
 <template>
     <div class="recipes">
         <div class="sidemenu">
-            <div class="btn-group-vertical" data-toggle="buttons" style="float:right;">
-                <b-button-group vertical>
-                <b-button  v-on:click="chosenCategory('all')" active>
+            <b-button-group vertical>
+                <b-button v-on:click="chosenCategory('all')" active>
                     Kõik<input type="radio" name="options" id="all" autocomplete="off" checked></b-button>
                 <b-button v-on:click="chosenCategory('hommikusöök')">
                     Hommikusöögid<input type="radio" name="options" id="breakfast" autocomplete="off"></b-button>
@@ -31,26 +30,29 @@
                     Võileivatordid<input type="radio" name="options" id="sandwich-cake" autocomplete="off"></b-button>
                 <b-button v-on:click="chosenCategory('vormiroog')">
                     Vormiroad<input type="radio" name="options" id="formdish" autocomplete="off"></b-button>
-                </b-button-group>
-            </div>
+            </b-button-group>
+
         </div>
-        <div class="list row" style="max-width:70%;">
-            <div class="col-md-6">
-                <h1 style="margin-left:60px; font-size:200%">Retseptid</h1>
-                <ul>
-                    <li v-for="(recipe, index) in recipes" :key="index">
-                        <router-link :to="{
+        <div class="list row">
+            <b-card title="Retseptid" style="background:rgba(255, 255, 255, 0.2); border:none; border-radius:25px;">
+                <b-card-text>
+                    <div class="col-md-6">
+                        <ul>
+                            <li v-for="(recipe, index) in recipes" :key="index">
+                                <router-link :to="{
                             name: 'recipe',
                             params: { recipe: recipe, id: recipe.id }
                         }" style="color:#333">
-                            {{recipe.name}}
-                        </router-link>
-                    </li>
-                </ul>
-            </div>
-            <div>
-                <router-view @refreshData="refreshList"></router-view>
-            </div>
+                                    {{recipe.name}}
+                                </router-link>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <router-view @refreshData="refreshList"></router-view>
+                    </div>
+                </b-card-text>
+            </b-card>
         </div>
     </div>
 </template>

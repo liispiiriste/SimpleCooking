@@ -4,7 +4,7 @@
             <h4>Minu konto</h4>
 
             <!--labelid tglt v-if useri kohta-->
-            <div class="labelid">
+            <div class="labelid" style="margin:15px; padding:10px;background:rgba(255, 255, 255, 0.2); border:none; border-radius:25px;">
                 <div>
                     <label>Kasutajanimi: </label> {{user.username}}
                 </div>
@@ -12,8 +12,8 @@
                 <div>
                     <label>Email: </label> {{user.email}}
                 </div>
-
-                <div>
+            </div>
+                <div style="margin:15px; padding:10px; background:rgba(255, 255, 255, 0.2); border:none; border-radius:25px;">
                     <!--TODO: listi kujundust muuta.-->
                     <label>Minu retseptid: </label> <ul>
                     <li v-for="(recipe, index) in recipes" :key="index">
@@ -32,7 +32,6 @@
             </div>
         </div>
 
-    </div>
 </template>
 
 <script>

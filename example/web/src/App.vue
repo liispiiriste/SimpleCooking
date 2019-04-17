@@ -1,6 +1,5 @@
 <template xmlns:th="http://www.w3.org/1999/xhtml">
     <div id="app" style="margin:auto;">
-        <div class="wrapper">
         <!-- navbar -->
             <div>
                 <b-navbar toggleable="lg" type="dark" variant="secondary">
@@ -67,7 +66,7 @@
             </transition>
         </div>
         <div class="footer" style="margin-bottom:20px;"></div>
-    </div></div>
+    </div>
 </template>
 <script>
 
