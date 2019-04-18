@@ -43,12 +43,12 @@
                         <li class="nav-item">
                             <router-link class="nav-link" to="/MyAccount">Minu konto</router-link>
                         </li>
-                       <!--- <li class="nav-item">
+                        <li class="nav-item">
                             <router-link class="nav-link" to="/login">Logi sisse</router-link>
                         </li>
                         <li class="nav-item">
                             <router-link class="nav-link" to="/register">Registreeri</router-link>
-                        </li>-->
+                        </li>
 
                  </ul>
                     <form v-if="authenticated" class="form-inline my-2 my-lg-0">
@@ -60,7 +60,7 @@
                 </div>
 
             </div>
-        </div>
+        </div>-->
         <br>
         <div class="container" style="margin-top:45px;">
             <transition name="moveInUp">
