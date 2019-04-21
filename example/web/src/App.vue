@@ -43,22 +43,24 @@
                         <li class="nav-item">
                             <router-link class="nav-link" to="/MyAccount">Minu konto</router-link>
                         </li>
-                       <!--- <li class="nav-item">
+                        <li class="nav-item">
                             <router-link class="nav-link" to="/login">Logi sisse</router-link>
                         </li>
                         <li class="nav-item">
                             <router-link class="nav-link" to="/register">Registreeri</router-link>
-                        </li>-->
-                   <!--- </ul>
+                        </li>
+
+                 </ul>
                     <form v-if="authenticated" class="form-inline my-2 my-lg-0">
                         <input class="form-control mr-sm-2" type="text" placeholder="Otsing">
                         <button class="btn btn-secondary my-2 my-sm-0" type="submit">Otsi</button>
+
                     </form>
                     <router-link class="nav-link" v-if="authenticated" to="/login" v-on:click.native="logout()" replace>Logout</router-link>
                 </div>
 
             </div>
-        </div>--->
+        </div>-->
         <br>
         <div class="container" style="margin-top:45px;">
             <transition name="moveInUp">
@@ -84,6 +86,7 @@
         if(!this.authenticated) {
             this.$router.replace({ name: "login" });
         }
+
     },
     methods: {
         setAuthenticated(status) {
@@ -92,7 +95,8 @@
         logout() {
             this.authenticated = false;
         }
-    }
+    },
+
 }
 </script>
 <style>
