@@ -21,6 +21,10 @@
                         <label >Kategooria: </label>
                        {{this.recipe.category}}
                     </div>
+                    <div>
+                        <label>Pilt</label>
+                        {{this.recipe.image}}
+                    </div>
                     <button class="btn btn-warning btn-xs" style="float:left;" >
                         <router-link :to="{name: 'editRecipe', params: {recipe:recipe, id: recipe.id}}">Muuda</router-link></button>
                 </div>

@@ -79,6 +79,34 @@
 
             </div>
 
+            <div>
+
+                <!-- slot for parent component to activate the file changer -->
+                <div @click="launchFilePicker()">
+                    <slot name="activator"></slot>
+                </div>
+
+                <!-- image input: style is set to hidden and assigned a ref so that it can be triggered -->
+                <input type="file"
+                       ref="file"
+                       :name="uploadFieldName"
+                       @change="onFileChange(
+          $event.target.name, $event.target.files)"
+                       style="display:none">
+
+                <!-- error dialog displays any potential errors -->
+                <v-dialog v-model="errorDialog" max-width="300">
+                    <v-card>
+                        <v-card-text class="subheading">{{errorText}}</v-card-text>
+                        <v-card-actions>
+                            <v-spacer></v-spacer>
+                            <v-btn @click="errorDialog = false" flat>Got it!</v-btn>
+                        </v-card-actions>
+                    </v-card>
+                </v-dialog>
+
+            </div>
+
             <button v-on:click="saveRecipe" class="btn btn-success">Salvesta retsept</button>
 
         </div>
@@ -104,11 +132,9 @@
     export default {
         name: 'add-recipe',
         data() {
-
-            errorMessage:null
             return {
-                recipe:{
-                    id:0,
+                recipe: {
+                    id: 0,
                     name: "",
                     description: "",
                     materials: [],
@@ -116,26 +142,27 @@
                     portion: 0,
                     price: 0,
 
-                 },
+
+                },
                 user: {
                     id: ''
                 },
                 submitted: false,
-                nameError:"",
-                desError:"",
-                matError:"",
-                catError:"",
-                portionError:"",
-                priceError:"",
-                mat:'',
-                mat2:0,
-                mat3:'',
-                cat:''
+                nameError: "",
+                desError: "",
+                matError: "",
+                catError: "",
+                portionError: "",
+                priceError: "",
+                mat: '',
+                mat2: 0,
+                mat3: '',
+                cat: ''
             };
         },
         methods: {
 
-             saveRecipe() {
+            saveRecipe() {
 
                 let data = {
                     name: this.recipe.name,
@@ -147,30 +174,55 @@
                     id: this.user.id
 
                 };
-                if(!this.recipe.name){this.nameError="Lisa nimi" }
-                if(this.recipe.name){this.nameError=""}
-                 if(!this.recipe.description){this.desError="Lisa juhised" }
-                 if(this.recipe.description){this.desError=""}
-                 if(!data.materials){this.matError="Lisa materjalid" }
-                 if(data.materials){this.matError=""}
-                 if(!data.category){this.catError="Vali kategooria" }
-                 if(data.category){this.catError=""}
-                 if(!this.recipe.portion){this.portionError="Lisa portsjon"}
-                 if(this.recipe.portion) {this.portionError=""}
-                 if(!this.recipe.price){this.priceError="Lisa hind"}
-                 if(this.recipe.price) {this.priceError=""}
-                 if(this.recipe.name && this.recipe.description && data.materials && data.category && this.recipe.portion
-                 && this.recipe.price){
-                  http
-                     .post("/recipe", data)
-                     .then(response => {
-                         this.recipe.id = response.data.id;
-                         console.log(data)
-                         console.log("lisatud", response)
+                if (!this.recipe.name) {
+                    this.nameError = "Lisa nimi"
+                }
+                if (this.recipe.name) {
+                    this.nameError = ""
+                }
+                if (!this.recipe.description) {
+                    this.desError = "Lisa juhised"
+                }
+                if (this.recipe.description) {
+                    this.desError = ""
+                }
+                if (!data.materials) {
+                    this.matError = "Lisa materjalid"
+                }
+                if (data.materials) {
+                    this.matError = ""
+                }
+                if (!data.category) {
+                    this.catError = "Vali kategooria"
+                }
+                if (data.category) {
+                    this.catError = ""
+                }
+                if (!this.recipe.portion) {
+                    this.portionError = "Lisa portsjon"
+                }
+                if (this.recipe.portion) {
+                    this.portionError = ""
+                }
+                if (!this.recipe.price) {
+                    this.priceError = "Lisa hind"
+                }
+                if (this.recipe.price) {
+                    this.priceError = ""
+                }
+                if (this.recipe.name && this.recipe.description && data.materials && data.category && this.recipe.portion
+                    && this.recipe.price) {
+                    http
+                        .post("/recipe", data)
+                        .then(response => {
+                            this.recipe.id = response.data.id;
+                            console.log(data)
+                            console.log("lisatud", response)
 
-                     });
+                        });
 
-                     this.submitted = true;}
+                    this.submitted = true;
+                }
 
             },
             newRecipe() {
@@ -178,42 +230,81 @@
                 this.recipe = {};
                 window.location.reload();
             },
-            addCategory(){
-                 var newCategory = this.cat;
-                 if(!newCategory) {return};
-                 if(this.recipe.category.includes(newCategory)){return}
-                 this.recipe.category.push(newCategory);
-                 this.cat='';
-                 newCategory='';
+            addCategory() {
+                var newCategory = this.cat;
+                if (!newCategory) {
+                    return
+                }
+                ;
+                if (this.recipe.category.includes(newCategory)) {
+                    return
+                }
+                this.recipe.category.push(newCategory);
+                this.cat = '';
+                newCategory = '';
             },
-            removeCategory(x){
-                 this.recipe.category.splice(x,1);
-                 this.saveCategory();
+            removeCategory(x) {
+                this.recipe.category.splice(x, 1);
+                this.saveCategory();
             },
-            saveCategory(){
+            saveCategory() {
 
             },
-            addMaterial(){
-                var newMaterial = " " + this.mat + " - " + this.mat2 +  " " + this.mat3;
-                if(!newMaterial) {return}
-                if(this.recipe.materials.includes(newMaterial)){return}
+            addMaterial() {
+                var newMaterial = " " + this.mat + " - " + this.mat2 + " " + this.mat3;
+                if (!newMaterial) {
+                    return
+                }
+                if (this.recipe.materials.includes(newMaterial)) {
+                    return
+                }
 
                 this.recipe.materials.push(newMaterial);
-                this.mat='';
-                newMaterial='';
+                this.mat = '';
+                newMaterial = '';
             },
-            removeMaterial(x){
-                this.recipe.materials.splice(x,1);
+            removeMaterial(x) {
+                this.recipe.materials.splice(x, 1);
                 this.saveMaterial();
             },
-            saveMaterial(){
+            saveMaterial() {
 
+            },
+            launchFilePicker() {
+                this.$refs.file.click();
+            },
+
+            onFileChange(fieldName, file) {
+                const {maxSize} = this
+                let imageFile = file[0]
+
+                //check if user actually selected a file
+                if (file.length > 0) {
+                    let size = imageFile.size / maxSize / maxSize
+                    if (!imageFile.type.match('image.*')) {
+                        // check whether the upload is an image
+                        this.errorDialog = true
+                        this.errorText = 'Please choose an image file'
+                    } else if (size > 1) {
+                        // check whether the size is greater than the size limit
+                        this.errorDialog = true
+                        this.errorText = 'Your file is too big! Please select an image under 1MB'
+                    } else {
+                        // Append file into FormData & turn file into image URL
+                        let formData = new FormData()
+                        let imageURL = URL.createObjectURL(imageFile)
+                        formData.append(fieldName, imageFile)
+
+                        // Emit FormData & image URL to the parent component
+                        this.$emit('input', {formData, imageURL})
+                    }
+                }
+            },
+            mounted() {
+                axios.get('http://localhost:8080/api/loggedIn').then(response => (this.user = response.data));
             }
         },
-        mounted() {
-            axios.get('http://localhost:8080/api/loggedIn').then(response => (this.user = response.data));
-        }
-    };
+    }
 </script>
 
 

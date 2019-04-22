@@ -44,6 +44,10 @@ public class Recipe {
     @ManyToOne
     private Categories categories;
 
+    @Lob
+    @Column(name="image")
+    private Byte[] image;
+
     protected Recipe() {
     }
 
@@ -124,6 +128,14 @@ public class Recipe {
     public Categories getCategories() {return categories;}
 
     public void setCategories(Categories categories) {this.categories = categories;}
+
+    public Byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(Byte[] image) {
+        this.image = image;
+    }
 
     //endregion
 
