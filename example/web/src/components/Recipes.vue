@@ -47,6 +47,7 @@
                                 </router-link>
                             </li>
                         </ul>
+
                     </div>
                     <div>
                         <router-view @refreshData="refreshList"></router-view>
@@ -66,8 +67,7 @@
         name: "Recipes",
         data() {
             return {
-                recipes: [],
-                searchStr:''
+                recipes: []
             }
         },
         methods: {
@@ -96,10 +96,9 @@
                 }
             }
         },
-
         mounted() {
             this.retrieveRecipes();
-        },
+        }
 
     };
 </script>
