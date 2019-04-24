@@ -243,7 +243,6 @@
                 reader.readAsDataURL(this.selectedFile);
                 reader.onload = event => {
                     this.previewImage = event.target.result;
-                    console.log(this.previewImage);
                 }
             },
             onUpload() {

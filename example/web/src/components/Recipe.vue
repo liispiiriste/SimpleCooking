@@ -21,8 +21,8 @@
                         <label >Kategooria: </label>
                        {{this.recipe.category}}
                     </div>
-                    <div>
-                        <label>Pilt</label>
+                    <div id="recipeImage">
+                        <img :src="showImage()" alt="recipe's image">
                     </div>
                     <button class="btn btn-warning btn-xs" style="float:left;" >
                         <router-link :to="{name: 'editRecipe', params: {recipe:recipe, id: recipe.id}}">Muuda</router-link></button>
@@ -42,6 +42,7 @@
 
 <script>
     import http from "../http-common";
+    import axios from "axios";
 
     export default {
         name: "Recipe",
@@ -49,7 +50,8 @@
         props: ["recipe"],
         data() {
             return {
-                submitted: false
+                submitted: false,
+                image: {}
             };
         },
         methods: {
@@ -61,6 +63,23 @@
                         this.$router.push('/recipe');
                     });
                 this.submitted = true;
+            },
+            showImage(event) {
+                http.get('/recipe/' + this.recipe.id + '/recipeImage')
+                    .then(response => (this.image = response.data));
+                this.image = event.target.files[0];
+                console.log(this.image);
+                const reader = new FileReader();
+
+                reader.onload = event => {
+                    this.image = event.target.result;
+                    this.$refs.cropper.replace(this.image);
+                }
+                console.log(this.recipe.id);
+
+            },
+            mounted() {
+                this.showImage();
             }
         }
     }
@@ -81,6 +100,15 @@ a:hover, :link, :visited, :active{
     .container{
         width:70%;
         margin:auto;
+    }
+    #recipeImage{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #recipeImage img {
+        max-width: 100%;
+        max-height: 500px;
     }
 
 </style>

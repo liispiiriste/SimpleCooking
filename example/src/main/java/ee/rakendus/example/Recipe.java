@@ -51,15 +51,6 @@ public class Recipe {
     protected Recipe() {
     }
 
-    /*public Recipe(String name, String description, String materials, String category, int price, int portion) {
-        this.name = name;
-        this.description = description;
-        this.materials = materials;
-        this.category = category;
-        this.price = price;
-        this.portion = portion;
-    }*/
-
     //region getters and setters
     public Long getId() {
         return id;
