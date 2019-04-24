@@ -96,12 +96,12 @@
                 <br>
 
             </div>
-            <button v-on:click="saveRecipe" class="btn btn-success">Salvesta retsept</button>
+            <button v-on:click="saveRecipe" class="btn btn-success">Lisa pilt</button>
 
         </div>
         <div v-else-if="submitted && !pic">
             <h4>Lisa pilt</h4>
-            <label>{{this.recipe.id}}</label>
+            <h5>{{recipe.id}}</h5>
         </div>
 
         <div v-else>
@@ -169,44 +169,20 @@
                     id: this.user.id
 
                 };
-                if (!this.recipe.name) {
-                    this.nameError = "Lisa nimi"
-                }
-                if (this.recipe.name) {
-                    this.nameError = ""
-                }
-                if (!this.recipe.description) {
-                    this.desError = "Lisa juhised"
-                }
-                if (this.recipe.description) {
-                    this.desError = ""
-                }
-                if (!data.materials) {
-                    this.matError = "Lisa materjalid"
-                }
-                if (data.materials) {
-                    this.matError = ""
-                }
-                if (!data.category) {
-                    this.catError = "Vali kategooria"
-                }
-                if (data.category) {
-                    this.catError = ""
-                }
-                if (!this.recipe.portion) {
-                    this.portionError = "Lisa portsjon"
-                }
-                if (this.recipe.portion) {
-                    this.portionError = ""
-                }
-                if (!this.recipe.price) {
-                    this.priceError = "Lisa hind"
-                }
-                if (this.recipe.price) {
-                    this.priceError = ""
-                }
-                if (this.recipe.name && this.recipe.description && data.materials && data.category && this.recipe.portion
+                this.nameError = (!this.recipe.name) ? "Lisa nimi" : "";
+                this.desError = (!this.recipe.description) ? "Lisa juhised" : "";
+                this.matError = (!data.materials) ? "Lisa materjalid" : "";
+                this.catError = (!data.category) ? "Vali kategooria" : "";
+                this.portionError = (!this.recipe.portion) ? "Lisa portjon" : "";
+                this.priceError = (!this.recipe.price) ? "Lisa hind" : "";
+
+                if (this.recipe.name
+                    && this.recipe.description
+                    && data.materials
+                    && data.category
+                    && this.recipe.portion
                     && this.recipe.price) {
+                    this.submitted = true;
                     http
                         .post("/recipe", data)
                         .then(response => {
@@ -216,7 +192,6 @@
                             console.log("lisatud", response)
 
                         });
-                    this.submitted = true;
                 }
 
             },
@@ -227,13 +202,9 @@
             },
             addCategory() {
                 var newCategory = this.cat;
-                if (!newCategory) {
-                    return
-                }
-                ;
-                if (this.recipe.category.includes(newCategory)) {
-                    return
-                }
+                if (!newCategory) return;
+
+                if (this.recipe.category.includes(newCategory)) return;
                 this.recipe.category.push(newCategory);
                 this.cat = '';
                 newCategory = '';
@@ -333,7 +304,8 @@
         color: red;
         font-size: 16px
     }
-    .uploading-image{
-        display:flex;
+
+    .uploading-image {
+        display: flex;
     }
 </style>

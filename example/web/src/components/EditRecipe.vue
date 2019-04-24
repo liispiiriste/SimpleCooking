@@ -47,13 +47,6 @@
 
                 </div>
 
-                <div>
-                    <form action="..." method="post" enctype="multipart/form-data">
-                        <input type="file" accept="image/jpg" v-on:change=uploadImage id="image">
-                        <img src="previewImage" class="uploading-image"/>
-                    </form>
-                </div>
-
                 <button @click="updateRecipe" class="btn btn-primary">
                     <router-link :to="{
                             name: 'recipe',
