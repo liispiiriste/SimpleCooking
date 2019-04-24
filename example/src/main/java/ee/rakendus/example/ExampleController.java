@@ -7,7 +7,6 @@ import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -130,14 +129,6 @@ public class ExampleController {
         imageService.saveImageFile(id, file);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
-
-    @GetMapping("recipe/{id}/image")
-    public String showUploadForm(@PathVariable String id, Model model){
-        model.addAttribute("recipe", findById(Long.valueOf(id)));
-
-        return "testUpload";
-    }
-
 
     @GetMapping("/recipe/{id}/recipeImage")
     public void renderImageFromDB(@PathVariable("id") long id, HttpServletResponse response) throws IOException {
