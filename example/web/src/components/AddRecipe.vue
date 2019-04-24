@@ -1,26 +1,30 @@
-<template >
+<template>
     <div class="submitform">
 
-        <div v-if="!submitted" style="font-size:20px">
+        <div v-if="!submitted && !pic" style="font-size:20px">
             <h1 style="font-size:170%">Lisa uus retsept</h1>
             <div class="form-group">
                 <label for="name">Nimi</label>
                 <input type="text" class="form-control" id="name" v-model="recipe.name" name="name">
 
-                <div  class="err"> {{nameError}}</div>
+                <div class="err"> {{nameError}}</div>
 
             </div>
             <div class="form-group">
                 <label for="description">Juhend</label>
-                <textarea type="text" rows=4 style="overflow-y: scroll;" class="form-control" id="description" required v-model="recipe.description" name="description"></textarea>
+                <textarea type="text" rows=4 style="overflow-y: scroll;" class="form-control" id="description" required
+                          v-model="recipe.description" name="description"></textarea>
                 <div class="err"> {{desError}}</div>
 
             </div>
             <div class="form-group">
                 <label for="materials">Materjalid</label><br>
-                <input type="text" class="small-input" id="materials" v-model="mat" name="materials" style="padding-left:10px;height:40px;width:235px;font-size:15px">
-                <input type="number" min="0" class="small-input" style="padding-left:10px;height:40px" id="quantity" v-model="mat2" name="quantity">
-                <select class="custom-select" v-model="mat3" style="width:75px; font-size:15px; max-height:40px; margin-left:10px; height: 37px">
+                <input type="text" class="small-input" id="materials" v-model="mat" name="materials"
+                       style="padding-left:10px;height:40px;width:235px;font-size:15px">
+                <input type="number" min="0" class="small-input" style="padding-left:10px;height:40px" id="quantity"
+                       v-model="mat2" name="quantity">
+                <select class="custom-select" v-model="mat3"
+                        style="width:75px; font-size:15px; max-height:40px; margin-left:10px; height: 37px">
                     <option value="g">g</option>
                     <option value="kg">kg</option>
                     <option value="sl">sl</option>
@@ -34,7 +38,12 @@
                 <button style="margin-bottom:5px" class="small-input" v-on:click="addMaterial()">Lisa</button>
                 <div class="arraylist" v-for="(mat,m) in recipe.materials">
                     <div class="arraytext"><span style="text-align:left" class="mat"> {{mat}}</span></div>
-                    <div class="arraybutton"><button style="float:right; background-color:#fff87c; border-color:#f4f09c; color:#666" class="btn btn-warning btn-sm" @click="removeMaterial(n)">Eemalda</button></div><br>
+                    <div class="arraybutton">
+                        <button style="float:right; background-color:#fff87c; border-color:#f4f09c; color:#666"
+                                class="btn btn-warning btn-sm" @click="removeMaterial(n)">Eemalda
+                        </button>
+                    </div>
+                    <br>
                 </div>
                 <div class="err"> {{matError}}</div>
 
@@ -62,60 +71,44 @@
                 <button style="margin-bottom:5px" v-on:click="addCategory()" class="small-input">Lisa</button>
                 <div class="arraylist" v-for="(cat,n) in recipe.category">
                     <div class="arraytext"><span style="text-align:left" class="cat"> {{cat}}</span></div>
-                    <div class="arraybutton"><button style="float:right; background-color:#fff87c; border-color:#f4f09c; color:#666" class="btn btn-warning btn-sm" @click="removeCategory(n)">Eemalda</button></div><br>
+                    <div class="arraybutton">
+                        <button style="float:right; background-color:#fff87c; border-color:#f4f09c; color:#666"
+                                class="btn btn-warning btn-sm" @click="removeCategory(n)">Eemalda
+                        </button>
+                    </div>
+                    <br>
                 </div>
 
                 <div class="err"> {{catError}}</div>
 
-            </div><br>
+            </div>
+            <br>
             <div class="form-group">
                 <label for="portion">Portsjon</label>
-                <input class="small-input" type="number" id="portion" min="1" required v-model="recipe.portion" name="portion">
-                <div class="err"> {{portionError}}</div><br>
+                <input class="small-input" type="number" id="portion" min="1" required v-model="recipe.portion"
+                       name="portion">
+                <div class="err"> {{portionError}}</div>
+                <br>
                 <label for="price">Hind</label>
-                <input class="small-input" type="number" id="price"  min="1" v-model="recipe.price" name="price">
+                <input class="small-input" type="number" id="price" min="1" v-model="recipe.price" name="price">
 
-                <div class="err"> {{priceError}}</div><br>
-
-            </div>
-
-            <div>
-
-                <!-- slot for parent component to activate the file changer -->
-                <div @click="launchFilePicker()">
-                    <slot name="activator"></slot>
-                </div>
-
-                <!-- image input: style is set to hidden and assigned a ref so that it can be triggered -->
-                <input type="file"
-                       ref="file"
-                       :name="uploadFieldName"
-                       @change="onFileChange(
-          $event.target.name, $event.target.files)"
-                       style="display:none">
-
-                <!-- error dialog displays any potential errors -->
-                <v-dialog v-model="errorDialog" max-width="300">
-                    <v-card>
-                        <v-card-text class="subheading">{{errorText}}</v-card-text>
-                        <v-card-actions>
-                            <v-spacer></v-spacer>
-                            <v-btn @click="errorDialog = false" flat>Got it!</v-btn>
-                        </v-card-actions>
-                    </v-card>
-                </v-dialog>
+                <div class="err"> {{priceError}}</div>
+                <br>
 
             </div>
-
             <button v-on:click="saveRecipe" class="btn btn-success">Salvesta retsept</button>
 
+        </div>
+        <div v-else-if="submitted && !pic">
+            <h4>Lisa pilt</h4>
+            <label>{{this.recipe.id}}</label>
         </div>
 
         <div v-else>
             <h4>Lisatud!</h4>
             <button class="btn btn-success" v-on:click="newRecipe">Uus retsept</button>
             <router-link to="/recipes">
-                <button type="reset" class="btn btn-success" >Kõik retseptid</button>
+                <button type="reset" class="btn btn-success">Kõik retseptid</button>
             </router-link>
         </div>
     </div>
@@ -127,12 +120,14 @@
     import VeeValidate from 'vee-validate';
     import $store from "../store/modules/auth";
     import axios from "axios";
+
     Vue.use(VeeValidate);
 
     export default {
         name: 'add-recipe',
         data() {
             return {
+                previewImage: null,
                 recipe: {
                     id: 0,
                     name: "",
@@ -141,13 +136,12 @@
                     category: [],
                     portion: 0,
                     price: 0,
-
-
                 },
                 user: {
                     id: ''
                 },
                 submitted: false,
+                pic: false,
                 nameError: "",
                 desError: "",
                 matError: "",
@@ -158,6 +152,7 @@
                 mat2: 0,
                 mat3: '',
                 cat: ''
+
             };
         },
         methods: {
@@ -216,11 +211,11 @@
                         .post("/recipe", data)
                         .then(response => {
                             this.recipe.id = response.data.id;
+
                             console.log(data)
                             console.log("lisatud", response)
 
                         });
-
                     this.submitted = true;
                 }
 
@@ -270,40 +265,12 @@
             saveMaterial() {
 
             },
-            launchFilePicker() {
-                this.$refs.file.click();
-            },
 
-            onFileChange(fieldName, file) {
-                const {maxSize} = this
-                let imageFile = file[0]
-
-                //check if user actually selected a file
-                if (file.length > 0) {
-                    let size = imageFile.size / maxSize / maxSize
-                    if (!imageFile.type.match('image.*')) {
-                        // check whether the upload is an image
-                        this.errorDialog = true
-                        this.errorText = 'Please choose an image file'
-                    } else if (size > 1) {
-                        // check whether the size is greater than the size limit
-                        this.errorDialog = true
-                        this.errorText = 'Your file is too big! Please select an image under 1MB'
-                    } else {
-                        // Append file into FormData & turn file into image URL
-                        let formData = new FormData()
-                        let imageURL = URL.createObjectURL(imageFile)
-                        formData.append(fieldName, imageFile)
-
-                        // Emit FormData & image URL to the parent component
-                        this.$emit('input', {formData, imageURL})
-                    }
-                }
-            },
             mounted() {
                 axios.get('http://localhost:8080/api/loggedIn').then(response => (this.user = response.data));
             }
-        },
+        }
+        ,
     }
 </script>
 
@@ -315,15 +282,17 @@
         align: center;
         color: #333
     }
-    input, textarea, select{
-        max-width:500px;
-        margin:auto;
+
+    input, textarea, select {
+        max-width: 500px;
+        margin: auto;
         align: center;
         color: #333
     }
-    .small-input{
-        width:75px;
-        margin:auto;
+
+    .small-input {
+        width: 75px;
+        margin: auto;
         align: center;
         color: #333;
         margin-left: 10px;
@@ -331,32 +300,40 @@
         border-style: solid;
         border-color: lightgrey;
         border-width: 1px;
-        font-size:15px;
-        padding-left:10px;
-        height:40px
+        font-size: 15px;
+        padding-left: 10px;
+        height: 40px
 
 
     }
-    .form-group{
+
+    .form-group {
         width: 500px;
         align: center;
         margin: auto;
         color: #333
     }
-    .arraylist{
-        margin-bottom:5px
+
+    .arraylist {
+        margin-bottom: 5px
     }
-    .arraytext{
-        width:75%;
-        float:left;
-        font-size:16px
+
+    .arraytext {
+        width: 75%;
+        float: left;
+        font-size: 16px
     }
-    .arraybutton{
-        width:20%;
-        float:right;
+
+    .arraybutton {
+        width: 20%;
+        float: right;
     }
-    .err{
-        color:red;
-        font-size:16px
+
+    .err {
+        color: red;
+        font-size: 16px
+    }
+    .uploading-image{
+        display:flex;
     }
 </style>

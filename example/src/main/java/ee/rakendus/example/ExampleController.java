@@ -126,7 +126,7 @@ public class ExampleController {
     }
 
     @PostMapping("/recipe/{id}/image")
-    public ResponseEntity<Recipe> handleImagePost(@PathVariable String id, @RequestParam("imageFile") MultipartFile file) {
+    public ResponseEntity<Recipe> handleImagePost(@PathVariable String id, @RequestParam("image") MultipartFile file) {
         imageService.saveImageFile(Long.valueOf(id), file);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -149,7 +149,7 @@ public class ExampleController {
 
             for (Byte wrappedByte : recipe.getImage()) byteArray[i++] = wrappedByte;
 
-            response.setContentType("image/jpeg");
+            response.setContentType("image/jpg");
             InputStream inputStream = new ByteArrayInputStream(byteArray);
             IOUtils.copy(inputStream, response.getOutputStream());
         } else {
@@ -157,4 +157,5 @@ public class ExampleController {
 
         }
     }
+
 }
