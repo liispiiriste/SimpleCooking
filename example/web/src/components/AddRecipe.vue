@@ -101,16 +101,20 @@
         </div>
         <div v-else-if="submitted && !pic && this.recipe">
             <h4>Lisa pilt</h4>
-            {{this.recipe.id}}
-
             <div>
                 <input type="file" @change="onFileSelected">
+            </div>
+            <div id="preview">
+                <img :src="previewImage" class="uploading-image"/>
+            </div>
+            <div>
                 <button @click="onUpload">Lae üles</button>
+
             </div>
         </div>
 
         <div v-else>
-            <h4>Lisatud!</h4>
+            <h4>Retsept lisatud!</h4>
             <button class="btn btn-success" v-on:click="newRecipe">Uus retsept</button>
             <router-link to="/recipes">
                 <button type="reset" class="btn btn-success">Kõik retseptid</button>
@@ -156,7 +160,8 @@
                 mat2: 0,
                 mat3: '',
                 cat: '',
-                selectedFile: null
+                selectedFile: null,
+                previewImage: null
             };
         },
         methods: {
@@ -174,6 +179,7 @@
                     userid: this.user.id
 
                 };
+
                 this.nameError = (!this.recipe.name) ? "Lisa nimi" : "";
                 this.desError = (!this.recipe.description) ? "Lisa juhised" : "";
                 this.matError = (!data.materials) ? "Lisa materjalid" : "";
@@ -233,22 +239,22 @@
             },
             onFileSelected(event) {
                 this.selectedFile = event.target.files[0];
+                const reader = new FileReader();
+                reader.readAsDataURL(this.selectedFile);
+                reader.onload = event => {
+                    this.previewImage = event.target.result;
+                    console.log(this.previewImage);
+                }
             },
             onUpload() {
                 const formData = new FormData();
                 formData.append('image', this.selectedFile, this.selectedFile.name);
                 http.post('/recipe/' + this.recipe.id + '/image', formData)
-                    .then(response => {
-                        console.log(response)
-                    });
-
-
-                pic = true;
+                    .then(this.recipe);
+                this.pic = true;
             },
             mounted() {
                 axios.get('http://localhost:8080/api/loggedIn').then(response => (this.user = response.data));
-                //this.retrieveRecipe()
-
             }
         }
     }
@@ -314,7 +320,14 @@
         font-size: 16px
     }
 
-    .uploading-image {
+    #preview {
         display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #preview img {
+        max-width: 100%;
+        max-height: 500px;
     }
 </style>
