@@ -83,7 +83,6 @@
             return {
                 previewImage: null,
                 recipe: {
-
                     id: this.recipe.id,
                     name: this.recipe.name,
                     description: this.recipe.description,

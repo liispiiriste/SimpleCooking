@@ -88,7 +88,7 @@ public class ExampleController {
         if (error == false) {
             saveRecipe(recipe);
         }
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return new ResponseEntity<>(recipe.getId(), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/recipe/{id}")

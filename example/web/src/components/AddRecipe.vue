@@ -99,9 +99,10 @@
             <button v-on:click="saveRecipe" class="btn btn-success">Lisa pilt</button>
 
         </div>
-        <div v-else-if="submitted && !pic">
+        <div v-else-if="submitted && !pic && this.recipe">
             <h4>Lisa pilt</h4>
-            <h5>{{recipe.id}}</h5>
+            <button v-on:click="refreshPage">tahad lisada w</button>
+            {{this.recipe.id}}
         </div>
 
         <div v-else>
@@ -127,9 +128,8 @@
         name: 'add-recipe',
         data() {
             return {
-                previewImage: null,
                 recipe: {
-                    id: 0,
+                    id: '',
                     name: "",
                     description: "",
                     materials: [],
@@ -138,7 +138,7 @@
                     price: 0,
                 },
                 user: {
-                    id: ''
+                    userid: ''
                 },
                 submitted: false,
                 pic: false,
@@ -152,7 +152,6 @@
                 mat2: 0,
                 mat3: '',
                 cat: ''
-
             };
         },
         methods: {
@@ -160,13 +159,14 @@
             saveRecipe() {
 
                 let data = {
+                    id: this.recipe.id,
                     name: this.recipe.name,
                     description: this.recipe.description,
                     materials: this.recipe.materials.toString(),
                     category: this.recipe.category.toString(),
                     portion: this.recipe.portion,
                     price: this.recipe.price,
-                    id: this.user.id
+                    userid: this.user.id
 
                 };
                 this.nameError = (!this.recipe.name) ? "Lisa nimi" : "";
@@ -186,10 +186,7 @@
                     http
                         .post("/recipe", data)
                         .then(response => {
-                            this.recipe.id = response.data.id;
-
-                            console.log(data)
-                            console.log("lisatud", response)
+                            this.recipe.id = response.data;
 
                         });
                 }
@@ -203,7 +200,6 @@
             addCategory() {
                 var newCategory = this.cat;
                 if (!newCategory) return;
-
                 if (this.recipe.category.includes(newCategory)) return;
                 this.recipe.category.push(newCategory);
                 this.cat = '';
@@ -218,13 +214,8 @@
             },
             addMaterial() {
                 var newMaterial = " " + this.mat + " - " + this.mat2 + " " + this.mat3;
-                if (!newMaterial) {
-                    return
-                }
-                if (this.recipe.materials.includes(newMaterial)) {
-                    return
-                }
-
+                if (!newMaterial) return;
+                if (this.recipe.materials.includes(newMaterial)) return;
                 this.recipe.materials.push(newMaterial);
                 this.mat = '';
                 newMaterial = '';
@@ -236,9 +227,22 @@
             saveMaterial() {
 
             },
+            retrieveRecipe() {
+                let data = {
+                    id: ""
+                }
+                axios.get('http://localhost:8080/api/recipe/'+this.recipe.id).then(response => {
+                    this.recipe = response.data
+                });
 
+
+            },
+            refreshPage() {
+                this.retrieveRecipe();
+            },
             mounted() {
                 axios.get('http://localhost:8080/api/loggedIn').then(response => (this.user = response.data));
+                this.retrieveRecipe()
             }
         }
         ,
