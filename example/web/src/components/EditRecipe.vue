@@ -112,18 +112,7 @@
                     });
                 this.submitted = true;
             },
-            uploadImage(e) {
-                const image = e.target.files[0];
-                const reader = new FileReader();
-                reader.readAsDataURL(image);
-                reader.onload = e => {
-                    this.previewImage = e.target.result;
-                    console.log(this.previewImage);
-                };
 
-                axios.post('http://localhost:8080/api/recipe/' + this.recipe.id + '/image', image)
-                    .then(this.recipe);
-            },
         }
     }
 

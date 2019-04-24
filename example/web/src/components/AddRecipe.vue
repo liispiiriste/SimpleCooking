@@ -101,8 +101,12 @@
         </div>
         <div v-else-if="submitted && !pic && this.recipe">
             <h4>Lisa pilt</h4>
-            <button v-on:click="refreshPage">tahad lisada w</button>
             {{this.recipe.id}}
+
+            <div>
+                <input type="file" @change="onFileSelected">
+                <button @click="onUpload">Lae üles</button>
+            </div>
         </div>
 
         <div v-else>
@@ -151,7 +155,8 @@
                 mat: '',
                 mat2: 0,
                 mat3: '',
-                cat: ''
+                cat: '',
+                selectedFile: null
             };
         },
         methods: {
@@ -187,7 +192,6 @@
                         .post("/recipe", data)
                         .then(response => {
                             this.recipe.id = response.data;
-
                         });
                 }
 
@@ -227,25 +231,26 @@
             saveMaterial() {
 
             },
-            retrieveRecipe() {
-                let data = {
-                    id: ""
-                }
-                axios.get('http://localhost:8080/api/recipe/'+this.recipe.id).then(response => {
-                    this.recipe = response.data
-                });
-
-
+            onFileSelected(event) {
+                this.selectedFile = event.target.files[0];
             },
-            refreshPage() {
-                this.retrieveRecipe();
+            onUpload() {
+                const formData = new FormData();
+                formData.append('image', this.selectedFile, this.selectedFile.name);
+                http.post('/recipe/' + this.recipe.id + '/image', formData)
+                    .then(response => {
+                        console.log(response)
+                    });
+
+
+                pic = true;
             },
             mounted() {
                 axios.get('http://localhost:8080/api/loggedIn').then(response => (this.user = response.data));
-                this.retrieveRecipe()
+                //this.retrieveRecipe()
+
             }
         }
-        ,
     }
 </script>
 

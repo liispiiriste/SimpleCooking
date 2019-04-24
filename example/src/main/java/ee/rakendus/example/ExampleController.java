@@ -126,8 +126,8 @@ public class ExampleController {
     }
 
     @PostMapping("/recipe/{id}/image")
-    public ResponseEntity<Recipe> handleImagePost(@PathVariable String id, @RequestParam("image") MultipartFile file) {
-        imageService.saveImageFile(Long.valueOf(id), file);
+    public ResponseEntity<Recipe> handleImagePost(@PathVariable("id") long id, @RequestParam("image") MultipartFile file) {
+        imageService.saveImageFile(id, file);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
@@ -140,8 +140,8 @@ public class ExampleController {
 
 
     @GetMapping("/recipe/{id}/recipeImage")
-    public void renderImageFromDB(@PathVariable String id, HttpServletResponse response) throws IOException {
-        Recipe recipe = findById(Long.valueOf(id));
+    public void renderImageFromDB(@PathVariable("id") long id, HttpServletResponse response) throws IOException {
+        Recipe recipe = findById(id);
         if (recipe.getImage() != null) {
             byte[] byteArray = new byte[recipe.getImage().length];
 
@@ -149,12 +149,11 @@ public class ExampleController {
 
             for (Byte wrappedByte : recipe.getImage()) byteArray[i++] = wrappedByte;
 
-            response.setContentType("image/jpg");
+            response.setContentType("image/jpeg");
             InputStream inputStream = new ByteArrayInputStream(byteArray);
             IOUtils.copy(inputStream, response.getOutputStream());
         } else {
             System.out.println("feil");
-
         }
     }
 
