@@ -4,7 +4,7 @@
             <input class="form-control" type='text' placeholder='kasutajanimi' v-model='username'>
             <input class="form-control" type='password' placeholder='parool' v-model='password'>
             <span style="color:red">{{loginError}}</span>
-            <button >
+            <button>
                 Logi sisse
             </button>
         </form>

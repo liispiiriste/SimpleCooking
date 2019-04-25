@@ -117,6 +117,7 @@ public class ExampleController {
         return new ResponseEntity<>(getRecipesByUserList(userId), HttpStatus.OK);
     }
 
+
     @PostMapping("/recipe/{id}/image")
     public ResponseEntity<Recipe> handleImagePost(@PathVariable("id") long id, @RequestParam("image") MultipartFile file) {
         imageService.saveImageFile(id, file);
@@ -141,8 +142,8 @@ public class ExampleController {
         }
     }
 
-  
 
+ 
     @RequestMapping(value="/recipes/search/{searchStr}", method = RequestMethod.GET)
     public List<Recipe> searchRecipes(@PathVariable("searchStr") String searchStr) {
         return recipeService.searchRecipesByName(searchStr);

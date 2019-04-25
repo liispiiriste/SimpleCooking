@@ -47,6 +47,7 @@
                                 </router-link>
                             </li>
                         </ul>
+
                     </div>
                     <div>
                         <router-view @refreshData="refreshList"></router-view>
@@ -59,7 +60,6 @@
 
 <script>
     import http from "../http-common";
-
     import axios from "axios";
 
     export default {
@@ -67,9 +67,10 @@
         data() {
             return {
                 recipes: [],
-                searchStr:''
+
             }
         },
+
         methods: {
             retrieveRecipes() {
                 http.get("/recipes").then(response => {
@@ -82,6 +83,7 @@
             refreshList() {
                 this.retrieveRecipes();
             },
+
 
             chosenCategory(c) {
                 if (c != "all") {
@@ -99,7 +101,10 @@
 
         mounted() {
             this.retrieveRecipes();
-        },
+            axios.get('http://localhost:8080/api/loggedIn').then(response => (this.user = response.data));
+
+            axios.get('http://localhost:8080/api/recipes/search/' + this.searchStr).then(response=> {this.recipes = response.data; })
+        }
 
     };
 </script>

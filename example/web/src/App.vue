@@ -16,12 +16,10 @@
 
                         <!-- Right aligned nav items -->
                         <b-navbar-nav class="ml-auto">
-                            <b-nav-form>
-                                <b-form-input size="sm" class="mr-sm-2" placeholder="Search"></b-form-input>
-                                <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
+                            <b-nav-form id="searchForm">
+                                <b-form-input size="sm" class="mr-sm-2" placeholder="Otsi retsepte" ></b-form-input>
+                                <b-button size="sm" class="my-2 my-sm-0" type="submit" @click="searchRecipe('searchStr')">Otsi</b-button>
                             </b-nav-form>
-
-
                         </b-navbar-nav>
                     </b-collapse>
                 </b-navbar>
@@ -72,14 +70,16 @@
 </template>
 <script>
 
-
     import './stylesheets/main.css';
+    import http from "./http-common";
+
 
     export default {
   name: 'app',
     data() {
         return {
             authenticated: false,
+            searchStr: ''
 
         }
     },mounted() {
@@ -94,13 +94,19 @@
         },
         logout() {
             this.authenticated = false;
+        },
+        searchRecipe(){
+            http.get('http://localhost:8080/recipes/search/{searchStr}' + this.searchStr)
+                .then(response => {
+                    this.recipes = response.data;
+                })
+
         }
-    },
+    }
 
 }
 </script>
 <style>
-
 
 .moveInUp-enter-active{
     animation: fadeIn 2s ease-in;
