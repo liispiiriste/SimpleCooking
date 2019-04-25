@@ -250,12 +250,7 @@
             saveMaterial() {
 
 
-            }  ,
-
-
-
-
-
+            } ,
 
 
             retrieveCategories() {
