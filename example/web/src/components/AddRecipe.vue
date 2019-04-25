@@ -20,15 +20,11 @@
                 <label for="materials">Materjalid</label><br>
                 <input type="text" class="small-input" id="materials" v-model="mat" name="materials" style="padding-left:10px;height:40px;width:235px;font-size:15px">
                 <input type="number" min="0" class="small-input" style="padding-left:10px;height:40px" id="quantity" v-model="mat2" name="quantity">
+
+
                 <select class="custom-select" v-model="mat3" style="width:75px; font-size:15px; max-height:40px; margin-left:10px; height: 37px">
-                    <option value="g">g</option>
-                    <option value="kg">kg</option>
-                    <option value="sl">sl</option>
-                    <option value="tl">tl</option>
-                    <option value="l">l</option>
-                    <option value="dl">dl</option>
-                    <option value="ml">ml</option>
-                    <option value="tk">tk</option>
+
+                    <option  v-for="(measure, index) in measures" :key="index" :value="measure">{{measure}}</option>
                 </select>
 
                 <button style="margin-bottom:5px" class="small-input" v-on:click="addMaterial()">Lisa</button>
@@ -43,8 +39,8 @@
 
                 <label>Kategooria</label><br>
                 <select class="custom-select" v-model="cat" style="width:415px">
-
-                    <option value="hommikusöök">Hommikusöök</option>
+                   <option  v-for="(category, index) in categories" :key="index" :value="category">{{category}}</option>
+                   <!-- <option value="hommikusöök">Hommikusöök</option>
                     <option value="jook">Jook</option>
                     <option value="kook">Kook</option>
                     <option value="magustoit">Magustoit</option>
@@ -57,7 +53,7 @@
                     <option value="tort">Tort</option>
                     <option value="võileivatort">Võileivatort</option>
                     <option value="vormiroog">Vormiroog</option>
-                    <option value="muu">Muu</option>
+                    <option value="muu">Muu</option>         -->
                 </select>
                 <button style="margin-bottom:5px" v-on:click="addCategory()" class="small-input">Lisa</button>
                 <div class="arraylist" v-for="(cat,n) in recipe.category">
@@ -90,6 +86,10 @@
                 <button type="reset" class="btn btn-success" >Kõik retseptid</button>
             </router-link>
         </div>
+
+        <div>
+                                <router-view @refreshData="refreshList"></router-view>
+                            </div>
     </div>
 </template>
 
@@ -133,7 +133,13 @@
                 mat:'',
                 mat2:0,
                 mat3:'',
-                cat:''
+                cat:'',
+                measures:[
+                 "g", "kg", "sl", "tl", "dl" ,"ml", "tk"
+                ]    ,
+                categories:[
+
+                ]
             };
         },
         methods: {
@@ -147,7 +153,7 @@
                     category: this.recipe.category.toString(),
                     portion: this.recipe.portion,
                     price: this.recipe.price,
-      
+
 
                     id: this.recipe.id
 
@@ -213,10 +219,41 @@
             },
             saveMaterial(){
 
-            }
+            }  ,
+
+
+
+
+
+
+
+            retrieveCategories() {
+                            http.get("/categories").then(response => {
+                                this.categories = response.data;
+
+                            });
+
+                        },
+
+                        refreshList() {
+                            this.retrieveCategories();
+                        },
+
+
+
+
+
+
+
+
+
+
+
+
         },
         mounted() {
             axios.get('http://localhost:8080/api/loggedIn').then(response => (this.user = response.data));
+            this.retrieveCategories();
         }
     };
 </script>
