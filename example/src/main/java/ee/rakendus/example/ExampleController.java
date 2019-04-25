@@ -32,6 +32,10 @@ public class ExampleController {
     @Autowired
     ImageService imageService;
 
+  
+  
+    RecipeService recipeService;
+
     @GetMapping("/recipes")
     public List<Recipe> getAllRecipes() {
         List<Recipe> recipes = new ArrayList<>();
@@ -73,6 +77,7 @@ public class ExampleController {
         User user = userService.findCurrentUserId();
         recipe.setUser(user);
         repository.save(recipe);
+
     }
 
     @PostMapping("/recipe")
@@ -146,6 +151,13 @@ public class ExampleController {
         } else {
             System.out.println("feil");
         }
+    }
+
+  
+
+    @RequestMapping(value="/recipes/search/{searchStr}", method = RequestMethod.GET)
+    public List<Recipe> searchRecipes(@PathVariable("searchStr") String searchStr) {
+        return recipeService.searchRecipesByName(searchStr);
     }
 
 }

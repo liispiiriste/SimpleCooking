@@ -1,12 +1,12 @@
 package ee.rakendus.example;
 
 
-import ee.rakendus.example.categories.Categories;
 import ee.rakendus.example.user.User;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+
 
 @Entity
 @Table(name = "recipe")
@@ -116,6 +116,7 @@ public class Recipe {
         this.user = user;
     }
 
+
     public Categories getCategories() {return categories;}
 
     public void setCategories(Categories categories) {this.categories = categories;}
@@ -128,12 +129,13 @@ public class Recipe {
         this.image = image;
     }
 
-    //endregion
+
+     //endregion
 
     @Override
     public String toString() {
         return String.format(
-                "Recipe[id=%d, name='%s', description='%s', materials='%s', categories='%s',price='%d', portion='%d']",
-                id, name, description, categories,materials, price, portion);
+                "Recipe[id=%d, name='%s', description='%s', category='%s' materials='%s',price='%d', portion='%d']",
+                id, name, description ,materials,category, price, portion);
     }
 }

@@ -148,6 +148,9 @@
                 user: {
                     userid: ''
                 },
+                categories:{
+                  id: ''
+                },
                 submitted: false,
                 pic: false,
                 nameError: "",
@@ -176,6 +179,7 @@
                     category: this.recipe.category.toString(),
                     portion: this.recipe.portion,
                     price: this.recipe.price,
+
                     userid: this.user.id
 
                 };

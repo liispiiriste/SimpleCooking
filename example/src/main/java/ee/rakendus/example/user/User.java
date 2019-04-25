@@ -2,6 +2,7 @@ package ee.rakendus.example.user;
 
 import ee.rakendus.example.Recipe;
 import lombok.Data;
+import org.hibernate.annotations.Proxy;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
