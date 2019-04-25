@@ -60,16 +60,17 @@
 
 <script>
     import http from "../http-common";
-
     import axios from "axios";
 
     export default {
         name: "Recipes",
         data() {
             return {
-                recipes: []
+                recipes: [],
+
             }
         },
+
         methods: {
             retrieveRecipes() {
                 http.get("/recipes").then(response => {
@@ -82,6 +83,8 @@
             refreshList() {
                 this.retrieveRecipes();
             },
+
+
             chosenCategory(c) {
                 if (c != "all") {
                     http.get("/recipes/" + c).then(response => {
@@ -96,8 +99,12 @@
                 }
             }
         },
+
         mounted() {
             this.retrieveRecipes();
+            axios.get('http://localhost:8080/api/loggedIn').then(response => (this.user = response.data));
+
+            axios.get('http://localhost:8080/api/recipes/search/' + this.searchStr).then(response=> {this.recipes = response.data; })
         }
 
     };
