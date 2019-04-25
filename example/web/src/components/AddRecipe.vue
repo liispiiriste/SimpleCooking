@@ -169,7 +169,7 @@
                 ]    ,
                 categories:[
 
-                ]
+                ],
                 selectedFile: null,
                 previewImage: null
 
@@ -295,7 +295,7 @@
             mounted() {
                 axios.get('http://localhost:8080/api/loggedIn').then(response => (this.user = response.data));
             }
-        }
+
     }
 </script>
 
