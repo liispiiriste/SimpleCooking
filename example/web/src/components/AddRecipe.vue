@@ -169,7 +169,7 @@
                 ]    ,
                 categories:[
 
-                ]
+                ],
                 selectedFile: null,
                 previewImage: null
 
@@ -250,12 +250,7 @@
             saveMaterial() {
 
 
-            }  ,
-
-
-
-
-
+            } ,
 
 
             retrieveCategories() {
@@ -295,7 +290,7 @@
             mounted() {
                 axios.get('http://localhost:8080/api/loggedIn').then(response => (this.user = response.data));
             }
-        }
+
     }
 </script>
 
