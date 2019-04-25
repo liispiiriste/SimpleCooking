@@ -49,7 +49,7 @@ public class Recipe {
     @Column(name="image")
     private Byte[] image;
 
-    protected Recipe() {
+    public Recipe() {
     }
 
     //region getters and setters

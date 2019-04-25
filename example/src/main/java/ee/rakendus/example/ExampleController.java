@@ -85,7 +85,7 @@ public class ExampleController {
 
     @DeleteMapping("/recipe/{id}")
     public ResponseEntity<String> deleteRecipe(@PathVariable("id") long id) {
-        repository.deleteById(id);
+        recipeService.deleteRecipeById(id);
         return new ResponseEntity<>("Retsept on kustutatud!", HttpStatus.OK);
     }
 
@@ -117,7 +117,6 @@ public class ExampleController {
         return new ResponseEntity<>(getRecipesByUserList(userId), HttpStatus.OK);
     }
 
-
     @PostMapping("/recipe/{id}/image")
     public ResponseEntity<Recipe> handleImagePost(@PathVariable("id") long id, @RequestParam("image") MultipartFile file) {
         imageService.saveImageFile(id, file);
@@ -142,8 +141,6 @@ public class ExampleController {
         }
     }
 
-
- 
     @RequestMapping(value="/recipes/search/{searchStr}", method = RequestMethod.GET)
     public List<Recipe> searchRecipes(@PathVariable("searchStr") String searchStr) {
         return recipeService.searchRecipesByName(searchStr);

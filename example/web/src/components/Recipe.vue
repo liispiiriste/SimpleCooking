@@ -24,12 +24,11 @@
                             {{this.recipe.category}}
                         </div>
                         
-                        <div id="recipeImage">
-                        <img :src="showImage()" alt="recipe's image">
+                        <!--<div id="recipeImage">
+                        <img :src="showImage()" alt="recipe's image">-->
                     </div>
 
 
-                    </div>
                     <router-link :to="{name: 'editRecipe', params: {recipe:recipe, id: recipe.id}}">
                     <b-button variant="outline-success" style="float:left;">
                         Muuda
