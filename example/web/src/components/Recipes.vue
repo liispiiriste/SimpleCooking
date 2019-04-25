@@ -94,7 +94,6 @@
                 } else {
                     http.get("/recipes").then(response => {
                         this.recipes = response.data;
-
                     })
                 }
             }

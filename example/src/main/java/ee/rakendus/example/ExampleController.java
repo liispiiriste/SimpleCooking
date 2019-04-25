@@ -1,12 +1,18 @@
 package ee.rakendus.example;
 
-import ee.rakendus.example.user.User;
+import ee.rakendus.example.image.ImageService;
 import ee.rakendus.example.user.UserService;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -23,6 +29,9 @@ public class ExampleController {
     UserService userService;
 
     @Autowired
+    ImageService imageService;
+
+    @Autowired
     RecipeService recipeService;
 
     @GetMapping("/recipes")
@@ -32,11 +41,17 @@ public class ExampleController {
 
         return recipes;
     }
+
     private List<Recipe> getAllRecipesList() {
         long userId = userService.findCurrentUserId().getId();
         List<Recipe> recipes = getRecipesByUserList(userId);
         Collections.reverse(recipes);
         return recipes;
+    }
+
+    @GetMapping(value="/recipe/{id}")
+    public ResponseEntity<Recipe> getRecipeById(@PathVariable("id") long id) {
+        return new ResponseEntity<>(recipeService.findById(id), HttpStatus.OK);
     }
     @GetMapping("/userRecipes")
     public ResponseEntity<List<Recipe>> getAllUserRecipes() {
@@ -52,12 +67,6 @@ public class ExampleController {
         return recipes;
     }
 
-    private void saveRecipe(Recipe recipe) {
-        User user = userService.findCurrentUserId();
-        recipe.setUser(user);
-        repository.save(recipe);
-
-    }
 
     @PostMapping("/recipe")
     public ResponseEntity postRecipe(@RequestBody Recipe recipe) {
@@ -69,9 +78,9 @@ public class ExampleController {
         }*/
         if (recipe.getMaterials().isEmpty()) error = true;
         if (error == false) {
-            saveRecipe(recipe);
+            recipeService.saveRecipe(recipe);
         }
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return new ResponseEntity<>(recipe.getId(), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/recipe/{id}")
@@ -92,6 +101,7 @@ public class ExampleController {
             _recipe.setCategory(recipe.getCategory());
             _recipe.setPrice(recipe.getPrice());
             _recipe.setPortion(recipe.getPortion());
+            _recipe.setImage(recipe.getImage());
             return new ResponseEntity<>(repository.save(_recipe), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -101,14 +111,42 @@ public class ExampleController {
     private List<Recipe> getRecipesByUserList(Long userId) {
         return repository.findAllByUserId(userId);
     }
+
     @GetMapping("/user/{user}")
     public ResponseEntity<List<Recipe>> getRecipesByUser(@PathVariable("user") long userId) {
         return new ResponseEntity<>(getRecipesByUserList(userId), HttpStatus.OK);
     }
 
 
+    @PostMapping("/recipe/{id}/image")
+    public ResponseEntity<Recipe> handleImagePost(@PathVariable("id") long id, @RequestParam("image") MultipartFile file) {
+        imageService.saveImageFile(id, file);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @GetMapping("/recipe/{id}/recipeImage")
+    public void renderImageFromDB(@PathVariable("id") long id, HttpServletResponse response) throws IOException {
+        Recipe recipe = recipeService.findById(id);
+        if (recipe.getImage() != null) {
+            byte[] byteArray = new byte[recipe.getImage().length];
+
+            int i = 0;
+
+            for (Byte wrappedByte : recipe.getImage()) byteArray[i++] = wrappedByte;
+
+            response.setContentType("image/jpeg");
+            InputStream inputStream = new ByteArrayInputStream(byteArray);
+            IOUtils.copy(inputStream, response.getOutputStream());
+        } else {
+            System.out.println("feil");
+        }
+    }
+
+
+ 
     @RequestMapping(value="/recipes/search/{searchStr}", method = RequestMethod.GET)
     public List<Recipe> searchRecipes(@PathVariable("searchStr") String searchStr) {
         return recipeService.searchRecipesByName(searchStr);
     }
+
 }
