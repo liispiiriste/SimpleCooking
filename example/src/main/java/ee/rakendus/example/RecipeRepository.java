@@ -11,6 +11,7 @@ public interface RecipeRepository extends CrudRepository<Recipe, Long> {
 
     List<Recipe> findByCategory(String name);
     List<Recipe> findAllByUserId(long id);
+    Recipe findRecipeById(long id);
 
 }
 

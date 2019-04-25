@@ -82,6 +82,7 @@
             refreshList() {
                 this.retrieveRecipes();
             },
+
             chosenCategory(c) {
                 if (c != "all") {
                     http.get("/recipes/" + c).then(response => {
@@ -91,7 +92,6 @@
                 } else {
                     http.get("/recipes").then(response => {
                         this.recipes = response.data;
-
                     })
                 }
             }

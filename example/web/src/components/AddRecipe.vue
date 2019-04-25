@@ -1,26 +1,30 @@
-<template >
+<template>
     <div class="submitform">
 
-        <div v-if="!submitted" style="font-size:20px">
+        <div v-if="!submitted && !pic" style="font-size:20px">
             <h1 style="font-size:170%">Lisa uus retsept</h1>
             <div class="form-group">
                 <label for="name">Nimi</label>
                 <input type="text" class="form-control" id="name" v-model="recipe.name" name="name">
 
-                <div  class="err"> {{nameError}}</div>
+                <div class="err"> {{nameError}}</div>
 
             </div>
             <div class="form-group">
                 <label for="description">Juhend</label>
-                <textarea type="text" rows=4 style="overflow-y: scroll;" class="form-control" id="description" required v-model="recipe.description" name="description"></textarea>
+                <textarea type="text" rows=4 style="overflow-y: scroll;" class="form-control" id="description" required
+                          v-model="recipe.description" name="description"></textarea>
                 <div class="err"> {{desError}}</div>
 
             </div>
             <div class="form-group">
                 <label for="materials">Materjalid</label><br>
-                <input type="text" class="small-input" id="materials" v-model="mat" name="materials" style="padding-left:10px;height:40px;width:235px;font-size:15px">
-                <input type="number" min="0" class="small-input" style="padding-left:10px;height:40px" id="quantity" v-model="mat2" name="quantity">
-                <select class="custom-select" v-model="mat3" style="width:75px; font-size:15px; max-height:40px; margin-left:10px; height: 37px">
+                <input type="text" class="small-input" id="materials" v-model="mat" name="materials"
+                       style="padding-left:10px;height:40px;width:235px;font-size:15px">
+                <input type="number" min="0" class="small-input" style="padding-left:10px;height:40px" id="quantity"
+                       v-model="mat2" name="quantity">
+                <select class="custom-select" v-model="mat3"
+                        style="width:75px; font-size:15px; max-height:40px; margin-left:10px; height: 37px">
                     <option value="g">g</option>
                     <option value="kg">kg</option>
                     <option value="sl">sl</option>
@@ -34,7 +38,12 @@
                 <button style="margin-bottom:5px" class="small-input" v-on:click="addMaterial()">Lisa</button>
                 <div class="arraylist" v-for="(mat,m) in recipe.materials">
                     <div class="arraytext"><span style="text-align:left" class="mat"> {{mat}}</span></div>
-                    <div class="arraybutton"><button style="float:right; background-color:#fff87c; border-color:#f4f09c; color:#666" class="btn btn-warning btn-sm" @click="removeMaterial(n)">Eemalda</button></div><br>
+                    <div class="arraybutton">
+                        <button style="float:right; background-color:#fff87c; border-color:#f4f09c; color:#666"
+                                class="btn btn-warning btn-sm" @click="removeMaterial(n)">Eemalda
+                        </button>
+                    </div>
+                    <br>
                 </div>
                 <div class="err"> {{matError}}</div>
 
@@ -62,32 +71,53 @@
                 <button style="margin-bottom:5px" v-on:click="addCategory()" class="small-input">Lisa</button>
                 <div class="arraylist" v-for="(cat,n) in recipe.category">
                     <div class="arraytext"><span style="text-align:left" class="cat"> {{cat}}</span></div>
-                    <div class="arraybutton"><button style="float:right; background-color:#fff87c; border-color:#f4f09c; color:#666" class="btn btn-warning btn-sm" @click="removeCategory(n)">Eemalda</button></div><br>
+                    <div class="arraybutton">
+                        <button style="float:right; background-color:#fff87c; border-color:#f4f09c; color:#666"
+                                class="btn btn-warning btn-sm" @click="removeCategory(n)">Eemalda
+                        </button>
+                    </div>
+                    <br>
                 </div>
 
                 <div class="err"> {{catError}}</div>
 
-            </div><br>
+            </div>
+            <br>
             <div class="form-group">
                 <label for="portion">Portsjon</label>
-                <input class="small-input" type="number" id="portion" min="1" required v-model="recipe.portion" name="portion">
-                <div class="err"> {{portionError}}</div><br>
+                <input class="small-input" type="number" id="portion" min="1" required v-model="recipe.portion"
+                       name="portion">
+                <div class="err"> {{portionError}}</div>
+                <br>
                 <label for="price">Hind</label>
-                <input class="small-input" type="number" id="price"  min="1" v-model="recipe.price" name="price">
+                <input class="small-input" type="number" id="price" min="1" v-model="recipe.price" name="price">
 
-                <div class="err"> {{priceError}}</div><br>
+                <div class="err"> {{priceError}}</div>
+                <br>
 
             </div>
+            <button v-on:click="saveRecipe" class="btn btn-success">Lisa pilt</button>
 
-            <button v-on:click="saveRecipe" class="btn btn-success">Salvesta retsept</button>
+        </div>
+        <div v-else-if="submitted && !pic && this.recipe">
+            <h4>Lisa pilt</h4>
+            <div>
+                <input type="file" @change="onFileSelected">
+            </div>
+            <div id="preview">
+                <img :src="previewImage" class="uploading-image"/>
+            </div>
+            <div>
+                <button @click="onUpload">Lae üles</button>
 
+            </div>
         </div>
 
         <div v-else>
-            <h4>Lisatud!</h4>
+            <h4>Retsept lisatud!</h4>
             <button class="btn btn-success" v-on:click="newRecipe">Uus retsept</button>
             <router-link to="/recipes">
-                <button type="reset" class="btn btn-success" >Kõik retseptid</button>
+                <button type="reset" class="btn btn-success">Kõik retseptid</button>
             </router-link>
         </div>
     </div>
@@ -99,83 +129,81 @@
     import VeeValidate from 'vee-validate';
     import $store from "../store/modules/auth";
     import axios from "axios";
+
     Vue.use(VeeValidate);
 
     export default {
         name: 'add-recipe',
         data() {
-
-            errorMessage:null
             return {
-                recipe:{
-                    id:0,
+                recipe: {
+                    id: '',
                     name: "",
                     description: "",
                     materials: [],
                     category: [],
                     portion: 0,
                     price: 0,
-
-                 },
+                },
                 user: {
-                    id: ''
+                    userid: ''
                 },
                 categories:{
                   id: ''
                 },
                 submitted: false,
-                nameError:"",
-                desError:"",
-                matError:"",
-                catError:"",
-                portionError:"",
-                priceError:"",
-                mat:'',
-                mat2:0,
-                mat3:'',
-                cat:''
+                pic: false,
+                nameError: "",
+                desError: "",
+                matError: "",
+                catError: "",
+                portionError: "",
+                priceError: "",
+                mat: '',
+                mat2: 0,
+                mat3: '',
+                cat: '',
+                selectedFile: null,
+                previewImage: null
             };
         },
         methods: {
 
-             saveRecipe() {
+            saveRecipe() {
 
                 let data = {
+                    id: this.recipe.id,
                     name: this.recipe.name,
                     description: this.recipe.description,
                     materials: this.recipe.materials.toString(),
                     category: this.recipe.category.toString(),
                     portion: this.recipe.portion,
                     price: this.recipe.price,
-      
 
-                    id: this.recipe.id
+                    userid: this.user.id
 
                 };
-                if(!this.recipe.name){this.nameError="Lisa nimi" }
-                if(this.recipe.name){this.nameError=""}
-                 if(!this.recipe.description){this.desError="Lisa juhised" }
-                 if(this.recipe.description){this.desError=""}
-                 if(!data.materials){this.matError="Lisa materjalid" }
-                 if(data.materials){this.matError=""}
-                 if(!data.category){this.catError="Vali kategooria" }
-                 if(data.category){this.catError=""}
-                 if(!this.recipe.portion){this.portionError="Lisa portsjon"}
-                 if(this.recipe.portion) {this.portionError=""}
-                 if(!this.recipe.price){this.priceError="Lisa hind"}
-                 if(this.recipe.price) {this.priceError=""}
-                 if(this.recipe.name && this.recipe.description && data.materials && data.category && this.recipe.portion
-                 && this.recipe.price){
-                  http
-                     .post("/recipe", data)
-                     .then(response => {
-                         this.recipe.id = response.data.id;
-                         console.log(data)
-                         console.log("lisatud", response)
 
-                     });
+                this.nameError = (!this.recipe.name) ? "Lisa nimi" : "";
+                this.desError = (!this.recipe.description) ? "Lisa juhised" : "";
+                this.matError = (!data.materials) ? "Lisa materjalid" : "";
+                this.catError = (!data.category) ? "Vali kategooria" : "";
+                this.portionError = (!this.recipe.portion) ? "Lisa portjon" : "";
+                this.priceError = (!this.recipe.price) ? "Lisa hind" : "";
 
-                     this.submitted = true;}
+                if (this.recipe.name
+                    && this.recipe.description
+                    && data.materials
+                    && data.category
+                    && this.recipe.portion
+                    && this.recipe.price) {
+                    this.submitted = true;
+                    http
+                        .post("/recipe", data)
+                        .then(response => {
+                            this.recipe.id = response.data;
+                        });
+                }
 
             },
             newRecipe() {
@@ -183,42 +211,56 @@
                 this.recipe = {};
                 window.location.reload();
             },
-            addCategory(){
-                 var newCategory = this.cat;
-                 if(!newCategory) {return};
-                 if(this.recipe.category.includes(newCategory)){return}
-                 this.recipe.category.push(newCategory);
-                 this.cat='';
-                 newCategory='';
+            addCategory() {
+                var newCategory = this.cat;
+                if (!newCategory) return;
+                if (this.recipe.category.includes(newCategory)) return;
+                this.recipe.category.push(newCategory);
+                this.cat = '';
+                newCategory = '';
             },
-            removeCategory(x){
-                 this.recipe.category.splice(x,1);
-                 this.saveCategory();
+            removeCategory(x) {
+                this.recipe.category.splice(x, 1);
+                this.saveCategory();
             },
-            saveCategory(){
+            saveCategory() {
 
             },
-            addMaterial(){
-                var newMaterial = " " + this.mat + " - " + this.mat2 +  " " + this.mat3;
-                if(!newMaterial) {return}
-                if(this.recipe.materials.includes(newMaterial)){return}
-
+            addMaterial() {
+                var newMaterial = " " + this.mat + " - " + this.mat2 + " " + this.mat3;
+                if (!newMaterial) return;
+                if (this.recipe.materials.includes(newMaterial)) return;
                 this.recipe.materials.push(newMaterial);
-                this.mat='';
-                newMaterial='';
+                this.mat = '';
+                newMaterial = '';
             },
-            removeMaterial(x){
-                this.recipe.materials.splice(x,1);
+            removeMaterial(x) {
+                this.recipe.materials.splice(x, 1);
                 this.saveMaterial();
             },
-            saveMaterial(){
+            saveMaterial() {
 
+            },
+            onFileSelected(event) {
+                this.selectedFile = event.target.files[0];
+                const reader = new FileReader();
+                reader.readAsDataURL(this.selectedFile);
+                reader.onload = event => {
+                    this.previewImage = event.target.result;
+                }
+            },
+            onUpload() {
+                const formData = new FormData();
+                formData.append('image', this.selectedFile, this.selectedFile.name);
+                http.post('/recipe/' + this.recipe.id + '/image', formData)
+                    .then(this.recipe);
+                this.pic = true;
+            },
+            mounted() {
+                axios.get('http://localhost:8080/api/loggedIn').then(response => (this.user = response.data));
             }
-        },
-        mounted() {
-            axios.get('http://localhost:8080/api/loggedIn').then(response => (this.user = response.data));
         }
-    };
+    }
 </script>
 
 
@@ -229,15 +271,17 @@
         align: center;
         color: #333
     }
-    input, textarea, select{
-        max-width:500px;
-        margin:auto;
+
+    input, textarea, select {
+        max-width: 500px;
+        margin: auto;
         align: center;
         color: #333
     }
-    .small-input{
-        width:75px;
-        margin:auto;
+
+    .small-input {
+        width: 75px;
+        margin: auto;
         align: center;
         color: #333;
         margin-left: 10px;
@@ -245,32 +289,48 @@
         border-style: solid;
         border-color: lightgrey;
         border-width: 1px;
-        font-size:15px;
-        padding-left:10px;
-        height:40px
+        font-size: 15px;
+        padding-left: 10px;
+        height: 40px
 
 
     }
-    .form-group{
+
+    .form-group {
         width: 500px;
         align: center;
         margin: auto;
         color: #333
     }
-    .arraylist{
-        margin-bottom:5px
+
+    .arraylist {
+        margin-bottom: 5px
     }
-    .arraytext{
-        width:75%;
-        float:left;
-        font-size:16px
+
+    .arraytext {
+        width: 75%;
+        float: left;
+        font-size: 16px
     }
-    .arraybutton{
-        width:20%;
-        float:right;
+
+    .arraybutton {
+        width: 20%;
+        float: right;
     }
-    .err{
-        color:red;
-        font-size:16px
+
+    .err {
+        color: red;
+        font-size: 16px
+    }
+
+    #preview {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #preview img {
+        max-width: 100%;
+        max-height: 500px;
     }
 </style>

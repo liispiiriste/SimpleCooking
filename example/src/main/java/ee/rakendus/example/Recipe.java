@@ -31,7 +31,6 @@ public class Recipe {
     @Column(name = "category")
     private String category;
 
-
     @NotNull
     @Column(name = "price")
     private int price;
@@ -42,17 +41,15 @@ public class Recipe {
     @ManyToOne
     private User user;
 
+    @ManyToOne
+    private Categories categories;
+
+    @Lob
+    @Column(name="image")
+    private Byte[] image;
+
     protected Recipe() {
     }
-
-    /*public Recipe(String name, String description, String materials, String category, int price, int portion) {
-        this.name = name;
-        this.description = description;
-        this.materials = materials;
-        this.category = category;
-        this.price = price;
-        this.portion = portion;
-    }*/
 
     //region getters and setters
     public Long getId() {
@@ -119,7 +116,21 @@ public class Recipe {
         this.user = user;
     }
 
-    //endregion
+
+    public Categories getCategories() {return categories;}
+
+    public void setCategories(Categories categories) {this.categories = categories;}
+
+    public Byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(Byte[] image) {
+        this.image = image;
+    }
+
+
+     //endregion
 
     @Override
     public String toString() {

@@ -5,6 +5,7 @@
                 <b-card style="background:rgba(255, 255, 255, 0.2); border:none; border-radius:25px;">
                     <h4>{{this.recipe.name}}</h4>
 
+
                     <div v-if="this.recipe" style="text-align:left">
                         <div>
                             <label>Juhend: </label> {{this.recipe.description}}
@@ -22,6 +23,10 @@
                             <label>Kategooria: </label>
                             {{this.recipe.category}}
                         </div>
+                        
+                        <div id="recipeImage">
+                        <img :src="showImage()" alt="recipe's image">
+                    </div>
 
 
                     </div>
@@ -53,7 +58,8 @@
         props: ["recipe"],
         data() {
             return {
-                submitted: false
+                submitted: false,
+                image: {}
             };
         },
         methods: {
@@ -65,6 +71,23 @@
                         this.$router.push('/recipe');
                     });
                 this.submitted = true;
+            },
+            showImage(event) {
+                http.get('/recipe/' + this.recipe.id + '/recipeImage')
+                    .then(response => (this.image = response.data));
+                this.image = event.target.files[0];
+                console.log(this.image);
+                const reader = new FileReader();
+
+                reader.onload = event => {
+                    this.image = event.target.result;
+                    this.$refs.cropper.replace(this.image);
+                }
+                console.log(this.recipe.id);
+
+            },
+            mounted() {
+                this.showImage();
             }
         }
     }
@@ -87,6 +110,15 @@
     .container {
         width: 70%;
         margin: auto;
+    }
+    #recipeImage{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #recipeImage img {
+        max-width: 100%;
+        max-height: 500px;
     }
 
 </style>
