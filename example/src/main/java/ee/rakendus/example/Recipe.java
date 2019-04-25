@@ -1,6 +1,7 @@
 package ee.rakendus.example;
 
 
+import ee.rakendus.example.categories.Categories;
 import ee.rakendus.example.user.User;
 
 import javax.persistence.*;

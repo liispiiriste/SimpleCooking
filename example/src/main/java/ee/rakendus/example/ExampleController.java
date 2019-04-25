@@ -1,7 +1,6 @@
 package ee.rakendus.example;
 
 import ee.rakendus.example.image.ImageService;
-import ee.rakendus.example.user.User;
 import ee.rakendus.example.user.UserService;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +31,7 @@ public class ExampleController {
     @Autowired
     ImageService imageService;
 
-  
-  
+    @Autowired
     RecipeService recipeService;
 
     @GetMapping("/recipes")
@@ -51,13 +49,9 @@ public class ExampleController {
         return recipes;
     }
 
-    private Recipe findById(long id) {
-        return repository.findRecipeById(id);
-    }
-
     @GetMapping(value="/recipe/{id}")
     public ResponseEntity<Recipe> getRecipeById(@PathVariable("id") long id) {
-        return new ResponseEntity<>(findById(id), HttpStatus.OK);
+        return new ResponseEntity<>(recipeService.findById(id), HttpStatus.OK);
     }
     @GetMapping("/userRecipes")
     public ResponseEntity<List<Recipe>> getAllUserRecipes() {
@@ -73,12 +67,6 @@ public class ExampleController {
         return recipes;
     }
 
-    private void saveRecipe(Recipe recipe) {
-        User user = userService.findCurrentUserId();
-        recipe.setUser(user);
-        repository.save(recipe);
-
-    }
 
     @PostMapping("/recipe")
     public ResponseEntity postRecipe(@RequestBody Recipe recipe) {
@@ -90,7 +78,7 @@ public class ExampleController {
         }*/
         if (recipe.getMaterials().isEmpty()) error = true;
         if (error == false) {
-            saveRecipe(recipe);
+            recipeService.saveRecipe(recipe);
         }
         return new ResponseEntity<>(recipe.getId(), HttpStatus.CREATED);
     }
@@ -137,7 +125,7 @@ public class ExampleController {
 
     @GetMapping("/recipe/{id}/recipeImage")
     public void renderImageFromDB(@PathVariable("id") long id, HttpServletResponse response) throws IOException {
-        Recipe recipe = findById(id);
+        Recipe recipe = recipeService.findById(id);
         if (recipe.getImage() != null) {
             byte[] byteArray = new byte[recipe.getImage().length];
 
