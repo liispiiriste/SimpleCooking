@@ -1,5 +1,7 @@
 package ee.rakendus.example;
 
+import ee.rakendus.example.categories.Categories;
+import ee.rakendus.example.categories.CategoryRepository;
 import ee.rakendus.example.image.ImageService;
 import ee.rakendus.example.user.UserService;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
@@ -22,6 +24,9 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api")
 public class ExampleController {
+
+    @Autowired
+    CategoryRepository categoryRepository;
 
     @Autowired
     RecipeRepository repository;
@@ -59,14 +64,22 @@ public class ExampleController {
     }
 
 
-    @GetMapping("/recipes/{c}")
-    public List<Recipe> getRecipesByCategory(@PathVariable("c") String category) {
+    @GetMapping("/recipes/{category}")
+
+        public List<Recipe> getRecipesByCategory(@PathVariable("category") String category) {
         List<Recipe> recipes = new ArrayList<>();
         repository.findByCategory(category).forEach(recipes::add);
 
         return recipes;
     }
 
+    @GetMapping("/categories")
+    public List<Categories> getAllCategories() {
+        List<Categories> categories = new ArrayList<>();
+        categoryRepository.findAll().forEach(categories::add);
+
+        return categories;
+    }
 
     @PostMapping("/recipe")
     public ResponseEntity postRecipe(@RequestBody Recipe recipe) {

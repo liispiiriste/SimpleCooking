@@ -4,32 +4,9 @@
             <b-button-group vertical>
                 <b-button v-on:click="chosenCategory('all')" active>
                     Kõik<input type="radio" name="options" id="all" autocomplete="off" checked></b-button>
-                <b-button v-on:click="chosenCategory('hommikusöök')">
-                    Hommikusöögid<input type="radio" name="options" id="breakfast" autocomplete="off"></b-button>
-                <b-button v-on:click="chosenCategory('jook')">
-                    Joogid<input type="radio" name="options" id="drinks" autocomplete="off"></b-button>
-                <b-button v-on:click="chosenCategory('kook')">
-                    Koogid<input type="radio" name="options" id="cakes" autocomplete="off"></b-button>
-                <b-button v-on:click="chosenCategory('magustoit')">
-                    Magustoidud<input type="radio" name="options" id="dessert" autocomplete="off"></b-button>
-                <b-button v-on:click="chosenCategory('pastatoit')">
-                    Pastatoidud<input type="radio" name="options" id="pasta" autocomplete="off"></b-button>
-                <b-button v-on:click="chosenCategory('pirukad')">
-                    Pirukad<input type="radio" name="options" id="pies" autocomplete="off"></b-button>
-                <b-button v-on:click="chosenCategory('praad')">
-                    Praed<input type="radio" name="options" id="meal" autocomplete="off"></b-button>
-                <b-button v-on:click="chosenCategory('salat')">
-                    Salatid<input type="radio" name="options" id="salad" autocomplete="off"></b-button>
-                <b-button v-on:click="chosenCategory('supp')">
-                    Supid<input type="radio" name="options" id="soup" autocomplete="off"></b-button>
-                <b-button v-on:click="chosenCategory('suupisted')">
-                    Suupisted<input type="radio" name="options" id="snacks" autocomplete="off"></b-button>
-                <b-button v-on:click="chosenCategory('tort')">
-                    Tordid<input type="radio" name="options" id="pie" autocomplete="off"></b-button>
-                <b-button v-on:click="chosenCategory('võileivatort')">
-                    Võileivatordid<input type="radio" name="options" id="sandwich-cake" autocomplete="off"></b-button>
-                <b-button v-on:click="chosenCategory('vormiroog')">
-                    Vormiroad<input type="radio" name="options" id="formdish" autocomplete="off"></b-button>
+                <b-button v-for="(category, index) in categories" :key="index" v-on:click="chosenCategory(category.name)">
+
+                {{category.name}}<input type="radio" name="options" :id=category.name autocomplete="off" checked></b-button>
             </b-button-group>
 
         </div>
@@ -67,6 +44,7 @@
         data() {
             return {
                 recipes: [],
+                categories:[]
 
             }
         },
@@ -79,15 +57,19 @@
                 });
 
             },
-
+            retrieveCategories(){
+                http.get("/categories").then(response => {
+                    this.categories = response.data;
+                });
+            },
             refreshList() {
                 this.retrieveRecipes();
             },
 
 
-            chosenCategory(c) {
-                if (c != "all") {
-                    http.get("/recipes/" + c).then(response => {
+            chosenCategory(category) {
+                if (category != "all") {
+                    http.get("/recipes/" + category).then(response => {
                         this.recipes = response.data;
 
                     })
@@ -101,6 +83,7 @@
 
         mounted() {
             this.retrieveRecipes();
+            this.retrieveCategories();
             axios.get('http://localhost:8080/api/loggedIn').then(response => (this.user = response.data));
 
             axios.get('http://localhost:8080/api/recipes/search/' + this.searchStr).then(response=> {this.recipes = response.data; })
