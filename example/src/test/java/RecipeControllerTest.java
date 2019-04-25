@@ -9,7 +9,7 @@ import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 
 
-public class ExampleControllerTest extends AbstractTest {
+public class RecipeControllerTest extends AbstractTest {
 
     @Override
     @Before

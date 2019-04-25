@@ -17,7 +17,7 @@ import java.util.Optional;
 @CrossOrigin(origins = "http://localhost:9000")
 @RestController
 @RequestMapping("/api")
-public class ExampleController {
+public class RecipeController {
 
     @Autowired
     RecipeRepository repository;
@@ -48,8 +48,8 @@ public class ExampleController {
     }
 
 
-    @GetMapping("/recipes/{c}")
-    public List<Recipe> getRecipesByCategory(@PathVariable("c") String category) {
+    @GetMapping("/recipes/{category}")
+    public List<Recipe> getRecipesByCategory(@PathVariable("category") String category) {
         List<Recipe> recipes = new ArrayList<>();
         repository.findByCategory(category).forEach(recipes::add);
 
