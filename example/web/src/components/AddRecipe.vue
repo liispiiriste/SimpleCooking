@@ -47,8 +47,11 @@
 
                 <label>Kategooria</label><br>
                 <select class="custom-select" v-model="cat" style="width:415px">
-                   <option  v-for="(category, index) in categories" :key="index" :value="category">{{category}}</option>
-                   <!-- <option value="hommikusöök">Hommikusöök</option>
+                    <!--
+                    <option  v-for="(category, index) in categories" :key="index" :value="category.name">{{category.name}}</option>
+                    -->
+
+                    <option value="hommikusöök">Hommikusöök</option>
                     <option value="jook">Jook</option>
                     <option value="kook">Kook</option>
                     <option value="magustoit">Magustoit</option>
@@ -61,7 +64,7 @@
                     <option value="tort">Tort</option>
                     <option value="võileivatort">Võileivatort</option>
                     <option value="vormiroog">Vormiroog</option>
-                    <option value="muu">Muu</option>         -->
+                    <option value="muu">Muu</option>
                 </select>
                 <button style="margin-bottom:5px" v-on:click="addCategory()" class="small-input">Lisa</button>
                 <div class="arraylist" v-for="(cat,n) in recipe.category">
@@ -254,18 +257,16 @@
 
 
             retrieveCategories() {
-                            http.get("/categories").then(response => {
-                                this.categories = response.data;
+                http.get("/category").then(response => {
+                    this.categories = response.data;
 
-                            });
+                });
 
-                        },
+            },
 
-                        refreshList() {
-                            this.retrieveCategories();
-                        },
-
-
+            refreshList() {
+                this.retrieveCategories();
+            },
         },
         mounted() {
             axios.get('http://localhost:8080/api/loggedIn').then(response => (this.user = response.data));
