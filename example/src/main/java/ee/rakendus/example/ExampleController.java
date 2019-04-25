@@ -1,5 +1,7 @@
 package ee.rakendus.example;
 
+import ee.rakendus.example.categories.Categories;
+import ee.rakendus.example.categories.CategoryRepository;
 import ee.rakendus.example.user.User;
 import ee.rakendus.example.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,8 @@ public class ExampleController {
 
     @Autowired
     RecipeRepository repository;
+    @Autowired
+    CategoryRepository categoryRepository;
     @Autowired
     UserService userService;
 
@@ -50,6 +54,14 @@ public class ExampleController {
         repository.findByCategory(category).forEach(recipes::add);
 
         return recipes;
+    }
+
+    @GetMapping("/categories")
+    public List<Categories> getAllCategories() {
+        List<Categories> categories = new ArrayList<>();
+        categoryRepository.findAll().forEach(categories::add);
+
+        return categories;
     }
 
     private void saveRecipe(Recipe recipe) {

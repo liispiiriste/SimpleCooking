@@ -2,11 +2,23 @@
     <div class="recipes">
         <div class="sidemenu">
             <b-button-group vertical>
-                <b-button v-on:click="chosenCategory('all')" active>
+
+
+
+
+
+                <b-button v-on:click="chosenCategory('all')">
                     Kõik<input type="radio" name="options" id="all" autocomplete="off" checked></b-button>
-                <b-button v-on:click="chosenCategory('hommikusöök')">
-                    Hommikusöögid<input type="radio" name="options" id="breakfast" autocomplete="off"></b-button>
-                <b-button v-on:click="chosenCategory('jook')">
+
+
+                <b-button v-for="(category, index) in categories" :key="index" v-on:click="chosenCategory(category.name)">
+                    {{category.name}}<input type="radio" name="options" id=category.name autocomplete="off" checked></b-button>
+
+
+
+
+
+             <!---   <b-button v-on:click="chosenCategory('jook')">
                     Joogid<input type="radio" name="options" id="drinks" autocomplete="off"></b-button>
                 <b-button v-on:click="chosenCategory('kook')">
                     Koogid<input type="radio" name="options" id="cakes" autocomplete="off"></b-button>
@@ -29,7 +41,7 @@
                 <b-button v-on:click="chosenCategory('võileivatort')">
                     Võileivatordid<input type="radio" name="options" id="sandwich-cake" autocomplete="off"></b-button>
                 <b-button v-on:click="chosenCategory('vormiroog')">
-                    Vormiroad<input type="radio" name="options" id="formdish" autocomplete="off"></b-button>
+                    Vormiroad<input type="radio" name="options" id="formdish" autocomplete="off"></b-button>--->
             </b-button-group>
 
         </div>
@@ -67,7 +79,8 @@
         data() {
             return {
                 recipes: [],
-                searchStr:''
+                searchStr:'',
+                categories:[]
             }
         },
         methods: {
@@ -78,9 +91,16 @@
                 });
 
             },
+            retrieveCategories(){
+                http.get("/categories").then(response => {
+                    this.categories = response.data;
+
+                });
+            },
 
             refreshList() {
-                this.retrieveRecipes();
+                //this.retrieveRecipes();
+                this.retrieveCategories();
             },
             chosenCategory(c) {
                 if (c != "all") {
@@ -99,6 +119,7 @@
 
         mounted() {
             this.retrieveRecipes();
+            this.retrieveCategories();
         },
 
     };
