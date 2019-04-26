@@ -47,21 +47,10 @@
 
                 <label>Kategooria</label><br>
                 <select class="custom-select" v-model="cat" style="width:415px">
-                   <option  v-for="(category, index) in categories" :key="index" :value="category">{{category}}</option>
-                   <!-- <option value="hommikusöök">Hommikusöök</option>
-                    <option value="jook">Jook</option>
-                    <option value="kook">Kook</option>
-                    <option value="magustoit">Magustoit</option>
-                    <option value="pastatoit">Pastatoit</option>
-                    <option value="pirukad">Pirukad</option>
-                    <option value="praad">Praad</option>
-                    <option value="salat">Salat</option>
-                    <option value="suupisted">Suupisted</option>
-                    <option value="supp">Supp</option>
-                    <option value="tort">Tort</option>
-                    <option value="võileivatort">Võileivatort</option>
-                    <option value="vormiroog">Vormiroog</option>
-                    <option value="muu">Muu</option>         -->
+                   <option  v-for="(category, index) in categories" :key="index" :value="category.name">
+                       {{category.name}}
+
+                   </option>
                 </select>
                 <button style="margin-bottom:5px" v-on:click="addCategory()" class="small-input">Lisa</button>
                 <div class="arraylist" v-for="(cat,n) in recipe.category">
@@ -117,8 +106,8 @@
         </div>
 
         <div>
-                                <router-view @refreshData="refreshList"></router-view>
-                            </div>
+            <router-view @refreshData="refreshList"></router-view>
+        </div>
     </div>
 </template>
 
@@ -147,9 +136,7 @@
                 user: {
                     userid: ''
                 },
-                categories:{
-                  id: ''
-                },
+
                 submitted: false,
 
 
@@ -252,44 +239,38 @@
 
             } ,
 
-
             retrieveCategories() {
-                            http.get("/categories").then(response => {
-                                this.categories = response.data;
+                http.get("/categories").then(response => {
+                    this.categories = response.data;
 
-                            });
+                });
 
-                        },
+            },
 
-                        refreshList() {
-                            this.retrieveCategories();
-                        },
-
-
+            refreshList() {
+                this.retrieveCategories();
+            },
         },
         mounted() {
             axios.get('http://localhost:8080/api/loggedIn').then(response => (this.user = response.data));
             this.retrieveCategories();
             
-            },
-            onFileSelected(event) {
-                this.selectedFile = event.target.files[0];
-                const reader = new FileReader();
-                reader.readAsDataURL(this.selectedFile);
-                reader.onload = event => {
-                    this.previewImage = event.target.result;
-                }
-            },
-            onUpload() {
-                const formData = new FormData();
-                formData.append('image', this.selectedFile, this.selectedFile.name);
-                http.post('/recipe/' + this.recipe.id + '/image', formData)
-                    .then(this.recipe);
-                this.pic = true;
-            },
-            mounted() {
-                axios.get('http://localhost:8080/api/loggedIn').then(response => (this.user = response.data));
+        },
+        onFileSelected(event) {
+            this.selectedFile = event.target.files[0];
+            const reader = new FileReader();
+            reader.readAsDataURL(this.selectedFile);
+            reader.onload = event => {
+                this.previewImage = event.target.result;
             }
+        },
+        onUpload() {
+            const formData = new FormData();
+            formData.append('image', this.selectedFile, this.selectedFile.name);
+            http.post('/recipe/' + this.recipe.id + '/image', formData)
+                .then(this.recipe);
+            this.pic = true;
+        }
 
     }
 </script>
