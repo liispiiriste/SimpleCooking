@@ -6,30 +6,21 @@
             <div class="form-group">
                 <label for="name">Nimi</label>
                 <input type="text" class="form-control" id="name" v-model="recipe.name" name="name">
-
                 <div class="err"> {{nameError}}</div>
-
             </div>
             <div class="form-group">
                 <label for="description">Juhend</label>
                 <textarea type="text" rows=4 style="overflow-y: scroll;" class="form-control" id="description" required
                           v-model="recipe.description" name="description"></textarea>
                 <div class="err"> {{desError}}</div>
-
             </div>
             <div class="form-group">
                 <label for="materials">Materjalid</label><br>
-
                 <input type="text" class="small-input" id="materials" v-model="mat" name="materials" style="padding-left:10px;height:40px;width:235px;font-size:15px">
                 <input type="number" min="0" class="small-input" style="padding-left:10px;height:40px" id="quantity" v-model="mat2" name="quantity">
-
-
                 <select class="custom-select" v-model="mat3" style="width:75px; font-size:15px; max-height:40px; margin-left:10px; height: 37px">
-
                     <option  v-for="(measure, index) in measures" :key="index" :value="measure">{{measure}}</option>
-
                 </select>
-
                 <button style="margin-bottom:5px" class="small-input" v-on:click="addMaterial()">Lisa</button>
                 <div class="arraylist" v-for="(mat,m) in recipe.materials">
                     <div class="arraytext"><span style="text-align:left" class="mat"> {{mat}}</span></div>
@@ -41,15 +32,12 @@
                     <br>
                 </div>
                 <div class="err"> {{matError}}</div>
-
             </div>
             <div class="form-group">
-
                 <label>Kategooria</label><br>
                 <select class="custom-select" v-model="cat" style="width:415px">
                    <option  v-for="(category, index) in categories" :key="index" :value="category.name">
                        {{category.name}}
-
                    </option>
                 </select>
                 <button style="margin-bottom:5px" v-on:click="addCategory()" class="small-input">Lisa</button>
@@ -62,9 +50,7 @@
                     </div>
                     <br>
                 </div>
-
                 <div class="err"> {{catError}}</div>
-
             </div>
             <br>
             <div class="form-group">
@@ -75,13 +61,10 @@
                 <br>
                 <label for="price">Hind</label>
                 <input class="small-input" type="number" id="price" min="1" v-model="recipe.price" name="price">
-
                 <div class="err"> {{priceError}}</div>
                 <br>
-
             </div>
             <button v-on:click="saveRecipe" class="btn btn-success">Lisa pilt</button>
-
         </div>
         <div v-else-if="submitted && !pic && this.recipe">
             <h4>Lisa pilt</h4>
@@ -93,10 +76,8 @@
             </div>
             <div>
                 <button @click="onUpload">Lae üles</button>
-
             </div>
         </div>
-
         <div v-else>
             <h4>Retsept lisatud!</h4>
             <button class="btn btn-success" v-on:click="newRecipe">Uus retsept</button>
@@ -104,7 +85,6 @@
                 <button type="reset" class="btn btn-success">Kõik retseptid</button>
             </router-link>
         </div>
-
         <div>
             <router-view @refreshData="refreshList"></router-view>
         </div>
@@ -138,7 +118,6 @@
                 },
 
                 submitted: false,
-
 
                 pic: false,
                 nameError: "",
@@ -174,8 +153,6 @@
                     category: this.recipe.category.toString(),
                     portion: this.recipe.portion,
                     price: this.recipe.price,
-
-
                     userid: this.user.id
 
                 };
