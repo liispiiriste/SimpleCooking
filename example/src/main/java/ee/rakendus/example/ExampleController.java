@@ -41,10 +41,7 @@ public class ExampleController {
 
     @GetMapping("/recipes")
     public List<Recipe> getAllRecipes() {
-        List<Recipe> recipes = new ArrayList<>();
-        repository.findAll().forEach(recipes::add);
-
-        return recipes;
+        return recipeService.getAllRecipes();
     }
 
     private List<Recipe> getAllRecipesList() {
