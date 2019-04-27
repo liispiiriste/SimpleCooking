@@ -72,6 +72,8 @@
 
     import './stylesheets/main.css';
     import http from "./http-common";
+    import axios from "axios";
+
 
 
     export default {
@@ -86,6 +88,8 @@
         if(!this.authenticated) {
             this.$router.replace({ name: "login" });
         }
+
+        axios.get('http://localhost:8080/api/loggedIn').then(response => (this.user = response.data));
 
     },
     methods: {
