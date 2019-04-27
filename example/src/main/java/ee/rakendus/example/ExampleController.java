@@ -24,10 +24,6 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api")
 public class ExampleController {
-
-    @Autowired
-    CategoryRepository categoryRepository;
-
     @Autowired
     RecipeRepository repository;
     @Autowired
@@ -54,21 +50,14 @@ public class ExampleController {
         return new ResponseEntity<>(recipeService.getAllUserRecipes(), HttpStatus.OK);
     }
 
-
     @GetMapping("/recipes/{category}")
     public List<Recipe> getRecipesByCategory(@PathVariable("category") String category) {
-        List<Recipe> recipes = new ArrayList<>();
-        repository.findByCategory(category).forEach(recipes::add);
-
-        return recipes;
+        return recipeService.getRecipesByCategory(category);
     }
 
     @GetMapping("/categories")
     public List<Categories> getAllCategories() {
-        List<Categories> categories = new ArrayList<>();
-        categoryRepository.findAll().forEach(categories::add);
-
-        return categories;
+        return recipeService.getAllCategories();
     }
 
     @PostMapping("/recipe")
@@ -94,21 +83,9 @@ public class ExampleController {
 
     @PutMapping("/recipe/{id}")
     public ResponseEntity<Recipe> updateRecipe(@PathVariable("id") long id, @RequestBody Recipe recipe) {
-        Optional<Recipe> recipeData = repository.findById(id);
+        recipeService.updateRecipe(id, recipe);
+        return new ResponseEntity<>(HttpStatus.OK);
 
-        if (recipeData.isPresent()) {
-            Recipe _recipe = recipeData.get();
-            _recipe.setName(recipe.getName());
-            _recipe.setDescription(recipe.getDescription());
-            _recipe.setMaterials(recipe.getMaterials());
-            _recipe.setCategory(recipe.getCategory());
-            _recipe.setPrice(recipe.getPrice());
-            _recipe.setPortion(recipe.getPortion());
-            _recipe.setImage(recipe.getImage());
-            return new ResponseEntity<>(repository.save(_recipe), HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
     }
 
     @PostMapping("/recipe/{id}/image")

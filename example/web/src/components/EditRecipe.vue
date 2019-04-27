@@ -78,7 +78,6 @@
         props: ["recipe"],
         data() {
             return {
-                previewImage: null,
                 recipe: {
                     id: this.recipe.id,
                     name: this.recipe.name,

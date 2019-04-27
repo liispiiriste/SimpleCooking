@@ -20,7 +20,7 @@ public class Categories {
     @ManyToMany
     List<Recipe> recipes;
 
-    protected Categories(){}
+    public Categories(){}
 
 
     public Long getId() { return id;}

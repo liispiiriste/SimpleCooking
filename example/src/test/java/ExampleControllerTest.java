@@ -2,6 +2,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import ee.rakendus.example.ExampleController;
 import ee.rakendus.example.Recipe;
 import ee.rakendus.example.RecipeService;
+import ee.rakendus.example.image.ImageService;
 import ee.rakendus.example.user.User;
 import ee.rakendus.example.user.UserService;
 import org.junit.Before;
@@ -11,6 +12,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.apache.catalina.filters.CorsFilter;
@@ -23,8 +25,8 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.*;
 import static org.mockito.internal.verification.VerificationModeFactory.times;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
@@ -33,6 +35,8 @@ public class ExampleControllerTest {
     RecipeService recipeService;
     @Mock
     UserService userService;
+    @Mock
+    ImageService imageService;
     @InjectMocks
     ExampleController exampleController;
 
@@ -50,13 +54,10 @@ public class ExampleControllerTest {
     private List<Recipe> sampleRecipes = new ArrayList<>();
     @Before
     public void setUp(){
-        ExampleController exampleController = new ExampleController();
-
-
         MockitoAnnotations.initMocks(this);
-        mockMvc = MockMvcBuilders
-                .standaloneSetup(exampleController)
-                .build();
+
+        exampleController = new ExampleController();
+        mockMvc = MockMvcBuilders.standaloneSetup(exampleController).build();
     }
 
     @Test
@@ -109,6 +110,21 @@ public class ExampleControllerTest {
         verify(recipeService, times(1)).deleteRecipeById(sampleRecipe1.getId());
         verifyNoMoreInteractions(recipeService);
     }
+
+    @Test
+    public void handleImagePost() throws Exception {
+        Recipe recipe = new Recipe();
+        recipe.setId(1L);
+        MockMultipartFile multipartFile =
+                new MockMultipartFile("imagefile", "testing.txt", "text/plain",
+                        "Spring Framework Guru".getBytes());
+
+        mockMvc.perform(multipart("api/recipe/0/image").file(multipartFile))
+                .andExpect(status().isCreated());
+
+        verify(imageService, times(1)).saveImageFile(anyLong(), any());
+    }
+
     public static String asJsonString(final Object obj) {
         try {
             return new ObjectMapper().writeValueAsString(obj);
