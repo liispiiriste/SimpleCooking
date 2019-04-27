@@ -74,9 +74,7 @@ public class Recipe {
     }
 
     public void setDescription(String description) {
-
-        this.description = description;
-    }
+        this.description = description; }
 
     public String getMaterials() {
         return materials;
