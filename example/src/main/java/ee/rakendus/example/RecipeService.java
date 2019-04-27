@@ -4,6 +4,7 @@ import ee.rakendus.example.user.User;
 import ee.rakendus.example.user.UserService;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,6 +18,19 @@ public class RecipeService {
         this.recipeRepository = recipeRepository;
         this.userService = userService;
     }
+
+    public List<Recipe> getAllRecipes() {
+        //ei saa niisama findAll jätta, sest tagastab iterationi, mitte listi
+        List<Recipe> recipes = new ArrayList<>();
+        recipeRepository.findAll().forEach(recipes::add);
+        return recipes;
+    }
+
+    public List<Recipe> getAllUserRecipes() {
+        long userId = userService.findCurrentUserId().getId();
+        return recipeRepository.findAllByUserId(userId);
+    }
+
     public void saveRecipe(Recipe recipe) {
         User user = userService.findCurrentUserId();
         recipe.setUser(user);

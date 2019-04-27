@@ -38,37 +38,17 @@ public class SecurityConf extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        /*
-        http.cors().and().csrf().disable().authorizeRequests()
-                .antMatchers(HttpMethod.POST, SIGN_UP_URL).permitAll()
-                .antMatchers(HttpMethod.POST, "/login").permitAll()
-                .antMatchers("/**").permitAll().anyRequest().authenticated()//ilma sisselogimiseta ligipääs
-
-                .antMatchers(HttpMethod.POST, GET_TOKEN_URL).permitAll()
-                .antMatchers().permitAll()
-
-                .anyRequest().authenticated()
-                .and()
-                .addFilter(new JwtAuthenticationFilter(authenticationManager()))
-                .addFilter(new JwtAuthorizationFilter(authenticationManager()))
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        */
-
         http.cors().and()
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.POST, SIGN_UP_URL).permitAll()
                 .antMatchers(HttpMethod.POST, "/login").permitAll()
-                //.antMatchers("/**").permitAll().anyRequest().authenticated()
-                //.antMatchers().permitAll()
-                .anyRequest() .authenticated()
+                .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                //.loginPage("/apilogin")
                 .successHandler(new CustomAuthenticationSuccessHandler())
                 .failureHandler(new CustomAuthenticationFailureHandler());
     }
-
 
 
     @Bean
