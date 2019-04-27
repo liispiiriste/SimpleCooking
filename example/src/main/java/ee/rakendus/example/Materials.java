@@ -3,6 +3,7 @@ package ee.rakendus.example;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -20,6 +21,10 @@ public class Materials {
 
     @Column(name="measurement")
     private String measurement;
+
+    @ManyToMany
+    List<Recipe> recipes;
+
 
     protected Materials(){}
     public Materials(String materials) {
