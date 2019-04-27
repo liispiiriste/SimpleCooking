@@ -101,6 +101,10 @@ public class RecipeServiceTest {
 
         User user = new User();
         user.setId(1L);
+        user.setEmail("test@test.ee");
+        user.setUsername("test");
+        user.setPassword("test");
+        userService.saveUser(user);
         recipe2.setUser(user);
         List<Recipe> recipeList = new ArrayList<>();
         recipeList.add(recipe);
@@ -123,7 +127,6 @@ public class RecipeServiceTest {
         user.setUsername("test");
         user.setPassword("test");
         userService.saveUser(user);
-
 
         Recipe recipe = new Recipe();
         recipe.setId(1L);
