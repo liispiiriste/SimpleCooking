@@ -36,6 +36,16 @@ public class RecipeService {
         recipe.setUser(user);
         recipeRepository.save(recipe);
     }
+    public void updateRecipe(long id, Recipe recipe) {
+        Recipe rec = findById(id);
+        rec.setName(recipe.getName());
+        rec.setDescription(recipe.getDescription());
+        rec.setMaterials(recipe.getMaterials());
+        rec.setPrice(recipe.getPrice());
+        rec.setPortion(recipe.getPortion());
+        
+        recipeRepository.save(rec);
+    }
 
     public Recipe findById(long id) {
         Optional<Recipe> recipeOptional = recipeRepository.findById(id);

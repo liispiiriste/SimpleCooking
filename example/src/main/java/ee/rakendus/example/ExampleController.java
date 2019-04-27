@@ -94,21 +94,9 @@ public class ExampleController {
 
     @PutMapping("/recipe/{id}")
     public ResponseEntity<Recipe> updateRecipe(@PathVariable("id") long id, @RequestBody Recipe recipe) {
-        Optional<Recipe> recipeData = repository.findById(id);
+        recipeService.updateRecipe(id, recipe);
+        return new ResponseEntity<>(HttpStatus.OK);
 
-        if (recipeData.isPresent()) {
-            Recipe _recipe = recipeData.get();
-            _recipe.setName(recipe.getName());
-            _recipe.setDescription(recipe.getDescription());
-            _recipe.setMaterials(recipe.getMaterials());
-            _recipe.setCategory(recipe.getCategory());
-            _recipe.setPrice(recipe.getPrice());
-            _recipe.setPortion(recipe.getPortion());
-            _recipe.setImage(recipe.getImage());
-            return new ResponseEntity<>(repository.save(_recipe), HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
     }
 
     @PostMapping("/recipe/{id}/image")
