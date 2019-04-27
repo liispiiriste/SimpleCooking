@@ -20,9 +20,9 @@
                 <input type="text" class="small-input" id="materials" v-model="mat" name="materials" style="padding-left:10px;height:40px;width:235px;font-size:15px">
                 <input type="number" min="0" class="small-input" style="padding-left:10px;height:40px" id="quantity" v-model="mat2" name="quantity">
                 <select class="custom-select" v-model="mat3" style="width:75px; font-size:15px; max-height:40px; margin-left:10px; height: 37px">
-                    <option  v-for="(measure, index) in measures" :key="index" :value="measure">{{measure}}</option>
-
-
+                    <option  v-for="(measurement, index) in measurements" :key="index" :value="measurement">
+                        {{measurement}}
+                    </option>
 
                 </select>
                 <button style="margin-bottom:5px" class="small-input" v-on:click="addMaterial()">Lisa</button>
@@ -137,9 +137,10 @@
                 mat2: 0,
                 mat3: '',
                 cat: '',
-                measures: [
+                measurements:
+                    [
                     "g", "kg", "sl", "tl", "dl", "ml", "tk"
-                ],
+                    ],
                 categories: [],
                 selectedFile: null,
                 previewImage: null
