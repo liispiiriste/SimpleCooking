@@ -20,13 +20,16 @@
             <div class="form-group">
                 <label for="materials">Materjalid</label><br>
 
-                <input type="text" class="small-input" id="materials" v-model="mat" name="materials" style="padding-left:10px;height:40px;width:235px;font-size:15px">
-                <input type="number" min="0" class="small-input" style="padding-left:10px;height:40px" id="quantity" v-model="mat2" name="quantity">
+                <input type="text" class="small-input" id="materials" v-model="mat" name="materials"
+                       style="padding-left:10px;height:40px;width:235px;font-size:15px">
+                <input type="number" min="0" class="small-input" style="padding-left:10px;height:40px" id="quantity"
+                       v-model="mat2" name="quantity">
 
 
-                <select class="custom-select" v-model="mat3" style="width:75px; font-size:15px; max-height:40px; margin-left:10px; height: 37px">
+                <select class="custom-select" v-model="mat3"
+                        style="width:75px; font-size:15px; max-height:40px; margin-left:10px; height: 37px">
 
-                    <option  v-for="(measure, index) in measures" :key="index" :value="measure">{{measure}}</option>
+                    <option v-for="(measure, index) in measures" :key="index" :value="measure">{{measure}}</option>
 
                 </select>
 
@@ -120,8 +123,8 @@
         </div>
 
         <div>
-                                <router-view @refreshData="refreshList"></router-view>
-                            </div>
+            <router-view @refreshData="refreshList"></router-view>
+        </div>
     </div>
 </template>
 
@@ -150,8 +153,8 @@
                 user: {
                     userid: ''
                 },
-                categories:{
-                  id: ''
+                categories: {
+                    id: ''
                 },
                 submitted: false,
 
@@ -167,12 +170,10 @@
                 mat2: 0,
                 mat3: '',
                 cat: '',
-                measures:[
-                 "g", "kg", "sl", "tl", "dl" ,"ml", "tk"
-                ]    ,
-                categories:[
-
+                measures: [
+                    "g", "kg", "sl", "tl", "dl", "ml", "tk"
                 ],
+                categories: [],
                 selectedFile: null,
                 previewImage: null
 
@@ -253,7 +254,7 @@
             saveMaterial() {
 
 
-            } ,
+            },
 
 
             retrieveCategories() {
@@ -266,12 +267,6 @@
 
             refreshList() {
                 this.retrieveCategories();
-            },
-        },
-        mounted() {
-            axios.get('http://localhost:8080/api/loggedIn').then(response => (this.user = response.data));
-            this.retrieveCategories();
-            
             },
             onFileSelected(event) {
                 this.selectedFile = event.target.files[0];
@@ -287,10 +282,13 @@
                 http.post('/recipe/' + this.recipe.id + '/image', formData)
                     .then(this.recipe);
                 this.pic = true;
-            },
-            mounted() {
-                axios.get('http://localhost:8080/api/loggedIn').then(response => (this.user = response.data));
             }
+        },
+        mounted() {
+            axios.get('http://localhost:8080/api/loggedIn').then(response => (this.user = response.data));
+            this.retrieveCategories();
+
+        }
 
     }
 </script>
