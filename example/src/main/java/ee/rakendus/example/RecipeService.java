@@ -43,7 +43,7 @@ public class RecipeService {
         rec.setMaterials(recipe.getMaterials());
         rec.setPrice(recipe.getPrice());
         rec.setPortion(recipe.getPortion());
-        
+
         recipeRepository.save(rec);
     }
 

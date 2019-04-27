@@ -3,6 +3,7 @@ import ee.rakendus.example.Recipe;
 import ee.rakendus.example.RecipeRepository;
 import ee.rakendus.example.RecipeService;
 import ee.rakendus.example.user.User;
+import ee.rakendus.example.user.UserRepository;
 import ee.rakendus.example.user.UserService;
 import org.hibernate.validator.constraints.Range;
 import org.junit.Before;
@@ -29,6 +30,9 @@ public class RecipeServiceTest {
 
     @Mock
     RecipeRepository recipeRepository;
+
+    @Mock
+    UserRepository userRepository;
 
     @Mock
     UserService userService;
@@ -93,6 +97,36 @@ public class RecipeServiceTest {
         verify(recipeRepository, never()).findById(anyLong());
     }
 
+    @Test
+    public void testSaveRecipe() throws Exception {
+        User user = new User();
+        user.setId(2L);
+        user.setEmail("test@test.ee");
+        user.setUsername("test");
+        user.setPassword("test");
+        userService.saveUser(user);
+
+
+        Recipe recipe = new Recipe();
+        recipe.setId(1L);
+        recipe.setName("test");
+        recipe.setMaterials("test");
+        recipe.setDescription("test");
+        recipe.setPortion(1);
+        recipe.setPrice(1);
+
+        recipe.setUser(user);
+        Optional<Recipe> recipeOptional = Optional.of(recipe);
+
+        when(recipeRepository.findById(anyLong())).thenReturn(recipeOptional);
+
+        Recipe recipeReturned = recipeService.findById(1L);
+
+        assertNotNull("Null recipe returned", recipeReturned);
+        verify(recipeRepository, times(1)).findById(anyLong());
+        verify(recipeRepository, never()).findAll();
+
+    }
 
     @Test
     public void testDeleteById() throws Exception {
