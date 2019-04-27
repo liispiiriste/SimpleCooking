@@ -26,6 +26,11 @@ public class RecipeService {
         return recipes;
     }
 
+    public List<Recipe> getAllUserRecipes() {
+        long userId = userService.findCurrentUserId().getId();
+        return recipeRepository.findAllByUserId(userId);
+    }
+
     public void saveRecipe(Recipe recipe) {
         User user = userService.findCurrentUserId();
         recipe.setUser(user);

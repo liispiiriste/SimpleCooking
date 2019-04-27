@@ -44,20 +44,13 @@ public class ExampleController {
         return recipeService.getAllRecipes();
     }
 
-    private List<Recipe> getAllRecipesList() {
-        long userId = userService.findCurrentUserId().getId();
-        List<Recipe> recipes = getRecipesByUserList(userId);
-        Collections.reverse(recipes);
-        return recipes;
-    }
-
     @GetMapping(value="/recipe/{id}")
     public ResponseEntity<Recipe> getRecipeById(@PathVariable("id") long id) {
         return new ResponseEntity<>(recipeService.findById(id), HttpStatus.OK);
     }
     @GetMapping("/userRecipes")
     public ResponseEntity<List<Recipe>> getAllUserRecipes() {
-        return new ResponseEntity<>(getAllRecipesList(), HttpStatus.OK);
+        return new ResponseEntity<>(recipeService.getAllUserRecipes(), HttpStatus.OK);
     }
 
 
@@ -116,15 +109,6 @@ public class ExampleController {
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-    }
-
-    private List<Recipe> getRecipesByUserList(Long userId) {
-        return repository.findAllByUserId(userId);
-    }
-
-    @GetMapping("/user/{user}")
-    public ResponseEntity<List<Recipe>> getRecipesByUser(@PathVariable("user") long userId) {
-        return new ResponseEntity<>(getRecipesByUserList(userId), HttpStatus.OK);
     }
 
     @PostMapping("/recipe/{id}/image")

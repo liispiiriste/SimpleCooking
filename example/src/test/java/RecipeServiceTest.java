@@ -1,6 +1,7 @@
 import ee.rakendus.example.Recipe;
 import ee.rakendus.example.RecipeRepository;
 import ee.rakendus.example.RecipeService;
+import ee.rakendus.example.user.User;
 import ee.rakendus.example.user.UserService;
 import org.hibernate.validator.constraints.Range;
 import org.junit.Before;
@@ -61,6 +62,29 @@ public class RecipeServiceTest {
         verify(recipeRepository, times(1)).findAll();
         verify(recipeRepository, never()).findById(anyLong());
     }
+
+    @Test
+    public void testGetAllUserRecipes() {
+        //TODO: poolik
+        Recipe recipe = new Recipe();
+        Recipe recipe2 = new Recipe();
+
+        User user = new User();
+        user.setId(1L);
+        recipe2.setUser(user);
+        List<Recipe> recipeList = new ArrayList<>();
+        recipeList.add(recipe);
+        recipeList.add(recipe2);
+
+        when(recipeService.getAllUserRecipes()).thenReturn(recipeList);
+
+        List<Recipe> userRecipes = recipeService.getAllUserRecipes();
+
+        assertEquals(userRecipes.size(), 1);
+        verify(recipeRepository, times(1)).findAllByUserId(user.getId());
+        verify(recipeRepository, never()).findById(anyLong());
+    }
+
     @Test
     public void testDeleteById() throws Exception {
         long id = 2L;
