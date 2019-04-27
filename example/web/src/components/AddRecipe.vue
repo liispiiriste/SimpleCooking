@@ -16,10 +16,14 @@
             </div>
             <div class="form-group">
                 <label for="materials">Materjalid</label><br>
+
                 <input type="text" class="small-input" id="materials" v-model="mat" name="materials" style="padding-left:10px;height:40px;width:235px;font-size:15px">
                 <input type="number" min="0" class="small-input" style="padding-left:10px;height:40px" id="quantity" v-model="mat2" name="quantity">
                 <select class="custom-select" v-model="mat3" style="width:75px; font-size:15px; max-height:40px; margin-left:10px; height: 37px">
                     <option  v-for="(measure, index) in measures" :key="index" :value="measure">{{measure}}</option>
+
+
+
                 </select>
                 <button style="margin-bottom:5px" class="small-input" v-on:click="addMaterial()">Lisa</button>
                 <div class="arraylist" v-for="(mat,m) in recipe.materials">
@@ -36,9 +40,11 @@
             <div class="form-group">
                 <label>Kategooria</label><br>
                 <select class="custom-select" v-model="cat" style="width:415px">
+
                    <option  v-for="(category, index) in categories" :key="index" :value="category.name">
                        {{category.name}}
                    </option>
+
                 </select>
                 <button style="margin-bottom:5px" v-on:click="addCategory()" class="small-input">Lisa</button>
                 <div class="arraylist" v-for="(cat,n) in recipe.category">
@@ -117,6 +123,7 @@
                     userid: ''
                 },
 
+
                 submitted: false,
 
                 pic: false,
@@ -130,12 +137,10 @@
                 mat2: 0,
                 mat3: '',
                 cat: '',
-                measures:[
-                 "g", "kg", "sl", "tl", "dl" ,"ml", "tk"
-                ]    ,
-                categories:[
-
+                measures: [
+                    "g", "kg", "sl", "tl", "dl", "ml", "tk"
                 ],
+                categories: [],
                 selectedFile: null,
                 previewImage: null
 
@@ -214,10 +219,12 @@
             saveMaterial() {
 
 
-            } ,
+            },
 
             retrieveCategories() {
+
                 http.get("/categories").then(response => {
+
                     this.categories = response.data;
 
                 });
@@ -227,26 +234,27 @@
             refreshList() {
                 this.retrieveCategories();
             },
+
+            onFileSelected(event) {
+                this.selectedFile = event.target.files[0];
+                const reader = new FileReader();
+                reader.readAsDataURL(this.selectedFile);
+                reader.onload = event => {
+                    this.previewImage = event.target.result;
+                }
+            },
+            onUpload() {
+                const formData = new FormData();
+                formData.append('image', this.selectedFile, this.selectedFile.name);
+                http.post('/recipe/' + this.recipe.id + '/image', formData)
+                    .then(this.recipe);
+                this.pic = true;
+            }
         },
         mounted() {
             axios.get('http://localhost:8080/api/loggedIn').then(response => (this.user = response.data));
             this.retrieveCategories();
-            
-        },
-        onFileSelected(event) {
-            this.selectedFile = event.target.files[0];
-            const reader = new FileReader();
-            reader.readAsDataURL(this.selectedFile);
-            reader.onload = event => {
-                this.previewImage = event.target.result;
-            }
-        },
-        onUpload() {
-            const formData = new FormData();
-            formData.append('image', this.selectedFile, this.selectedFile.name);
-            http.post('/recipe/' + this.recipe.id + '/image', formData)
-                .then(this.recipe);
-            this.pic = true;
+
         }
 
     }
