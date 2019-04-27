@@ -24,10 +24,6 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api")
 public class ExampleController {
-
-    @Autowired
-    CategoryRepository categoryRepository;
-
     @Autowired
     RecipeRepository repository;
     @Autowired
@@ -54,21 +50,14 @@ public class ExampleController {
         return new ResponseEntity<>(recipeService.getAllUserRecipes(), HttpStatus.OK);
     }
 
-
     @GetMapping("/recipes/{category}")
     public List<Recipe> getRecipesByCategory(@PathVariable("category") String category) {
-        List<Recipe> recipes = new ArrayList<>();
-        repository.findByCategory(category).forEach(recipes::add);
-
-        return recipes;
+        return recipeService.getRecipesByCategory(category);
     }
 
     @GetMapping("/categories")
     public List<Categories> getAllCategories() {
-        List<Categories> categories = new ArrayList<>();
-        categoryRepository.findAll().forEach(categories::add);
-
-        return categories;
+        return recipeService.getAllCategories();
     }
 
     @PostMapping("/recipe")

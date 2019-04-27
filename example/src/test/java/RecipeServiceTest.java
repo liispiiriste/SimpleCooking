@@ -2,6 +2,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import ee.rakendus.example.Recipe;
 import ee.rakendus.example.RecipeRepository;
 import ee.rakendus.example.RecipeService;
+import ee.rakendus.example.categories.Categories;
+import ee.rakendus.example.categories.CategoryRepository;
 import ee.rakendus.example.user.User;
 import ee.rakendus.example.user.UserRepository;
 import ee.rakendus.example.user.UserService;
@@ -27,6 +29,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class RecipeServiceTest {
     @Mock
     RecipeService recipeService;
+    @Mock
+    CategoryRepository categoryRepository;
 
     @Mock
     RecipeRepository recipeRepository;
@@ -42,7 +46,7 @@ public class RecipeServiceTest {
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        recipeService = new RecipeService(recipeRepository, userService);
+        recipeService = new RecipeService(recipeRepository, userService, categoryRepository);
     }
 
     @Test
@@ -73,6 +77,20 @@ public class RecipeServiceTest {
         assertEquals(recipes.size(), 1);
         verify(recipeRepository, times(1)).findAll();
         verify(recipeRepository, never()).findById(anyLong());
+    }
+    @Test
+    public void testGetAllCategroies() {
+        Categories category = new Categories();
+        List<Categories> categoriesList = new ArrayList<>();
+        categoriesList.add(category);
+
+        when(recipeService.getAllCategories()).thenReturn(categoriesList);
+
+        List<Categories> categories = recipeService.getAllCategories();
+
+        assertEquals(categories.size(), 1);
+        verify(categoryRepository, times(1)).findAll();
+        verify(categoryRepository, never()).findById(anyLong());
     }
 
     @Test
