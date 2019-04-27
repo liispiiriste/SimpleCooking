@@ -5,7 +5,6 @@
                 <b-card style="background:rgba(255, 255, 255, 0.2); border:none; border-radius:25px;">
                     <h4>{{this.recipe.name}}</h4>
 
-
                     <div v-if="this.recipe" style="text-align:left">
                         <div>
                             <label>Juhend: </label> {{this.recipe.description}}
@@ -23,16 +22,19 @@
                             <label>Kategooria: </label>
                             {{this.recipe.category}}
                         </div>
-                        
-                        <!--<div id="recipeImage">
-                        <img :src="showImage()" alt="recipe's image">-->
+
+
+                    </div>
+                    {{recipe.id}}
+                    <div id="recipeImage">
+                        <img :src="recipe.image" alt="img" width="200" height="200">
                     </div>
 
-
                     <router-link :to="{name: 'editRecipe', params: {recipe:recipe, id: recipe.id}}">
-                    <b-button variant="outline-success" style="float:left;">
-                        Muuda
-                    </b-button></router-link>
+                        <b-button variant="outline-success" style="float:left;">
+                            Muuda
+                        </b-button>
+                    </router-link>
                     <b-button variant="outline-warning" style="float:left; margin-left:5px" v-on:click="deleteRecipe()">
                         Kustuta
                     </b-button>
@@ -50,15 +52,15 @@
 
 <script>
     import http from "../http-common";
+    import axios from "axios";
 
     export default {
-        name: "Recipe",
+        name: 'recipe',
 
         props: ["recipe"],
         data() {
             return {
-                submitted: false,
-                image: {}
+                submitted: false
             };
         },
         methods: {
@@ -71,22 +73,17 @@
                     });
                 this.submitted = true;
             },
-            showImage(event) {
-                http.get('/recipe/' + this.recipe.id + '/recipeImage')
-                    .then(response => (this.image = response.data));
-                this.image = event.target.files[0];
-                console.log(this.image);
-                const reader = new FileReader();
+            showImage() {
+                console.log("yo");
+                axios.get('http://localhost:8080/api/recipe/${recipe.id}/image', {
+                    responseType: 'arrayBuffer',
+                    timeout: 30000
+                }).then(response => {
+                    recipe.image = 'data:image/jpeg;base64,' + btoa(response.data.results[0].image.data);
+                    console.log('data:image/jpeg;base64,' + btoa(response.data.results[0].image.data.name));
 
-                reader.onload = event => {
-                    this.image = event.target.result;
-                    this.$refs.cropper.replace(this.image);
-                }
-                console.log(this.recipe.id);
+                });
 
-            },
-            mounted() {
-                this.showImage();
             }
         }
     }
@@ -110,11 +107,13 @@
         width: 70%;
         margin: auto;
     }
-    #recipeImage{
+
+    #recipeImage {
         display: flex;
         justify-content: center;
         align-items: center;
     }
+
     #recipeImage img {
         max-width: 100%;
         max-height: 500px;

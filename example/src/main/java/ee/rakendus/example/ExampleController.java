@@ -123,10 +123,11 @@ public class ExampleController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @GetMapping("/recipe/{id}/recipeImage")
+    @GetMapping("/recipe/{id}/image")
     public void renderImageFromDB(@PathVariable("id") long id, HttpServletResponse response) throws IOException {
         Recipe recipe = recipeService.findById(id);
         if (recipe.getImage() != null) {
+            System.out.println(recipe.getImage());
             byte[] byteArray = new byte[recipe.getImage().length];
 
             int i = 0;
