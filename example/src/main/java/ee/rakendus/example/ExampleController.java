@@ -44,10 +44,11 @@ public class ExampleController {
         return recipeService.getAllRecipes();
     }
 
-    @GetMapping(value="/recipe/{id}")
+    @GetMapping(value = "/recipe/{id}")
     public ResponseEntity<Recipe> getRecipeById(@PathVariable("id") long id) {
         return new ResponseEntity<>(recipeService.findById(id), HttpStatus.OK);
     }
+
     @GetMapping("/userRecipes")
     public ResponseEntity<List<Recipe>> getAllUserRecipes() {
         return new ResponseEntity<>(recipeService.getAllUserRecipes(), HttpStatus.OK);
@@ -55,8 +56,7 @@ public class ExampleController {
 
 
     @GetMapping("/recipes/{category}")
-
-        public List<Recipe> getRecipesByCategory(@PathVariable("category") String category) {
+    public List<Recipe> getRecipesByCategory(@PathVariable("category") String category) {
         List<Recipe> recipes = new ArrayList<>();
         repository.findByCategory(category).forEach(recipes::add);
 
@@ -135,7 +135,7 @@ public class ExampleController {
         }
     }
 
-    @RequestMapping(value="/recipes/search/{searchStr}", method = RequestMethod.GET)
+    @RequestMapping(value = "/recipes/search/{searchStr}", method = RequestMethod.GET)
     public List<Recipe> searchRecipes(@PathVariable("searchStr") String searchStr) {
         return recipeService.searchRecipesByName(searchStr);
     }

@@ -1,3 +1,4 @@
+import com.fasterxml.jackson.databind.ObjectMapper;
 import ee.rakendus.example.Recipe;
 import ee.rakendus.example.RecipeRepository;
 import ee.rakendus.example.RecipeService;
@@ -8,6 +9,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +20,11 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 public class RecipeServiceTest {
+    @Mock
     RecipeService recipeService;
 
     @Mock
@@ -26,6 +32,8 @@ public class RecipeServiceTest {
 
     @Mock
     UserService userService;
+
+    MockMvc mockMvc;
 
     @Before
     public void setUp() throws Exception {
@@ -76,7 +84,7 @@ public class RecipeServiceTest {
         recipeList.add(recipe);
         recipeList.add(recipe2);
 
-        when(recipeService.getAllUserRecipes()).thenReturn(recipeList);
+        when(recipeRepository.findByName(anyString())).thenReturn(recipeList);
 
         List<Recipe> userRecipes = recipeService.getAllUserRecipes();
 
@@ -85,10 +93,50 @@ public class RecipeServiceTest {
         verify(recipeRepository, never()).findById(anyLong());
     }
 
+
     @Test
     public void testDeleteById() throws Exception {
         long id = 2L;
         recipeService.deleteRecipeById(id);
         verify(recipeRepository, times(1)).deleteById(anyLong());
+    }
+
+    @Test
+    public void testSearchRecipesByName() {
+        Recipe recipe = new Recipe();
+        Recipe recipe2 = new Recipe();
+        recipe.setId(1L);
+        recipe.setName("test");
+        recipe.setDescription("test");
+        recipe.setMaterials("test");
+        recipe.setPortion(1);
+        recipe.setPrice(1);
+        recipe2.setName("test2");
+        recipe2.setId(2L);
+        recipe2.setName("test2");
+        recipe2.setDescription("test");
+        recipe2.setMaterials("test");
+        recipe2.setPortion(1);
+        recipe2.setPrice(1);
+
+        List<Recipe> recipes = new ArrayList<>();
+        recipes.add(recipe);
+
+        when(recipeService.searchRecipesByName(anyString())).thenReturn(recipes);
+
+        List<Recipe> recipesByName = recipeService.searchRecipesByName("test");
+
+        assertEquals(recipesByName.size(), 1);
+        verify(recipeRepository, times(1)).findByName("test");
+        verify(recipeRepository, never()).findAll();
+
+    }
+
+    public static String asJsonString(final Object obj) {
+        try {
+            return new ObjectMapper().writeValueAsString(obj);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }
