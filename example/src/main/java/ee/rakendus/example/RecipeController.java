@@ -23,7 +23,7 @@ import java.util.Optional;
 @CrossOrigin(origins = "http://localhost:9000")
 @RestController
 @RequestMapping("/api")
-public class ExampleController {
+public class RecipeController {
     @Autowired
     RecipeRepository repository;
     @Autowired
