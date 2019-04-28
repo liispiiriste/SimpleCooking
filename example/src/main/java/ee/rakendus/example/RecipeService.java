@@ -59,9 +59,7 @@ public class RecipeService {
     public Recipe findById(long id) {
         Optional<Recipe> recipeOptional = recipeRepository.findById(id);
 
-        if (!recipeOptional.isPresent()) {
-            throw new RuntimeException("Recipe Not Found!");
-        }
+        if (!recipeOptional.isPresent()) throw new RuntimeException("Recipe Not Found!");
 
         return recipeOptional.get();
     }

@@ -27,7 +27,6 @@ public class SecurityConf extends WebSecurityConfigurerAdapter {
     public SecurityConf(UserDetailsService userDetailsService, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userDetailsService = userDetailsService;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-
     }
 
 
@@ -49,7 +48,6 @@ public class SecurityConf extends WebSecurityConfigurerAdapter {
                 .successHandler(new CustomAuthenticationSuccessHandler())
                 .failureHandler(new CustomAuthenticationFailureHandler());
     }
-
 
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
