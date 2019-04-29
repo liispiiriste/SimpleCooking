@@ -1,7 +1,6 @@
 package ee.rakendus.example;
 
 import ee.rakendus.example.categories.Categories;
-import ee.rakendus.example.categories.CategoryRepository;
 import ee.rakendus.example.image.ImageService;
 import ee.rakendus.example.user.UserService;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
@@ -15,10 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Base64;
 import java.util.List;
-import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:9000")
 @RestController
