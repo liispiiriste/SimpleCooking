@@ -26,16 +26,14 @@
 
                         <!-- Right aligned nav items -->
                         <b-navbar-nav class="ml-auto">
-                            <b-nav-form id="searchForm" v-if="authenticated">
-                                <b-form-input size="sm" class="mr-sm-2" placeholder="Otsi retsepte" ></b-form-input>
-                                <b-button size="sm" class="my-2 my-sm-0" type="submit" v-on:click="searchRecipe('searchStr')">Otsi</b-button>
+                            <b-nav-form id="searchForm" >
+                                <b-form-input v-model="searchStr" size="sm" class="mr-sm-2" placeholder="Otsi retsepte..." type="search" />
+                                <b-button size="sm" class="my-2 my-sm-0" type="submit" v-on:click="searchRecipe('searchStr')">
+                                    Otsi
+                                </b-button>
                             </b-nav-form>
                         </b-navbar-nav>
-
-
                     </b-collapse>
-
-
                 </b-navbar>
             </div>
         <br>
@@ -60,11 +58,11 @@
 
             return {
                 authenticated: false,
-
                 searchStr: ''
 
             }
-        },mounted() {
+        },
+        mounted() {
             if(!this.authenticated) {
                 this.$router.replace({ name: "login" });
             }
@@ -101,8 +99,6 @@
 .search-wrapper {
     position: relative;
 }
-
-
 
 .wrapper {
     display: flex;
