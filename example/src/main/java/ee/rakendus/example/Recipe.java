@@ -45,6 +45,10 @@ public class Recipe {
     @ManyToOne
     private Categories categories;
 
+    @ManyToOne
+
+    private Materials material;
+
     @Lob
     @Column(name="image")
     private Byte[] image;
