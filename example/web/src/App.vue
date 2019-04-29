@@ -1,5 +1,7 @@
 <template xmlns:th="http://www.w3.org/1999/xhtml">
     <div id="app" style="margin:auto;">
+
+
         <!-- navbar -->
             <div>
                 <b-navbar toggleable="lg" type="dark" variant="secondary">
@@ -30,17 +32,6 @@
                             </b-nav-form>
                         </b-navbar-nav> -->
 
-                            <div class="search-wrapper" v-if="authenticated">
-                                <input  type="text" v-model="searchStr" placeholder="Otsing"/>
-
-                            </div>
-                            <div class="wrapper" v-if="authenticated">
-                                <div class="card" v-for="recipe in filteredList">
-                                    <a v-bind="recipe.name" target="_blank">
-                                        {{ recipe.name }}
-                                    </a>
-                                </div>
-                            </div>
 
 
                     </b-collapse>
@@ -48,6 +39,22 @@
 
                 </b-navbar>
             </div>
+
+
+        <div>
+            <div class="search-wrapper" v-if="authenticated">
+                <input  type="text" v-model="searchStr" placeholder="Otsing"/>
+
+            </div>
+            <div class="wrapper" v-if="authenticated">
+                <div v-for="recipe in recipes">
+                    <a v-bind="recipe.name" target="_blank">
+                        {{ this.recipe.name }}
+                    </a>
+                </div>
+            </div>
+        </div>
+
       <!---  <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
             <div class="container">
                 <router-link to="/home" class="navbar-brand">Kodu</router-link>
@@ -98,62 +105,40 @@
     import http from "./http-common";
     import axios from "axios";
 
-    class Recipe {
-        constructor(name) {
-            this.name = name;
-
-        }
-    }
-
     export default {
 
-  name: 'app',
-    data() {
+      name: 'app',
+        data() {
 
-        return {
-            authenticated: false,
-            //searchStr: ''
-            searchStr: '',
-            recipeList: [
-                new Recipe(
-                    'Vue.js'
-                ),
-                new Recipe(
-                    'Vuspf'
-                )
-            ]
-        }
-    },mounted() {
-        if(!this.authenticated) {
-            this.$router.replace({ name: "login" });
-        }
+            return {
+                authenticated: false,
 
-       // axios.get('http://localhost:8080/api/loggedIn').then(response => (this.user = response.data));
+                searchStr: ''
 
-    },
-    methods: {
-        setAuthenticated(status) {
-            this.authenticated = status;
-        },
-        logout() {
-            this.authenticated = false;
-        },
-        //searchRecipe(){
-          //  http.get('http://localhost:8080/recipes/search/' + this.searchStr)
-            //    .then(response => {
-              //      this.recipes = response.data;
-                //})
-
-        //}
-    },
-        computed: {
-            filteredList() {
-                return this.recipeList.filter(recipe => {
-                    return recipe.name.toLowerCase().includes(this.searchStr.toLowerCase())
-                })
             }
-        }
+        },mounted() {
+            if(!this.authenticated) {
+                this.$router.replace({ name: "login" });
+            }
 
+           // axios.get('http://localhost:8080/api/loggedIn').then(response => (this.user = response.data));
+
+        },
+        methods: {
+            setAuthenticated(status) {
+                this.authenticated = status;
+            },
+            logout() {
+                this.authenticated = false;
+            },
+            //searchRecipe(){
+              //  http.get('http://localhost:8080/recipes/search/' + this.searchStr)
+                //    .then(response => {
+                  //      this.recipes = response.data;
+                    //})
+
+            //}
+        }
 }
 </script>
 <style>
@@ -170,13 +155,13 @@
 }
 
 
+
 .wrapper {
     display: flex;
     max-width: 444px;
     flex-wrap: wrap;
     padding-top: 12px;
 }
-
 
 
 
