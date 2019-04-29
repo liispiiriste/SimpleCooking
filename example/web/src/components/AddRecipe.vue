@@ -123,7 +123,6 @@
                     userid: ''
                 },
 
-
                 submitted: false,
 
                 pic: false,
