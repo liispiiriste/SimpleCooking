@@ -25,13 +25,12 @@
 
 
                         <!-- Right aligned nav items -->
-                        <!--<b-navbar-nav class="ml-auto">
+                        <b-navbar-nav class="ml-auto">
                             <b-nav-form id="searchForm" v-if="authenticated">
                                 <b-form-input size="sm" class="mr-sm-2" placeholder="Otsi retsepte" ></b-form-input>
                                 <b-button size="sm" class="my-2 my-sm-0" type="submit" v-on:click="searchRecipe('searchStr')">Otsi</b-button>
                             </b-nav-form>
-                        </b-navbar-nav> -->
-
+                        </b-navbar-nav>
 
 
                     </b-collapse>
@@ -39,57 +38,6 @@
 
                 </b-navbar>
             </div>
-
-
-        <div>
-            <div class="search-wrapper" v-if="authenticated">
-                <input  type="text" v-model="searchStr" placeholder="Otsing"/>
-
-            </div>
-            <div class="wrapper" v-if="authenticated">
-                <div v-for="recipe in recipes">
-                    <a v-bind="recipe.name" target="_blank">
-                        {{ this.recipe.name }}
-                    </a>
-                </div>
-            </div>
-        </div>
-
-      <!---  <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
-            <div class="container">
-                <router-link to="/home" class="navbar-brand">Kodu</router-link>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarColor02">
-                    <ul v-if="authenticated" class="navbar-nav mr-auto">
-                        <li  class="nav-item">
-                            <router-link  class="nav-link" to="/recipes">Retseptid</router-link>
-                        </li>
-                        <li class="nav-item">
-                            <router-link class="nav-link" to="/add">Lisa retsept</router-link>
-                        </li>
-                        <li class="nav-item">
-                            <router-link class="nav-link" to="/MyAccount">Minu konto</router-link>
-                        </li>
-                        <li class="nav-item">
-                            <router-link class="nav-link" to="/login">Logi sisse</router-link>
-                        </li>
-                        <li class="nav-item">
-                            <router-link class="nav-link" to="/register">Registreeri</router-link>
-                        </li>
-
-                 </ul>
-                    <form v-if="authenticated" class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="text" placeholder="Otsing">
-                        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Otsi</button>
-
-                    </form>
-                    <router-link class="nav-link" v-if="authenticated" to="/login" v-on:click.native="logout()" replace>Logout</router-link>
-                </div>
-
-            </div>
-        </div>-->
         <br>
         <div class="container" style="margin-top:45px;">
             <transition name="moveInUp">
@@ -131,13 +79,13 @@
             logout() {
                 this.authenticated = false;
             },
-            //searchRecipe(){
-              //  http.get('http://localhost:8080/recipes/search/' + this.searchStr)
-                //    .then(response => {
-                  //      this.recipes = response.data;
-                    //})
+            searchRecipe(){
+                http.get('http://localhost:8080/recipes/search/' + this.searchStr)
+                    .then(response => {
+                      this.recipes = response.data;
+                    })
 
-            //}
+            }
         }
 }
 </script>
