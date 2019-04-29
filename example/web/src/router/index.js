@@ -12,6 +12,7 @@ import store from "@/store";
 import Register from "@/components/Register";
 import Login from "../components/Login";
 
+
 Vue.use(VueRouter);
 
 const router = new VueRouter({
@@ -67,6 +68,7 @@ const router = new VueRouter({
             name: 'Register',
             component: Register
         },
+
         // otherwise redirect to home
         /*{
             path: '*',

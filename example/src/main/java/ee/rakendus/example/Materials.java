@@ -13,8 +13,8 @@ public class Materials {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
-    @Column(name="materials")
-    private String materials;
+    @Column(name="material")
+    private String material;
 
     @Column(name="quantity")
     private int quantity;
@@ -28,7 +28,7 @@ public class Materials {
 
     protected Materials(){}
     public Materials(String materials) {
-        this.materials = materials;
+        this.material = material;
         this.quantity= quantity;
         this.measurement= measurement;
     }
@@ -40,14 +40,14 @@ public class Materials {
         this.id = id;
     }
 
-    public String getMaterials()
+    public String getMaterial()
     {
-        return materials;
+        return material;
     }
 
-    public void setMaterials(String materials)
+    public void setMaterial(String material)
     {
-        this.materials = materials;
+        this.material = material;
     }
 
     public int getQuantity()

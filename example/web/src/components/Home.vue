@@ -11,7 +11,8 @@ export default {
   name: 'Home',
     data () {
         return {
-            msg: 'Tere tulemast meie kodulehele'
+            msg: 'Tere tulemast meie kodulehele',
+
         }
     }
 }

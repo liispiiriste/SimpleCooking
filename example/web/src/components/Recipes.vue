@@ -1,4 +1,5 @@
 <template>
+
     <div class="recipes">
         <div class="sidemenu">
             <b-button-group vertical>
@@ -86,7 +87,6 @@
             this.retrieveCategories();
             axios.get('http://localhost:8080/api/loggedIn').then(response => (this.user = response.data));
 
-            axios.get('http://localhost:8080/api/recipes/search/' + this.searchStr).then(response=> {this.recipes = response.data; })
         }
 
     };
