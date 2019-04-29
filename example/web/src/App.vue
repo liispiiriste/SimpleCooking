@@ -23,13 +23,29 @@
 
 
                         <!-- Right aligned nav items -->
-                        <b-navbar-nav class="ml-auto">
+                        <!--<b-navbar-nav class="ml-auto">
                             <b-nav-form id="searchForm" v-if="authenticated">
                                 <b-form-input size="sm" class="mr-sm-2" placeholder="Otsi retsepte" ></b-form-input>
-                                <b-button size="sm" class="my-2 my-sm-0" type="submit" @click="searchRecipe('searchStr')">Otsi</b-button>
+                                <b-button size="sm" class="my-2 my-sm-0" type="submit" v-on:click="searchRecipe('searchStr')">Otsi</b-button>
                             </b-nav-form>
-                        </b-navbar-nav>
+                        </b-navbar-nav> -->
+
+                            <div class="search-wrapper" v-if="authenticated">
+                                <input  type="text" v-model="searchStr" placeholder="Otsing"/>
+
+                            </div>
+                            <div class="wrapper" v-if="authenticated">
+                                <div class="card" v-for="recipe in filteredList">
+                                    <a v-bind="recipe.name" target="_blank">
+                                        {{ recipe.name }}
+                                    </a>
+                                </div>
+                            </div>
+
+
                     </b-collapse>
+
+
                 </b-navbar>
             </div>
       <!---  <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
@@ -82,22 +98,37 @@
     import http from "./http-common";
     import axios from "axios";
 
+    class Recipe {
+        constructor(name) {
+            this.name = name;
 
+        }
+    }
 
     export default {
+
   name: 'app',
     data() {
+
         return {
             authenticated: false,
-            searchStr: ''
-
+            //searchStr: ''
+            searchStr: '',
+            recipeList: [
+                new Recipe(
+                    'Vue.js'
+                ),
+                new Recipe(
+                    'Vuspf'
+                )
+            ]
         }
     },mounted() {
         if(!this.authenticated) {
             this.$router.replace({ name: "login" });
         }
 
-        axios.get('http://localhost:8080/api/loggedIn').then(response => (this.user = response.data));
+       // axios.get('http://localhost:8080/api/loggedIn').then(response => (this.user = response.data));
 
     },
     methods: {
@@ -107,14 +138,21 @@
         logout() {
             this.authenticated = false;
         },
-        searchRecipe(){
-            http.get('http://localhost:8080/recipes/search/{searchStr}' + this.searchStr)
-                .then(response => {
-                    this.recipes = response.data;
-                })
+        //searchRecipe(){
+          //  http.get('http://localhost:8080/recipes/search/' + this.searchStr)
+            //    .then(response => {
+              //      this.recipes = response.data;
+                //})
 
+        //}
+    },
+        computed: {
+            filteredList() {
+                return this.recipeList.filter(recipe => {
+                    return recipe.name.toLowerCase().includes(this.searchStr.toLowerCase())
+                })
+            }
         }
-    }
 
 }
 </script>
@@ -126,4 +164,79 @@
 .moveInUp-leave-active{
     animation: moveInUp .3s ease-in;
 }
+
+.search-wrapper {
+    position: relative;
+}
+label {
+    position: absolute;
+    font-size: 12px;
+    color: rgba(0,0,0,.50);
+    top: 8px;
+    left: 12px;
+    z-index: -1;
+    transition: .15s all ease-in-out;
+}
+
+
+focus {
+    outline: none;
+    transform: scale(1.05);
+}
+
+
+webkit-input-placeholder {
+     font-size: 12px;
+     color: rgba(0,0,0,.50);
+     font-weight: 100;
+ }
+
+
+.wrapper {
+    display: flex;
+    max-width: 444px;
+    flex-wrap: wrap;
+    padding-top: 12px;
+}
+
+.card {
+    box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px;
+    max-width: 124px;
+    margin: 12px;
+    transition: .15s all ease-in-out;
+}
+hover {
+     transform: scale(1.1);
+ }
+a {
+    text-decoration: none;
+    padding: 12px;
+    color: #03A9F4;
+    font-size: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+small {
+    font-size: 10px;
+    padding: 4px;
+}
+
+
+
+.hotpink {
+    background: hotpink;
+}
+
+.green {
+    background: green;
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    border: 1px solid rgba(0,0,0,.12);
+}
+
+
 </style>
