@@ -16,26 +16,8 @@
                 <label for="edit-materials">Materjalid</label>
                 <textarea class="form-control" id="edit-materials" rows="3" v-model="recipe.materials"></textarea>
             </div>
-            <!---
-                            <div class="form-group">
-                                <label>Kategooria</label>
-                                <select class="custom-select" v-model="recipe.category">
-                                    <option value="hommikusöök">Hommikusöök</option>
-                                    <option value="jook">Jook</option>
-                                    <option value="kook">Kook</option>
-                                    <option value="magustoit">Magustoit</option>
-                                    <option value="pastatoit">Pastatoit</option>
-                                    <option value="pirukad">Pirukad</option>
-                                    <option value="praad">Praad</option>
-                                    <option value="salat">Salat</option>
-                                    <option value="supp">Suupisted</option>
-                                    <option value="tort">Tort</option>
-                                    <option value="võileicatort">Võileivatort</option>
-                                    <option value="vormiroog">Vormiroog</option>
-                                    <option value="muu">Muu</option>
-                                </select>
 
-                            </div>--->
+
 
             <div class="form-group">
                 <label for="edit-portion">Kogus<span class="glyphicon glyphicon-euro"></span></label>
