@@ -91,7 +91,10 @@
         </div>
         <div v-else>
             <h4>Retsept lisatud!</h4>
-            <button class="btn btn-success" v-on:click="newRecipe" style="margin-right: 5px">Uus retsept</button>
+            <button class="btn btn-success"
+                    v-on:click="newRecipe" style="margin-right: 5px" >
+                Uus retsept
+            </button>
             <router-link to="/recipes">
                 <button type="reset" class="btn btn-success">Kõik retseptid</button>
             </router-link>
@@ -161,6 +164,7 @@
                     portion: this.recipe.portion,
                     price: this.recipe.price,
                     userid: this.user.id
+
                 };
 
                 this.nameError = (!this.recipe.name) ? "Lisa nimi" : "";

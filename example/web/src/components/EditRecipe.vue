@@ -31,15 +31,27 @@
                     <option value="pirukad">Pirukad</option>
                     <option value="praad">Praad</option>
                     <option value="salat">Salat</option>
-                    <option value="supp">Suupisted</option>
+                    <option value="suupisted">Suupisted</option>
+                    <option value="supp">Supp</option>
                     <option value="tort">Tort</option>
                     <option value="võileicatort">Võileivatort</option>
                     <option value="vormiroog">Vormiroog</option>
                     <option value="muu">Muu</option>
                 </select>
 
-            </div>
+                <div class="arraylist" v-for="(category, index) in categories" :key="index" v-on:click="chosenCategory(category.name)">
+                    <div class="arraylist" v-for="(cat,n) in recipe.category">
 
+                    <div class="arraytext"><span style="text-align:left" class="cat"> {{cat}}</span></div>
+                    <div class="arraybutton">
+                        <button style="float:right; background-color:#fff87c; border-color:#f4f09c; color:#666"
+                                class="btn btn-warning btn-sm" @click="removeCategory(n)">Eemalda
+                        </button>
+                    </div>
+                    <br>
+                </div>
+                </div>
+</div>
 
 
 
@@ -105,7 +117,8 @@
                     materials: this.recipe.materials,
                     category: this.recipe.category,
                     portion: this.recipe.portion,
-                    price: this.recipe.price
+                    price: this.recipe.price,
+                    categories: this.categories.name
 
                 },
                 image: this.showOldImage(),
@@ -113,7 +126,8 @@
                 pic: false,
                 selectedFile: null,
                 previewImage: null,
-
+                cat: '',
+                categories: []
             };
         },
         methods: {
@@ -124,7 +138,8 @@
                     materials: this.recipe.materials,
                     category: this.recipe.category,
                     portion: this.recipe.portion,
-                    price: this.recipe.price
+                    price: this.recipe.price,
+                    categories:this.categories.name
                 };
                 http
                     .put("/recipe/" + this.recipe.id, data)
@@ -164,7 +179,21 @@
                             this.image = null;
                         }
                     })
-            }
+            },
+            addCategory() {
+                var newCategory = this.cat;
+                if (!newCategory) return;
+                if (this.recipe.category.includes(newCategory)) return;
+                this.recipe.category.push(newCategory);
+                this.cat = '';
+                newCategory = '';
+            },
+            removeCategory(x) {
+                this.recipe.category.splice(x, 1);
+                this.saveCategory();
+            },
+            saveCategory() {
+            },
 
         }
     }
