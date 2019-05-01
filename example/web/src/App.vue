@@ -13,6 +13,9 @@
                             <b-nav-item><router-link to="/recipes"><b-nav-text >Retseptid</b-nav-text></router-link></b-nav-item>
                             <b-nav-item><router-link to="/add"><b-nav-text>Lisa Retsept</b-nav-text></router-link></b-nav-item>
                             <b-nav-item> <router-link to="/MyAccount"><b-nav-text>Kasutaja</b-nav-text></router-link></b-nav-item>
+                            <b-nav-item href="#" @click="logout">Logi välja</b-nav-item>
+
+
                         </b-navbar-nav>
 
                         <b-nav-item v-if="!authenticated">
@@ -48,6 +51,7 @@
 
     import './stylesheets/main.css';
     import http from "./http-common";
+    import {AUTH_LOGOUT} from "./store/constants";
     import axios from "axios";
 
     export default {
@@ -72,6 +76,9 @@
                 this.authenticated = status;
             },
             logout() {
+                this.$store.dispatch(AUTH_LOGOUT).then(() => {
+                    this.$router.push("/login");
+                })
                 this.authenticated = false;
             },
             searchRecipe(){
