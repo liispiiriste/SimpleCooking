@@ -4,29 +4,42 @@
             <div v-if="!submitted">
                 <b-card style="background:rgba(255, 255, 255, 0.2); border:none; border-radius:25px;">
                     <h4>{{this.recipe.name}}</h4>
+                    <div class="row">
 
-                    <div v-if="this.recipe" style="text-align:left">
-                        <div>
-                            <label>Juhend: </label> {{this.recipe.description}}
+                        <div class="col-sm-6">
+                            <div v-if="this.recipe" style="text-align:left">
+
+                                <div>
+                                    <label>Juhend: </label> {{this.recipe.description}}
+                                </div>
+                                <div>
+                                    <label>Materjalid: </label> {{this.recipe.materials}}
+                                </div>
+                                <div>
+                                    <label>Portsjon: </label> {{this.recipe.portion}}
+                                </div>
+                                <div>
+                                    <label>Hind: </label> {{this.recipe.price}}
+                                </div>
+                                <div>
+                                    <label>Kategooria: </label>
+                                    {{this.recipe.category}}
+                                </div>
+
+                            </div>
+
                         </div>
-                        <div>
-                            <label>Materjalid: </label> {{this.recipe.materials}}
-                        </div>
-                        <div>
-                            <label>Portsjon: </label> {{this.recipe.portion}}
-                        </div>
-                        <div>
-                            <label>Hind: </label> {{this.recipe.price}}
-                        </div>
-                        <div>
-                            <label>Kategooria: </label>
-                            {{this.recipe.category}}
+                        <div class="col-sm-6">
+
+                            <div id="recipeImage" v-if="this.image !== null">
+                                <img class="uploading-image" v-bind:src="this.image" alt="recipe's image"/>
+                            </div>
+
                         </div>
 
-                        <div id="recipeImage" if v-if="this.image !== null">
-                            <img class="uploading-image" v-bind:src="this.image" alt="recipe's image"/>
-                        </div>
+
                     </div>
+
 
                     <div v-if="this.recipe.user.id === this.user.id">
                         <router-link :to="{name: 'editRecipe', params: {recipe:recipe, id: recipe.id}}">
@@ -93,7 +106,7 @@
             }
         },
         mounted() {
-            axios.get('http://localhost:8080/api/loggedIn').then(response => (this.user = response.data))
+            http.get('/loggedIn').then(response => (this.user = response.data))
         }
     }
 </script>
