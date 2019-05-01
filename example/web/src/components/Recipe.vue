@@ -28,15 +28,18 @@
                         </div>
                     </div>
 
-
-                    <router-link :to="{name: 'editRecipe', params: {recipe:recipe, id: recipe.id}}">
-                        <b-button variant="outline-success" style="float:left;">
-                            Muuda
+                    <div v-if="this.recipe.user.id === this.user.id">
+                        <router-link :to="{name: 'editRecipe', params: {recipe:recipe, id: recipe.id}}">
+                            <b-button variant="outline-success" style="float:left;">
+                                Muuda
+                            </b-button>
+                        </router-link>
+                        <b-button variant="outline-warning" style="float:left; margin-left:5px"
+                                  v-on:click="deleteRecipe()">
+                            Kustuta
                         </b-button>
-                    </router-link>
-                    <b-button variant="outline-warning" style="float:left; margin-left:5px" v-on:click="deleteRecipe()">
-                        Kustuta
-                    </b-button>
+
+                    </div>
                 </b-card>
             </div>
             <div v-else>
@@ -74,9 +77,8 @@
                 this.submitted = true;
             },
             showImage() {
-                axios.get('http://localhost:8080/api/recipe/' + this.recipe.id + '/recipeImage', {responseType: 'blob'})
+                http.get('/recipe/' + this.recipe.id + '/recipeImage', {responseType: 'blob'})
                     .then(response => {
-                        console.log(response.data)
                         if (response.data.size > 0) {
                             let reader = new FileReader();
                             reader.readAsDataURL(response.data);
@@ -89,6 +91,9 @@
 
                     })
             }
+        },
+        mounted() {
+            axios.get('http://localhost:8080/api/loggedIn').then(response => (this.user = response.data))
         }
     }
 </script>
