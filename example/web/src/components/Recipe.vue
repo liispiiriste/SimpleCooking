@@ -8,7 +8,6 @@
 
                         <div class="col-sm-6">
                             <div v-if="this.recipe" style="text-align:left">
-
                                 <div>
                                     <label>Juhend: </label> {{this.recipe.description}}
                                 </div>
@@ -25,18 +24,14 @@
                                     <label>Kategooria: </label>
                                     {{this.recipe.category}}
                                 </div>
-
                             </div>
-
                         </div>
-                        <div class="col-sm-6">
 
+                        <div class="col-sm-6">
                             <div id="recipeImage" v-if="this.image !== null">
                                 <img class="uploading-image" v-bind:src="this.image" alt="recipe's image"/>
                             </div>
-
                         </div>
-
 
                     </div>
 
@@ -51,7 +46,6 @@
                                   v-on:click="deleteRecipe()">
                             Kustuta
                         </b-button>
-
                     </div>
                 </b-card>
             </div>
@@ -130,15 +124,6 @@
         margin: auto;
     }
 
-    #recipeImage {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
 
-    #recipeImage img {
-        max-width: 100%;
-        max-height: 500px;
-    }
 
 </style>

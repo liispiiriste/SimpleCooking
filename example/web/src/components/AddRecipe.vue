@@ -101,9 +101,7 @@
     import http from "../http-common";
     import Vue from 'vue';
     import VeeValidate from 'vee-validate';
-    import $store from "../store/modules/auth";
-    import axios from "axios";
-
+    
     Vue.use(VeeValidate);
 
     export default {
@@ -149,7 +147,6 @@
         methods: {
 
             saveRecipe() {
-
                 let data = {
                     id: this.recipe.id,
                     name: this.recipe.name,
@@ -159,7 +156,6 @@
                     portion: this.recipe.portion,
                     price: this.recipe.price,
                     userid: this.user.id
-
                 };
 
                 this.nameError = (!this.recipe.name) ? "Lisa nimi" : "";
@@ -202,7 +198,6 @@
                 this.saveCategory();
             },
             saveCategory() {
-
             },
             addMaterial() {
                 var newMaterial = " " + this.mat + " - " + this.mat2 + " " + this.mat3;
@@ -217,24 +212,15 @@
                 this.saveMaterial();
             },
             saveMaterial() {
-
-
             },
-
             retrieveCategories() {
-
                 http.get("/categories").then(response => {
-
                     this.categories = response.data;
-
                 });
-
             },
-
             refreshList() {
                 this.retrieveCategories();
             },
-
             onFileSelected(event) {
                 this.selectedFile = event.target.files[0];
                 const reader = new FileReader();
@@ -252,11 +238,9 @@
             }
         },
         mounted() {
-            axios.get('http://localhost:8080/api/loggedIn').then(response => (this.user = response.data));
+            http.get('/loggedIn').then(response => (this.user = response.data));
             this.retrieveCategories();
-
         }
-
     }
 </script>
 
@@ -320,14 +304,4 @@
         font-size: 16px
     }
 
-    #preview {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    #preview img {
-        max-width: 100%;
-        max-height: 500px;
-    }
 </style>
