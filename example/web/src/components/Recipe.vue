@@ -4,39 +4,49 @@
             <div v-if="!submitted">
                 <b-card style="background:rgba(255, 255, 255, 0.2); border:none; border-radius:25px;">
                     <h4>{{this.recipe.name}}</h4>
+                    <div class="row">
 
-                    <div v-if="this.recipe" style="text-align:left">
-                        <div>
-                            <label>Juhend: </label> {{this.recipe.description}}
-                        </div>
-                        <div>
-                            <label>Materjalid: </label> {{this.recipe.materials}}
-                        </div>
-                        <div>
-                            <label>Portsjon: </label> {{this.recipe.portion}}
-                        </div>
-                        <div>
-                            <label>Hind: </label> {{this.recipe.price}}
-                        </div>
-                        <div>
-                            <label>Kategooria: </label>
-                            {{this.recipe.category}}
+                        <div class="col-sm-6">
+                            <div v-if="this.recipe" style="text-align:left">
+                                <div>
+                                    <label>Juhend: </label> {{this.recipe.description}}
+                                </div>
+                                <div>
+                                    <label>Materjalid: </label> {{this.recipe.materials}}
+                                </div>
+                                <div>
+                                    <label>Portsjon: </label> {{this.recipe.portion}}
+                                </div>
+                                <div>
+                                    <label>Hind: </label> {{this.recipe.price}}
+                                </div>
+                                <div>
+                                    <label>Kategooria: </label>
+                                    {{this.recipe.category}}
+                                </div>
+                            </div>
                         </div>
 
-                        <div id="recipeImage">
-                            <img class="uploading-image" v-bind:src="this.image" alt="recipe's image"/>
+                        <div class="col-sm-6">
+                            <div id="recipeImage" v-if="this.image !== null">
+                                <b-img class="uploading-image" v-bind:src="this.image" alt="recipe's image"/>
+                            </div>
                         </div>
+
                     </div>
 
 
-                    <router-link :to="{name: 'editRecipe', params: {recipe:recipe, id: recipe.id}}">
-                        <b-button variant="outline-success" style="float:left;">
-                            Muuda
+                    <div v-if="this.recipe.user.id === this.user.id">
+                        <router-link :to="{name: 'editRecipe', params: {recipe:recipe, id: recipe.id}}">
+                            <b-button variant="outline-success" style="float:left;">
+                                Muuda
+                            </b-button>
+                        </router-link>
+                        <b-button variant="outline-warning" style="float:left; margin-left:5px"
+                                  v-on:click="deleteRecipe()">
+                            Kustuta
                         </b-button>
-                    </router-link>
-                    <b-button variant="outline-warning" style="float:left; margin-left:5px" v-on:click="deleteRecipe()">
-                        Kustuta
-                    </b-button>
+                    </div>
                 </b-card>
             </div>
             <div v-else>
@@ -74,17 +84,23 @@
                 this.submitted = true;
             },
             showImage() {
-                axios.get('http://localhost:8080/api/recipe/' + this.recipe.id + '/recipeImage', {responseType: 'blob'})
+                http.get('/recipe/' + this.recipe.id + '/recipeImage', {responseType: 'blob'})
                     .then(response => {
-                        let reader = new FileReader();
-                        reader.readAsDataURL(response.data);
-                        reader.onload = () => {
-                            this.image = reader.result;
+                        if (response.data.size > 0) {
+                            let reader = new FileReader();
+                            reader.readAsDataURL(response.data);
+                            reader.onload = () => {
+                                this.image = reader.result;
+                            }
+                        } else {
+                            this.image = null;
                         }
-                        console.log(this.image)
 
                     })
             }
+        },
+        mounted() {
+            http.get('/loggedIn').then(response => (this.user = response.data))
         }
     }
 </script>
@@ -108,15 +124,6 @@
         margin: auto;
     }
 
-    #recipeImage {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
 
-    #recipeImage img {
-        max-width: 100%;
-        max-height: 500px;
-    }
 
 </style>

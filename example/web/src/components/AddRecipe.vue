@@ -75,18 +75,23 @@
         <div v-else-if="submitted && !pic && this.recipe">
             <h4>Lisa pilt</h4>
             <div>
-                <input type="file" @change="onFileSelected">
+                <b-form-file
+                        v-on:change="onFileSelected"
+                        placeholder="Choose a file..."
+                        style="margin-top: 5px; width: 500px;"
+                ></b-form-file>
+
             </div>
             <div id="preview">
                 <img :src="previewImage" class="uploading-image"/>
             </div>
             <div>
-                <button @click="onUpload">Lae üles</button>
+                <b-button variant="success" @click="onUpload" id="save-btn">Salvesta</b-button>
             </div>
         </div>
         <div v-else>
             <h4>Retsept lisatud!</h4>
-            <button class="btn btn-success" v-on:click="newRecipe">Uus retsept</button>
+            <button class="btn btn-success" v-on:click="newRecipe" style="margin-right: 5px">Uus retsept</button>
             <router-link to="/recipes">
                 <button type="reset" class="btn btn-success">Kõik retseptid</button>
             </router-link>
@@ -101,8 +106,6 @@
     import http from "../http-common";
     import Vue from 'vue';
     import VeeValidate from 'vee-validate';
-    import $store from "../store/modules/auth";
-    import axios from "axios";
 
     Vue.use(VeeValidate);
 
@@ -149,7 +152,6 @@
         methods: {
 
             saveRecipe() {
-
                 let data = {
                     id: this.recipe.id,
                     name: this.recipe.name,
@@ -159,7 +161,6 @@
                     portion: this.recipe.portion,
                     price: this.recipe.price,
                     userid: this.user.id
-
                 };
 
                 this.nameError = (!this.recipe.name) ? "Lisa nimi" : "";
@@ -202,7 +203,6 @@
                 this.saveCategory();
             },
             saveCategory() {
-
             },
             addMaterial() {
                 var newMaterial = " " + this.mat + " - " + this.mat2 + " " + this.mat3;
@@ -217,24 +217,15 @@
                 this.saveMaterial();
             },
             saveMaterial() {
-
-
             },
-
             retrieveCategories() {
-
                 http.get("/categories").then(response => {
-
                     this.categories = response.data;
-
                 });
-
             },
-
             refreshList() {
                 this.retrieveCategories();
             },
-
             onFileSelected(event) {
                 this.selectedFile = event.target.files[0];
                 const reader = new FileReader();
@@ -252,11 +243,9 @@
             }
         },
         mounted() {
-            axios.get('http://localhost:8080/api/loggedIn').then(response => (this.user = response.data));
+            http.get('/loggedIn').then(response => (this.user = response.data));
             this.retrieveCategories();
-
         }
-
     }
 </script>
 
@@ -320,14 +309,5 @@
         font-size: 16px
     }
 
-    #preview {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
 
-    #preview img {
-        max-width: 100%;
-        max-height: 500px;
-    }
 </style>

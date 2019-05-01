@@ -1,17 +1,15 @@
 <template>
     <div class="login">
-        <form id="login" v-on:submit.prevent="login">
-            <input class="form-control" type='text' placeholder='kasutajanimi' v-model='username'>
-            <input class="form-control" type='password' placeholder='parool' v-model='password'>
+        <b-form id="login" v-on:submit.prevent="login">
+            <b-form-input type='text' placeholder='kasutajanimi' v-model='username' required style="margin-bottom: 5px"/>
+            <b-form-input type='password' placeholder='parool' v-model='password' required style="margin-bottom: 5px"/>
             <span style="color:red">{{loginError}}</span>
-            <button>
+            <b-button type="submit">
                 Logi sisse
-            </button>
-        </form>
-<br>
-        <router-link to="/register">
-            <button type="reset" >Mul ei ole kasutajat</button>
-        </router-link>
+            </b-button>
+        </b-form>
+
+        <b-button variant="link" to='/register'>Tee kasutaja</b-button>
 
     </div>
 
