@@ -23,7 +23,7 @@
                             {{this.recipe.category}}
                         </div>
 
-                        <div id="recipeImage">
+                        <div id="recipeImage" if v-if="this.image !== null">
                             <img class="uploading-image" v-bind:src="this.image" alt="recipe's image"/>
                         </div>
                     </div>
@@ -76,12 +76,16 @@
             showImage() {
                 axios.get('http://localhost:8080/api/recipe/' + this.recipe.id + '/recipeImage', {responseType: 'blob'})
                     .then(response => {
-                        let reader = new FileReader();
-                        reader.readAsDataURL(response.data);
-                        reader.onload = () => {
-                            this.image = reader.result;
+                        console.log(response.data)
+                        if (response.data.size > 0) {
+                            let reader = new FileReader();
+                            reader.readAsDataURL(response.data);
+                            reader.onload = () => {
+                                this.image = reader.result;
+                            }
+                        } else {
+                            this.image = null;
                         }
-                        console.log(this.image)
 
                     })
             }
