@@ -9,9 +9,6 @@
             </b-button>
         </b-form>
 
-        <!--<router-link to="/register">
-            <button type="reset" >Mul ei ole kasutajat</button>
-        </router-link>-->
         <b-button variant="link" to='/register'>Tee kasutaja</b-button>
 
     </div>

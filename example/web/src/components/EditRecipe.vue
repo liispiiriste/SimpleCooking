@@ -1,6 +1,5 @@
 <template id="editRecipe" xmlns:display="http://www.w3.org/1999/xhtml">
     <div>
-        <!--<div v-if="!submitted && !pic" style="font-size:20px">-->
         <h2>Muuda retsepti</h2>
         <div>
             <div class="form-group">
@@ -80,10 +79,7 @@
 
             </a>
         </div>
-        <!--</div>-->
-        <!--<div v-else>
-            <h4>Muudetud!</h4>
-        </div>-->
+
     </div>
 </template>
 
