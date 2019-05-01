@@ -46,7 +46,15 @@ public class SecurityConf extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .successHandler(new CustomAuthenticationSuccessHandler())
-                .failureHandler(new CustomAuthenticationFailureHandler());
+                .failureHandler(new CustomAuthenticationFailureHandler())
+                .and()
+                .logout()
+                .deleteCookies("remove")
+                .invalidateHttpSession(true)
+                .logoutUrl("/api/logout")
+                .logoutSuccessHandler(new CustomSuccessHandlerLogout())
+                .logoutSuccessUrl("/")
+                .permitAll();
     }
 
     @Bean

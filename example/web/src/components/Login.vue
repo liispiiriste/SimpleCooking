@@ -4,7 +4,7 @@
             <b-form-input type='text' placeholder='kasutajanimi' v-model='username' required style="margin-bottom: 5px"/>
             <b-form-input type='password' placeholder='parool' v-model='password' required style="margin-bottom: 5px"/>
             <span style="color:red">{{loginError}}</span>
-            <b-button type="submit">
+            <b-button class="mb-3" type="submit" variant="primary" block>
                 Logi sisse
             </b-button>
         </b-form>
