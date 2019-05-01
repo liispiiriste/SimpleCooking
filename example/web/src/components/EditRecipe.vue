@@ -52,7 +52,7 @@
 
             </div>
             <div v-if="!pic">
-                <b-img center rounded width="400px" :src="this.image"></b-img>
+                <b-img center rounded width="400px" :src="this.image" style="border-radius: 10px;"></b-img>
             </div>
             <div id="preview" style="align-items: center">
                 <img :src="this.previewImage">

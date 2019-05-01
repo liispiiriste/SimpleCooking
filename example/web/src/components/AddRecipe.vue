@@ -83,7 +83,7 @@
 
             </div>
             <div id="preview">
-                <img :src="previewImage" class="uploading-image"/>
+                <img :src="previewImage" class="uploading-image" style="border-radius: 10px;"/>
             </div>
             <div>
                 <b-button variant="success" @click="onUpload" id="save-btn">Salvesta</b-button>
