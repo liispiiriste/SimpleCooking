@@ -75,18 +75,23 @@
         <div v-else-if="submitted && !pic && this.recipe">
             <h4>Lisa pilt</h4>
             <div>
-                <input type="file" @change="onFileSelected">
+                <b-form-file
+                        v-on:change="onFileSelected"
+                        placeholder="Choose a file..."
+                        style="margin-top: 5px; width: 500px;"
+                ></b-form-file>
+
             </div>
             <div id="preview">
                 <img :src="previewImage" class="uploading-image"/>
             </div>
             <div>
-                <button @click="onUpload">Lae üles</button>
+                <b-button variant="success" @click="onUpload" id="save-btn">Salvesta</b-button>
             </div>
         </div>
         <div v-else>
             <h4>Retsept lisatud!</h4>
-            <button class="btn btn-success" v-on:click="newRecipe">Uus retsept</button>
+            <button class="btn btn-success" v-on:click="newRecipe" style="margin-right: 5px">Uus retsept</button>
             <router-link to="/recipes">
                 <button type="reset" class="btn btn-success">Kõik retseptid</button>
             </router-link>
@@ -303,5 +308,6 @@
         color: red;
         font-size: 16px
     }
+
 
 </style>

@@ -29,7 +29,7 @@
 
                         <div class="col-sm-6">
                             <div id="recipeImage" v-if="this.image !== null">
-                                <img class="uploading-image" v-bind:src="this.image" alt="recipe's image"/>
+                                <b-img class="uploading-image" v-bind:src="this.image" alt="recipe's image"/>
                             </div>
                         </div>
 

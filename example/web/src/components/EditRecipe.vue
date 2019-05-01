@@ -1,4 +1,4 @@
-<template id="editRecipe">
+<template id="editRecipe" xmlns:display="http://www.w3.org/1999/xhtml">
     <div>
         <!--<div v-if="!submitted && !pic" style="font-size:20px">-->
         <h2>Muuda retsepti</h2>
@@ -47,13 +47,17 @@
 
             </div>
             <div v-if="!pic">
-                <img :src="this.image">
+                <b-img center rounded width="400px" :src="this.image"></b-img>
             </div>
-            <div>
+            <div id="preview" style="align-items: center">
                 <img :src="this.previewImage">
             </div>
             <div>
-                <input type="file" @change="onFileSelected">
+                <b-form-file
+                        v-on:change="onFileSelected"
+                        placeholder="Choose a file..."
+                        style="margin-top: 5px; width: 500px;"
+                ></b-form-file>
             </div>
 
             <b-button @click="updateRecipe" variant="success">
