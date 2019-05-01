@@ -17,10 +17,6 @@
                 <textarea class="form-control" id="edit-materials" rows="3" v-model="recipe.materials"></textarea>
             </div>
 
-            <div class="form-group">
-                <label for="edit-materials">Kategooria</label>
-                <textarea class="form-control" id="edit-category" rows="3" v-model="recipe.category"></textarea>
-            </div>
 
             <div class="form-group">
             <label>Kategooria</label><br>
@@ -42,9 +38,11 @@
                     <option value="muu">Muu</option>
                 </select>
 
-            <button style="margin-bottom:5px" v-on:click="addCategory()" class="small-input">Lisa</button>
-
             </div>
+
+
+
+
             <div class="form-group">
                 <label for="edit-portion">Kogus<span class="glyphicon glyphicon-euro"></span></label>
                 <input class="small-input" type="number" id="edit-portion" v-model="recipe.portion"/>
@@ -115,8 +113,7 @@
                 pic: false,
                 selectedFile: null,
                 previewImage: null,
-                categories: [],
-                cat: ''
+
             };
         },
         methods: {
@@ -135,7 +132,8 @@
                         this.recipe.id = response.data.id;
                     });
                 this.submitted = true;
-            },
+
+                },
             onFileSelected(event) {
                 this.selectedFile = event.target.files[0];
                 const reader = new FileReader();
@@ -166,21 +164,7 @@
                             this.image = null;
                         }
                     })
-            },
-            addCategory() {
-                var newCategory = this.cat;
-                if (!newCategory) return;
-                if (this.recipe.category.includes(newCategory)) return;
-                this.recipe.category.push(newCategory);
-                this.cat = '';
-                newCategory = '';
-            },
-            removeCategory(x) {
-                this.recipe.category.splice(x, 1);
-                this.saveCategory();
-            },
-            saveCategory() {
-            },
+            }
 
         }
     }
@@ -204,5 +188,20 @@
         width: 500px;
         align: center;
         margin: auto;
+    }
+
+    .arraylist {
+        margin-bottom: 5px
+    }
+
+    .arraytext {
+        width: 75%;
+        float: left;
+        font-size: 16px
+    }
+
+    .arraybutton {
+        width: 20%;
+        float: right;
     }
 </style>
