@@ -11,12 +11,12 @@
             </b-button-group>
 
         </div>
-        <div class="list row">
-            <b-card title="Retseptid" style="background:rgba(255, 255, 255, 0.2); border:none; border-radius:25px;">
-                <b-card-text>
-                    <div class="col-md-6">
+        <div class="container">
+            <div style="margin:15px; padding:10px; background:rgba(255, 255, 255, 0.2); border:none; border-radius:15px;">
+                <h4>Retseptid</h4>
                         <ul>
-                            <li v-for="(recipe, index) in recipes" :key="index">
+                            <li v-for="(recipe, index) in recipes" :key="index"
+                                style="text-align: center">
                                 <router-link :to="{
                             name: 'recipe',
                             params: { recipe: recipe, id: recipe.id }
@@ -26,12 +26,12 @@
                             </li>
                         </ul>
 
-                    </div>
+
                     <div>
                         <router-view @refreshData="refreshList"></router-view>
                     </div>
-                </b-card-text>
-            </b-card>
+
+            </div>
         </div>
     </div>
 </template>
@@ -54,7 +54,6 @@
             retrieveRecipes() {
                 http.get("/recipes").then(response => {
                     this.recipes = response.data;
-
                 });
 
             },
@@ -69,7 +68,7 @@
 
 
             chosenCategory(category) {
-                if (category != "all") {
+                if (category !== "all") {
                     http.get("/recipes/" + category).then(response => {
                         this.recipes = response.data;
 
@@ -95,15 +94,57 @@
 <style scoped>
 
 
-    ul {
+    /*ul {
         text-align: left;
         list-style: inside;
         font-size: 20px;
         width: 300%;
-    }
+    }*/
 
     input {
         visibility: hidden;
+    }
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        -webkit-columns: 2;
+        -moz-columns: 2;
+        columns: 2;
+        padding-left: 0;
+    }
+    ul li {
+        list-style-position: inside;
+        -webkit-column-break-inside: avoid;
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+    li {
+        font: 200 17px/1.5 Helvetica, Verdana, sans-serif;
+        border-bottom: 1px solid #ccc;
+    }
+
+    li:last-child {
+        border: none;
+    }
+
+    li a {
+        text-decoration: none;
+        color: #000;
+        display: block;
+        width: auto;
+    }
+
+    li a:hover {
+        background: rgba(255, 255, 255, 0.5);
+    }
+    .container {
+        width: 55%;
+        display: block;
+        margin-left: 125px;
+    }
+    h2 {
+        margin-right: 700px;
     }
 
 </style>

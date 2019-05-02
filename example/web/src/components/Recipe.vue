@@ -2,8 +2,7 @@
     <div class="recipe">
         <div class="container">
             <div v-if="!submitted">
-                <b-card style="background:rgba(255, 255, 255, 0.2); border:none; border-radius:25px;">
-                    <h4>{{this.recipe.name}}</h4>
+                <b-card :title="this.recipe.name" style="background:rgba(255, 255, 255, 0.2); border:none; border-radius:25px;">
                     <div class="row">
 
                         <div class="col-sm-6">
@@ -24,11 +23,15 @@
                                     <label>Kategooria: </label>
                                     {{this.recipe.category}}
                                 </div>
+                                <div>
+                                    <label>Looja: </label>
+                                    {{this.recipe.user.username}}
+                                </div>
                             </div>
                         </div>
 
                         <div class="col-sm-6">
-                            <div id="recipeImage" v-if="this.image !== null">
+                            <div id="recipeImage" v-show="this.image !== null">
                                 <b-img class="uploading-image" v-bind:src="this.image" alt="recipe's image"/>
                             </div>
                         </div>
@@ -38,11 +41,11 @@
 
                     <div v-if="this.recipe.user.id === this.user.id">
                         <router-link :to="{name: 'editRecipe', params: {recipe:recipe, id: recipe.id}}">
-                            <b-button variant="outline-success" style="float:left;">
+                            <b-button variant="outline-success" style="float:left; margin-top: 5px">
                                 Muuda
                             </b-button>
                         </router-link>
-                        <b-button variant="outline-warning" style="float:left; margin-left:5px"
+                        <b-button variant="outline-warning" style="float:left; margin-left:5px; margin-top: 5px"
                                   v-on:click="deleteRecipe()">
                             Kustuta
                         </b-button>
@@ -123,7 +126,5 @@
         width: 70%;
         margin: auto;
     }
-
-
 
 </style>
