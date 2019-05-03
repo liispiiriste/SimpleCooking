@@ -17,7 +17,7 @@
                 <textarea class="form-control" id="edit-materials" rows="3" v-model="recipe.materials"></textarea>
             </div>
 
-            <div class="form-group">
+            <!--<div class="form-group">
             <label>Kategooria</label><br>
 
 
@@ -37,7 +37,7 @@
                     <option value="vormiroog">Vormiroog</option>
                     <option value="muu">Muu</option>
                 </select>
-            </div>
+            </div>-->
 
 
             <div class="form-group">
