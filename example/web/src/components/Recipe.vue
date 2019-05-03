@@ -50,6 +50,13 @@
                             Kustuta
                         </b-button>
                     </div>
+                    <div v-if="this.recipe.user.id !== this.user.id">
+                        <b-button variant="danger" style="float:right; margin-left:5px; margin-top: 5px"
+                                  v-on:click="addFavourites()">
+                            Lisa lemmikuks
+                        </b-button>
+
+                    </div>
                 </b-card>
             </div>
             <div v-else>
@@ -77,6 +84,17 @@
             };
         },
         methods: {
+            addFavourites(){
+                let data = {
+                    recipe_id: this.recipe.id,
+                    user_id: this.user.id
+                };
+                http
+                    .post("/favourite", data)
+                    .then(response => {
+                        this.recipe.id = response.data;
+                    });
+            },
             deleteRecipe() {
                 http
                     .delete("/recipe/" + this.recipe.id)
