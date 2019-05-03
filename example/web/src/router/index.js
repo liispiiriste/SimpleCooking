@@ -11,6 +11,7 @@ import store from "@/store";
 
 import Register from "@/components/Register";
 import Login from "../components/Login";
+import Search from "../components/Search";
 
 
 
@@ -70,12 +71,12 @@ const router = new VueRouter({
             component: Register
         },
 
-        /*  {
+         {
 
               path: '/search',
               name: 'Search',
               component: Search
-          }, */
+          },
 
           // otherwise redirect to home
           /*{
