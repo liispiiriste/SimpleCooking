@@ -13,6 +13,7 @@ import Register from "@/components/Register";
 import Login from "../components/Login";
 
 
+
 Vue.use(VueRouter);
 
 const router = new VueRouter({
@@ -69,11 +70,18 @@ const router = new VueRouter({
             component: Register
         },
 
-        // otherwise redirect to home
-        /*{
-            path: '*',
-            redirect: '/'
-        }*/
+        /*  {
+
+              path: '/search',
+              name: 'Search',
+              component: Search
+          }, */
+
+          // otherwise redirect to home
+          /*{
+              path: '*',
+              redirect: '/'
+          }*/
     ]
 });
 
