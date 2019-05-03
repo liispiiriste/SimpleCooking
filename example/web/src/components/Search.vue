@@ -1,30 +1,26 @@
 <template>
-<div id="searchs">
+<div id="search" >
 
-        <form id="search" >
+    <div class="search-wrapper" >
+        <input type="text" v-model="searchStr" placeholder="Otsi retsepte"/>
 
-            <input size="sm" class="mr-sm-2" placeholder="Otsi retsepte..." v-model="searchStr" type="search" />
+    </div>
 
-            <button size="sm" class="my-2 my-sm-0"  v-on:click="searchRecipe('searchStr')">
-                Otsi
-            </button>
-        </form>
-
-    <li v-for="(recipe, index) in recipes" :key="index">
-
-        <router-link :to="{
+    <div class="wrapper" >
+        <div class="card" v-for="(recipe,index) in filteredList" :key="index">
+            <router-link :to="{
                             name: 'recipe',
                             params: { recipe: recipe, id: recipe.id }
                         }" style="color:#333">
-            {{recipe.name}}
-        </router-link>
-    </li>
+                {{recipe.name}}
+            </router-link>
 
 
+        </div>
 
 
 </div>
-
+</div>
 
 </template>
 
@@ -37,36 +33,99 @@
         name: "Search",
 
         data() {
-
-
             return {
-                recipes: {
-                    recipes: []
-                },
+                recipes: [],
                 searchStr: ''
-
             }
         },
         methods: {
-            searchRecipe(){
-                http.get('http://localhost:8080/api/recipes/search/' + this.searchStr)
-                    .then(response => {
-                        this.recipes = response.data;
-                    })
 
+        },
+        computed: {
+            filteredList() {
+                return this.recipes.filter(recipe => {
+                    return recipe.name.toLowerCase().includes(this.searchStr.toLowerCase())
+                })
             }
         },
 
         mounted() {
             axios.get('http://localhost:8080/api/loggedIn').then(response => (this.user = response.data));
             http.get("/recipes").then(response=> {this.recipes = response.data;})
-            http.get("/recipes" + this.searchStr).then(response=> {this.recipes = response.data;})
-
-
         }
     }
 </script>
 
 <style scoped>
+    html, body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin-top: 16px;
+        margin-bottom: 16px;
+    }
+
+    div#search {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+    }
+    .search-wrapper {
+        position: relative;
+    }
+
+
+    input {
+        padding: 4px 12px;
+        color: rgba(0, 0, 0, .70);
+        border: 1px solid rgba(0, 0, 0, .12);
+        transition: .15s all ease-in-out;
+        background: white;
+    }
+    focus {
+         outline: none;
+         transform: scale(1.05);
+     }
+
+    .wrapper {
+        display: flex;
+        max-width: 444px;
+        flex-wrap: wrap;
+        padding-top: 12px;
+    }
+
+    .card {
+        min-height:10px;
+        min-width:10px;
+
+        background-repeat:no-repeat;
+        background: -webkit-linear-gradient( to left top, #faffd1, #a1ffce) no-repeat center center fixed;
+        background: -moz-linear-gradient( to left top, #faffd1, #a1ffce) no-repeat center center fixed;
+        background: -ms-linear-gradient( to left top,#faffd1, #a1ffce) no-repeat center center fixed;
+        background: -o-linear-gradient( to left top, #faffd1, #a1ffce) no-repeat center center fixed;
+        background: linear-gradient( to left top, #faffd1, #a1ffce) no-repeat center center fixed;
+        background-attachment: fixed !important;
+    }
+    hover {
+         transform: scale(1.1);
+     }
+    a {
+        text-decoration: none;
+        padding: 16px;
+        color: #333;
+        font-size: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-family: 'Avenir', Helvetica, Arial, sans-serif;
+
+    }
+    small {
+        font-size: 10px;
+        padding: 4px;
+    }
 
 </style>
