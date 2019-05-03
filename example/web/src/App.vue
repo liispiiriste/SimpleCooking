@@ -3,7 +3,7 @@
 
         <!-- navbar -->
         <div>
-            <b-navbar toggleable="lg" type="dark" variant="secondary" style="height: 50px">
+            <b-navbar toggleable="lg" type="dark" variant="secondary">
                 <router-link to="/home">
                     <b-navbar-brand>Kodu</b-navbar-brand>
                 </router-link>

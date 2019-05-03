@@ -24,7 +24,7 @@
                                     {{this.recipe.category}}
                                 </div>
                                 <div>
-                                    <label>Looja: </label>
+                                    <label>Autor: </label>
                                     {{this.recipe.user.username}}
                                 </div>
                             </div>
