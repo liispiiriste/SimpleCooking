@@ -7,6 +7,8 @@ import ee.rakendus.example.user.User;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -41,6 +43,15 @@ public class Recipe {
     private int portion;
     @ManyToOne
     private User user;
+
+
+
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            },mappedBy="favouriteRecipes")
+    private Set<User> userFavourites = new HashSet<>();
 
     @ManyToOne
     private Categories categories;
@@ -120,6 +131,13 @@ public class Recipe {
         this.user = user;
     }
 
+    public Set<User> getUserFavourites() {
+        return userFavourites;
+    }
+
+    public void setUserFavourites(Set<User> userFavourites) {
+        this.userFavourites = userFavourites;
+    }
 
     public Categories getCategories() {return categories;}
 

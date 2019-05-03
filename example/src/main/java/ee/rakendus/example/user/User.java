@@ -9,7 +9,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Entity
@@ -29,8 +31,20 @@ public class User implements UserDetails {
     private String email;
     @OneToMany
     private List<Recipe> recipes;
+
     private UserRoles role;
 
+
+
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            })
+    @JoinTable(name="user_favourites",
+            joinColumns={@JoinColumn(name="user_id")},
+            inverseJoinColumns={@JoinColumn(name="recipe_id")})
+    Set<Recipe> favouriteRecipes = new HashSet<>();
 
     public User() {
     }
@@ -83,6 +97,14 @@ public class User implements UserDetails {
 
     public void setRole(UserRoles role) {
         this.role = role;
+    }
+
+    public Set<Recipe> getFavouriteRecipes() {
+        return favouriteRecipes;
+    }
+
+    public void setFavouriteRecipes(Set<Recipe> favouriteRecipes) {
+        this.favouriteRecipes = favouriteRecipes;
     }
 
     @Override
