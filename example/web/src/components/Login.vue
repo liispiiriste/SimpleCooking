@@ -4,15 +4,12 @@
             <b-form-input type='text' placeholder='kasutajanimi' v-model='username' required style="margin-bottom: 5px"/>
             <b-form-input type='password' placeholder='parool' v-model='password' required style="margin-bottom: 5px"/>
             <span style="color:red">{{loginError}}</span>
-            <b-button type="submit">
+            <b-button class="mb-3" type="submit" variant="success" block>
                 Logi sisse
             </b-button>
         </b-form>
-
-        <b-button variant="link" to='/register'>Tee kasutaja</b-button>
-
+        <b-button variant="outline-success" to='/register' block>Loo kasutaja</b-button>
     </div>
-
 </template>
 
 <script>
@@ -21,7 +18,6 @@
     export default {
         name: 'login',
         data() {
-
             return {
                 username: '',
                 password: '',
@@ -30,7 +26,7 @@
         },
         methods: {
             login () {
-                if(this.username != "" && this.password != "") {
+                if(this.username !== "" && this.password !== "") {
                 const { username, password } = this;
                 this.$store.dispatch(AUTH_REQUEST, {username, password}).then(() => {
                     this.$router.push('/home');
@@ -41,7 +37,6 @@
                 }
             }
         }
-
     }
 </script>
 

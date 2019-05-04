@@ -44,13 +44,13 @@ const router = new VueRouter({
             path: '/recipe',
             name: 'recipe',
             component: Recipe,
-            props:true
+            props: true
         },
         {
             path: '/edit',
             component: EditRecipe,
             name: 'editRecipe',
-            props:true
+            props: true
         },
         {
             path: '/add',
@@ -83,6 +83,13 @@ const router = new VueRouter({
               path: '*',
               redirect: '/'
           }*/
+
+        // otherwise redirect to home
+        {
+            path: '*',
+            redirect: '/login'
+        }
+
     ]
 });
 
@@ -93,7 +100,10 @@ router.beforeEach((to, from, next) => {
 
     if (authRequired && !loggedIn) {
         return next('/login');
+    } else if (authRequired && loggedIn) {
+        next();
+    } else {
+        next();
     }
-    next();
 });
 export default router;

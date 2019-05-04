@@ -25,13 +25,13 @@
                     </option>
 
                 </select>
-                <button style="margin-bottom:5px" class="small-input" v-on:click="addMaterial()">Lisa</button>
+                <b-button variant="secondary" size="sm" style="width:75px;float:right;margin-left:5px" v-on:click="addMaterial()">Lisa</b-button>
                 <div class="arraylist" v-for="(mat,m) in recipe.materials">
                     <div class="arraytext"><span style="text-align:left" class="mat"> {{mat}}</span></div>
                     <div class="arraybutton">
-                        <button style="float:right; background-color:#fff87c; border-color:#f4f09c; color:#666"
-                                class="btn btn-warning btn-sm" @click="removeMaterial(n)">Eemalda
-                        </button>
+                        <b-button style="width:75px;float:right"
+                                  variant="warning" size="sm" @click="removeMaterial(n)">Eemalda
+                        </b-button>
                     </div>
                     <br>
                 </div>
@@ -46,13 +46,14 @@
                    </option>
 
                 </select>
-                <button style="margin-bottom:5px" v-on:click="addCategory()" class="small-input">Lisa</button>
+                <b-button variant="secondary" size="sm" style="width:75px;float:right;margin-left:5px" v-on:click="addCategory()">Lisa</b-button>
                 <div class="arraylist" v-for="(cat,n) in recipe.category">
                     <div class="arraytext"><span style="text-align:left" class="cat"> {{cat}}</span></div>
                     <div class="arraybutton">
-                        <button style="float:right; background-color:#fff87c; border-color:#f4f09c; color:#666"
+                        <b-button style="width:75px;float:right"
+                                  variant="warning" size="sm"
                                 class="btn btn-warning btn-sm" @click="removeCategory(n)">Eemalda
-                        </button>
+                        </b-button>
                     </div>
                     <br>
                 </div>
@@ -70,9 +71,10 @@
                 <div class="err"> {{priceError}}</div>
                 <br>
             </div>
-            <button v-on:click="saveRecipe" class="btn btn-success">Lisa pilt</button>
+            <button v-on:click="saveRecipe" class="btn btn-success">Salvesta</button>
         </div>
         <div v-else-if="submitted && !pic && this.recipe">
+            <h4>Retsept lisatud!</h4><br>
             <h4>Lisa pilt</h4>
             <div>
                 <b-form-file
@@ -86,15 +88,14 @@
                 <img :src="previewImage" class="uploading-image" style="border-radius: 10px;"/>
             </div>
             <div>
-                <b-button variant="success" @click="onUpload" id="save-btn">Salvesta</b-button>
+                <b-button variant="success" @click="onUpload" id="save-btn">Salvesta pilt</b-button>
             </div>
         </div>
         <div v-else>
-            <h4>Retsept lisatud!</h4>
-            <button class="btn btn-success"
-                    v-on:click="newRecipe" style="margin-right: 5px" >
-                Uus retsept
-            </button>
+
+            <h4>Pilt lisatud!</h4>
+            <button class="btn btn-success" v-on:click="newRecipe" style="margin-right: 5px">Uus retsept</button>
+
             <router-link to="/recipes">
                 <button type="reset" class="btn btn-success">Kõik retseptid</button>
             </router-link>
