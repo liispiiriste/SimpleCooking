@@ -28,6 +28,13 @@
                                 <b-nav-text>Minu konto</b-nav-text>
                             </router-link>
                         </b-nav-item>
+
+                        <b-nav-item>
+                            <router-link to="/search">
+                                <b-nav-text>Otsi retsepte</b-nav-text>
+                            </router-link>
+                        </b-nav-item>
+
                         <b-nav-item href="#" @click="logout">
                             <b-nav-text>Logi välja</b-nav-text>
                         </b-nav-item>
@@ -39,8 +46,6 @@
                         </router-link>
                     </b-nav-item>
 
-                   <b-nav-item> <router-link to="/search"><b-nav-text>Otsi retsepte</b-nav-text></router-link></b-nav-item>
-                 
                 </b-collapse>
             </b-navbar>
         </div>

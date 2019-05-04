@@ -67,17 +67,10 @@
         margin-bottom: 16px;
     }
 
-    div#search {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
 
-    }
     .search-wrapper {
         position: relative;
     }
-
 
     input {
         padding: 4px 12px;
