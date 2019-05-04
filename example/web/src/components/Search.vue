@@ -72,6 +72,7 @@
         position: relative;
     }
 
+
     input {
         padding: 4px 12px;
         color: rgba(0, 0, 0, .70);
@@ -109,5 +110,40 @@
         font-size: 10px;
         padding: 4px;
     }
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        -webkit-columns: 2;
+        -moz-columns: 2;
+        columns: 2;
+        padding-left: 0;
+    }
+    ul li {
+        list-style-position: inside;
+        -webkit-column-break-inside: avoid;
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+    li {
+        font: 200 17px/1.5 Helvetica, Verdana, sans-serif;
+        border-bottom: 1px solid #ccc;
+    }
+
+    li:last-child {
+        border: none;
+    }
+
+    li a {
+        text-decoration: none;
+        color: #000;
+        display: block;
+        width: auto;
+    }
+
+    li a:hover {
+        background: rgba(255, 255, 255, 0.5);
+    }
+
 
 </style>
