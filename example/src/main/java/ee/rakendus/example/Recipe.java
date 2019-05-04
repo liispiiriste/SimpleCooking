@@ -78,6 +78,7 @@ public class Recipe {
     }
 
     public void setDescription(String description) {
+
         this.description = description; }
 
     public String getMaterials() {
@@ -124,6 +125,15 @@ public class Recipe {
     public Categories getCategories() {return categories;}
 
     public void setCategories(Categories categories) {this.categories = categories;}
+
+    public Materials getMaterial() {
+        return material;
+    }
+
+    public void setMaterial(Materials material)
+    {
+        this.material = material;
+    }
 
     public Byte[] getImage() {
         return image;

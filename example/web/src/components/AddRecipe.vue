@@ -85,15 +85,17 @@
 
             </div>
             <div id="preview">
-                <img :src="previewImage" class="uploading-image"/>
+                <img :src="previewImage" class="uploading-image" style="border-radius: 10px;"/>
             </div>
             <div>
                 <b-button variant="success" @click="onUpload" id="save-btn">Salvesta pilt</b-button>
             </div>
         </div>
         <div v-else>
+
             <h4>Pilt lisatud!</h4>
             <button class="btn btn-success" v-on:click="newRecipe" style="margin-right: 5px">Uus retsept</button>
+
             <router-link to="/recipes">
                 <button type="reset" class="btn btn-success">Kõik retseptid</button>
             </router-link>
@@ -163,6 +165,7 @@
                     portion: this.recipe.portion,
                     price: this.recipe.price,
                     userid: this.user.id
+
                 };
 
                 this.nameError = (!this.recipe.name) ? "Lisa nimi" : "";

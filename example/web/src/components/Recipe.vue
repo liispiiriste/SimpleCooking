@@ -31,8 +31,10 @@
                         </div>
 
                         <div class="col-sm-6">
+
                             <div id="recipeImage" v-show="this.image !== null">
                                 <b-img class="uploading-image" v-bind:src="this.image" alt="recipe's image"/>
+
                             </div>
                         </div>
 

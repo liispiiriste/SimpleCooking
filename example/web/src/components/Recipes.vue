@@ -57,6 +57,7 @@
                 });
 
             },
+
             retrieveCategories(){
                 http.get("/categories").then(response => {
                     this.categories = response.data;
