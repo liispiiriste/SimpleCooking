@@ -71,9 +71,10 @@
                 <div class="err"> {{priceError}}</div>
                 <br>
             </div>
-            <button v-on:click="saveRecipe" class="btn btn-success">Lisa pilt</button>
+            <button v-on:click="saveRecipe" class="btn btn-success">Salvesta</button>
         </div>
         <div v-else-if="submitted && !pic && this.recipe">
+            <h4>Retsept lisatud!</h4><br>
             <h4>Lisa pilt</h4>
             <div>
                 <b-form-file
@@ -87,11 +88,11 @@
                 <img :src="previewImage" class="uploading-image"/>
             </div>
             <div>
-                <b-button variant="success" @click="onUpload" id="save-btn">Salvesta</b-button>
+                <b-button variant="success" @click="onUpload" id="save-btn">Salvesta pilt</b-button>
             </div>
         </div>
         <div v-else>
-            <h4>Retsept lisatud!</h4>
+            <h4>Pilt lisatud!</h4>
             <button class="btn btn-success" v-on:click="newRecipe" style="margin-right: 5px">Uus retsept</button>
             <router-link to="/recipes">
                 <button type="reset" class="btn btn-success">Kõik retseptid</button>

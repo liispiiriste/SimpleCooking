@@ -8,7 +8,7 @@
                 Logi sisse
             </b-button>
         </b-form>
-        <b-button variant="outline-success" to='/register' block>Tee kasutaja</b-button>
+        <b-button variant="outline-success" to='/register' block>Loo kasutaja</b-button>
     </div>
 </template>
 
