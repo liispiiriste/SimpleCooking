@@ -7,7 +7,8 @@
     </div>
 
     <div class="wrapper" >
-        <div class="card" v-for="(recipe,index) in filteredList" :key="index">
+        <ul>
+        <li v-for="(recipe,index) in filteredList" :key="index">
             <router-link :to="{
                             name: 'recipe',
                             params: { recipe: recipe, id: recipe.id }
@@ -16,8 +17,8 @@
             </router-link>
 
 
-        </div>
-
+        </li>
+        </ul>
 
 </div>
 </div>
@@ -97,18 +98,6 @@
         padding-top: 12px;
     }
 
-    .card {
-        min-height:10px;
-        min-width:10px;
-
-        background-repeat:no-repeat;
-        background: -webkit-linear-gradient( to left top, #faffd1, #a1ffce) no-repeat center center fixed;
-        background: -moz-linear-gradient( to left top, #faffd1, #a1ffce) no-repeat center center fixed;
-        background: -ms-linear-gradient( to left top,#faffd1, #a1ffce) no-repeat center center fixed;
-        background: -o-linear-gradient( to left top, #faffd1, #a1ffce) no-repeat center center fixed;
-        background: linear-gradient( to left top, #faffd1, #a1ffce) no-repeat center center fixed;
-        background-attachment: fixed !important;
-    }
     hover {
          transform: scale(1.1);
      }
