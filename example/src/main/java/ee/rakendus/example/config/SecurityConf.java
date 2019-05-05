@@ -53,7 +53,7 @@ public class SecurityConf extends WebSecurityConfigurerAdapter {
                 .invalidateHttpSession(true)
                 .logoutUrl("/api/logout")
                 .logoutSuccessHandler(new CustomSuccessHandlerLogout())
-                .logoutSuccessUrl("/")
+                .logoutSuccessUrl("/login")
                 .permitAll();
     }
 
