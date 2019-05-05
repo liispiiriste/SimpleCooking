@@ -1,8 +1,5 @@
-package ee.rakendus.example;
+package ee.rakendus.example.entity;
 
-
-import ee.rakendus.example.categories.Categories;
-import ee.rakendus.example.user.User;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;

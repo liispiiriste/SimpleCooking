@@ -1,18 +1,16 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ee.rakendus.example.Recipe;
-import ee.rakendus.example.RecipeRepository;
-import ee.rakendus.example.RecipeService;
-import ee.rakendus.example.categories.Categories;
-import ee.rakendus.example.categories.CategoryRepository;
-import ee.rakendus.example.user.User;
-import ee.rakendus.example.user.UserRepository;
-import ee.rakendus.example.user.UserService;
-import org.hibernate.validator.constraints.Range;
+import ee.rakendus.example.entity.Recipe;
+import ee.rakendus.example.repository.RecipeRepository;
+import ee.rakendus.example.service.RecipeService;
+import ee.rakendus.example.entity.Categories;
+import ee.rakendus.example.repository.CategoryRepository;
+import ee.rakendus.example.entity.User;
+import ee.rakendus.example.repository.UserRepository;
+import ee.rakendus.example.service.UserService;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.ArrayList;
@@ -24,7 +22,6 @@ import static org.junit.Assert.assertNotNull;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 public class RecipeServiceTest {
     @Mock

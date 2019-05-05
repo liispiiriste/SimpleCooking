@@ -1,5 +1,6 @@
-package ee.rakendus.example;
+package ee.rakendus.example.repository;
 
+import ee.rakendus.example.entity.Recipe;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

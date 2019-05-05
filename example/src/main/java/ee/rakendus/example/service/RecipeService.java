@@ -1,9 +1,10 @@
-package ee.rakendus.example;
+package ee.rakendus.example.service;
 
-import ee.rakendus.example.categories.Categories;
-import ee.rakendus.example.categories.CategoryRepository;
-import ee.rakendus.example.user.User;
-import ee.rakendus.example.user.UserService;
+import ee.rakendus.example.entity.Categories;
+import ee.rakendus.example.entity.Recipe;
+import ee.rakendus.example.repository.CategoryRepository;
+import ee.rakendus.example.repository.RecipeRepository;
+import ee.rakendus.example.entity.User;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

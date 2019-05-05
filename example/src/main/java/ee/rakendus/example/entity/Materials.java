@@ -1,4 +1,4 @@
-package ee.rakendus.example;
+package ee.rakendus.example.entity;
 
 import lombok.Data;
 

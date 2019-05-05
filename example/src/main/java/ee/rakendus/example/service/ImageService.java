@@ -1,4 +1,4 @@
-package ee.rakendus.example.image;
+package ee.rakendus.example.service;
 
 import org.springframework.web.multipart.MultipartFile;
 

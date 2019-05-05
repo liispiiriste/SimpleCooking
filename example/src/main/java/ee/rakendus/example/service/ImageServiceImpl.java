@@ -1,7 +1,7 @@
-package ee.rakendus.example.image;
+package ee.rakendus.example.service;
 
-import ee.rakendus.example.Recipe;
-import ee.rakendus.example.RecipeRepository;
+import ee.rakendus.example.entity.Recipe;
+import ee.rakendus.example.repository.RecipeRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 

@@ -1,4 +1,4 @@
-package ee.rakendus.example.config;
+package ee.rakendus.example.security;
 
 
 import org.springframework.context.annotation.Bean;
@@ -15,7 +15,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.Arrays;
 
-import static ee.rakendus.example.config.SecurityConstants.SIGN_UP_URL;
+import static ee.rakendus.example.security.SecurityConstants.SIGN_UP_URL;
 
 
 @EnableWebSecurity
