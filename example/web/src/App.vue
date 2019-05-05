@@ -20,7 +20,7 @@
                         </b-nav-item>
                         <b-nav-item>
                             <router-link to="/add">
-                                <b-nav-text>Lisa Retsept</b-nav-text>
+                                <b-nav-text>Lisa retsept</b-nav-text>
                             </router-link>
                         </b-nav-item>
                         <b-nav-item>
@@ -70,7 +70,6 @@
         data() {
             return {
                 authenticated: false,
-
             }
         },
         mounted() {
@@ -82,6 +81,7 @@
         methods: {
             setAuthenticated(status) {
                 this.authenticated = status;
+                console.log(this.authenticated)
             },
             logout() {
                 this.$store.dispatch(AUTH_LOGOUT).then(() => {

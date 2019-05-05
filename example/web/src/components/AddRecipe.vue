@@ -17,15 +17,20 @@
             <div class="form-group">
                 <label for="materials">Materjalid</label><br>
 
-                <input type="text" class="small-input" id="materials" v-model="mat" name="materials" style="padding-left:10px;height:40px;width:235px;font-size:15px">
-                <input type="number" min="0" class="small-input" style="padding-left:10px;height:40px" id="quantity" v-model="mat2" name="quantity">
-                <select class="custom-select" v-model="mat3" style="width:75px; font-size:15px; max-height:40px; margin-left:10px; height: 37px">
-                    <option  v-for="(measurement, index) in measurements" :key="index" :value="measurement">
+                <input type="text" class="small-input" id="materials" v-model="mat" name="materials"
+                       style="padding-left:10px;height:40px;width:235px;font-size:15px">
+                <input type="number" min="0" class="small-input" style="padding-left:10px;height:40px" id="quantity"
+                       v-model="mat2" name="quantity">
+                <select class="custom-select" v-model="mat3"
+                        style="width:75px; font-size:15px; max-height:40px; margin-left:10px; height: 37px">
+                    <option v-for="(measurement, index) in measurements" :key="index" :value="measurement">
                         {{measurement}}
                     </option>
 
                 </select>
-                <b-button variant="secondary" size="sm" style="width:75px;float:right;margin-left:5px" v-on:click="addMaterial()">Lisa</b-button>
+                <b-button variant="secondary" size="sm" style="width:75px;float:right;margin-left:5px"
+                          v-on:click="addMaterial()">Lisa
+                </b-button>
                 <div class="arraylist" v-for="(mat,m) in recipe.materials">
                     <div class="arraytext"><span style="text-align:left" class="mat"> {{mat}}</span></div>
                     <div class="arraybutton">
@@ -41,18 +46,20 @@
                 <label>Kategooria</label><br>
                 <select class="custom-select" v-model="cat" style="width:415px">
 
-                   <option  v-for="(category, index) in categories" :key="index" :value="category.name">
-                       {{category.name}}
-                   </option>
+                    <option v-for="(category, index) in categories" :key="index" :value="category.name">
+                        {{category.name}}
+                    </option>
 
                 </select>
-                <b-button variant="secondary" size="sm" style="width:75px;float:right;margin-left:5px" v-on:click="addCategory()">Lisa</b-button>
+                <b-button variant="secondary" size="sm" style="width:75px;float:right;margin-left:5px"
+                          v-on:click="addCategory()">Lisa
+                </b-button>
                 <div class="arraylist" v-for="(cat,n) in recipe.category">
                     <div class="arraytext"><span style="text-align:left" class="cat"> {{cat}}</span></div>
                     <div class="arraybutton">
                         <b-button style="width:75px;float:right"
                                   variant="warning" size="sm"
-                                class="btn btn-warning btn-sm" @click="removeCategory(n)">Eemalda
+                                  class="btn btn-warning btn-sm" @click="removeCategory(n)">Eemalda
                         </b-button>
                     </div>
                     <br>
@@ -92,8 +99,8 @@
             </div>
         </div>
         <div v-else>
-
             <h4>Pilt lisatud!</h4>
+
             <button class="btn btn-success" v-on:click="newRecipe" style="margin-right: 5px">Uus retsept</button>
 
             <router-link to="/recipes">
@@ -145,7 +152,7 @@
                 cat: '',
                 measurements:
                     [
-                    "g", "kg", "sl", "tl", "dl", "ml", "tk"
+                        "g", "kg", "sl", "tl", "dl", "ml", "tk"
                     ],
                 categories: [],
                 selectedFile: null,
@@ -192,8 +199,14 @@
             },
             newRecipe() {
                 this.submitted = false;
+                this.pic = false;
+                this.selectedFile = null;
+                this.previewImage = null;
+                this.mat = '';
+                this.mat2 = 0;
+                this.mat3 = '';
+                this.cat = '';
                 this.recipe = {};
-                window.location.reload();
             },
             addCategory() {
                 var newCategory = this.cat;
@@ -283,8 +296,6 @@
         font-size: 15px;
         padding-left: 10px;
         height: 40px
-
-
     }
 
     .form-group {
