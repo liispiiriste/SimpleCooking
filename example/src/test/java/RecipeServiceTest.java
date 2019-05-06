@@ -51,17 +51,17 @@ public class RecipeServiceTest {
 
     @Test
     public void getRecipeByIdTest() throws Exception {
-        Recipe recipe = new Recipe();
-        recipe.setId(1L);
-        Optional<Recipe> recipeOptional = Optional.of(recipe);
+            Recipe recipe = new Recipe();
+            recipe.setId(1L);
+            Optional<Recipe> recipeOptional = Optional.of(recipe);
 
-        when(recipeRepository.findById(anyLong())).thenReturn(recipeOptional);
+            when(recipeRepository.findById(anyLong())).thenReturn(recipeOptional);
 
-        Recipe recipeReturned = recipeService.findById(1L);
+            Recipe recipeReturned = recipeService.findById(1L);
 
-        assertNotNull("Null recipe returned", recipeReturned);
-        verify(recipeRepository, times(1)).findById(anyLong());
-        verify(recipeRepository, never()).findAll();
+            assertNotNull("Null recipe returned", recipeReturned);
+            verify(recipeRepository, times(1)).findById(anyLong());
+            verify(recipeRepository, never()).findAll();
     }
 
     @Test
@@ -79,7 +79,7 @@ public class RecipeServiceTest {
         verify(recipeRepository, never()).findById(anyLong());
     }
     @Test
-    public void testGetAllCategroies() {
+    public void testGetAllCategories() {
         Categories category = new Categories();
         List<Categories> categoriesList = new ArrayList<>();
         categoriesList.add(category);

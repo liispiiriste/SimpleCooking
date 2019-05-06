@@ -50,6 +50,7 @@ public class RecipeService {
         rec.setName(recipe.getName());
         rec.setDescription(recipe.getDescription());
         rec.setMaterials(recipe.getMaterials());
+        rec.setCategory(recipe.getCategory());
         rec.setPrice(recipe.getPrice());
         rec.setPortion(recipe.getPortion());
 
@@ -65,13 +66,16 @@ public class RecipeService {
     }
 
     public List<Recipe> getRecipesByCategory(String category) {
+
         return recipeRepository.findByCategory(category);
     }
     public List<Recipe> searchRecipesByName(String searchStr) {
+
         return recipeRepository.findByName(searchStr);
     }
 
     public void deleteRecipeById(long id) {
+
         recipeRepository.deleteById(id);
     }
 }

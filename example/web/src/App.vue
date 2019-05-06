@@ -105,15 +105,5 @@
         animation: moveInUp .3s ease-in;
     }
 
-    .search-wrapper {
-        position: relative;
-    }
-
-    .wrapper {
-        display: flex;
-        max-width: 444px;
-        flex-wrap: wrap;
-        padding-top: 12px;
-    }
 
 </style>

@@ -45,9 +45,7 @@ public class Recipe {
     @ManyToOne
     private Categories categories;
 
-    @ManyToOne
 
-    private Materials material;
 
     @Lob
     @Column(name="image")
@@ -58,14 +56,17 @@ public class Recipe {
 
     //region getters and setters
     public Long getId() {
+
         return id;
     }
 
     public void setId(Long id) {
+
         this.id = id;
     }
 
     public String getName() {
+
         return name;
     }
 
@@ -121,19 +122,11 @@ public class Recipe {
         this.user = user;
     }
 
+    public Categories getCategories() {
+        return categories;}
 
-    public Categories getCategories() {return categories;}
-
-    public void setCategories(Categories categories) {this.categories = categories;}
-
-    public Materials getMaterial() {
-        return material;
-    }
-
-    public void setMaterial(Materials material)
-    {
-        this.material = material;
-    }
+    public void setCategories(Categories categories) {
+        this.categories = categories;}
 
     public Byte[] getImage() {
         return image;
