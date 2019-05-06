@@ -94,14 +94,6 @@
 
 <style scoped>
 
-
-    /*ul {
-        text-align: left;
-        list-style: inside;
-        font-size: 20px;
-        width: 300%;
-    }*/
-
     input {
         visibility: hidden;
     }

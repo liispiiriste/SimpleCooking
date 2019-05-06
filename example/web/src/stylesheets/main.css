@@ -40,19 +40,6 @@
     border-radius: 4px;
 }
 
-/*.wrapper{
-    min-height:100vh;
-    min-width:100vw;
-
-    background-repeat:no-repeat;
-    background: -webkit-linear-gradient( to left top, #faffd1, #a1ffce) no-repeat center center fixed;
-    background: -moz-linear-gradient( to left top, #faffd1, #a1ffce) no-repeat center center fixed;
-    background: -ms-linear-gradient( to left top,#faffd1, #a1ffce) no-repeat center center fixed;
-    background: -o-linear-gradient( to left top, #faffd1, #a1ffce) no-repeat center center fixed;
-    background: linear-gradient( to left top, #faffd1, #a1ffce) no-repeat center center fixed;
-    background-attachment: fixed !important;
-
-}*/
 b-navbar {
     position: sticky
 }

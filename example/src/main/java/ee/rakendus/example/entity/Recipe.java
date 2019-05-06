@@ -116,9 +116,12 @@ public class Recipe {
     }
 
 
-    public Categories getCategories() {return categories;}
+    public Categories getCategories() {
+        return categories;
+    }
 
-    public void setCategories(Categories categories) {this.categories = categories;}
+    public void setCategories(Categories categories) {
+        this.categories = categories;}
 
     public Byte[] getImage() {
         return image;
