@@ -16,7 +16,6 @@
             </div>
             <div class="form-group">
                 <label for="materials">Materjalid</label><br>
-
                 <input type="text" class="small-input" id="materials" v-model="mat" name="materials"
                        style="padding-left:10px;height:40px;width:235px;font-size:15px">
                 <input type="number" min="0" class="small-input" style="padding-left:10px;height:40px" id="quantity"
@@ -26,7 +25,6 @@
                     <option v-for="(measurement, index) in measurements" :key="index" :value="measurement">
                         {{measurement}}
                     </option>
-
                 </select>
                 <b-button variant="secondary" size="sm" style="width:75px;float:right;margin-left:5px"
                           v-on:click="addMaterial()">Lisa
@@ -35,7 +33,8 @@
                     <div class="arraytext"><span style="text-align:left" class="mat"> {{mat}}</span></div>
                     <div class="arraybutton">
                         <b-button style="width:75px;float:right"
-                                  variant="warning" size="sm" @click="removeMaterial(n)">Eemalda
+                                  variant="warning" size="sm" @click="removeMaterial(n)">
+                            Eemalda
                         </b-button>
                     </div>
                     <br>
@@ -45,11 +44,9 @@
             <div class="form-group">
                 <label>Kategooria</label><br>
                 <select class="custom-select" v-model="cat" style="width:415px">
-
                     <option v-for="(category, index) in categories" :key="index" :value="category.name">
                         {{category.name}}
                     </option>
-
                 </select>
                 <b-button variant="secondary" size="sm" style="width:75px;float:right;margin-left:5px"
                           v-on:click="addCategory()">Lisa
@@ -59,7 +56,8 @@
                     <div class="arraybutton">
                         <b-button style="width:75px;float:right"
                                   variant="warning" size="sm"
-                                  class="btn btn-warning btn-sm" @click="removeCategory(n)">Eemalda
+                                  class="btn btn-warning btn-sm" @click="removeCategory(n)">
+                            Eemalda
                         </b-button>
                     </div>
                     <br>
@@ -101,7 +99,9 @@
         <div v-else>
             <h4>Pilt lisatud!</h4>
 
-            <button class="btn btn-success" v-on:click="newRecipe" style="margin-right: 5px">Uus retsept</button>
+            <button class="btn btn-success" v-on:click="newRecipe" style="margin-right: 5px">
+                Uus retsept
+            </button>
 
             <router-link to="/recipes">
                 <button type="reset" class="btn btn-success">Kõik retseptid</button>

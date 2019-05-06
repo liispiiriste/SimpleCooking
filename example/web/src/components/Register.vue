@@ -32,7 +32,10 @@
         <div v-else>
             <h4>Registreeritud!</h4>
             <router-link to="/login">
-                <button type="reset" >Logi sisse</button>
+                <button type="reset"
+                        class="btn btn-success">
+                    Logi sisse
+                </button>
             </router-link>
         </div>
     </div>
@@ -101,8 +104,6 @@
         width: 80%;
         align: center;
         color: #333;
-
-
     }
     .register-form{
         margin:auto;
