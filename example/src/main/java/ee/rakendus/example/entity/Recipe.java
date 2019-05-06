@@ -42,9 +42,6 @@ public class Recipe {
     @ManyToOne
     private Categories categories;
 
-    @ManyToOne
-
-    private Materials material;
 
     @Lob
     @Column(name="image")
@@ -122,15 +119,6 @@ public class Recipe {
     public Categories getCategories() {return categories;}
 
     public void setCategories(Categories categories) {this.categories = categories;}
-
-    public Materials getMaterial() {
-        return material;
-    }
-
-    public void setMaterial(Materials material)
-    {
-        this.material = material;
-    }
 
     public Byte[] getImage() {
         return image;
