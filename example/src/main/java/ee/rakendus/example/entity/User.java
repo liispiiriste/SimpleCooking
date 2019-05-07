@@ -1,6 +1,8 @@
 package ee.rakendus.example.entity;
 
 import lombok.Data;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -42,6 +44,7 @@ public class User implements UserDetails {
     @JoinTable(name="user_favourites",
             joinColumns={@JoinColumn(name="user_id")},
             inverseJoinColumns={@JoinColumn(name="recipe_id")})
+    @Fetch(FetchMode.JOIN)
     Set<Recipe> favouriteRecipes = new HashSet<>();
 
     public User() {

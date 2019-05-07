@@ -1,6 +1,8 @@
 package ee.rakendus.example.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -42,8 +44,8 @@ public class Recipe {
     private User user;
 
 
-
-    @ManyToMany(fetch = FetchType.LAZY,
+    @JsonIgnore
+    @ManyToMany(
             cascade = {
                     CascadeType.PERSIST,
                     CascadeType.MERGE
