@@ -1,7 +1,7 @@
-import ee.rakendus.example.Recipe;
-import ee.rakendus.example.RecipeRepository;
-import ee.rakendus.example.image.ImageService;
-import ee.rakendus.example.image.ImageServiceImpl;
+import ee.rakendus.example.entity.Recipe;
+import ee.rakendus.example.repository.RecipeRepository;
+import ee.rakendus.example.service.ImageService;
+import ee.rakendus.example.service.ImageServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;

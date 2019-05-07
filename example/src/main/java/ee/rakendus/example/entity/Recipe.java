@@ -1,8 +1,5 @@
-package ee.rakendus.example;
+package ee.rakendus.example.entity;
 
-
-import ee.rakendus.example.categories.Categories;
-import ee.rakendus.example.user.User;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -56,9 +53,6 @@ public class Recipe {
     @ManyToOne
     private Categories categories;
 
-    @ManyToOne
-
-    private Materials material;
 
     @Lob
     @Column(name="image")
@@ -89,6 +83,7 @@ public class Recipe {
     }
 
     public void setDescription(String description) {
+
         this.description = description; }
 
     public String getMaterials() {
@@ -139,9 +134,12 @@ public class Recipe {
         this.userFavourites = userFavourites;
     }
 
-    public Categories getCategories() {return categories;}
+    public Categories getCategories() {
+        return categories;
+    }
 
-    public void setCategories(Categories categories) {this.categories = categories;}
+    public void setCategories(Categories categories) {
+        this.categories = categories;}
 
     public Byte[] getImage() {
         return image;

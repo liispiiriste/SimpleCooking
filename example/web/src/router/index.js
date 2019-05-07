@@ -11,6 +11,7 @@ import store from "@/store";
 
 import Register from "@/components/Register";
 import Login from "../components/Login";
+import Search from "../components/Search";
 
 
 Vue.use(VueRouter);
@@ -36,7 +37,6 @@ const router = new VueRouter({
             path: '/recipes',
             name: 'recipes',
             component: Recipes
-
         },
         {
             path: '/recipe',
@@ -54,7 +54,6 @@ const router = new VueRouter({
             path: '/add',
             name: 'AddRecipe',
             component: AddRecipe,
-
         },
         {
             path: '/MyAccount',
@@ -63,10 +62,15 @@ const router = new VueRouter({
             props: true
         },
         {
-
             path: '/register',
             name: 'Register',
             component: Register
+        },
+
+        {
+            path: '/search',
+            name: 'Search',
+            component: Search
         },
 
         // otherwise redirect to home
@@ -74,6 +78,7 @@ const router = new VueRouter({
             path: '*',
             redirect: '/login'
         }
+
     ]
 });
 

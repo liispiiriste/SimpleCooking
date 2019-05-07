@@ -1,4 +1,4 @@
-package ee.rakendus.example.config;
+package ee.rakendus.example.security;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;

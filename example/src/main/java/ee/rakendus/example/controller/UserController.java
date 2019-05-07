@@ -1,5 +1,7 @@
-package ee.rakendus.example.user;
+package ee.rakendus.example.controller;
 
+import ee.rakendus.example.entity.User;
+import ee.rakendus.example.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

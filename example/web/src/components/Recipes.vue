@@ -57,6 +57,7 @@
                 });
 
             },
+
             retrieveCategories(){
                 http.get("/categories").then(response => {
                     this.categories = response.data;
@@ -92,14 +93,6 @@
 </script>
 
 <style scoped>
-
-
-    /*ul {
-        text-align: left;
-        list-style: inside;
-        font-size: 20px;
-        width: 300%;
-    }*/
 
     input {
         visibility: hidden;

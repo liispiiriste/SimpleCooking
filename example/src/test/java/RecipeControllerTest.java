@@ -1,10 +1,10 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ee.rakendus.example.Recipe;
-import ee.rakendus.example.RecipeController;
-import ee.rakendus.example.RecipeService;
-import ee.rakendus.example.image.ImageService;
-import ee.rakendus.example.user.User;
-import ee.rakendus.example.user.UserService;
+import ee.rakendus.example.entity.Recipe;
+import ee.rakendus.example.controller.RecipeController;
+import ee.rakendus.example.service.RecipeService;
+import ee.rakendus.example.service.ImageService;
+import ee.rakendus.example.entity.User;
+import ee.rakendus.example.service.UserService;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;

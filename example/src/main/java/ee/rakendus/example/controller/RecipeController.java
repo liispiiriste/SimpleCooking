@@ -1,8 +1,11 @@
-package ee.rakendus.example;
+package ee.rakendus.example.controller;
 
-import ee.rakendus.example.categories.Categories;
-import ee.rakendus.example.image.ImageService;
-import ee.rakendus.example.user.UserService;
+import ee.rakendus.example.repository.RecipeRepository;
+import ee.rakendus.example.service.RecipeService;
+import ee.rakendus.example.entity.Categories;
+import ee.rakendus.example.entity.Recipe;
+import ee.rakendus.example.service.ImageService;
+import ee.rakendus.example.service.UserService;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,7 +17,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Base64;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:9000")

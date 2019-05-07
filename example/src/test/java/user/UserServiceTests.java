@@ -1,10 +1,10 @@
 package user;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ee.rakendus.example.Recipe;
-import ee.rakendus.example.user.User;
-import ee.rakendus.example.user.UserController;
-import ee.rakendus.example.user.UserService;
+import ee.rakendus.example.entity.Recipe;
+import ee.rakendus.example.entity.User;
+import ee.rakendus.example.controller.UserController;
+import ee.rakendus.example.service.UserService;
 import org.apache.catalina.filters.CorsFilter;
 import org.junit.Before;
 import org.junit.Test;

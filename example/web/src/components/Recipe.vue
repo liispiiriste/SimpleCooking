@@ -24,15 +24,17 @@
                                     {{this.recipe.category}}
                                 </div>
                                 <div>
-                                    <label>Looja: </label>
+                                    <label>Autor: </label>
                                     {{this.recipe.user.username}}
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-sm-6">
+
                             <div id="recipeImage" v-show="this.image !== null">
                                 <b-img class="uploading-image" v-bind:src="this.image" alt="recipe's image"/>
+
                             </div>
                         </div>
 

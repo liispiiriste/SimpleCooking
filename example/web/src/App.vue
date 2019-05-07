@@ -2,8 +2,9 @@
     <div id="app" style="margin:auto;">
 
         <!-- navbar -->
+
         <div>
-            <b-navbar toggleable="lg" type="dark" variant="secondary" style="height: 50px">
+            <b-navbar toggleable="lg" type="dark" variant="secondary">
                 <router-link to="/home">
                     <b-navbar-brand>Kodu</b-navbar-brand>
                 </router-link>
@@ -19,7 +20,7 @@
                         </b-nav-item>
                         <b-nav-item>
                             <router-link to="/add">
-                                <b-nav-text>Lisa Retsept</b-nav-text>
+                                <b-nav-text>Lisa retsept</b-nav-text>
                             </router-link>
                         </b-nav-item>
                         <b-nav-item>
@@ -27,6 +28,13 @@
                                 <b-nav-text>Minu konto</b-nav-text>
                             </router-link>
                         </b-nav-item>
+
+                        <b-nav-item>
+                            <router-link to="/search">
+                                <b-nav-text>Otsi retsepte</b-nav-text>
+                            </router-link>
+                        </b-nav-item>
+
                         <b-nav-item href="#" @click="logout">
                             <b-nav-text>Logi välja</b-nav-text>
                         </b-nav-item>
@@ -38,21 +46,10 @@
                         </router-link>
                     </b-nav-item>
 
-
-                    <!-- Right aligned nav items -->
-                    <b-navbar-nav class="ml-auto">
-                        <b-nav-form id="searchForm" v-if="authenticated">
-                            <b-form-input size="sm" class="mr-sm-2" placeholder="Otsi retsepte..." v-model="searchStr"
-                                          type="search"/>
-                            <b-button size="sm" class="my-2 my-sm-0" type="submit"
-                                      v-on:click="searchRecipe('searchStr')">
-                                Otsi
-                            </b-button>
-                        </b-nav-form>
-                    </b-navbar-nav>
                 </b-collapse>
             </b-navbar>
         </div>
+
         <br>
         <div class="container" style="margin-top:45px;">
             <transition name="moveInUp">
@@ -69,12 +66,10 @@
     import {AUTH_LOGOUT} from "./store/constants";
 
     export default {
-
-        name: 'app',
+      name: 'app',
         data() {
             return {
                 authenticated: false,
-                searchStr: ''
             }
         },
         mounted() {
@@ -86,6 +81,7 @@
         methods: {
             setAuthenticated(status) {
                 this.authenticated = status;
+                console.log(this.authenticated)
             },
             logout() {
                 this.$store.dispatch(AUTH_LOGOUT).then(() => {
@@ -93,14 +89,11 @@
                 })
                 this.authenticated = false;
             },
-            searchRecipe() {
-                http.get('http://localhost:8080/recipes/search/' + this.searchStr)
-                    .then(response => {
-                        this.recipes = response.data;
-                    })
-            }
+
         }
-    }
+
+}
+
 </script>
 <style>
 

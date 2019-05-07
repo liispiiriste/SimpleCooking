@@ -1,8 +1,6 @@
-package ee.rakendus.example.user;
+package ee.rakendus.example.entity;
 
-import ee.rakendus.example.Recipe;
 import lombok.Data;
-import org.hibernate.annotations.Proxy;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -49,7 +47,7 @@ public class User implements UserDetails {
     public User() {
     }
 
-    User(String username, String password, String email, List<Object> objects) {
+    public User(String username, String password, String email, List<Object> objects) {
         this.username = username;
         this.password = password;
         this.email = email;

@@ -1,6 +1,5 @@
-package ee.rakendus.example.categories;
+package ee.rakendus.example.entity;
 
-import ee.rakendus.example.Recipe;
 import lombok.Data;
 
 import javax.persistence.*;

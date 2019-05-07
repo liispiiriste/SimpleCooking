@@ -16,26 +16,29 @@
                 <label for="edit-materials">Materjalid</label>
                 <textarea class="form-control" id="edit-materials" rows="3" v-model="recipe.materials"></textarea>
             </div>
-            <!---
-                            <div class="form-group">
-                                <label>Kategooria</label>
-                                <select class="custom-select" v-model="recipe.category">
-                                    <option value="hommikusöök">Hommikusöök</option>
-                                    <option value="jook">Jook</option>
-                                    <option value="kook">Kook</option>
-                                    <option value="magustoit">Magustoit</option>
-                                    <option value="pastatoit">Pastatoit</option>
-                                    <option value="pirukad">Pirukad</option>
-                                    <option value="praad">Praad</option>
-                                    <option value="salat">Salat</option>
-                                    <option value="supp">Suupisted</option>
-                                    <option value="tort">Tort</option>
-                                    <option value="võileicatort">Võileivatort</option>
-                                    <option value="vormiroog">Vormiroog</option>
-                                    <option value="muu">Muu</option>
-                                </select>
 
-                            </div>--->
+            <!--<div class="form-group">
+            <label>Kategooria</label><br>
+
+
+                <select class="custom-select" v-model="recipe.category">
+                    <option value="hommikusöök">Hommikusöök</option>
+                    <option value="jook">Jook</option>
+                    <option value="kook">Kook</option>
+                    <option value="magustoit">Magustoit</option>
+                    <option value="pastatoit">Pastatoit</option>
+                    <option value="pirukad">Pirukad</option>
+                    <option value="praad">Praad</option>
+                    <option value="salat">Salat</option>
+                    <option value="suupisted">Suupisted</option>
+                    <option value="supp">Supp</option>
+                    <option value="tort">Tort</option>
+                    <option value="võileivatort">Võileivatort</option>
+                    <option value="vormiroog">Vormiroog</option>
+                    <option value="muu">Muu</option>
+                </select>
+            </div>-->
+
 
             <div class="form-group">
                 <label for="edit-portion">Kogus<span class="glyphicon glyphicon-euro"></span></label>
@@ -46,7 +49,7 @@
 
             </div>
             <div v-if="!pic">
-                <b-img center rounded width="400px" :src="this.image"></b-img>
+                <b-img center rounded width="400px" :src="this.image" style="border-radius: 10px;"></b-img>
             </div>
             <div id="preview" style="align-items: center">
                 <img :src="this.previewImage">
@@ -62,7 +65,7 @@
             <b-button @click="updateRecipe" variant="success">
                 <router-link :to="{
                             name: 'recipe',
-                            params: { recipe: recipe, id: recipe.id }
+                            params: { recipe: recipe, id: recipe.id, }
                         }" style="color:whitesmoke">Salvesta muudatused
                 </router-link>
             </b-button>
@@ -99,14 +102,15 @@
                     materials: this.recipe.materials,
                     category: this.recipe.category,
                     portion: this.recipe.portion,
-                    price: this.recipe.price
+                    price: this.recipe.price,
 
                 },
                 image: this.showOldImage(),
                 submitted: false,
                 pic: false,
                 selectedFile: null,
-                previewImage: null
+                previewImage: null,
+
             };
         },
         methods: {
@@ -117,7 +121,8 @@
                     materials: this.recipe.materials,
                     category: this.recipe.category,
                     portion: this.recipe.portion,
-                    price: this.recipe.price
+                    price: this.recipe.price,
+
                 };
                 http
                     .put("/recipe/" + this.recipe.id, data)
@@ -125,7 +130,8 @@
                         this.recipe.id = response.data.id;
                     });
                 this.submitted = true;
-            },
+
+                },
             onFileSelected(event) {
                 this.selectedFile = event.target.files[0];
                 const reader = new FileReader();
@@ -180,5 +186,20 @@
         width: 500px;
         align: center;
         margin: auto;
+    }
+
+    .arraylist {
+        margin-bottom: 5px
+    }
+
+    .arraytext {
+        width: 75%;
+        float: left;
+        font-size: 16px
+    }
+
+    .arraybutton {
+        width: 20%;
+        float: right;
     }
 </style>
