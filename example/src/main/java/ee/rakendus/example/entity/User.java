@@ -1,5 +1,6 @@
 package ee.rakendus.example.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -34,8 +35,7 @@ public class User implements UserDetails {
 
     private UserRoles role;
 
-
-
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER,
             cascade = {
                     CascadeType.PERSIST,

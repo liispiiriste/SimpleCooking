@@ -13,6 +13,7 @@
             </div>
 
             <div class="box">
+
                 <label>Minu retseptid: </label>
                 <ul>
                     <li v-for="(recipe, index) in recipes" :key="index"

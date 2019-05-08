@@ -16,16 +16,16 @@
             <div class="form-group">
                 <label for="materials">Materjalid</label><br>
                 <input type="text" class="small-input" id="materials" v-model="mat" name="materials"
-                       style="padding-left:10px;height:40px;width:235px;font-size:15px">
+                       style="padding-left:10px;height:40px;width:237px;font-size:15px">
                 <input type="number" min="0" class="small-input" style="padding-left:10px;height:40px" id="quantity"
                        v-model="mat2" name="quantity">
                 <select class="custom-select" v-model="mat3"
-                        style="width:75px; font-size:15px; max-height:40px; margin-left:10px; height: 37px">
+                        style="width:75px; font-size:15px; max-height:42px; margin-left:10px; height: 37px">
                     <option v-for="(measurement, index) in measurements" :key="index" :value="measurement">
                         {{measurement}}
                     </option>
                 </select>
-                <b-button variant="secondary" size="sm" style="width:75px;float:right;margin-left:5px"
+                <b-button variant="secondary" size="sm" style="height: 33px;width:75px;float:right;margin-left:5px; margin-top: 4px;"
                           v-on:click="addMaterial()">Lisa
                 </b-button>
                 <div class="arraylist" v-for="(mat,m) in recipe.materials">
@@ -42,25 +42,12 @@
             </div>
             <div class="form-group">
                 <label>Kategooria</label><br>
-                <select class="custom-select" v-model="cat" style="width:415px">
+                <select class="custom-select" v-model="recipe.category" style="width:600px">
                     <option v-for="(category, index) in categories" :key="index" :value="category.name">
                         {{category.name}}
                     </option>
                 </select>
-                <b-button variant="secondary" size="sm" style="width:75px;float:right;margin-left:5px"
-                          v-on:click="addCategory()">Lisa
-                </b-button>
-                <div class="arraylist" v-for="(cat,n) in recipe.category">
-                    <div class="arraytext"><span style="text-align:left" class="cat"> {{cat}}</span></div>
-                    <div class="arraybutton">
-                        <b-button style="width:75px;float:right"
-                                  variant="warning" size="sm"
-                                  class="btn btn-warning btn-sm" @click="removeCategory(n)">
-                            Eemalda
-                        </b-button>
-                    </div>
-                    <br>
-                </div>
+
                 <div class="err"> {{catError}}</div>
             </div>
             <br>
@@ -125,10 +112,10 @@
             return {
                 recipe: {
                     id: '',
-                    name: "",
-                    description: "",
+                    name: '',
+                    description: '',
                     materials: [],
-                    category: [],
+                    category: '',
                     portion: 0,
                     price: 0,
                 },
@@ -167,7 +154,7 @@
                     name: this.recipe.name,
                     description: this.recipe.description,
                     materials: this.recipe.materials.toString(),
-                    category: this.recipe.category.toString(),
+                    category: this.recipe.category,
                     portion: this.recipe.portion,
                     price: this.recipe.price,
                     userid: this.user.id
@@ -177,14 +164,14 @@
                 this.nameError = (!this.recipe.name) ? "Lisa nimi" : "";
                 this.desError = (!this.recipe.description) ? "Lisa juhised" : "";
                 this.matError = (!data.materials) ? "Lisa materjalid" : "";
-                this.catError = (!data.category) ? "Vali kategooria" : "";
+                this.catError = (!this.recipe.category) ? "Vali kategooria" : "";
                 this.portionError = (!this.recipe.portion) ? "Lisa portjon" : "";
                 this.priceError = (!this.recipe.price) ? "Lisa hind" : "";
 
                 if (this.recipe.name
                     && this.recipe.description
                     && data.materials
-                    && data.category
+                    && this.recipe.category
                     && this.recipe.portion
                     && this.recipe.price) {
                     this.submitted = true;
@@ -210,16 +197,13 @@
             addCategory() {
                 var newCategory = this.cat;
                 if (!newCategory) return;
-                if (this.recipe.category.includes(newCategory)) return;
-                this.recipe.category.push(newCategory);
+                if (this.recipe.category != '') return;
                 this.cat = '';
                 newCategory = '';
             },
-            removeCategory(x) {
-                this.recipe.category.splice(x, 1);
-                this.saveCategory();
-            },
-            saveCategory() {
+            removeCategory() {
+                this.recipe.category = '';
+
             },
             addMaterial() {
                 var newMaterial = " " + this.mat + " - " + this.mat2 + " " + this.mat3;
@@ -322,6 +306,10 @@
     .err {
         color: red;
         font-size: 16px
+    }
+    b-button{
+        font-family: "Times New Roman", Times, serif;
+        font-size: 18px;
     }
 
 

@@ -27,7 +27,6 @@ public class RecipeService {
     }
 
     public List<Recipe> getAllRecipes() {
-        //ei saa niisama findAll jätta, sest tagastab iterationi, mitte listi
         List<Recipe> recipes = new ArrayList<>();
         recipeRepository.findAll().forEach(recipes::add);
         return recipes;

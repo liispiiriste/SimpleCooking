@@ -1,5 +1,6 @@
 #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 20px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
@@ -83,6 +84,8 @@ b-navbar {
     color: #333;
     margin-left: 10px;
     border-radius: 4px;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 24px;
 }
 
 .col-md-6 {
@@ -109,6 +112,7 @@ b-navbar {
     opacity: 0.3;
     z-index: -1;
 }
+
 
 .err{
     color:#FF9494;
@@ -150,7 +154,6 @@ b-navbar {
 
 .recipes {
     max-width: 70vw;
-
 }
 
 .recipe-list{
@@ -236,7 +239,6 @@ div#search {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-
 }
 
 h1{

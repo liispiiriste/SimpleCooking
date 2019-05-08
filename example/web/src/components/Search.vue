@@ -58,92 +58,99 @@
 </script>
 
 <style scoped>
-    html, body {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        margin-top: 16px;
-        margin-bottom: 16px;
-    }
+        html, body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin-top: 16px;
+            margin-bottom: 16px;
+
+        }
 
 
-    .search-wrapper {
-        position: relative;
-    }
+        .search-wrapper {
+            position: relative;
+        }
 
 
-    input {
-        padding: 4px 12px;
-        color: rgba(0, 0, 0, .70);
-        border: 1px solid rgba(0, 0, 0, .12);
-        transition: .15s all ease-in-out;
-        background: white;
-    }
-    focus {
-         outline: none;
-         transform: scale(1.05);
-     }
+        input {
+            padding: 4px 12px;
+            color: rgba(0, 0, 0, .70);
+            border: 1px solid rgba(0, 0, 0, .12);
+            transition: .15s all ease-in-out;
+            background: white;
+            font-size: 18px
+        }
+        focus {
+             outline: none;
+             transform: scale(1.05);
+         }
 
-    .wrapper {
-        display: flex;
-        max-width: 444px;
-        flex-wrap: wrap;
-        padding-top: 12px;
-    }
+        .wrapper {
+            display: flex;
+            max-width: 444px;
+            flex-wrap: wrap;
+            padding-top: 12px;
 
-    hover {
-         transform: scale(1.1);
-     }
-    a {
-        text-decoration: none;
-        padding: 16px;
-        color: #333;
-        font-size: 12px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        font-family: 'Avenir', Helvetica, Arial, sans-serif;
+        }
 
-    }
-    small {
-        font-size: 10px;
-        padding: 4px;
-    }
+        hover {
+             transform: scale(1.1);
+         }
+        a {
+            text-decoration: none;
+            padding: 16px;
+            color: #333;
+            font-size: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'Avenir', Helvetica, Arial, sans-serif;
 
-    ul {
-        list-style-type: none;
-        margin: 0;
-        -webkit-columns: 2;
-        -moz-columns: 2;
-        columns: 2;
-        padding-left: 0;
-    }
-    ul li {
-        list-style-position: inside;
-        -webkit-column-break-inside: avoid;
-        page-break-inside: avoid;
-        break-inside: avoid;
-    }
-    li {
-        font: 200 17px/1.5 Helvetica, Verdana, sans-serif;
-        border-bottom: 1px solid #ccc;
-    }
+        }
+        small {
+            font-size: 10px;
+            padding: 4px;
+        }
 
-    li:last-child {
-        border: none;
-    }
+        ul {
+            list-style-type: none;
+            margin: 0;
+            -webkit-columns: 2;
+            -moz-columns: 2;
+            columns: 2;
+            padding-left: 0;
 
-    li a {
-        text-decoration: none;
-        color: #000;
-        display: block;
-        width: auto;
-    }
+        }
+        ul li {
+            list-style-position: inside;
+            -webkit-column-break-inside: avoid;
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        li {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 20px;
+            border-bottom: 1px solid #ccc;
+        }
 
-    li a:hover {
-        background: rgba(255, 255, 255, 0.5);
-    }
+        li:last-child {
+            border: none;
+        }
+
+        li a {
+            text-decoration: none;
+            color: #000;
+            display: block;
+            width: auto;
+            font-family: "Times New Roman", Times, serif;
+            font-size: 17px;
+        }
+
+        li a:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
 
 
 </style>
