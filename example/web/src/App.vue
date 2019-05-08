@@ -49,13 +49,14 @@
                 </b-collapse>
             </b-navbar>
         </div>
-
+        <img class="cupcake" src="@/assets/cupcake2.jpg" alt="">
         <br>
         <div class="container" style="margin-top:45px;">
             <transition name="moveInUp">
                 <router-view @authenticated="setAuthenticated"/>
             </transition>
         </div>
+
         <div class="footer" style="margin-bottom:20px;"></div>
     </div>
 </template>

@@ -5,7 +5,16 @@
     text-align: center;
     color: #333;
 }
+.cupcake{
 
+    height: 300px;
+    bottom:0;
+    right:0;
+    float: right;
+    position: absolute;
+    opacity: 0.5;
+    z-index: -1;
+}
 @keyframes fadeIn {
     0% {
         opacity: 0;
