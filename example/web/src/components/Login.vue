@@ -4,11 +4,11 @@
             <b-form-input type='text' placeholder='kasutajanimi' v-model='username' required style="margin-bottom: 5px"/>
             <b-form-input type='password' placeholder='parool' v-model='password' required style="margin-bottom: 5px"/>
             <span style="color:red">{{loginError}}</span>
-            <b-button class="mb-3" type="submit" variant="success" block>
+            <b-button class="mb-3" type="submit" variant="info" block>
                 Logi sisse
             </b-button>
         </b-form>
-        <b-button variant="outline-success" to='/register' block>Loo kasutaja</b-button>
+        <b-button variant="outline-info" to='/register' block>Loo kasutaja</b-button>
     </div>
 </template>
 
