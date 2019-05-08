@@ -145,6 +145,9 @@
         margin: auto;
         font-weight: bold;
         margin-top: 5px;
+        margin-right: 8px;
+        font-family: "Times New Roman", Times, serif;
+        font-size: 18px;
     }
 
     .container {

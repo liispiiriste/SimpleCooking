@@ -15,7 +15,7 @@
             </div>
 
             <div style="margin:15px; padding:10px; background:rgba(255, 255, 255, 0.2); border:none; border-radius:15px; text-align: left;">
-                <label style="text-align: left">Minu retseptid: </label>
+                <label>Minu retseptid: </label>
                 <ul>
                     <li v-for="(recipe, index) in recipes" :key="index"
                         style="text-align: center">
