@@ -56,13 +56,13 @@
                     </div>
 
                     <div v-else-if="!isFavourite(this.recipe.id) && !this.isFav">
-                        <b-button variant="danger" style="float:right; margin-left:5px; margin-top: 5px"
-                                  v-on:click="addFavourites()">
-                            Lisa lemmikuks
+                        <b-button variant="danger" style="float:left; background:transparent; margin-left:5px; margin-top: 5px; border:transparent;"
+                                  v-on:click="addFavourites()" >
+                            <img src="@/assets/heart.png" alt="" style="width:100px">
                         </b-button>
                     </div>
-                    <div v-else>
-                        <img src="@/assets/heart2.png" alt="" style="width:100px">
+                    <div v-else><b-button style="float:left; background:transparent; margin-left:5px; margin-top: 5px; border:transparent;" deactive>
+                        <img src="@/assets/heart3.png" alt="" style="width:100px;float:left"></b-button>
 
                     </div>
 
