@@ -3,18 +3,16 @@
         <b-form id="login" v-on:submit.prevent="login">
             <b-form-input type='text' placeholder='kasutajanimi' v-model='username' required style="margin-bottom: 5px"/>
             <b-form-input type='password' placeholder='parool' v-model='password' required style="margin-bottom: 5px"/>
-            <span style="color:red">{{loginError}}</span>
-            <b-button class="mb-3" type="submit" variant="success" block>
+            <span class="err">{{loginError}}</span>
+            <b-button class="mb-3" type="submit" variant="info" block>
                 Logi sisse
             </b-button>
         </b-form>
-        <b-button variant="outline-success" to='/register' block>Loo kasutaja</b-button>
+        <b-button class="create-user-btn" variant="outline-info" to='/register' block>Loo kasutaja</b-button>
     </div>
 </template>
-
 <script>
     import {AUTH_REQUEST} from "../store/constants";
-
     export default {
         name: 'login',
         data() {
@@ -39,27 +37,5 @@
         }
     }
 </script>
-
 <style scoped>
-    h3 {
-        margin: 40px 0 0;
-    }
-    ul {
-        list-style-type: none;
-        padding: 0;
-    }
-    li {
-        display: inline-block;
-        margin: 0 10px;
-    }
-    a {
-        color: #42b983;
-    }
-    .login {
-        margin: auto;
-        width: 80%;
-        max-width:400px;
-        align: center;
-        color: #333
-    }
 </style>
