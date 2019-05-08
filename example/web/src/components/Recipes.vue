@@ -9,7 +9,7 @@
             </b-button-group>
         </div>
             <div class="recipe-list">
-                <h4>Retseptid</h4>
+                <h3>Retseptid</h3>
                <span class="info"> {{this.filterCat}}</span>
                         <ul>
                             <li v-for="(recipe, index) in recipes" :key="index"

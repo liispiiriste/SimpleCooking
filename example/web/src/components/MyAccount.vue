@@ -1,7 +1,7 @@
 <template>
     <div class="account">
         <div class="container">
-            <h4>Minu konto</h4>
+            <h3>Minu konto</h3>
             <div class="box">
                 <div>
                     <label>Kasutajanimi:</label> {{user.username}}
