@@ -2,7 +2,8 @@
     <div class="recipe">
         <div class="container">
             <div v-if="!submitted">
-                <b-card :title="this.recipe.name" style="background:rgba(255, 255, 255, 0.2); border:none; border-radius:25px;">
+                <b-card :title="this.recipe.name"
+                        style="background:rgba(255, 255, 255, 0.2); border:none; border-radius:25px;">
                     <div class="row">
 
                         <div class="col-sm-6">
@@ -86,15 +87,16 @@
             };
         },
         methods: {
-            addFavourites(){
+            addFavourites() {
                 let data = {
                     recipe_id: this.recipe.id,
                     user_id: this.user.id
                 };
                 http
-                    .post("recipe/"+this.recipe.id+"/favourite/"+this.user.id, data)
+                    .post("/recipe/" + this.recipe.id + "/favourite/" + this.user.id, data)
                     .then(response => {
                         this.recipe.id = response.data;
+                        console.log(response)
                     });
             },
             deleteRecipe() {

@@ -45,7 +45,7 @@ public class Recipe {
 
 
     @JsonIgnore
-    @ManyToMany(
+    @ManyToMany(fetch = FetchType.EAGER,
             cascade = {
                     CascadeType.PERSIST,
                     CascadeType.MERGE
@@ -151,7 +151,8 @@ public class Recipe {
         this.image = image;
     }
 
-    public void addToFavourite(User user) {
+
+    /*public void addToFavourite(User user) {
         this.userFavourites.add(user);
         user.getFavouriteRecipes().add(this);
     }
@@ -159,7 +160,7 @@ public class Recipe {
     public void removeFromFavourites(User user) {
         this.userFavourites.remove(user);
         user.getFavouriteRecipes().remove(this);
-    }
+    }*/
      //endregion
 
     @Override

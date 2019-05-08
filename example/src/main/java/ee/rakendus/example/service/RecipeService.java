@@ -5,11 +5,11 @@ import ee.rakendus.example.entity.Recipe;
 import ee.rakendus.example.repository.CategoryRepository;
 import ee.rakendus.example.repository.RecipeRepository;
 import ee.rakendus.example.entity.User;
+import ee.rakendus.example.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import javax.transaction.Transactional;
+import java.util.*;
 
 @Service
 public class RecipeService {
@@ -17,11 +17,13 @@ public class RecipeService {
     private final RecipeRepository recipeRepository;
     private final UserService userService;
     private final CategoryRepository categoryRepository;
+    private final UserRepository userRepository;
 
-    public RecipeService(RecipeRepository recipeRepository, UserService userService, CategoryRepository categoryRepository) {
+    public RecipeService(RecipeRepository recipeRepository, UserService userService, CategoryRepository categoryRepository, UserRepository userRepository) {
         this.recipeRepository = recipeRepository;
         this.userService = userService;
         this.categoryRepository = categoryRepository;
+        this.userRepository = userRepository;
     }
 
     public List<Recipe> getAllRecipes() {
@@ -39,6 +41,11 @@ public class RecipeService {
     public List<Recipe> getAllUserRecipes() {
         long userId = userService.findCurrentUserId().getId();
         return recipeRepository.findAllByUserId(userId);
+    }
+    public Set<Recipe> getAllUserFavouriteRecipes() {
+        long userId = userService.findCurrentUserId().getId();
+        Set<Recipe> favourites = new HashSet<>(recipeRepository.findAllByUserId(userId));
+        return favourites;
     }
 
     public void saveRecipe(Recipe recipe) {
@@ -74,5 +81,19 @@ public class RecipeService {
 
     public void deleteRecipeById(long id) {
         recipeRepository.deleteById(id);
+    }
+    @Transactional
+    public void addToFavourite(Recipe recipe, User user) {
+        recipe.getUserFavourites().add(user);
+        user.getFavouriteRecipes().add(recipe);
+        recipeRepository.save(recipe);
+        userRepository.save(user);
+        System.out.println(recipe.getUserFavourites());
+        System.out.println(user.getFavouriteRecipes());
+    }
+
+    public void removeFromFavourites(Recipe recipe, User user) {
+        recipe.getUserFavourites().remove(user);
+        user.getFavouriteRecipes().remove(recipe);
     }
 }

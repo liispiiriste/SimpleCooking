@@ -19,6 +19,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+import java.util.Set;
 
 @CrossOrigin(origins = "http://localhost:9000")
 @RestController
@@ -48,6 +49,10 @@ public class RecipeController {
     @GetMapping("/userRecipes")
     public ResponseEntity<List<Recipe>> getAllUserRecipes() {
         return new ResponseEntity<>(recipeService.getAllUserRecipes(), HttpStatus.OK);
+    }
+    @GetMapping("/favourite")
+    public ResponseEntity<Set<Recipe>> getAllUserFavRecipes() {
+        return new ResponseEntity<>(recipeService.getAllUserFavouriteRecipes(), HttpStatus.OK);
     }
 
     @GetMapping("/recipes/{category}")
@@ -94,7 +99,7 @@ public class RecipeController {
     public ResponseEntity<Recipe> addFavourite(@PathVariable("recipe_id") long recipe_id, @PathVariable("user_id") long user_id) {
         User user = userService.findById(user_id);
         Recipe recipe = recipeService.findById(recipe_id);
-        recipe.addToFavourite(user);
+        recipeService.addToFavourite(recipe, user);
 
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
