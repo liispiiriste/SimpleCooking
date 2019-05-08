@@ -2,7 +2,7 @@
     <div class="recipe">
         <div class="container">
             <div v-if="!submitted">
-                <b-card :title="this.recipe.name"
+                <b-card v-bind:title="recipe.name"
                         style="background:rgba(255, 255, 255, 0.2); border:none; border-radius:25px;">
                     <div class="row">
 
@@ -84,7 +84,8 @@
             return {
                 submitted: false,
                 image: this.showImage(),
-                imgUrl: ''
+                imgUrl: '',
+                user: []
             };
         },
         methods: {
