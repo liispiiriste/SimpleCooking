@@ -17,16 +17,16 @@
             <div class="form-group">
                 <label for="materials">Materjalid</label><br>
                 <input type="text" class="small-input" id="materials" v-model="mat" name="materials"
-                       style="padding-left:10px;height:40px;width:235px;font-size:15px">
+                       style="padding-left:10px;height:40px;width:237px;font-size:15px">
                 <input type="number" min="0" class="small-input" style="padding-left:10px;height:40px" id="quantity"
                        v-model="mat2" name="quantity">
                 <select class="custom-select" v-model="mat3"
-                        style="width:75px; font-size:15px; max-height:40px; margin-left:10px; height: 37px">
+                        style="width:75px; font-size:15px; max-height:42px; margin-left:10px; height: 37px">
                     <option v-for="(measurement, index) in measurements" :key="index" :value="measurement">
                         {{measurement}}
                     </option>
                 </select>
-                <b-button variant="secondary" size="sm" style="width:75px;float:right;margin-left:5px"
+                <b-button variant="secondary" size="sm" style="height: 33px;width:75px;float:right;margin-left:5px; margin-top: 4px;"
                           v-on:click="addMaterial()">Lisa
                 </b-button>
                 <div class="arraylist" v-for="(mat,m) in recipe.materials">
@@ -307,6 +307,10 @@
     .err {
         color: red;
         font-size: 16px
+    }
+    b-button{
+        font-family: "Times New Roman", Times, serif;
+        font-size: 18px;
     }
 
 
