@@ -3,7 +3,7 @@
         <b-form id="login" v-on:submit.prevent="login">
             <b-form-input type='text' placeholder='kasutajanimi' v-model='username' required style="margin-bottom: 5px"/>
             <b-form-input type='password' placeholder='parool' v-model='password' required style="margin-bottom: 5px"/>
-            <span class="error">{{loginError}}</span>
+            <span class="err">{{loginError}}</span>
             <b-button class="mb-3" type="submit" variant="info" block>
                 Logi sisse
             </b-button>

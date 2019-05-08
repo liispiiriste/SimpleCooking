@@ -1,8 +1,7 @@
 <template>
     <div class="submitform">
-
         <div v-if="!submitted && !pic" style="font-size:20px">
-            <h1 style="font-size:170%">Lisa uus retsept</h1>
+            <h1>Lisa uus retsept</h1>
             <div class="form-group">
                 <label for="name">Nimi</label>
                 <input type="text" class="form-control" id="name" v-model="recipe.name" name="name">

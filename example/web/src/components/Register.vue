@@ -1,27 +1,27 @@
 <template>
     <div class="submitform">
         <div v-if="!submitted" class="register-form" style="font-size:20px">
-            <h1 style="font-size:170%">Registreeri</h1>
+            <h1>Registreeri</h1>
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" class="form-control" id="email" required v-model="user.email" name="email">
-                <div  class="error"> {{emailError}}</div>
+                <div  class="err"> {{emailError}}</div>
             </div>
             <div class="form-group">
                 <label for="username">Kasutajanimi</label>
                 <input type="text" class="form-control" id="username" required v-model="user.username" name="username">
-                <div class="error"> {{usernameError}}</div>
+                <div class="err"> {{usernameError}}</div>
             </div>
             <div class="form-group">
                 <label for="password">Parool</label>
                 <input type="password" class="form-control" id="password" required v-model="user.password" name="password">
-                <div class="error"> {{passwordError}}</div>
+                <div class="err"> {{passwordError}}</div>
             </div>
             <div class="form-group">
                 <label for="password2">Parooli kordus</label>
                 <input type="password" class="form-control" id="password2" required v-model="password2" name="password2">
-                <div class="error"> {{password2Error}}</div>
-                <div class="error"> {{passwordMError}}</div>
+                <div class="err"> {{password2Error}}</div>
+                <div class="err"> {{passwordMError}}</div>
             </div>
             <b-button v-on:click="signUp" variant="info">Registreeri</b-button>
         </div>
