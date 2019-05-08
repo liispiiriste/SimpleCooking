@@ -116,6 +116,53 @@ b-navbar {
 
 }
 
+.recipe-list{
+    padding:10px;
+    background:rgba(35, 138, 169, 0.15);
+    border:none;
+    border-radius:15px;
+    width: 55%;
+    display: block;
+    margin-left: 175px;
+}
+
+.recipe-list li{
+    font: 200 17px/1.5 Helvetica, Verdana, sans-serif;
+    border-bottom: 1px solid #ccc;
+}
+
+.recipe-list li:last-child{
+    border:none;
+}
+
+.recipe-list li a {
+    text-decoration: none;
+    color:#4d4d4d;
+    display: block;
+    width: auto;
+}
+
+.recipe-list li a:hover{
+    background: rgba(91, 192, 222, 0.5);
+    border-radius: 10px;
+}
+
+.recipe-list ul{
+    list-style-type: none;
+    margin: 0;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+    columns: 2;
+    padding-left: 0;
+}
+
+.recipe-list ul li{
+    list-style-position: inside;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
 .register-form{
     margin:auto;
     width: 50%;
@@ -127,7 +174,12 @@ b-navbar {
     position: relative;
 }
 
-.sidemenu
+.sidemenu{
+    float: left;
+    display: inline;
+    max-width: 30vw;
+    padding: 10px
+}
 
 .submitform {
     margin: auto;
@@ -153,6 +205,10 @@ div#search {
 img {
      max-width: 80vw;
  }
+
+input[type="radio"]{
+    visibility: hidden;
+}
 
 @keyframes fadeIn {
     0% {
