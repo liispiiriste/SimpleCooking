@@ -3,7 +3,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    color: #333;
+    color: #4d4d4d;;
     margin:auto;
 }
 
@@ -41,8 +41,8 @@
 }
 
 b-navbar {
-     position: sticky
- }
+     position: sticky;
+}
 
 .button {
     width: 200px;
@@ -64,15 +64,23 @@ b-navbar {
     margin-top:45px;
 }
 
-.cupcake{
+.create-user-btn{
+    margin-top:-10px;
+}
 
+.cupcake{
     height: 300px;
     bottom:0;
     right:0;
     float: right;
     position: absolute;
-    opacity: 0.5;
+    opacity: 0.3;
     z-index: -1;
+}
+
+.error{
+    color:#FF9494;
+    font-size: 18px;
 }
 
 .footer{
@@ -81,6 +89,14 @@ b-navbar {
 
 .list row {
     margin: auto;
+}
+
+.login {
+    margin: auto;
+    width: 90%;
+    max-width:400px;
+    align: center;
+    color: #333
 }
 
 .moveInUp-enter-active {
@@ -100,11 +116,24 @@ b-navbar {
 
 }
 
+.register-form{
+    margin:auto;
+    width: 50%;
+    align:center;
+    min-width:300px
+}
+
 .search-wrapper {
     position: relative;
 }
 
 .sidemenu
+
+.submitform {
+    margin: auto;
+    width: 80%;
+    align: center;
+}
 
 .wrapper {
     display: flex;

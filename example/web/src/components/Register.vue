@@ -1,46 +1,41 @@
 <template>
     <div class="submitform">
-
         <div v-if="!submitted" class="register-form" style="font-size:20px">
             <h1 style="font-size:170%">Registreeri</h1>
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" class="form-control" id="email" required v-model="user.email" name="email">
-                <div  style="color:red;"> {{emailError}}</div>
+                <div  class="error"> {{emailError}}</div>
             </div>
             <div class="form-group">
                 <label for="username">Kasutajanimi</label>
                 <input type="text" class="form-control" id="username" required v-model="user.username" name="username">
-                <div  style="color:red;"> {{usernameError}}</div>
+                <div class="error"> {{usernameError}}</div>
             </div>
-
             <div class="form-group">
                 <label for="password">Parool</label>
                 <input type="password" class="form-control" id="password" required v-model="user.password" name="password">
-                <div  style="color:red;"> {{passwordError}}</div>
+                <div class="error"> {{passwordError}}</div>
             </div>
             <div class="form-group">
                 <label for="password2">Parooli kordus</label>
                 <input type="password" class="form-control" id="password2" required v-model="password2" name="password2">
-                <div  style="color:red;"> {{password2Error}}</div>
-                <div  style="color:red;"> {{passwordMError}}</div>
+                <div class="error"> {{password2Error}}</div>
+                <div class="error"> {{passwordMError}}</div>
             </div>
-
-            <button v-on:click="signUp" class="btn btn-success">Registreeri</button>
+            <b-button v-on:click="signUp" variant="info">Registreeri</b-button>
         </div>
-
         <div v-else>
             <h4>Registreeritud!</h4>
             <router-link to="/login">
-                <button type="reset"
-                        class="btn btn-success">
+                <b-button type="reset"
+                          variant="info">
                     Logi sisse
-                </button>
+                </b-button>
             </router-link>
         </div>
     </div>
 </template>
-
 <script>
     import http from "../http-common";
     export default {
@@ -97,19 +92,5 @@
         }
     };
 </script>
-
 <style scoped>
-    .submitform {
-        margin: auto;
-        width: 80%;
-        align: center;
-        color: #333;
-    }
-    .register-form{
-        margin:auto;
-        width: 50%;
-        align:center;
-        color:#333;
-        min-width:300px
-    }
 </style>

@@ -41,7 +41,7 @@
                 </b-collapse>
             </b-navbar>
         </div>
-        <img class="cupcake" src="@/assets/cupcake2.jpg" alt="cupcake">
+        <img class="cupcake" src="@/assets/cupcake4.png" alt="cupcake">
         <br>
         <div class="container">
             <transition name="moveInUp">
