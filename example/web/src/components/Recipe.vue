@@ -62,7 +62,8 @@
                         </b-button>
                     </div>
                     <div v-else>
-                        lisatud lemmikuks <!-- Siia lisada mingi targem asi-->
+                        <img src="@/assets/heart2.png" alt="" style="width:100px">
+
                     </div>
 
 
