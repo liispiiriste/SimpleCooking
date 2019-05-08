@@ -77,6 +77,43 @@ b-navbar {
     float:left;
 }
 
+.box li{
+    font: 200 17px/1.5 Helvetica, Verdana, sans-serif;
+    border-bottom: 1px solid #ccc;
+}
+
+.box li:last-child{
+    border:none;
+}
+
+.box li a {
+    text-decoration: none;
+    color:#4d4d4d;
+    display: block;
+    width: auto;
+}
+
+.box li a:hover{
+    background: rgba(91, 192, 222, 0.5);
+    border-radius: 10px;
+}
+
+.box ul{
+    list-style-type: none;
+    margin: 0;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+    columns: 2;
+    padding-left: 0;
+}
+
+.box ul li{
+    list-style-position: inside;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
 .button {
     width: 200px;
     margin: auto;

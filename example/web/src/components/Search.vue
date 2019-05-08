@@ -6,7 +6,7 @@
 
     </div>
 
-    <div class="wrapper" >
+    <div class="box" >
         <ul>
         <li v-for="(recipe,index) in filteredList" :key="index">
             <router-link :to="{
@@ -113,44 +113,4 @@
             font-size: 10px;
             padding: 4px;
         }
-
-        ul {
-            list-style-type: none;
-            margin: 0;
-            -webkit-columns: 2;
-            -moz-columns: 2;
-            columns: 2;
-            padding-left: 0;
-
-        }
-        ul li {
-            list-style-position: inside;
-            -webkit-column-break-inside: avoid;
-            page-break-inside: avoid;
-            break-inside: avoid;
-        }
-        li {
-            font-family: "Times New Roman", Times, serif;
-            font-size: 20px;
-            border-bottom: 1px solid #ccc;
-        }
-
-        li:last-child {
-            border: none;
-        }
-
-        li a {
-            text-decoration: none;
-            color: #000;
-            display: block;
-            width: auto;
-            font-family: "Times New Roman", Times, serif;
-            font-size: 17px;
-        }
-
-        li a:hover {
-            background: rgba(255, 255, 255, 0.5);
-        }
-
-
 </style>
