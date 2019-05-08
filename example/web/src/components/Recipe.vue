@@ -1,8 +1,8 @@
 <template>
     <div class="recipe">
-        <div class="container">
+        <div class="container" v-if="!submitted">
             <div v-if="!submitted">
-                <b-card v-bind:title="recipe.name"
+                <b-card v-bind:title="this.recipe.name"
                         style="background:rgba(255, 255, 255, 0.2); border:none; border-radius:25px;">
                     <div class="row">
 
@@ -28,6 +28,7 @@
                                     <label>Autor: </label>
                                     {{this.recipe.user.username}}
                                 </div>
+
                             </div>
                         </div>
 
@@ -53,13 +54,17 @@
                             Kustuta
                         </b-button>
                     </div>
-                    <div v-else>
-                            <b-button variant="danger" style="float:right; margin-left:5px; margin-top: 5px"
-                                      v-on:click="addFavourites()">
-                                Lisa lemmikuks
-                            </b-button>
 
+                    <div v-else-if="!isFavourite(this.recipe.id) && !this.isFav">
+                        <b-button variant="danger" style="float:right; margin-left:5px; margin-top: 5px"
+                                  v-on:click="addFavourites()">
+                            Lisa lemmikuks
+                        </b-button>
                     </div>
+                    <div v-else>
+                        lisatud lemmikuks <!-- Siia lisada mingi targem asi-->
+                    </div>
+
 
                 </b-card>
             </div>
@@ -75,7 +80,6 @@
 
 <script>
     import http from "../http-common";
-    import axios from "axios";
 
     export default {
         name: "recipe",
@@ -85,7 +89,9 @@
                 submitted: false,
                 image: this.showImage(),
                 imgUrl: '',
-                user: []
+                user: [],
+                isFav: false,
+                favRecipes: []
             };
         },
         methods: {
@@ -99,6 +105,8 @@
                     .then(response => {
                         this.recipe.id = response.data;
                     });
+                this.isFav = true;
+                console.log("added to favs")
             },
             deleteRecipe() {
                 http
@@ -123,11 +131,20 @@
                         }
 
                     })
+            },
+            isFavourite(id) {
+                for (var i = 0; i < this.favRecipes.length; i++) {
+                    if (this.favRecipes[i].id === id) {
+                        return true;
+                    }
+                }
+                return false;
             }
 
         },
         mounted() {
             http.get('/loggedIn').then(response => (this.user = response.data))
+            http.get("/favourite").then(response => (this.favRecipes = response.data));
 
 
         }
