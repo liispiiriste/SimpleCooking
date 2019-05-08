@@ -1,5 +1,6 @@
 #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 20px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
@@ -47,6 +48,8 @@
     color: #333;
     margin-left: 10px;
     border-radius: 4px;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 20px;
 }
 
 b-navbar {
@@ -61,7 +64,9 @@ img {
     float: left;
     display: inline;
     max-width: 30vw;
-    padding: 10px
+    padding: 10px;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 20px;
 }
 
 .col-md-6 {
@@ -73,10 +78,12 @@ img {
 
 li {
     list-style: none;
+
 }
 
 .recipes {
     max-width: 70vw;
+
 
 }
 
@@ -115,6 +122,8 @@ li {
 
 #save-btn {
     margin-top: 10px;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 20px;
 }
 
 div#search {
@@ -122,6 +131,7 @@ div#search {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+
 
 }
 
