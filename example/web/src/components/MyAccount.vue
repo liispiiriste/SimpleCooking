@@ -15,7 +15,7 @@
             </div>
 
             <div style="margin:15px; padding:10px; background:rgba(255, 255, 255, 0.2); border:none; border-radius:15px; text-align: left;">
-                <label style="text-align: left">Minu retseptid: </label>
+                <label>Minu retseptid: </label>
                 <ul>
                     <li v-for="(recipe, index) in recipes" :key="index"
                         style="text-align: center">
@@ -85,6 +85,8 @@
 <style scoped>
     h2 {
         margin-right: 200px;
+        font-family: "Times New Roman", Times, serif;
+        font-size: 20px;
     }
 
     label {
@@ -92,6 +94,8 @@
         margin: auto;
         font-weight: bold;
         text-align: left;
+        font-family: "Times New Roman", Times, serif;
+        font-size: 18px;
     }
 
     .container {
@@ -118,7 +122,8 @@
         break-inside: avoid;
     }
     li {
-        font: 200 17px/1.5 Helvetica, Verdana, sans-serif;
+        font-family: "Times New Roman", Times, serif;
+        font-size: 17px;
         border-bottom: 1px solid #ccc;
     }
 

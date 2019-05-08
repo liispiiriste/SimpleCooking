@@ -113,8 +113,10 @@
         break-inside: avoid;
     }
     li {
-        font: 200 17px/1.5 Helvetica, Verdana, sans-serif;
+
         border-bottom: 1px solid #ccc;
+        font-family: "Times New Roman", Times, serif;
+        font-size: 20px;
     }
 
     li:last-child {
@@ -138,6 +140,10 @@
     }
     h2 {
         margin-right: 700px;
+    }
+    h4 {
+        font-family: "Times New Roman", Times, serif;
+        font-size: 25px;
     }
 
 </style>
