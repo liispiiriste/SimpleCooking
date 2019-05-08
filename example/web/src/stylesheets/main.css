@@ -44,10 +44,42 @@ b-navbar {
      position: sticky;
 }
 
+.account{
+    max-width: 800px;
+    margin:auto;
+}
+
+.box{
+    padding:10px;
+    background:rgba(35, 138, 169, 0.15);
+    border:none;
+    border-radius:15px;
+    display: block;
+    margin: 10px;
+}
+
+.box div label{
+    min-width:300px;
+    padding-left:10px;
+    margin: auto;
+    font-weight: bold;
+    text-align: left;
+    float:left;
+}
+
+.box label{
+    min-width:300px;
+    padding-left:10px;
+    margin: auto;
+    font-weight: bold;
+    text-align: left;
+    float:left;
+}
+
 .button {
     width: 200px;
     margin: auto;
-    align: center;
+    text-align: center;
     color: #333;
     margin-left: 10px;
     border-radius: 4px;
@@ -100,7 +132,7 @@ b-navbar {
     margin: auto;
     width: 90%;
     max-width:400px;
-    align: center;
+    text-align: center;
     color: #333
 }
 
@@ -171,7 +203,7 @@ b-navbar {
 .register-form{
     margin:auto;
     width: 50%;
-    align:center;
+    text-align:center;
     min-width:300px
 }
 
@@ -189,7 +221,7 @@ b-navbar {
 .submitform {
     margin: auto;
     width: 80%;
-    align: center;
+    text-align: center;
 }
 
 .wrapper {
