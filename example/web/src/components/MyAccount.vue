@@ -29,6 +29,21 @@
                 </ul>
 
             </div>
+            <div style="margin:15px; padding:10px; background:rgba(255, 255, 255, 0.2); border:none; border-radius:15px; text-align: left;">
+                <label style="text-align: left">Minu lemmikud: </label>
+                <ul>
+                    <li v-for="(recipe, index) in favourites" :key="index"
+                        style="text-align: center">
+                        <router-link :to="{
+                            name: 'recipe',
+                            params: { recipe: recipe, id: recipe.id }
+                        }" style="color:#333">
+                            {{recipe.name}}
+                        </router-link>
+                    </li>
+                </ul>
+
+            </div>
 
         </div>
     </div>
@@ -49,6 +64,9 @@
                 },
                 recipes: {
                     recipes: []
+                },
+                favourites: {
+                    favourites: []
                 }
             }
         },
@@ -56,7 +74,10 @@
             http.get('/loggedIn').then(response => (this.user = response.data));
             http.get("/userRecipes").then(response => {
                 this.recipes = response.data;
-            })
+            });
+            http.get("/favourite").then(response => {
+                this.favourites = response.data;
+            });
         }
     }
 </script>

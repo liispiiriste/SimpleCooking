@@ -43,9 +43,8 @@ public class RecipeService {
         return recipeRepository.findAllByUserId(userId);
     }
     public Set<Recipe> getAllUserFavouriteRecipes() {
-        long userId = userService.findCurrentUserId().getId();
-        Set<Recipe> favourites = new HashSet<>(recipeRepository.findAllByUserId(userId));
-        return favourites;
+        User user = userService.findCurrentUserId();
+        return user.getFavouriteRecipes();
     }
 
     public void saveRecipe(Recipe recipe) {
@@ -88,8 +87,6 @@ public class RecipeService {
         user.getFavouriteRecipes().add(recipe);
         recipeRepository.save(recipe);
         userRepository.save(user);
-        System.out.println(recipe.getUserFavourites());
-        System.out.println(user.getFavouriteRecipes());
     }
 
     public void removeFromFavourites(Recipe recipe, User user) {

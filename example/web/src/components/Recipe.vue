@@ -53,13 +53,14 @@
                             Kustuta
                         </b-button>
                     </div>
-                    <div v-if="this.recipe.user.id !== this.user.id">
-                        <b-button variant="danger" style="float:right; margin-left:5px; margin-top: 5px"
-                                  v-on:click="addFavourites()">
-                            Lisa lemmikuks
-                        </b-button>
+                    <div v-else>
+                            <b-button variant="danger" style="float:right; margin-left:5px; margin-top: 5px"
+                                      v-on:click="addFavourites()">
+                                Lisa lemmikuks
+                            </b-button>
 
                     </div>
+
                 </b-card>
             </div>
             <div v-else>
@@ -96,7 +97,6 @@
                     .post("/recipe/" + this.recipe.id + "/favourite/" + this.user.id, data)
                     .then(response => {
                         this.recipe.id = response.data;
-                        console.log(response)
                     });
             },
             deleteRecipe() {
@@ -123,9 +123,12 @@
 
                     })
             }
+
         },
         mounted() {
             http.get('/loggedIn').then(response => (this.user = response.data))
+
+
         }
     }
 </script>
