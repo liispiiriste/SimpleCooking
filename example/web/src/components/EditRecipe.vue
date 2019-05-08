@@ -61,7 +61,7 @@
                 ></b-form-file>
             </div>
 
-                <b-button @click="updateRecipe" variant="success">
+                <b-button @click="updateRecipe" variant="info">
                     <router-link :to="{
                                 name: 'recipe',
                                 params: { recipe: recipe, id: recipe.id, }
@@ -223,10 +223,4 @@
         width: 20%;
         float: right;
     }
-
-    .err {
-        color: red;
-        font-size: 16px
-    }
-
 </style>

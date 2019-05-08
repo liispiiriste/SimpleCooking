@@ -45,7 +45,7 @@
 
                     <div v-if="this.recipe.user.id === this.user.id">
                         <router-link :to="{name: 'editRecipe', params: {recipe:recipe, id: recipe.id}}">
-                            <b-button variant="outline-success" style="float:left; margin-top: 5px">
+                            <b-button variant="outline-info" style="float:left; margin-top: 5px">
                                 Muuda
                             </b-button>
                         </router-link>
