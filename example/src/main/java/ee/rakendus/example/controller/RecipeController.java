@@ -1,5 +1,6 @@
 package ee.rakendus.example.controller;
 
+import ee.rakendus.example.entity.User;
 import ee.rakendus.example.repository.RecipeRepository;
 import ee.rakendus.example.service.RecipeService;
 import ee.rakendus.example.entity.Categories;
@@ -74,6 +75,8 @@ public class RecipeController {
         return new ResponseEntity<>(recipe.getId(), HttpStatus.CREATED);
     }
 
+
+
     @DeleteMapping("/recipe/{id}")
     public ResponseEntity<String> deleteRecipe(@PathVariable("id") long id) {
         recipeService.deleteRecipeById(id);
@@ -85,6 +88,15 @@ public class RecipeController {
         recipeService.updateRecipe(id, recipe);
         return new ResponseEntity<>(HttpStatus.OK);
 
+    }
+
+    @PostMapping("/recipe/{recipe_id}/favourite/{user_id}")
+    public ResponseEntity<Recipe> addFavourite(@PathVariable("recipe_id") long recipe_id, @PathVariable("user_id") long user_id) {
+        User user = userService.findById(user_id);
+        Recipe recipe = recipeService.findById(recipe_id);
+        recipe.addToFavourite(user);
+
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @PostMapping("/recipe/{id}/image")

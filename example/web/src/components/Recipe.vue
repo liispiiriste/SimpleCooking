@@ -92,7 +92,7 @@
                     user_id: this.user.id
                 };
                 http
-                    .post("/favourite", data)
+                    .post("recipe/"+this.recipe.id+"/favourite/"+this.user.id, data)
                     .then(response => {
                         this.recipe.id = response.data;
                     });
