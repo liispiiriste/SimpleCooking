@@ -1,5 +1,6 @@
 package ee.rakendus.example.controller;
 
+import ee.rakendus.example.entity.User;
 import ee.rakendus.example.repository.RecipeRepository;
 import ee.rakendus.example.service.RecipeService;
 import ee.rakendus.example.entity.Categories;
@@ -18,6 +19,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+import java.util.Set;
 
 @CrossOrigin(origins = "http://localhost:9000")
 @RestController
@@ -48,6 +50,10 @@ public class RecipeController {
     public ResponseEntity<List<Recipe>> getAllUserRecipes() {
         return new ResponseEntity<>(recipeService.getAllUserRecipes(), HttpStatus.OK);
     }
+    @GetMapping("/favourite")
+    public ResponseEntity<Set<Recipe>> getAllUserFavRecipes() {
+        return new ResponseEntity<>(recipeService.getAllUserFavouriteRecipes(), HttpStatus.OK);
+    }
 
     @GetMapping("/recipes/{category}")
     public List<Recipe> getRecipesByCategory(@PathVariable("category") String category) {
@@ -74,6 +80,8 @@ public class RecipeController {
         return new ResponseEntity<>(recipe.getId(), HttpStatus.CREATED);
     }
 
+
+
     @DeleteMapping("/recipe/{id}")
     public ResponseEntity<String> deleteRecipe(@PathVariable("id") long id) {
         recipeService.deleteRecipeById(id);
@@ -85,6 +93,15 @@ public class RecipeController {
         recipeService.updateRecipe(id, recipe);
         return new ResponseEntity<>(HttpStatus.OK);
 
+    }
+
+    @PostMapping("/recipe/{recipe_id}/favourite/{user_id}")
+    public ResponseEntity<Recipe> addFavourite(@PathVariable("recipe_id") long recipe_id, @PathVariable("user_id") long user_id) {
+        User user = userService.findById(user_id);
+        Recipe recipe = recipeService.findById(recipe_id);
+        recipeService.addToFavourite(recipe, user);
+
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @PostMapping("/recipe/{id}/image")

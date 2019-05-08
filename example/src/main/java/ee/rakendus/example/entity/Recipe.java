@@ -1,9 +1,13 @@
 package ee.rakendus.example.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -38,6 +42,15 @@ public class Recipe {
     private int portion;
     @ManyToOne
     private User user;
+
+
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.EAGER,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            },mappedBy="favouriteRecipes")
+    private Set<User> userFavourites = new HashSet<>();
 
     @ManyToOne
     private Categories categories;
@@ -115,6 +128,13 @@ public class Recipe {
         this.user = user;
     }
 
+    public Set<User> getUserFavourites() {
+        return userFavourites;
+    }
+
+    public void setUserFavourites(Set<User> userFavourites) {
+        this.userFavourites = userFavourites;
+    }
 
     public Categories getCategories() {
         return categories;
@@ -132,6 +152,15 @@ public class Recipe {
     }
 
 
+    /*public void addToFavourite(User user) {
+        this.userFavourites.add(user);
+        user.getFavouriteRecipes().add(this);
+    }
+
+    public void removeFromFavourites(User user) {
+        this.userFavourites.remove(user);
+        user.getFavouriteRecipes().remove(this);
+    }*/
      //endregion
 
     @Override

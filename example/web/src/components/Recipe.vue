@@ -2,7 +2,8 @@
     <div class="recipe">
         <div class="container">
             <div v-if="!submitted">
-                <b-card :title="this.recipe.name" style="background:rgba(255, 255, 255, 0.2); border:none; border-radius:25px;">
+                <b-card :title="this.recipe.name"
+                        style="background:rgba(255, 255, 255, 0.2); border:none; border-radius:25px;">
                     <div class="row">
 
                         <div class="col-sm-6">
@@ -52,6 +53,14 @@
                             Kustuta
                         </b-button>
                     </div>
+                    <div v-else>
+                            <b-button variant="danger" style="float:right; margin-left:5px; margin-top: 5px"
+                                      v-on:click="addFavourites()">
+                                Lisa lemmikuks
+                            </b-button>
+
+                    </div>
+
                 </b-card>
             </div>
             <div v-else>
@@ -79,6 +88,17 @@
             };
         },
         methods: {
+            addFavourites() {
+                let data = {
+                    recipe_id: this.recipe.id,
+                    user_id: this.user.id
+                };
+                http
+                    .post("/recipe/" + this.recipe.id + "/favourite/" + this.user.id, data)
+                    .then(response => {
+                        this.recipe.id = response.data;
+                    });
+            },
             deleteRecipe() {
                 http
                     .delete("/recipe/" + this.recipe.id)
@@ -103,9 +123,12 @@
 
                     })
             }
+
         },
         mounted() {
             http.get('/loggedIn').then(response => (this.user = response.data))
+
+
         }
     }
 </script>
