@@ -14,7 +14,7 @@
                 <label for="edit-description">Juhend</label>
                 <textarea class="form-control" id="edit-description" rows="3"
                           v-model="recipe.description"></textarea>
-                {{this.recipe.description}}
+
                 <div class="err">
                     {{desError}}
                 </div>
@@ -23,9 +23,7 @@
             <div class="form-group">
                 <label for="edit-materials">Materjalid</label>
                 <textarea class="form-control" id="edit-materials" rows="3" v-model="recipe.materials"></textarea>
-                <div class="err">
-                    {{matError}}
-                </div>
+
             </div>
 
             <div class="form-group">
@@ -36,24 +34,17 @@
                         {{category.name}}
                     </option>
                 </select>
-                <div class="err">
-                    {{catError}}
-                </div>
             </div>
 
 
             <div class="form-group">
                 <label for="edit-portion">Kogus<span class="glyphicon glyphicon-euro"></span></label>
                 <input class="small-input" type="number" id="edit-portion" v-model="recipe.portion"/>
-                <div class="err">
-                    {{portionError}}
-                </div>
+
 
                 <label for="edit-price">Hind<span class="glyphicon glyphicon-euro"></span></label>
                 <input class="small-input" type="number" id="edit-price" v-model="recipe.price"/>
-                <div class="err">
-                    {{priceError}}
-                </div>
+
 
             </div>
             <div v-if="!pic">
@@ -121,11 +112,7 @@
                 previewImage: null,
                 categories: [],
                 nameError: "",
-                desError: "",
-                matError: "",
-                catError: "",
-                portionError: "",
-                priceError: "",
+                desError: ""
 
             };
         },
@@ -140,19 +127,15 @@
                     price: this.recipe.price,
 
                 };
+
                 this.nameError = (!this.recipe.name) ? "Lisa nimi" : "";
                 this.desError = (this.recipe.description=='') ? "Lisa juhised" : "";
-                this.matError = (!this.recipe.materials) ? "Lisa materjalid" : "";
-                this.catError = (!this.recipe.category) ? "Vali kategooria" : "";
-                this.portionError = (!this.recipe.portion) ? "Lisa portjon" : "";
-                this.priceError = (!this.recipe.price) ? "Lisa hind" : "";
+
 
                 if (!this.nameError
                     && !this.desError
-                    && !this.matError
-                    && !this.catError
-                    && !this.portionError
-                    && !this.priceError) {
+                )
+                {
                     http
                         .put("/recipe/" + this.recipe.id, data)
                         .then(response => {
@@ -160,7 +143,7 @@
                         });
                     this.submitted = true;
                 }
-                },
+            },
             onFileSelected(event) {
                 this.selectedFile = event.target.files[0];
                 const reader = new FileReader();
@@ -170,7 +153,7 @@
                 }
                 this.onUpload();
 
-            },
+                },
             onUpload() {
                 const formData = new FormData();
                 formData.append('image', this.selectedFile, this.selectedFile.name);
@@ -185,7 +168,7 @@
                             let reader = new FileReader();
                             reader.readAsDataURL(response.data);
                             reader.onload = () => {
-                                this.image = reader.result;
+                                    this.image = reader.result;
                             }
                         } else {
                             this.image = null;
