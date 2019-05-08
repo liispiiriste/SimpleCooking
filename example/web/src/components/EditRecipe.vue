@@ -5,47 +5,46 @@
             <div class="form-group">
                 <label for="edit-name">Nimi</label>
                 <input class="form-control" type="text" id="edit-name" required v-model="recipe.name"/>
+                <div class="err">
+                    {{nameError}}
+                </div>
             </div>
+
             <div class="form-group">
                 <label for="edit-description">Juhend</label>
                 <textarea class="form-control" id="edit-description" rows="3"
                           v-model="recipe.description"></textarea>
+
+                <div class="err">
+                    {{desError}}
+                </div>
             </div>
 
             <div class="form-group">
                 <label for="edit-materials">Materjalid</label>
                 <textarea class="form-control" id="edit-materials" rows="3" v-model="recipe.materials"></textarea>
+
             </div>
 
-            <!--<div class="form-group">
+            <div class="form-group">
             <label>Kategooria</label><br>
 
-
-                <select class="custom-select" v-model="recipe.category">
-                    <option value="hommikusöök">Hommikusöök</option>
-                    <option value="jook">Jook</option>
-                    <option value="kook">Kook</option>
-                    <option value="magustoit">Magustoit</option>
-                    <option value="pastatoit">Pastatoit</option>
-                    <option value="pirukad">Pirukad</option>
-                    <option value="praad">Praad</option>
-                    <option value="salat">Salat</option>
-                    <option value="suupisted">Suupisted</option>
-                    <option value="supp">Supp</option>
-                    <option value="tort">Tort</option>
-                    <option value="võileivatort">Võileivatort</option>
-                    <option value="vormiroog">Vormiroog</option>
-                    <option value="muu">Muu</option>
+                <select class="custom-select" v-model="recipe.category" style="width:500px">
+                    <option v-for="(category, index) in categories" :key="index" :value="category.name">
+                        {{category.name}}
+                    </option>
                 </select>
-            </div>-->
+            </div>
 
 
             <div class="form-group">
                 <label for="edit-portion">Kogus<span class="glyphicon glyphicon-euro"></span></label>
                 <input class="small-input" type="number" id="edit-portion" v-model="recipe.portion"/>
 
+
                 <label for="edit-price">Hind<span class="glyphicon glyphicon-euro"></span></label>
                 <input class="small-input" type="number" id="edit-price" v-model="recipe.price"/>
+
 
             </div>
             <div v-if="!pic">
@@ -62,13 +61,13 @@
                 ></b-form-file>
             </div>
 
-            <b-button @click="updateRecipe" variant="success">
-                <router-link :to="{
-                            name: 'recipe',
-                            params: { recipe: recipe, id: recipe.id, }
-                        }" style="color:whitesmoke">Salvesta muudatused
-                </router-link>
-            </b-button>
+                <b-button @click="updateRecipe" variant="success">
+                    <router-link :to="{
+                                name: 'recipe',
+                                params: { recipe: recipe, id: recipe.id, }
+                            }" style="color:whitesmoke">Salvesta muudatused
+                    </router-link>
+                </b-button>
 
             <a class="btn btn-default">
                 <router-link :to="{
@@ -104,12 +103,16 @@
                     portion: this.recipe.portion,
                     price: this.recipe.price,
 
+
                 },
                 image: this.showOldImage(),
                 submitted: false,
                 pic: false,
                 selectedFile: null,
                 previewImage: null,
+                categories: [],
+                nameError: "",
+                desError: ""
 
             };
         },
@@ -124,14 +127,23 @@
                     price: this.recipe.price,
 
                 };
-                http
-                    .put("/recipe/" + this.recipe.id, data)
-                    .then(response => {
-                        this.recipe.id = response.data.id;
-                    });
-                this.submitted = true;
 
-                },
+                this.nameError = (!this.recipe.name) ? "Lisa nimi" : "";
+                this.desError = (this.recipe.description=='') ? "Lisa juhised" : "";
+
+
+                if (!this.nameError
+                    && !this.desError
+                )
+                {
+                    http
+                        .put("/recipe/" + this.recipe.id, data)
+                        .then(response => {
+                            this.recipe.id = response.data.id;
+                        });
+                    this.submitted = true;
+                }
+            },
             onFileSelected(event) {
                 this.selectedFile = event.target.files[0];
                 const reader = new FileReader();
@@ -141,7 +153,7 @@
                 }
                 this.onUpload();
 
-            },
+                },
             onUpload() {
                 const formData = new FormData();
                 formData.append('image', this.selectedFile, this.selectedFile.name);
@@ -156,14 +168,23 @@
                             let reader = new FileReader();
                             reader.readAsDataURL(response.data);
                             reader.onload = () => {
-                                this.image = reader.result;
+                                    this.image = reader.result;
                             }
                         } else {
                             this.image = null;
                         }
                     })
-            }
+            },
+            retrieveCategories() {
+                http.get("/categories").then(response => {
+                    this.categories = response.data;
+                });
+            },
 
+
+        },
+        mounted() {
+           this.retrieveCategories();
         }
     }
 
@@ -202,4 +223,10 @@
         width: 20%;
         float: right;
     }
+
+    .err {
+        color: red;
+        font-size: 16px
+    }
+
 </style>

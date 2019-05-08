@@ -43,25 +43,12 @@
             </div>
             <div class="form-group">
                 <label>Kategooria</label><br>
-                <select class="custom-select" v-model="cat" style="width:415px">
+                <select class="custom-select" v-model="recipe.category" style="width:600px">
                     <option v-for="(category, index) in categories" :key="index" :value="category.name">
                         {{category.name}}
                     </option>
                 </select>
-                <b-button variant="secondary" size="sm" style="width:75px;float:right;margin-left:5px"
-                          v-on:click="addCategory()">Lisa
-                </b-button>
-                <div class="arraylist" v-for="(cat,n) in recipe.category">
-                    <div class="arraytext"><span style="text-align:left" class="cat"> {{cat}}</span></div>
-                    <div class="arraybutton">
-                        <b-button style="width:75px;float:right"
-                                  variant="warning" size="sm"
-                                  class="btn btn-warning btn-sm" @click="removeCategory(n)">
-                            Eemalda
-                        </b-button>
-                    </div>
-                    <br>
-                </div>
+
                 <div class="err"> {{catError}}</div>
             </div>
             <br>
@@ -126,10 +113,10 @@
             return {
                 recipe: {
                     id: '',
-                    name: "",
-                    description: "",
+                    name: '',
+                    description: '',
                     materials: [],
-                    category: [],
+                    category: '',
                     portion: 0,
                     price: 0,
                 },
@@ -168,7 +155,7 @@
                     name: this.recipe.name,
                     description: this.recipe.description,
                     materials: this.recipe.materials.toString(),
-                    category: this.recipe.category.toString(),
+                    category: this.recipe.category,
                     portion: this.recipe.portion,
                     price: this.recipe.price,
                     userid: this.user.id
@@ -178,14 +165,14 @@
                 this.nameError = (!this.recipe.name) ? "Lisa nimi" : "";
                 this.desError = (!this.recipe.description) ? "Lisa juhised" : "";
                 this.matError = (!data.materials) ? "Lisa materjalid" : "";
-                this.catError = (!data.category) ? "Vali kategooria" : "";
+                this.catError = (!this.recipe.category) ? "Vali kategooria" : "";
                 this.portionError = (!this.recipe.portion) ? "Lisa portjon" : "";
                 this.priceError = (!this.recipe.price) ? "Lisa hind" : "";
 
                 if (this.recipe.name
                     && this.recipe.description
                     && data.materials
-                    && data.category
+                    && this.recipe.category
                     && this.recipe.portion
                     && this.recipe.price) {
                     this.submitted = true;
@@ -211,16 +198,13 @@
             addCategory() {
                 var newCategory = this.cat;
                 if (!newCategory) return;
-                if (this.recipe.category.includes(newCategory)) return;
-                this.recipe.category.push(newCategory);
+                if (this.recipe.category != '') return;
                 this.cat = '';
                 newCategory = '';
             },
-            removeCategory(x) {
-                this.recipe.category.splice(x, 1);
-                this.saveCategory();
-            },
-            saveCategory() {
+            removeCategory() {
+                this.recipe.category = '';
+
             },
             addMaterial() {
                 var newMaterial = " " + this.mat + " - " + this.mat2 + " " + this.mat3;
