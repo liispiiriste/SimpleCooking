@@ -87,6 +87,11 @@ b-navbar {
     margin-bottom:20px;
 }
 
+.info{
+    color:#5bc0de;
+    font-size:15px;
+}
+
 .list row {
     margin: auto;
 }
@@ -121,7 +126,7 @@ b-navbar {
     background:rgba(35, 138, 169, 0.15);
     border:none;
     border-radius:15px;
-    width: 55%;
+    max-width: 50vw;
     display: block;
     margin-left: 175px;
 }

@@ -10,6 +10,7 @@
         </div>
             <div class="recipe-list">
                 <h4>Retseptid</h4>
+               <span class="info"> {{this.filterCat}}</span>
                         <ul>
                             <li v-for="(recipe, index) in recipes" :key="index"
                                 style="text-align: center">
@@ -35,8 +36,8 @@
         data() {
             return {
                 recipes: [],
-                categories:[]
-
+                categories:[],
+                filterCat:''
             }
         },
         methods: {
@@ -55,13 +56,17 @@
             },
             chosenCategory(category) {
                 if (category !== "all") {
+
                     http.get("/recipes/" + category).then(response => {
                         this.recipes = response.data;
-                    })
+                    });
+                    this.filterCat=category
                 } else {
+
                     http.get("/recipes").then(response => {
                         this.recipes = response.data;
-                    })
+                    });
+                    this.filterCat=''
                 }
             }
         },
